@@ -95,6 +95,9 @@ describe('generated canonical frontend content', () => {
       expect(html).toContain('site-page-root');
       const rootClass = html.match(/^<div class="([^"]*)"/)?.[1] ?? '';
       expect(rootClass).not.toMatch(/\bbg-(?:canvas|background|surface)(?:\/[0-9]+)?\b/);
+      for (const main of html.matchAll(/<main\b([^>]*)>/gi)) {
+        expect(main[1]).not.toMatch(/\bbg-(?:canvas|background|surface|white|stone-50)(?![\w-])/);
+      }
     }
 
     expect(pageContent['advanced-search']).not.toContain('bg-stone-50');

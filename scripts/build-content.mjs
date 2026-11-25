@@ -1628,9 +1628,20 @@ ${fileInput('Upload lost item photos')}
 /** The global Constellation layer owns the page background now. */
 function transparentPageBackground(classes) {
   return classes
-    .replace(/\bbg-(?:canvas|background|surface|stone-50)(?:\/[0-9]+)?\b/gi, '')
+    .replace(/\bbg-(?:canvas|background|surface|stone-50|white)(?![\w-])(?:\/[0-9.]+)?/gi, '')
     .replace(/\s+/g, ' ')
     .trim();
+}
+
+/** A canonical opaque <main> would hide the fixed Constellation canvas. */
+function exposeBackgroundThroughMain(html) {
+  return html.replace(/<main\b([^>]*)>/gi, (_full, attributes) => {
+    const classMatch = attributes.match(/\bclass="([^"]*)"/i);
+    if (!classMatch) return `<main${attributes}>`;
+    const cleaned = transparentPageBackground(classMatch[1]);
+    if (cleaned === classMatch[1]) return `<main${attributes}>`;
+    return `<main${attributes.replace(classMatch[0], `class="${cleaned}"`)}>`;
+  });
 }
 
 /** Gives the client-side Originkit wordmark a canonical hero mount point. */
@@ -1734,6 +1745,7 @@ function prepareBody(html, definition) {
   inner = reroutePrototypeLinks(inner, definition.slug);
   inner = wireInertButtons(inner, definition.slug);
   inner = nameUnnamedControls(inner);
+  inner = exposeBackgroundThroughMain(inner);
   assertAccessibleHtml(inner, definition.slug);
 
   return `<div class="${transparentPageBackground(bodyClass)} min-h-screen site-page-root">${inner}</div>`;
