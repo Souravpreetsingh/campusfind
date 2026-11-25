@@ -986,7 +986,7 @@ The live database remains the open deployment blocker. The Supabase host is reac
 | Degrade search gracefully when database is unreachable | `66429e7`; deployment `dpl_6fwphU6xAPaH5S5TxQFxqRiSZ1fX` |
 | Expose constellation through canonical page mains | `cfef030`; deployment `dpl_RT4sRegXZsa9iDfwG9JkA4rW5rKe` |
 | Add complete documentation and upload-limit consistency | `d95f8c6`; deployment `dpl_6NpowGSTN6nS7MZVidXfQL4jgwxM` |
-| Add live upload feedback, drag-and-drop, real clear action, and honest submit labels | `16b8cb3` |
+| Add live upload feedback, drag-and-drop, real clear action, and honest submit labels | `16b8cb3`; deployment `dpl_93PRkHZNnd6W3a8ShMgf24p7iPEB` |
 
 ---
 
