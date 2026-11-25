@@ -295,6 +295,10 @@
   padding-bottom: var(--spacing-space-xs);
 }
 
+@utility pl-space-lg {
+  padding-left: var(--spacing-space-lg);
+}
+
 @utility pl-space-md {
   padding-left: var(--spacing-space-md);
 }

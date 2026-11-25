@@ -1,19 +1,24 @@
 "use client";
 
-import { useEffect, useState } from 'react';
-import { getMotionPreference, setMotionPreference, type MotionPreference } from '@/lib/motion';
+import { useSyncExternalStore } from 'react';
+import {
+  getMotionServerSnapshot,
+  getMotionSnapshot,
+  setMotionPreference,
+  subscribeMotion,
+  type MotionPreference,
+} from '@/lib/motion';
 
 export default function MotionToggle() {
-  const [preference, setPreference] = useState<MotionPreference>('on');
-
-  useEffect(() => {
-    setPreference(getMotionPreference());
-  }, []);
+  const preference = useSyncExternalStore(
+    subscribeMotion,
+    getMotionSnapshot,
+    getMotionServerSnapshot,
+  );
 
   const toggle = () => {
     const next: MotionPreference = preference === 'on' ? 'off' : 'on';
     setMotionPreference(next);
-    setPreference(next);
     window.location.reload();
   };
 

@@ -171,6 +171,34 @@ describe('generated canonical frontend content', () => {
     expect(tracking).toMatch(/<form[^>]*action="\/api\/guest\/track"[^>]*method="post"/);
     expect(tracking).toContain('name="reference"');
     expect(tracking).toContain('name="secretToken"');
+    expect(tracking).toMatch(/<button type="submit"[^>]*>[\s\S]*?Check case status/);
+  });
+
+  it('does not display simulated authentication results on the tracking screen', () => {
+    const tracking = pageContent['secure-guest-tracking'];
+    for (const value of [
+      'AUTHENTICATION SUCCESSFUL',
+      'AUTHENTICATION FAILED',
+      'Valid Token',
+      'Simulate Invalid Token',
+      'PORT-443 TLS 1.3',
+      'SHA-256 Validated',
+      '0 Failures (Nominal)',
+      'Cryptographic match verified',
+      'Ready for Challenge',
+      'Tier-4 Encrypted',
+      'Session expires in 43m 12s',
+      'Zero-knowledge verification engine',
+      'Sony WH-1000XM5',
+      'Officer M. Vance (#1094)',
+      '96.2%',
+      '749-218',
+      'WSU-2024-CUSTODY',
+    ]) {
+      expect(tracking).not.toContain(value);
+    }
+    expect(tracking).toContain('Awaiting verification');
+    expect(tracking).toContain('Your case details appear after verification');
   });
 
   it('removes invented prototype counts, dockets and secret values', () => {

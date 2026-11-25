@@ -1145,27 +1145,200 @@ function configureAdvancedSearchPage(html) {
 
 /** The tracking screen's prototype lookup controls become a real POST form. */
 function configureSecureGuestTrackingForm(html) {
-  const startMarker = '<!-- Credential Input Form -->';
-  const endMarker = '<!-- Authentication State Feedback Panel -->';
-  if (!html.includes(startMarker) || !html.includes(endMarker)) {
+  const sectionStart = '<!-- SECTION A: CREDENTIAL LOOKUP & DUAL STATE SIMULATION -->';
+  const sectionEnd = '<!-- SECTION B: ACTIVE CASE OVERVIEW & TIMELINE -->';
+  if (!html.includes(sectionStart) || !html.includes(sectionEnd)) {
+    throw new Error('Could not find secure guest credential section');
+  }
+
+  const formStart = html.indexOf('<!-- Credential Input Form -->');
+  const formEnd = html.indexOf('<!-- Authentication State Feedback Panel -->', formStart);
+  if (formStart < 0 || formEnd < 0) {
     throw new Error('Could not find secure guest credential form');
   }
 
-  let next = html.replace(startMarker, `${startMarker}\n<form action="/api/guest/track" method="post">`);
-  next = next.replace(endMarker, `</form>\n${endMarker}`);
-
-  next = next.replace(
+  let card = html.slice(formStart, formEnd);
+  card = replaceRequired(
+    card,
     /(<input\b[^>]*\bid="case-docket-input"[^>]*?)\s+value="[^"]*"/i,
-    '$1 placeholder="Enter case reference"',
+    '$1 placeholder="e.g. CF-2026-1234-L"',
+    'tracking reference placeholder',
   );
-  next = next.replace(/(<input\b[^>]*\bid="case-docket-input")/i, '$1 name="reference"');
-  next = next.replace(
+  card = replaceRequired(
+    card,
+    /(<input\b[^>]*\bid="case-docket-input")/i,
+    '$1 name="reference"',
+    'tracking reference name',
+  );
+  card = replaceRequired(
+    card,
     /(<input\b[^>]*\bid="secret-token-input"[^>]*?)\s+value="[^"]*"/i,
-    '$1 placeholder="Enter one-time token"',
+    '$1 placeholder="Enter the token from your slip"',
+    'tracking token placeholder',
   );
-  next = next.replace(/(<input\b[^>]*\bid="secret-token-input")/i, '$1 name="secretToken"');
+  card = replaceRequired(
+    card,
+    /(<input\b[^>]*\bid="secret-token-input")/i,
+    '$1 name="secretToken"',
+    'tracking token name',
+  );
+  card = replaceRequired(
+    card,
+    'Zero-knowledge verification engine',
+    'Credentials are checked against the custody registry',
+    'tracking verification copy',
+  );
+  card = replaceRequired(
+    card,
+    /<button\b[^>]*>\s*<span>Re-Authenticate Session<\/span>[\s\S]*?<\/button>/i,
+    '<button type="submit" class="px-space-lg py-space-sm rounded-xl bg-primary text-on-primary font-label-md text-label-md hover:bg-graphite transition-colors flex items-center gap-space-xs shadow-sm"><span>Check case status</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span></button>',
+    'tracking submit button',
+  );
 
-  return markSubmitButton(next, 'Re-Authenticate Session');
+  const statusPanel = `<!-- Authentication State Feedback Panel -->
+<div class="lg:col-span-5 flex flex-col">
+<div class="h-full flex flex-col justify-between p-space-lg rounded-xl bg-surface-container-low shadow-sm">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="px-space-sm py-[3px] rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm font-semibold">Awaiting verification</span>
+<span class="font-mono text-label-sm text-on-surface-variant">Guest case desk</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Check your case status</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Enter the reference and one-time token from your custody slip. Your case details appear here after verification.</p>
+</div>
+<div class="grid grid-cols-2 gap-space-xs pt-space-xs">
+<div class="p-space-xs rounded-lg bg-surface-container-lowest">
+<span class="font-label-sm text-label-sm text-outline block">Verification</span>
+<span class="font-mono text-label-sm text-on-surface font-semibold block">Pending submission</span>
+</div>
+<div class="p-space-xs rounded-lg bg-surface-container-lowest">
+<span class="font-label-sm text-label-sm text-outline block">Access</span>
+<span class="font-mono text-label-sm text-on-surface font-semibold block">Your case only</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between text-on-surface">
+<span class="font-label-sm text-label-sm">Custody desk review</span>
+<span class="font-mono text-label-sm font-semibold">After submission</span>
+</div>
+</div>
+</div>`;
+
+  const section = `<!-- SECTION A: CREDENTIAL LOOKUP -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Access Gate 01</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Tracking Credentials &amp; Key Verification</h2>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Use the reference and token issued when your report was submitted.</span>
+</div>
+<form action="/api/guest/track" method="post" class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+${card}${statusPanel}
+</form>
+</section>
+`;
+
+  let next = replaceSection(html, sectionStart, sectionEnd, section, 'tracking credential section');
+
+  // The prototype badges advertised a simulated clearance level rather than a real session.
+  const headerReplacements = [
+    ['Case #Reference issued on submission', 'Credentials required'],
+    ['SHA256: 4f8a...c301', 'Secure session'],
+    ['Tier-4 Encrypted', 'Protected session'],
+    ['Session expires in 43m 12s', 'Valid for this session'],
+    ['Strict Blinded Privacy Mandate Active', 'Privacy-protected review'],
+  ];
+  for (const [from, to] of headerReplacements) next = next.split(from).join(to);
+
+  next = replaceSection(
+    next,
+    '<!-- SECTION B: ACTIVE CASE OVERVIEW & TIMELINE -->',
+    '<!-- SECTION C: MULTI-STEP CLAIM SUBMISSION & BLINDED OWNERSHIP VERIFICATION FORM -->',
+    `<!-- SECTION B: CASE OVERVIEW -->
+<section class="flex flex-col gap-space-md">
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Access Gate 02</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Your case details appear after verification</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Once the credentials on your custody slip are verified, this section shows the item description, where it was found, its custody location, intake date, and the current stage of your claim.</p>
+</div>
+</section>
+`,
+    'tracking case overview',
+  );
+
+  next = replaceSection(
+    next,
+    '<!-- SECTION C: MULTI-STEP CLAIM SUBMISSION & BLINDED OWNERSHIP VERIFICATION FORM -->',
+    '<!-- SECTION D: COMPREHENSIVE CLAIM STATUS & RESOLUTION LIFECYCLE SIMULATOR -->',
+    `<!-- SECTION C: OWNERSHIP VERIFICATION -->
+<section class="flex flex-col gap-space-md">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Blinded Ownership Verification</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Ownership questions are released after verification</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">The custody desk asks about details that are not shown in public listings. Answer them in your verified case view, and never share your one-time token with anyone.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<div class="lg:col-span-8 flex flex-col gap-space-md bg-surface-container-lowest p-space-lg rounded-xl shadow-sm">
+<div class="flex items-center gap-space-xs pb-space-xs">
+<span class="w-7 h-7 rounded-lg bg-secondary text-on-secondary flex items-center justify-center font-bold text-label-sm">1</span>
+<h3 class="font-title-lg text-title-lg text-on-surface">What you may be asked</h3>
+</div>
+<ul class="list-disc pl-space-lg flex flex-col gap-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<li>Distinctive markings, decals, or accessories on the item.</li>
+<li>Serial number fragments or a device name you configured.</li>
+<li>Proof of purchase or a photo showing the item in your possession.</li>
+</ul>
+</div>
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs text-secondary">
+<span class="material-symbols-outlined text-[20px]">shield</span>
+<span class="font-label-lg text-label-lg font-bold">Privacy Protection</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Finder contact details and internal custody notes stay withheld during review. The custody desk sees them only when needed to resolve a conflict.</p>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-sm">
+<span class="font-title-md text-title-md text-on-surface">Need help with your claim?</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Contact the custody desk using the details issued with your case reference.</p>
+</div>
+</div>
+</div>
+</section>
+`,
+    'tracking verification section',
+  );
+
+  next = replaceSection(
+    next,
+    '<!-- SECTION D: COMPREHENSIVE CLAIM STATUS & RESOLUTION LIFECYCLE SIMULATOR -->',
+    '<!-- SECTION E: PRIVACY PROTOCOL FOOTNOTE -->',
+    `<!-- SECTION D: CASE STATUS REFERENCE -->
+<section class="flex flex-col gap-space-md">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Status reference</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">How claim statuses are reported</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Your verified case shows its actual status. The custody desk may request more information or escalate a disputed claim before an item is released.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-xs"><span class="font-title-md text-title-md text-on-surface block">Under review</span><span class="font-body-sm text-body-sm text-on-surface-variant">The custody desk is checking your answers.</span></div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-xs"><span class="font-title-md text-title-md text-on-surface block">More information requested</span><span class="font-body-sm text-body-sm text-on-surface-variant">Additional evidence is needed before a decision.</span></div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-xs"><span class="font-title-md text-title-md text-on-surface block">Disputed claim</span><span class="font-body-sm text-body-sm text-on-surface-variant">Conflicting claims are escalated for review.</span></div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-xs"><span class="font-title-md text-title-md text-on-surface block">Approved for pickup</span><span class="font-body-sm text-body-sm text-on-surface-variant">The custody desk issues your release details.</span></div>
+</div>
+</section>
+`,
+    'tracking status reference',
+  );
+
+  next = next.replace(
+    'All claim audit metadata is cryptographically logged under immutable audit roll WSU-2024-CUSTODY.',
+    'Claim activity is recorded in the custody audit log.',
+  );
+  next = next.replace('Intake System Operational (v4.8.2)', 'Intake System Operational');
+
+  return next;
 }
 
 function configureVaultForms(html) {
@@ -1532,7 +1705,10 @@ function prepareBody(html, definition) {
   } else if (definition.slug === 'mobile-lost-property') {
     inner = configureMobileForm(inner, definition.slug);
   } else {
-    inner = normalizeButtons(inner);
+    inner = normalizeButtons(
+      inner,
+      definition.slug === 'secure-guest-tracking' ? 'Check case status' : undefined,
+    );
     if (definition.slug === 'campus-lost-found') {
       inner = configureEnterpriseForms(inner);
       inner = asQueryLinks(inner, [
