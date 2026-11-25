@@ -2,6 +2,11 @@
 
 College lost & found management platform. The runnable application lives in this folder; the canonical frontend source is `extracted/stitch_campusfind_platform_design/`. The older curated `frontend/` directory is retained for reference only and is no longer used to generate pages.
 
+## Live deployment
+
+- Public repository: https://github.com/Souravpreetsingh/campusfind
+- Vercel production URL: https://campusfind-taupe.vercel.app
+
 ## Current status
 
 - Next.js 16 App Router + React 19 + TypeScript strict mode
