@@ -14,7 +14,7 @@
 | Navigation | ✅ | Prototype `data-path` and placeholder anchors are mapped to real routes; no `href="#"` placeholders remain |
 | Forms | ✅ | Report intake, guest tracking, discovery search, and both vault custody forms are wired to real handlers; report screens use editable fields instead of prototype placeholder data |
 | Search | ✅ | Homepage and advanced-search keyword (including brand and model), zone, Lost/Found, sort, frequent-search, recent-search, and trending controls now submit real query parameters and filter approved/claimed Prisma reports into canonical result cards |
-| Image uploads | ✅ | Report forms accept real multipart images (JPG, PNG, WebP, GIF, HEIC, HEIF; 15MB each), store them under `public/uploads`, and link them to the created report |
+| Image uploads | ✅ | Report forms accept real multipart images (JPG, PNG, WebP, GIF, HEIC, HEIF; 10MB each), store them under `UPLOAD_DIR` (default `.data/uploads`), and link them to the created report |
 | Global background | ✅ | Supplied Originkit Constellation WebGL component renders on every screen as a pointer-transparent fixed layer behind content; page roots are transparent so it stays visible in the background without drawing over text, cards, or controls |
 | Hero wordmark | ✅ | Supplied Originkit Vector Wordmark component renders the homepage tagline in three larger animated lines; the canonical generator emits a mount point with a styled text fallback, and the client island mounts only when WebGL is available |
 | Navigation | ✅ | Homepage header is generated as a rounded floating bar with a subtle border and shadow, while the canonical Stitch source remains untouched |

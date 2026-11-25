@@ -19,7 +19,8 @@
     "prisma:migrate:dev": "prisma migrate dev",
     "prisma:validate": "prisma validate",
     "db:seed": "node --env-file=.env prisma/seed.mjs",
-    "smoke": "node scripts/smoke.mjs"
+    "smoke": "node scripts/smoke.mjs",
+    "docs:pdf": "node scripts/build-docs-pdf.mjs"
   },
   "dependencies": {
     "@fontsource/be-vietnam-pro": "^5.2.8",

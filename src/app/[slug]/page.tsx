@@ -121,7 +121,7 @@ export default async function DesignPage({ params, searchParams }: PageProps) {
     banners.push(banner('Please complete every required field before submitting.', 'error'));
   }
   if (firstValue(query.error) === 'upload') {
-    banners.push(banner('One or more images could not be uploaded. Use JPG, PNG, WebP, GIF, HEIC, or HEIF under 15MB.', 'error'));
+    banners.push(banner('One or more images could not be uploaded. Use JPG, PNG, WebP, GIF, HEIC, or HEIF under 10MB.', 'error'));
   }
 
   if (slug === 'submission-confirmation') {

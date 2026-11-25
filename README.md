@@ -7,6 +7,12 @@ College lost & found management platform. The runnable application lives in this
 - Public repository: https://github.com/Souravpreetsingh/campusfind
 - Vercel production URL: https://campusfind-taupe.vercel.app
 
+## Complete documentation
+
+- Markdown: `docs/CAMPUSFIND_DOCUMENTATION.md`
+- PDF: `docs/CAMPUSFIND_DOCUMENTATION.pdf`
+- Regenerate the HTML/PDF with `npm run docs:pdf` after editing the Markdown.
+
 ## Current status
 
 - Next.js 16 App Router + React 19 + TypeScript strict mode
@@ -16,7 +22,7 @@ College lost & found management platform. The runnable application lives in this
 - Prisma 6 schema, generated client, and initial PostgreSQL migration
 - Session authentication (httpOnly JWT cookie), bcrypt password verification, RBAC helpers
 - APIs for reports, claims, matches, custody, guest tracking, admin overview, and health checks
-- Real form handling for report intake (including JPG/PNG/WebP/GIF/HEIC/HEIF uploads), guest tracking, public discovery search, and custody handover; report screens no longer submit prototype placeholder values
+- Real form handling for report intake (including JPG/PNG/WebP/GIF/HEIC/HEIF uploads up to 10MB each), guest tracking, public discovery search, and custody handover; report screens no longer submit prototype placeholder values
 - Working keyword/brand/model/zone/status search: the homepage search bar, Lost/Found pills, frequent-search links, and advanced-search filters all query the database and render approved reports
 - Responsive report assistant: speak or type what happened, hear spoken replies, answer a few questions, attach a photo, and the lost/found report is filed automatically
 - Originkit Constellation WebGL animation remains visible through the site background on every canonical screen, rendered behind page content so it never overlays text or controls
@@ -70,7 +76,7 @@ git-ignored, must be writable by the app process, and must be persisted across d
 
 ## Report assistant
 
-Click the bot button in the lower-right corner. It accepts speech (Chrome/Edge with microphone permission) or typed answers, works out whether the item was lost or found, asks for the item, location, identifying marks, and NetID, then asks for a photo. Attach a photo or type `skip`; the report is created through the real report API automatically.
+Click the bot button in the lower-left corner. It accepts speech (Chrome/Edge with microphone permission) or typed answers, works out whether the item was lost or found, asks for the item, location, identifying marks, and NetID, then asks for a photo. Attach a photo or type `skip`; the report is created through the real report API automatically.
 
 For a hands-free conversation, press the microphone button once. The assistant listens with live/interim transcription, speaks each reply aloud, then reopens the microphone automatically for your next answer. Use the volume button to mute speech and the restart button to start a new report. Browsers without the Web Speech API can still use every feature by typing; speech synthesis is optional and typed replies remain fully readable.
 

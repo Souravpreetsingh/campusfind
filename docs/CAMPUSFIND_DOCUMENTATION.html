@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CampusFind Complete Documentation</title>
+<style>
+@page { size: A4; margin: 18mm 15mm 18mm 15mm; }
+* { box-sizing: border-box; }
+html { font-family: "Segoe UI", Arial, sans-serif; font-size: 10.5pt; color: #1b1b1b; }
+body { margin: 0; }
+h1 { font-size: 27pt; line-height: 1.15; color: #0b3558; margin: 0 0 14pt; padding-bottom: 10pt; border-bottom: 5px solid #ff4500; }
+h2 { font-size: 17pt; color: #0b3558; margin: 0 0 10pt; padding-bottom: 5pt; border-bottom: 1px solid #cfd8de; break-before: page; }
+h2:first-of-type { break-before: auto; }
+h3 { font-size: 13pt; color: #005b9a; margin: 15pt 0 5pt; }
+h4 { font-size: 11pt; color: #0b3558; margin: 11pt 0 4pt; }
+p { margin: 0 0 8pt; line-height: 1.45; }
+ul, ol { margin: 0 0 9pt 18pt; padding: 0; }
+li { margin: 0 0 3pt; line-height: 1.4; }
+hr { border: 0; border-top: 1px solid #d8dde1; margin: 14pt 0; }
+a { color: #005b9a; text-decoration: none; }
+strong { color: #0b3558; }
+code { font-family: Consolas, "Courier New", monospace; background: #eef1f3; padding: 0 2pt; font-size: 9pt; }
+pre { background: #f5f6f7; border-left: 4px solid #ff4500; padding: 8pt 10pt; margin: 8pt 0 12pt; white-space: pre-wrap; word-break: break-word; font-size: 8.5pt; line-height: 1.35; }
+pre code { background: transparent; padding: 0; font-size: inherit; }
+blockquote { border-left: 4px solid #ffbe00; background: #fff9e8; padding: 6pt 10pt; margin: 8pt 0 12pt; color: #4a3b12; }
+blockquote p { margin: 0; }
+table { width: 100%; border-collapse: collapse; margin: 8pt 0 12pt; font-size: 8.8pt; }
+th, td { border: 1px solid #d4dade; padding: 5pt 6pt; text-align: left; vertical-align: top; }
+th { background: #eaf1f6; color: #0b3558; font-weight: 700; }
+tr, pre, blockquote { break-inside: avoid; }
+h1, h2, h3, h4 { break-after: avoid; }
+.doc-footer { margin-top: 22pt; padding-top: 8pt; border-top: 1px solid #d8dde1; color: #6b7378; font-size: 8.5pt; }
+</style>
+</head>
+<body>
+<h1 id="campusfind-complete-documentation">CampusFind Complete Documentation</h1>
+<p><strong>Version:</strong> 1.0 <strong>Generated:</strong> 2026-11-25 <strong>Audience:</strong> students, campus staff, administrators, developers, and operators <strong>Repository:</strong> https://github.com/Souravpreetsingh/campusfind <strong>Production:</strong> https://campusfind-taupe.vercel.app <strong>Local development:</strong> http://localhost:3001</p>
+<blockquote><p>This is the consolidated CampusFind manual. It replaces the need to piece together the older phase documents. <code>docs/IMPLEMENTATION_STATUS.md</code>, <code>docs/ARCHITECTURE.md</code>, and <code>docs/DATABASE_DESIGN.md</code> remain as historical design records.</p></blockquote>
+<hr>
+<h2 id="1-executive-overview">1. Executive overview</h2>
+<p>CampusFind is a full-stack lost-and-found platform for a multi-college campus environment. It preserves all 15 canonical Stitch screens while replacing prototype behavior with real Next.js routes, PostgreSQL-backed data, authentication, authorization, validation, uploads, search, reporting, tracking, matching, claims, custody, and audit logging.</p>
+<h3 id="1-1-what-the-platform-does">1.1 What the platform does</h3>
+<table><thead><tr><th>Audience</th><th>Capabilities</th></tr></thead><tbody><tr><td>Students and visitors</td><td>Report lost or found items, attach evidence photos, receive a case reference and one-time tracking token, search approved listings, track a case, and use the conversational report assistant.</td></tr>
+<tr><td>Campus staff</td><td>Review reports, inspect evidence, verify ownership claims, manage custody state, commit handover records, and review candidate matches.</td></tr>
+<tr><td>Administrators</td><td>Access protected operations screens, see tenant-scoped counts, manage college provisioning views, and control role-based access.</td></tr>
+<tr><td>Operators</td><td>Deploy through Vercel, Docker, or Render; validate configuration; run migrations; check readiness; and monitor health.</td></tr></tbody></table>
+<h3 id="1-2-core-principles">1.2 Core principles</h3>
+<ol><li><strong>Canonical design is immutable.</strong> <code>extracted/stitch_campusfind_platform_design/</code> is never edited. <code>npm run content:build</code> regenerates <code>src/content/pages.ts</code> and <code>src/content/design-tokens.css</code>.</li><li><strong>All 15 screens survive.</strong> Each canonical module is served through a real route with its original shell, navigation, typography, and iconography.</li><li><strong>No prototype success states.</strong> The guest tracking screen no longer displays simulated token states, fake confidence scores, invented officer names, or fabricated audit rolls.</li><li><strong>Real data flow.</strong> Reports, credentials, claims, matches, custody records, and audit logs are stored in PostgreSQL through Prisma.</li><li><strong>Server-side authority.</strong> Authentication, RBAC, validation, CSRF checks, rate limits, and audit logging are enforced in API routes, not only in the UI.</li><li><strong>Motion is visible by default.</strong> The Originkit Constellation background and hero Vector Wordmark animate unless the user explicitly selects <strong>Motion off</strong>.</li></ol>
+<h3 id="1-3-quick-facts">1.3 Quick facts</h3>
+<table><thead><tr><th>Item</th><th>Value</th></tr></thead><tbody><tr><td>Framework</td><td>Next.js 16.4.6, App Router</td></tr>
+<tr><td>UI</td><td>React 19.3.1, TypeScript strict mode, Tailwind CSS 4</td></tr>
+<tr><td>Database</td><td>PostgreSQL with Prisma 6.19.3</td></tr>
+<tr><td>Validation</td><td>Zod 4</td></tr>
+<tr><td>Authentication</td><td>bcryptjs password hashing, <code>jose</code> HS256 JWT in httpOnly cookie</td></tr>
+<tr><td>Uploads</td><td><code>sharp</code> with magic-byte validation, EXIF stripping, thumbnails, <code>UPLOAD_DIR</code></td></tr>
+<tr><td>Animation</td><td>three.js / Originkit Constellation and Vector Wordmark</td></tr>
+<tr><td>Tests</td><td>Vitest 5</td></tr>
+<tr><td>Local port</td><td>3001</td></tr>
+<tr><td>Canonical images</td><td>34 self-hosted files under <code>public/canonical</code></td></tr>
+<tr><td>Current test baseline</td><td>72 tests passing</td></tr></tbody></table>
+<hr>
+<h2 id="2-architecture">2. Architecture</h2>
+<h3 id="2-1-runtime-request-flow">2.1 Runtime request flow</h3>
+<pre><code class="language-text">Browser
+  ├── GET /, /advanced-search, /report-lost, ...  ──&gt; Next.js App Router
+  │                                                   ├── layout.tsx
+  │                                                   │     ├── SiteBackground (z-index 0)
+  │                                                   │     ├── site-content (z-index 1)
+  │                                                   │     │     ├── generated canonical HTML
+  │                                                   │     │     └── CanonicalActions
+  │                                                   │     ├── ReportAssistant
+  │                                                   │     └── MotionToggle
+  │                                                   └── [slug]/page.tsx or app/page.tsx
+  │                                                         └── Prisma queries where required
+  └── POST /api/... ──&gt; Route handler
+                         ├── Zod validation
+                         ├── same-origin CSRF check
+                         ├── rate limit where applicable
+                         ├── session/RBAC check where applicable
+                         ├── Prisma transaction
+                         ├── audit log with hash chain
+                         └── JSON response or safe redirect</code></pre>
+<p>The Constellation canvas is fixed, pointer-transparent, and rendered behind <code>.site-content</code>. Generated page roots and <code>&lt;main&gt;</code> elements have opaque full-page background classes removed so the animation is visible through transparent areas without covering text or controls.</p>
+<h3 id="2-2-technology-stack">2.2 Technology stack</h3>
+<table><thead><tr><th>Layer</th><th>Technology</th><th>Purpose</th></tr></thead><tbody><tr><td>Routing/rendering</td><td>Next.js App Router, React Server Components</td><td>Real routes, metadata, dynamic pages, API handlers</td></tr>
+<tr><td>Type safety</td><td>TypeScript strict mode</td><td>Compile-time verification</td></tr>
+<tr><td>Styling</td><td>Tailwind CSS 4, generated CSS variables</td><td>Canonical design tokens and responsive utilities</td></tr>
+<tr><td>Data</td><td>PostgreSQL, Prisma Client, migrations</td><td>Persistent domain data</td></tr>
+<tr><td>Validation</td><td>Zod</td><td>Request schemas for APIs and form submissions</td></tr>
+<tr><td>Auth</td><td><code>jose</code>, <code>bcryptjs</code></td><td>Signed session JWT, password verification</td></tr>
+<tr><td>Security</td><td>CSRF origin checks, in-memory rate limits, safe redirects, security headers</td><td>Abuse and injection mitigation</td></tr>
+<tr><td>Files</td><td><code>sharp</code>, local <code>UPLOAD_DIR</code></td><td>Image normalization, thumbnails, media serving</td></tr>
+<tr><td>Animation</td><td>three.js, Originkit Constellation, Originkit Vector Wordmark</td><td>Site-wide background and homepage hero</td></tr>
+<tr><td>Speech</td><td>Web Speech API</td><td>Hands-free report assistant with typed fallback</td></tr>
+<tr><td>Testing</td><td>Vitest</td><td>Domain, content, security, UI-wiring, and accessibility regression tests</td></tr>
+<tr><td>Hosting</td><td>Vercel primary; Docker and Render provided</td><td>Production and portable deployment</td></tr></tbody></table>
+<h3 id="2-3-repository-map">2.3 Repository map</h3>
+<table><thead><tr><th>Path</th><th>Contents</th></tr></thead><tbody><tr><td><code>src/app/</code></td><td>App Router pages, metadata routes, error/not-found pages, API route handlers</td></tr>
+<tr><td><code>src/app/[slug]/page.tsx</code></td><td>Renders all 15 canonical pages; handles auth gates, query banners, and search</td></tr>
+<tr><td><code>src/components/</code></td><td>Client islands: assistant, canonical action delegate, background, hero wordmark, motion toggle, login form</td></tr>
+<tr><td><code>src/lib/</code></td><td>Auth, RBAC, CSRF, rate limiting, audit, uploads, search, matching, state transitions, navigation, motion, redirects</td></tr>
+<tr><td><code>src/content/</code></td><td>Generated <code>pages.ts</code> and <code>design-tokens.css</code>; do not edit manually</td></tr>
+<tr><td><code>extracted/stitch_campusfind_platform_design/</code></td><td>Canonical Stitch source; read-only source of truth</td></tr>
+<tr><td><code>public/canonical/</code></td><td>Self-hosted canonical images</td></tr>
+<tr><td><code>scripts/build-content.mjs</code></td><td>Regenerates content and tokens from canonical <code>code.html</code> files</td></tr>
+<tr><td><code>scripts/canonical-assets.json</code></td><td>Map from original remote image URLs to local asset paths</td></tr>
+<tr><td><code>scripts/</code></td><td>Environment check, smoke test, asset downloader, documentation PDF builder</td></tr>
+<tr><td><code>prisma/schema.prisma</code></td><td>Prisma models, enums, relations, and indexes</td></tr>
+<tr><td><code>prisma/migrations/</code></td><td>Initial migration and migration lock</td></tr>
+<tr><td><code>prisma/seed.mjs</code></td><td>Categories, colleges, and bootstrap administrator</td></tr>
+<tr><td><code>tests/</code></td><td>Vitest suites</td></tr>
+<tr><td><code>docs/</code></td><td>This manual, historical design docs, and implementation status</td></tr>
+<tr><td><code>.github/workflows/ci.yml</code></td><td>Continuous integration quality gates</td></tr>
+<tr><td><code>Dockerfile</code>, <code>render.yaml</code></td><td>Container and Render deployment definitions</td></tr></tbody></table>
+<hr>
+<h2 id="3-canonical-design-preservation-and-content-generation">3. Canonical design preservation and content generation</h2>
+<h3 id="3-1-source-of-truth">3.1 Source of truth</h3>
+<p>The canonical frontend source is <code>extracted/stitch_campusfind_platform_design/</code>. The older <code>frontend/</code> folder is retained for reference only and is not used to generate app pages. Every canonical module contributes a <code>code.html</code> file. <code>scripts/build-content.mjs</code> reads those files and writes trusted HTML strings into <code>src/content/pages.ts</code>.</p>
+<p>Do not hand-edit <code>src/content/pages.ts</code> or <code>src/content/design-tokens.css</code>. Both files are generated and include do-not-edit banners. After changing a canonical file, run:</p>
+<pre><code class="language-powershell">npm run content:build</code></pre>
+<h3 id="3-2-page-catalog">3.2 Page catalog</h3>
+<table><thead><tr><th>#</th><th>Source module</th><th>Route</th><th>Label</th><th>Group</th></tr></thead><tbody><tr><td>1</td><td><code>campusfind_enterprise_college_lost_found</code></td><td><code>/</code> (also <code>/campus-lost-found</code>)</td><td>Campus Lost &amp; Found</td><td>Public</td></tr>
+<tr><td>2</td><td><code>campusfind_advanced_search_listings_discovery</code></td><td><code>/advanced-search</code></td><td>Search Listings</td><td>Public</td></tr>
+<tr><td>3</td><td><code>campusfind_lost_item_reporting_workflow_desktop</code></td><td><code>/report-lost</code></td><td>Report a Lost Item</td><td>Public</td></tr>
+<tr><td>4</td><td><code>campusfind_found_item_intake_custody_workflow_desktop</code></td><td><code>/report-found</code></td><td>Report Found Item</td><td>Public</td></tr>
+<tr><td>5</td><td><code>campusfind_mobile_lost_property_intake</code></td><td><code>/mobile-lost-property</code></td><td>Mobile Intake</td><td>Public</td></tr>
+<tr><td>6</td><td><code>campusfind_submission_confirmation_custody_credentials</code></td><td><code>/submission-confirmation</code></td><td>Custody Credential</td><td>Public</td></tr>
+<tr><td>7</td><td><code>campusfind_secure_guest_tracking_blinded_ownership_resolution</code></td><td><code>/secure-guest-tracking</code></td><td>Track &amp; Verify Claim</td><td>Public</td></tr>
+<tr><td>8</td><td><code>campusfind_intelligent_match_comparison_vector_decomposition</code></td><td><code>/intelligent-match</code></td><td>Match Comparison</td><td>Public</td></tr>
+<tr><td>9</td><td><code>campusfind_admin_executive_operations_dashboard</code></td><td><code>/overview-dashboard</code></td><td>Operations Overview</td><td>Admin</td></tr>
+<tr><td>10</td><td><code>campusfind_admin_report_moderation_inspection_workspace</code></td><td><code>/report-moderation</code></td><td>Report Moderation</td><td>Admin</td></tr>
+<tr><td>11</td><td><code>campusfind_admin_claims_evidence_verification_console</code></td><td><code>/claims-and-verification</code></td><td>Claims &amp; Verification</td><td>Admin</td></tr>
+<tr><td>12</td><td><code>campusfind_admin_vault_inventory_custody_registry</code></td><td><code>/vault-inventory-and-custody</code></td><td>Vault &amp; Custody</td><td>Admin</td></tr>
+<tr><td>13</td><td><code>campusfind_intelligent_matching_queue_review_dashboard</code></td><td><code>/intelligent-matching</code></td><td>Matching Queue</td><td>Admin</td></tr>
+<tr><td>14</td><td><code>campusfind_super_admin_multi_tenant_platform_overview</code></td><td><code>/platform-overview</code></td><td>Platform Overview</td><td>Platform</td></tr>
+<tr><td>15</td><td><code>campusfind_super_admin_college_registry_provisioning</code></td><td><code>/college-registry-provisioning</code></td><td>College Registry</td><td>Platform</td></tr></tbody></table>
+<p>There are 8 public, 5 admin, and 2 platform screens. Admin and platform screens require a <code>MODERATOR</code>, <code>COLLEGE_ADMIN</code>, or <code>SUPER_ADMIN</code> session; unauthenticated visitors are redirected to <code>/login?next=/&lt;slug&gt;</code>.</p>
+<h3 id="3-3-generator-pipeline">3.3 Generator pipeline</h3>
+<p><code>npm run content:build</code> performs these steps for each canonical <code>code.html</code>:</p>
+<ol><li>Reads the full <code>&lt;body&gt;</code> and body classes.</li><li>Removes every <code>&lt;script&gt;</code> block and inline <code>onclick</code>, <code>onsubmit</code>, <code>onchange</code>, <code>oninput</code>, <code>onkeydown</code>, and <code>onmouseover</code> handler. Next.js owns behavior.</li><li>Replaces remote canonical image URLs with self-hosted <code>/canonical/...</code> paths using <code>scripts/canonical-assets.json</code>.</li><li>Adds accessibility metadata to images: <code>alt</code>, <code>loading=&quot;lazy&quot;</code>, and <code>decoding=&quot;async&quot;</code>.</li><li>Rewrites prototype anchors using <code>data-path</code>, visible link text, and explicit route maps. Bare <code>#</code> links become <code>/</code>.</li><li>Removes invented prototype data such as fake log counts, health percentages, tenancy counts, docket numbers, locker PINs, and fabricated confidence values.</li><li>Applies responsive fixes to admin sidebars and advanced-search padding.</li><li>Wires real forms and controls for slug-specific workflows:</li></ol>
+<ul><li><code>secure-guest-tracking</code> → real <code>POST /api/guest/track</code> form and neutral verification copy.</li><li><code>report-lost</code>, <code>report-found</code>, <code>mobile-lost-property</code> → real multipart <code>POST /api/reports</code> forms.</li><li><code>campus-lost-found</code> → homepage search, tracking form, frequent-search links, hero wordmark mount, and rounded navigation.</li><li><code>advanced-search</code> → real <code>GET /advanced-search</code> filters and server-rendered result markers.</li><li><code>vault-inventory-and-custody</code> → real <code>POST /api/custody/handover</code> forms.</li></ul>
+<ol><li>Adds labels and names to controls, converts inert buttons into real <code>data-action</code> buttons, and strips opaque full-page <code>&lt;main&gt;</code> backgrounds.</li><li>Fails the build if any unmapped remote image, image without accessibility attributes, inert button, or unnamed control remains.</li></ol>
+<p>Token CSS is generated by parsing each canonical inline <code>tailwind.config</code>, flattening <code>colors</code>, <code>spacing</code>, <code>borderRadius</code>, <code>fontFamily</code>, and <code>fontSize</code>, and emitting Tailwind 4 CSS variables and only the spacing utilities actually used by the pages.</p>
+<h3 id="3-4-generated-exports">3.4 Generated exports</h3>
+<p><code>src/content/pages.ts</code> exports:</p>
+<pre><code class="language-ts">export type PageDefinition = { slug: string; label: string; group: string };
+export const pageCatalog: PageDefinition[];
+export const designPathToSlug: Record&lt;string, string&gt;;
+export const pageTitles: Record&lt;string, string&gt;;
+export const pageContent: Record&lt;string, string&gt;;</code></pre>
+<p><code>pageContent</code> contains trusted, locally generated HTML strings rendered with <code>dangerouslySetInnerHTML</code>. There is no runtime sanitizer because the content is produced by the build script, not by users.</p>
+<h3 id="3-5-canonical-assets-and-fonts">3.5 Canonical assets and fonts</h3>
+<ul><li>34 original Google-hosted screen images are self-hosted under <code>public/canonical</code>.</li><li><code>scripts/canonical-assets.json</code> maps original URLs to local paths.</li><li><code>npm run assets:download</code> extracts URLs from generated <code>pages.ts</code>, downloads them, hashes each URL for a stable filename, and rewrites the asset map. If new images are introduced, run <code>content:build</code>, then <code>assets:download</code>, then <code>content:build</code> again.</li><li>Inter, Merriweather, Be Vietnam Pro, and Material Symbols Outlined are bundled through <code>@fontsource</code>. No external asset CDN is required at runtime.</li></ul>
+<hr>
+<h2 id="4-routes-and-user-workflows">4. Routes and user workflows</h2>
+<h3 id="4-1-application-routes">4.1 Application routes</h3>
+<table><thead><tr><th>Route</th><th>Purpose</th><th>Access</th></tr></thead><tbody><tr><td><code>/</code></td><td>Canonical homepage with hero wordmark and global search</td><td>Public</td></tr>
+<tr><td><code>/campus-lost-found</code></td><td>Same canonical homepage content by slug</td><td>Public</td></tr>
+<tr><td><code>/advanced-search</code></td><td>Database-backed listing search and filters</td><td>Public</td></tr>
+<tr><td><code>/report-lost</code></td><td>Lost item report form</td><td>Public</td></tr>
+<tr><td><code>/report-found</code></td><td>Found item intake and custody form</td><td>Public</td></tr>
+<tr><td><code>/mobile-lost-property</code></td><td>Mobile lost property intake</td><td>Public</td></tr>
+<tr><td><code>/submission-confirmation</code></td><td>Displays the one-time tracking credentials from the tracking cookie</td><td>Public</td></tr>
+<tr><td><code>/secure-guest-tracking</code></td><td>Real credential verification form; no simulated states</td><td>Public</td></tr>
+<tr><td><code>/intelligent-match</code></td><td>Canonical match comparison explanation</td><td>Public</td></tr>
+<tr><td><code>/overview-dashboard</code></td><td>Operations overview</td><td>Staff/admin</td></tr>
+<tr><td><code>/report-moderation</code></td><td>Report moderation workspace</td><td>Staff/admin</td></tr>
+<tr><td><code>/claims-and-verification</code></td><td>Claims evidence console</td><td>Staff/admin</td></tr>
+<tr><td><code>/vault-inventory-and-custody</code></td><td>Custody registry and handover forms</td><td>Staff/admin</td></tr>
+<tr><td><code>/intelligent-matching</code></td><td>Matching queue</td><td>Staff/admin</td></tr>
+<tr><td><code>/platform-overview</code></td><td>Multi-tenant platform overview</td><td>Staff/admin</td></tr>
+<tr><td><code>/college-registry-provisioning</code></td><td>College registry view</td><td>Staff/admin</td></tr>
+<tr><td><code>/login</code></td><td>Staff sign in</td><td>Public</td></tr>
+<tr><td><code>/admin</code></td><td>Server-protected console</td><td>Staff/admin</td></tr>
+<tr><td><code>/api/*</code></td><td>JSON/form APIs</td><td>Mixed; see section 8</td></tr>
+<tr><td><code>/sitemap.xml</code>, <code>/robots.txt</code>, <code>/icon.svg</code></td><td>Metadata and branding assets</td><td>Public</td></tr></tbody></table>
+<p>Unknown canonical slugs return the Next.js not-found page. Admin slugs are protected in <code>src/app/[slug]/page.tsx</code>; <code>/admin</code> has an additional server-side check and renders an access-denied state for disallowed roles.</p>
+<h3 id="4-2-homepage-and-discovery">4.2 Homepage and discovery</h3>
+<p>The homepage preserves the canonical hero and converts the original search card into a real <code>GET /advanced-search</code> form. Supported parameters:</p>
+<table><thead><tr><th>Parameter</th><th>Meaning</th><th>Example</th></tr></thead><tbody><tr><td><code>q</code></td><td>Keyword across brand, model, colour, category, description, and campus location</td><td><code>?q=Sony</code></td></tr>
+<tr><td><code>type</code> or <code>status</code></td><td><code>lost</code>, <code>found</code>, or <code>all</code></td><td><code>?type=FOUND</code></td></tr>
+<tr><td><code>zone</code></td><td>Campus zone filter</td><td><code>?zone=library</code></td></tr>
+<tr><td><code>sort</code></td><td><code>newest</code>, <code>oldest</code>, or relevance</td><td><code>?sort=newest</code></td></tr>
+<tr><td><code>category</code></td><td>Exact category name, case-insensitive</td><td><code>?category=Electronics</code></td></tr>
+<tr><td><code>take</code></td><td>API result count, 1–100, default 20</td><td><code>?take=50</code></td></tr></tbody></table>
+<p>The advanced-search page queries approved and claimed reports, then renders results into marker sections in the canonical markup. If the database is unavailable, it logs <code>search.database_failed</code>, shows a polite outage banner, and renders an empty result state instead of throwing a generic error.</p>
+<h3 id="4-3-reporting-workflows">4.3 Reporting workflows</h3>
+<p>All three reporting screens submit multipart forms to <code>POST /api/reports</code>. Required fields are <code>reportType</code>, <code>category</code>, <code>description</code>, <code>location</code>, and <code>reporterNetId</code>. Optional fields capture model, colour, distinguishing marks, hidden verification marks, campus complex/floor, incident date/window, contact details, and custody notes.</p>
+<p>On success:</p>
+<ol><li>A <code>Report</code> is created with status <code>PENDING</code>.</li><li>A case reference in the form <code>CF-YYYY-NNNN[-A]</code> is generated.</li><li>Up to five images are validated, re-encoded, stripped of EXIF metadata, stored under <code>UPLOAD_DIR</code>, and linked to the report.</li><li>An 18-byte random tracking token is hashed with bcrypt and stored as a <code>TrackCredential</code> with a 30-day expiry.</li><li>The clear token is returned once in JSON and written to a short-lived tracking cookie for the confirmation screen.</li><li>Form submissions redirect to a safe return page with <code>?submitted=1</code>.</li></ol>
+<p>Uploaded image formats are JPEG, PNG, WebP, GIF, HEIC, and HEIF. The server enforces a maximum of 5 images, 10MB per image, and dimensions between 200 and 4000 pixels on each axis.</p>
+<h3 id="4-4-submission-confirmation-and-guest-tracking">4.4 Submission confirmation and guest tracking</h3>
+<p><code>/submission-confirmation</code> reads the tracking cookie and, when present, displays the case reference and one-time token in an <code>aria-live</code> banner with a warning to store them securely. The token is not shown again.</p>
+<p><code>/secure-guest-tracking</code> contains a real form:</p>
+<pre><code class="language-html">&lt;form action=&quot;/api/guest/track&quot; method=&quot;post&quot;&gt;
+  &lt;input name=&quot;reference&quot; ...&gt;
+  &lt;input name=&quot;secretToken&quot; ...&gt;
+  &lt;button type=&quot;submit&quot;&gt;Check case status&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+<p>The screen deliberately displays neutral copy such as <strong>Awaiting verification</strong> and <strong>Your case details appear after verification</strong>. The following states have been removed and are rejected by regression tests:</p>
+<ul><li><code>Valid Token</code> / <code>Simulate Invalid Token</code></li><li><code>AUTHENTICATION SUCCESSFUL</code> / <code>AUTHENTICATION FAILED</code></li><li><code>PORT-443 TLS 1.3</code>, <code>SHA-256 Validated</code>, <code>0 Failures (Nominal)</code></li><li><code>Ready for Challenge</code>, <code>Tier-4 Encrypted</code>, <code>Session expires in 43m 12s</code></li><li>fabricated case data such as <code>Sony WH-1000XM5</code>, <code>Officer M. Vance (#1094)</code>, <code>96.2%</code>, <code>749-218</code>, <code>CR-9941</code>, <code>DA-441</code>, and <code>WSU-2024-CUSTODY</code></li></ul>
+<p>Invalid submissions redirect to <code>/secure-guest-tracking?error=invalid</code>; valid submissions redirect to <code>?tracked=1</code>. JSON clients receive <code>200</code> with the public case data or <code>401</code> with a generic credential error.</p>
+<h3 id="4-5-conversational-report-assistant">4.5 Conversational report assistant</h3>
+<p>The floating assistant is mounted globally by <code>src/app/layout.tsx</code>. Its launcher is fixed at the lower-left of the viewport. The dialog is accessible: it has <code>role=&quot;dialog&quot;</code>, <code>aria-modal</code>, a labelled heading, focus management, Escape-to-close, and a live region for the newest message.</p>
+<p>Conversation steps:</p>
+<table><thead><tr><th>Step</th><th>Behavior</th></tr></thead><tbody><tr><td><code>type</code></td><td>Detects lost intent (<code>lost</code>, <code>misplaced</code>, <code>missing</code>, <code>cannot find</code>) or found intent (<code>found</code>, <code>picked up</code>, <code>discovered</code>, <code>turned in</code>).</td></tr>
+<tr><td><code>item</code></td><td>Collects the item name and summarizes a category, capped at 80 characters.</td></tr>
+<tr><td><code>location</code></td><td>Collects the campus location, capped at 200 characters.</td></tr>
+<tr><td><code>identifier</code></td><td>Collects distinguishing marks; <code>skip</code>, <code>no</code>, <code>none</code>, or <code>n/a</code> clears the mark.</td></tr>
+<tr><td><code>identity</code></td><td>Requires a NetID; optionally parses name and email.</td></tr>
+<tr><td><code>photo</code></td><td>Accepts an image or <code>skip</code>; submitting files the report through <code>POST /api/reports</code> with <code>Accept: application/json</code>.</td></tr>
+<tr><td><code>complete</code></td><td>Shows the case reference and one-time token when available, then offers restart.</td></tr></tbody></table>
+<p>Voice mode uses <code>SpeechRecognition</code> or <code>webkitSpeechRecognition</code> with interim results and <code>speechSynthesis</code>. Speech is muted by default; enabling sound speaks replies and reopens the microphone for hands-free conversation. Browsers without speech support can type every answer.</p>
+<p>Restart is available at any point with <code>restart</code>, <code>start over</code>, or <code>new report</code>.</p>
+<h3 id="4-6-background-hero-animation-and-motion-control">4.6 Background, hero animation, and motion control</h3>
+<ul><li><code>SiteBackground</code> renders the configured Originkit Constellation with 16 logical nodes, orange/grey palette, pointer hover effects, drift, parallax, and shader-based links.</li><li>The canvas lives in a fixed <code>aria-hidden</code> layer at <code>z-index: 0</code> with <code>pointer-events: none</code>. Page content is <code>z-index: 1</code>.</li><li>Generated roots and <code>&lt;main&gt;</code> elements no longer carry opaque <code>bg-canvas</code>, <code>bg-surface</code>, <code>bg-white</code>, or <code>bg-stone-50</code> classes that would hide the canvas.</li><li>The homepage hero tagline is mounted in <code>#campusfind-hero-wordmark</code> and rendered as three animated Vector Wordmark lines. A visible canonical <code>&lt;h1&gt;</code> remains until all three WebGL lines are ready; if WebGL fails, the fallback remains visible.</li><li>Motion is <strong>on by default</strong>. <code>src/lib/motion.ts</code> stores an explicit <code>campusfind:motion</code> preference. The fixed <strong>Motion on / Motion off</strong> control toggles it and reloads the page so both WebGL islands re-evaluate.</li><li>The OS <code>prefers-reduced-motion</code> media query still disables CSS transitions, but it no longer suppresses the WebGL animations by itself.</li></ul>
+<h3 id="4-7-canonical-button-actions">4.7 Canonical button actions</h3>
+<p>A global click delegate in <code>src/components/canonical-actions.tsx</code> interprets generated <code>data-action</code> attributes:</p>
+<table><thead><tr><th>Action</th><th>Behavior</th></tr></thead><tbody><tr><td><code>navigate</code></td><td>Navigates to <code>data-target</code>.</td></tr>
+<tr><td><code>call</code></td><td>Opens <code>tel:</code> link from <code>data-phone</code>.</td></tr>
+<tr><td><code>submit</code></td><td>Calls <code>form.requestSubmit()</code> for the associated form.</td></tr>
+<tr><td><code>copy</code></td><td>Copies text from <code>data-copy-source</code> or button text and shows a live status toast.</td></tr>
+<tr><td><code>toggle</code></td><td>Toggles <code>hidden</code>/<code>aria-hidden</code> on <code>data-target</code> and updates <code>aria-expanded</code>.</td></tr>
+<tr><td><code>tab</code></td><td>Selects a peer group, toggles targets, and manages <code>aria-selected</code>.</td></tr>
+<tr><td><code>radio</code> / <code>pill</code></td><td>Updates <code>aria-checked</code>/<code>aria-pressed</code> and <code>data-selected</code>, then shows a notice.</td></tr>
+<tr><td><code>notice</code></td><td>Shows a fixed <code>role=&quot;status&quot;</code> toast with <code>data-notice</code> text.</td></tr></tbody></table>
+<hr>
+<h2 id="5-data-model-and-domain-lifecycle">5. Data model and domain lifecycle</h2>
+<h3 id="5-1-enums">5.1 Enums</h3>
+<table><thead><tr><th>Enum</th><th>Values</th></tr></thead><tbody><tr><td><code>Role</code></td><td><code>SUPER_ADMIN</code>, <code>COLLEGE_ADMIN</code>, <code>MODERATOR</code>, <code>READ_ONLY_AUDITOR</code></td></tr>
+<tr><td><code>ReportType</code></td><td><code>LOST</code>, <code>FOUND</code></td></tr>
+<tr><td><code>ReportStatus</code></td><td><code>PENDING</code>, <code>APPROVED</code>, <code>CLAIMED</code>, <code>ARCHIVED</code></td></tr>
+<tr><td><code>ClaimStatus</code></td><td><code>SUBMITTED</code>, <code>UNDER_REVIEW</code>, <code>ADDITIONAL_INFO</code>, <code>APPROVED</code>, <code>REJECTED</code>, <code>DISPUTED</code></td></tr>
+<tr><td><code>CustodyState</code></td><td><code>WITH_FINDER</code>, <code>SUBMITTED</code>, <code>STORED</code>, <code>READY</code>, <code>RETURNED</code></td></tr>
+<tr><td><code>MatchStatus</code></td><td><code>CANDIDATE</code>, <code>APPROVED</code>, <code>DISMISSED</code>, <code>CLAIMED</code></td></tr>
+<tr><td><code>CollegeStatus</code></td><td><code>ACTIVE</code>, <code>PENDING</code>, <code>SUSPENDED</code></td></tr>
+<tr><td><code>NotificationStatus</code></td><td><code>PENDING</code>, <code>SENT</code>, <code>FAILED</code></td></tr></tbody></table>
+<h3 id="5-2-models">5.2 Models</h3>
+<table><thead><tr><th>Model</th><th>Purpose and key fields</th></tr></thead><tbody><tr><td><code>User</code></td><td>Staff account: unique <code>email</code>, <code>passwordHash</code>, optional <code>name</code>, <code>role</code>, <code>collegeId</code>, timestamps; relations to sessions, reports, uploads, claims, custody, and audit logs.</td></tr>
+<tr><td><code>AdminSession</code></td><td>Server-side session row: <code>userId</code>, <code>expiresAt</code>, <code>ipAddress</code>, <code>userAgent</code>; the JWT <code>jti</code> is the session id.</td></tr>
+<tr><td><code>College</code></td><td>Tenant: unique <code>name</code> and <code>code</code>, <code>status</code>, users, and reports.</td></tr>
+<tr><td><code>Category</code></td><td>Unique category name used by report forms and search.</td></tr>
+<tr><td><code>Report</code></td><td>Core case: unique <code>caseReference</code>, <code>type</code>, <code>status</code>, category, brand/model/colour, public <code>description</code>, private <code>verificationDetails</code>, incident dates, campus location, finder/reporter metadata, timestamps, and indexes on type/status/date, category, and college.</td></tr>
+<tr><td><code>ReportImage</code></td><td>Uploaded evidence: <code>objectKey</code>, <code>contentType</code>, <code>sizeBytes</code>, uploader, timestamp, cascade delete with report.</td></tr>
+<tr><td><code>TrackCredential</code></td><td>Guest access: hashed <code>secretToken</code>, <code>attempts</code>, <code>lastAttemptAt</code>, <code>expiresAt</code>; cascade delete with report.</td></tr>
+<tr><td><code>Match</code></td><td>Candidate lost/found pair: <code>score</code>, <code>status</code>, <code>reasons[]</code>, unique <code>(lostReportId, foundReportId)</code>.</td></tr>
+<tr><td><code>Claim</code></td><td>Ownership claim: claimant details, <code>ownershipExplanation</code>, JSON <code>verificationAnswers</code>, <code>status</code>, resolution metadata, and reason.</td></tr>
+<tr><td><code>CustodyRecord</code></td><td>Custody movement: <code>state</code>, optional <code>location</code>, <code>heldBy</code>, <code>receivedAt</code>, <code>releasedAt</code>.</td></tr>
+<tr><td><code>AuditLog</code></td><td>Tamper-evident event record: actor, claim, action, entity type/id, JSON metadata, <code>hash</code>, <code>previousHash</code>, timestamp.</td></tr>
+<tr><td><code>Notification</code></td><td>Delivery foundation: recipient, subject, body, <code>status</code>, <code>sentAt</code>.</td></tr></tbody></table>
+<h3 id="5-3-state-transitions">5.3 State transitions</h3>
+<table><thead><tr><th>Entity</th><th>Allowed transitions</th></tr></thead><tbody><tr><td>Report</td><td>`PENDING → APPROVED</td><td>ARCHIVED<code>; </code>APPROVED → CLAIMED</td><td>ARCHIVED<code>; </code>CLAIMED<code> and </code>ARCHIVED` are terminal.</td></tr>
+<tr><td>Claim</td><td>`SUBMITTED → UNDER_REVIEW</td><td>ADDITIONAL_INFO</td><td>REJECTED<code>; </code>UNDER_REVIEW → ADDITIONAL_INFO</td><td>APPROVED</td><td>REJECTED</td><td>DISPUTED<code>; </code>ADDITIONAL_INFO</td><td>DISPUTED → UNDER_REVIEW</td><td>APPROVED</td><td>REJECTED<code>; </code>APPROVED<code> and </code>REJECTED` are terminal.</td></tr>
+<tr><td>Custody</td><td><code>WITH_FINDER → SUBMITTED → STORED → READY → RETURNED</code>; <code>RETURNED</code> is terminal and requires an approved claim.</td></tr>
+<tr><td>Match</td><td>`CANDIDATE → APPROVED</td><td>DISMISSED`; decided matches are immutable.</td></tr></tbody></table>
+<h3 id="5-4-audit-chain">5.4 Audit chain</h3>
+<p>Every audited write runs inside a Prisma transaction and calls <code>writeAuditLog()</code>. The hash is SHA-256 over canonical JSON containing <code>actorId</code>, <code>action</code>, <code>entityType</code>, <code>entityId</code>, folded state metadata, <code>previousHash</code>, and ISO <code>createdAt</code>. <code>previousHash</code> is taken from the newest prior entry by <code>createdAt desc, id desc</code>. This creates a tamper-evident chain for report, claim, match, custody, login/logout, and tracking events.</p>
+<h3 id="5-5-search-behavior">5.5 Search behavior</h3>
+<p>Search reads only <code>APPROVED</code> and <code>CLAIMED</code> reports. Keyword matching covers brand, model, colour, category name, description, campus building, floor, and landmark. Zone filters map to campus areas such as <code>quad</code>, <code>library</code>, <code>science</code>, <code>athletic</code>, <code>union</code>, and <code>engineering</code>. Results are filtered, sorted, and paginated in application code after a bounded Prisma query (<code>take: 200</code> for the page, configurable 1–100 for the API). Public projections exclude private verification details, exact floor, contact details, and uploader identity.</p>
+<h3 id="5-6-deterministic-matching">5.6 Deterministic matching</h3>
+<p><code>scoreMatch()</code> compares a lost and a found report:</p>
+<table><thead><tr><th>Signal</th><th>Points</th></tr></thead><tbody><tr><td>Same category</td><td>+40</td></tr>
+<tr><td>Same brand</td><td>+15</td></tr>
+<tr><td>Same colour</td><td>+10</td></tr>
+<tr><td>Same campus building</td><td>+10</td></tr>
+<tr><td>Description token Jaccard similarity</td><td>up to +25</td></tr>
+<tr><td>Incident dates within 7 days</td><td>+10</td></tr></tbody></table>
+<p>Scores are capped at 100. <code>POST /api/matches</code> uses a threshold of 50 to create <code>CANDIDATE</code> matches. Existing matches in <code>APPROVED</code>, <code>DISMISSED</code>, or <code>CLAIMED</code> state are never overwritten.</p>
+<hr>
+<h2 id="6-authentication-authorization-and-security">6. Authentication, authorization, and security</h2>
+<h3 id="6-1-session-authentication">6.1 Session authentication</h3>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Cookie</td><td><code>campusfind_session</code>; <code>__Host-campusfind_session</code> in production</td></tr>
+<tr><td>Token</td><td>HS256 JWT signed with <code>SESSION_SECRET</code></td></tr>
+<tr><td>Claims</td><td><code>sub</code>, <code>email</code>, <code>role</code>, <code>jti</code>, issuer <code>campusfind</code>, audience <code>campusfind-web</code></td></tr>
+<tr><td>Server binding</td><td>JWT <code>jti</code> must match an <code>AdminSession.id</code> whose <code>userId</code> matches <code>sub</code> and whose <code>expiresAt</code> is in the future</td></tr>
+<tr><td>Lifetime</td><td>8 hours (<code>28,800</code> seconds)</td></tr>
+<tr><td>Cookie flags</td><td><code>httpOnly</code>, <code>sameSite: lax</code>, <code>path: /</code>, <code>secure</code> in production</td></tr>
+<tr><td>Password verification</td><td>bcrypt cost 12; missing users still run a dummy comparison to reduce timing leakage</td></tr>
+<tr><td>Login throttling</td><td>5 attempts per IP per 15 minutes</td></tr>
+<tr><td>Session pruning</td><td>Only the newest 3 sessions per user are retained after login</td></tr></tbody></table>
+<p><code>SESSION_SECRET</code> must be at least 32 characters and must not contain known placeholder markers. <code>scripts/check-env.mjs</code> validates values without printing them.</p>
+<h3 id="6-2-role-based-access-control">6.2 Role-based access control</h3>
+<p><code>requireRole([...])</code> reads the <strong>current database role</strong>, not the role embedded in the JWT. Role membership is exact; higher roles do not automatically inherit lower-role access.</p>
+<table><thead><tr><th>Role</th><th>Typical use</th></tr></thead><tbody><tr><td><code>SUPER_ADMIN</code></td><td>Full staff operations and platform views</td></tr>
+<tr><td><code>COLLEGE_ADMIN</code></td><td>College-scoped operations</td></tr>
+<tr><td><code>MODERATOR</code></td><td>Report moderation, claims, custody, and matching</td></tr>
+<tr><td><code>READ_ONLY_AUDITOR</code></td><td>Default for new users; no write/admin API access</td></tr></tbody></table>
+<p>Admin pages accept <code>MODERATOR</code>, <code>COLLEGE_ADMIN</code>, and <code>SUPER_ADMIN</code>. <code>PATCH /api/reports/[id]</code> is intentionally narrower: only <code>MODERATOR</code> and <code>SUPER_ADMIN</code>.</p>
+<h3 id="6-3-csrf-and-same-origin-checks">6.3 CSRF and same-origin checks</h3>
+<p>Every state-changing API that accepts browser credentials calls <code>assertSameOrigin()</code>:</p>
+<ul><li>Rejects <code>Sec-Fetch-Site: cross-site</code>.</li><li>Otherwise verifies <code>Origin</code> or <code>Referer</code> against the request protocol, host, and port.</li><li>Rejects <code>Origin: null</code> and URLs containing userinfo.</li><li>Allows non-browser clients that send none of <code>sec-fetch-site</code>, <code>origin</code>, or <code>referer</code>.</li></ul>
+<p>CSRF failures return <code>403 { &quot;error&quot;: &quot;Forbidden.&quot; }</code>.</p>
+<h3 id="6-4-rate-limits">6.4 Rate limits</h3>
+<p>Rate limiting is in-memory per process, keyed by client IP, and stored on <code>globalThis</code>. It is not shared between serverless instances.</p>
+<table><thead><tr><th>Bucket</th><th>Limit</th><th>Window</th><th>Endpoints</th></tr></thead><tbody><tr><td><code>login</code></td><td>5</td><td>15 minutes</td><td><code>POST /api/auth/login</code></td></tr>
+<tr><td><code>reports</code></td><td>5</td><td>1 hour</td><td><code>POST /api/reports</code></td></tr>
+<tr><td><code>claims</code></td><td>5</td><td>1 hour</td><td><code>POST /api/claims</code></td></tr>
+<tr><td><code>guest-track</code></td><td>3</td><td>15 minutes</td><td><code>POST /api/guest/track</code></td></tr></tbody></table>
+<p>A throttled request returns <code>429</code> with <code>Retry-After</code> in seconds.</p>
+<h3 id="6-5-upload-safety">6.5 Upload safety</h3>
+<ul><li>Maximum 5 images per report.</li><li>Maximum 10MB per image.</li><li>Dimensions must be between 200 and 4000 pixels on both axes.</li><li>Content type is detected from magic bytes and must match the declared MIME type.</li><li>Accepted formats: JPEG, PNG, WebP, GIF, HEIC, HEIF. HEIC/HEIF are re-encoded to JPEG.</li><li>EXIF metadata is stripped by rotate and re-encode.</li><li>Files are written to <code>UPLOAD_DIR</code> (default <code>.data/uploads</code>) with generated UUID-based keys.</li><li>Thumbnails are generated as WebP at width 300 without enlargement.</li><li>Media keys are validated by regex and resolved under the upload base directory, blocking path traversal.</li><li><code>GET /api/media/[key]</code> serves bytes with <code>Cache-Control: private, no-store</code> and <code>nosniff</code>.</li></ul>
+<h3 id="6-6-safe-redirects">6.6 Safe redirects</h3>
+<p><code>isSafeReturnPath()</code> allows only exact pathnames:</p>
+<pre><code class="language-text">/, /admin, /login, and /&lt;canonical-slug&gt; for all 15 canonical screens</code></pre>
+<p>Absolute URLs must use <code>http(s)</code>, contain no userinfo, and have the same origin as <code>NEXT_PUBLIC_APP_URL</code>, <code>APP_URL</code>, or <code>SITE_URL</code>. Protocol-relative URLs, backslashes, control characters, overlong values, and percent-encoding tricks are rejected.</p>
+<h3 id="6-7-security-headers">6.7 Security headers</h3>
+<p>Applied to all paths in <code>next.config.mjs</code>:</p>
+<table><thead><tr><th>Header</th><th>Value</th></tr></thead><tbody><tr><td><code>X-Content-Type-Options</code></td><td><code>nosniff</code></td></tr>
+<tr><td><code>Referrer-Policy</code></td><td><code>strict-origin-when-cross-origin</code></td></tr>
+<tr><td><code>X-Frame-Options</code></td><td><code>DENY</code></td></tr>
+<tr><td><code>Permissions-Policy</code></td><td><code>camera=(), microphone=(), geolocation=()</code></td></tr>
+<tr><td><code>Strict-Transport-Security</code></td><td><code>max-age=31536000; includeSubDomains; preload</code></td></tr>
+<tr><td>Content-Security-Policy</td><td><code>default-src &#39;self&#39;</code>; self-hosted scripts/styles/images/fonts; <code>object-src &#39;none&#39;</code>; <code>form-action &#39;self&#39;</code>; <code>frame-ancestors &#39;none&#39;</code></td></tr></tbody></table>
+<p><code>poweredByHeader</code> is disabled. Development CSP additionally allows <code>&#39;unsafe-eval&#39;</code> for the framework toolchain.</p>
+<h3 id="6-8-error-mapping">6.8 Error mapping</h3>
+<table><thead><tr><th>Error</th><th>HTTP response</th></tr></thead><tbody><tr><td><code>AuthenticationError</code></td><td>401</td></tr>
+<tr><td><code>AuthorizationError</code></td><td>403 (401 when the message begins with <code>Authentication</code>)</td></tr>
+<tr><td><code>CsrfError</code></td><td>403 <code>Forbidden.</code></td></tr>
+<tr><td><code>RateLimitError</code></td><td>429 with <code>Retry-After</code></td></tr>
+<tr><td><code>NotFoundError</code></td><td>404</td></tr>
+<tr><td><code>ConflictError</code></td><td>409</td></tr>
+<tr><td><code>ZodError</code></td><td>400 <code>Invalid request.</code>; details are logged, not returned</td></tr>
+<tr><td>Unknown error</td><td>500 <code>Internal server error.</code>; details are logged</td></tr></tbody></table>
+<hr>
+<h2 id="7-api-reference">7. API reference</h2>
+<h3 id="7-1-endpoint-index">7.1 Endpoint index</h3>
+<table><thead><tr><th>Method and path</th><th>Access</th><th>Purpose</th></tr></thead><tbody><tr><td><code>GET /api/health</code></td><td>Public</td><td>Liveness probe</td></tr>
+<tr><td><code>GET /api/ready</code></td><td>Public</td><td>Readiness: secret, database, upload directory</td></tr>
+<tr><td><code>GET /api/media/[key]</code></td><td>Public</td><td>Serve validated uploaded media</td></tr>
+<tr><td><code>POST /api/auth/login</code></td><td>Public, CSRF, rate limited</td><td>Staff sign in</td></tr>
+<tr><td><code>POST /api/auth/logout</code></td><td>CSRF</td><td>End session</td></tr>
+<tr><td><code>GET /api/auth/me</code></td><td>Public</td><td>Current user or <code>{ user: null }</code></td></tr>
+<tr><td><code>GET /api/reports</code></td><td>Public</td><td>Search approved reports</td></tr>
+<tr><td><code>POST /api/reports</code></td><td>Public, CSRF, rate limited</td><td>Create lost/found report with uploads</td></tr>
+<tr><td><code>PATCH /api/reports/[id]</code></td><td>Moderator/Super Admin, CSRF</td><td>Moderate report status</td></tr>
+<tr><td><code>GET /api/claims</code></td><td>Moderator/College Admin/Super Admin</td><td>List tenant-scoped claims</td></tr>
+<tr><td><code>POST /api/claims</code></td><td>Public, CSRF, rate limited</td><td>Submit ownership claim</td></tr>
+<tr><td><code>PATCH /api/claims/[id]</code></td><td>Moderator/College Admin/Super Admin, CSRF</td><td>Resolve or escalate claim</td></tr>
+<tr><td><code>GET /api/custody</code></td><td>Moderator/College Admin/Super Admin</td><td>List custody records</td></tr>
+<tr><td><code>POST /api/custody</code></td><td>Moderator/College Admin/Super Admin, CSRF</td><td>Advance custody state</td></tr>
+<tr><td><code>POST /api/custody/handover</code></td><td>Moderator/College Admin/Super Admin, CSRF</td><td>Commit audited handover record</td></tr>
+<tr><td><code>POST /api/matches</code></td><td>Moderator/College Admin/Super Admin, CSRF</td><td>Evaluate candidate matches</td></tr>
+<tr><td><code>PATCH /api/matches/[id]</code></td><td>Moderator/College Admin/Super Admin, CSRF</td><td>Approve or dismiss match</td></tr>
+<tr><td><code>POST /api/guest/track</code></td><td>Public, CSRF, rate limited</td><td>Verify guest tracking credentials</td></tr>
+<tr><td><code>GET /api/admin/overview</code></td><td>Moderator/College Admin/Super Admin</td><td>Tenant-scoped counts</td></tr></tbody></table>
+<h3 id="7-2-health-and-readiness">7.2 Health and readiness</h3>
+<p><code>GET /api/health</code> returns:</p>
+<pre><code class="language-json">{ &quot;status&quot;: &quot;ok&quot;, &quot;service&quot;: &quot;campusfind&quot;, &quot;timestamp&quot;: &quot;ISO-8601&quot; }</code></pre>
+<p><code>GET /api/ready</code> checks, in order:</p>
+<ol><li><code>SESSION_SECRET</code> is valid.</li><li>Prisma can execute <code>SELECT 1</code>.</li><li><code>UPLOAD_DIR</code> can be created and a <code>.ready-&lt;uuid&gt;</code> file can be written and deleted.</li></ol>
+<p>Success:</p>
+<pre><code class="language-json">{ &quot;status&quot;: &quot;ready&quot;, &quot;checks&quot;: { &quot;database&quot;: true, &quot;uploads&quot;: true, &quot;secrets&quot;: true } }</code></pre>
+<p>Failure returns <code>503</code> with <code>details.reason</code> equal to <code>secrets</code>, <code>database</code>, or <code>uploads</code>.</p>
+<h3 id="7-3-authentication-endpoints">7.3 Authentication endpoints</h3>
+<h4 id="post-api-auth-login"><code>POST /api/auth/login</code></h4>
+<p>JSON body:</p>
+<pre><code class="language-json">{ &quot;email&quot;: &quot;staff@example.edu&quot;, &quot;password&quot;: &quot;...&quot; }</code></pre>
+<p>Validation: valid email, lowercased; password string 1–200 characters. On success, the route creates an <code>AdminSession</code>, prunes older sessions, writes a <code>LOGIN</code> audit entry, issues the JWT, sets the cookie, and returns:</p>
+<pre><code class="language-json">{ &quot;user&quot;: { &quot;id&quot;: &quot;...&quot;, &quot;email&quot;: &quot;...&quot;, &quot;name&quot;: null, &quot;role&quot;: &quot;SUPER_ADMIN&quot; } }</code></pre>
+<p>Invalid credentials return <code>401 Invalid email or password.</code></p>
+<h4 id="post-api-auth-logout"><code>POST /api/auth/logout</code></h4>
+<p>Deletes the current <code>AdminSession</code>, writes a <code>LOGOUT</code> audit entry, clears both cookie names, and returns <code>{ &quot;ok&quot;: true }</code>.</p>
+<h4 id="get-api-auth-me"><code>GET /api/auth/me</code></h4>
+<p>Returns the current user projection (<code>id</code>, <code>email</code>, <code>name</code>, <code>role</code>, <code>collegeId</code>, <code>createdAt</code>) or <code>{ &quot;user&quot;: null }</code> with <code>401</code>.</p>
+<h3 id="7-4-reports">7.4 Reports</h3>
+<h4 id="get-api-reports"><code>GET /api/reports</code></h4>
+<p>Query parameters: <code>q</code>, <code>type</code>/<code>status</code>, <code>zone</code>, <code>sort</code>, <code>category</code>, <code>take</code>. Only <code>APPROVED</code> reports are returned by the API. Responses use a public allowlist that excludes finder contact details, reporter NetID, hidden verification details, exact campus floor, and uploader identity.</p>
+<pre><code class="language-json">{ &quot;reports&quot;: [], &quot;total&quot;: 0, &quot;filters&quot;: {} }</code></pre>
+<h4 id="post-api-reports"><code>POST /api/reports</code></h4>
+<p>Accepts JSON or multipart/form-data. Core fields:</p>
+<table><thead><tr><th>Field</th><th>Rule</th></tr></thead><tbody><tr><td><code>reportType</code></td><td><code>LOST</code> or <code>FOUND</code></td></tr>
+<tr><td><code>category</code></td><td>One of Electronics, Documents, Stationery, Accessories, Sports Equipment, Other; <code>Personal item</code> maps to <code>Other</code></td></tr>
+<tr><td><code>description</code></td><td>10–5000 characters</td></tr>
+<tr><td><code>location</code></td><td>2–200 characters</td></tr>
+<tr><td><code>reporterNetId</code></td><td>2–50 characters</td></tr>
+<tr><td><code>images</code> / <code>image</code></td><td>Up to 5 files, repeated parts</td></tr></tbody></table>
+<p>Optional fields include <code>reporterName</code>, <code>contactEmail</code>, <code>contactPhone</code>, <code>model</code>, <code>colour</code>, <code>distinguishingMark</code>, <code>hiddenMark</code>, <code>custodyNotes</code>, <code>campusComplex</code>, <code>campusFloor</code>, <code>incidentDate</code>, <code>incidentWindow</code>, and <code>returnTo</code>.</p>
+<p>JSON success:</p>
+<pre><code class="language-json">{ &quot;report&quot;: {}, &quot;caseReference&quot;: &quot;CF-2026-1234-L&quot;, &quot;trackingToken&quot;: &quot;...&quot; }</code></pre>
+<p>Form success redirects with <code>303</code> to a safe page plus <code>?submitted=1</code>. Validation failures redirect with <code>?error=required</code>; upload failures use <code>?error=upload</code>.</p>
+<h4 id="patch-api-reports-id"><code>PATCH /api/reports/[id]</code></h4>
+<p>JSON body <code>{ &quot;status&quot;: &quot;APPROVED&quot; | &quot;ARCHIVED&quot; | &quot;CLAIMED&quot; }</code>. Illegal transitions return <code>409 Invalid report status transition.</code> The change and previous/new state are audited in one transaction.</p>
+<h3 id="7-5-claims">7.5 Claims</h3>
+<h4 id="post-api-claims"><code>POST /api/claims</code></h4>
+<p>JSON body:</p>
+<pre><code class="language-json">{
+  &quot;reportId&quot;: &quot;uuid&quot;,
+  &quot;claimantName&quot;: &quot;Full Name&quot;,
+  &quot;claimantEmail&quot;: &quot;name@example.edu&quot;,
+  &quot;ownershipExplanation&quot;: &quot;At least 20 characters describing the item.&quot;,
+  &quot;verificationAnswers&quot;: { &quot;mark&quot;: &quot;blue sticker&quot; }
+}</code></pre>
+<p>The report must exist and be <code>APPROVED</code>. <code>verificationAnswers</code> supports at most 20 keys of at most 100 characters, each value at most 500 characters. Success returns <code>201 { &quot;claim&quot;: {} }</code>.</p>
+<h4 id="get-api-claims"><code>GET /api/claims</code></h4>
+<p>Lists tenant-scoped claims newest first, limited to 100. <code>status</code> query values are matched against <code>ClaimStatus</code>; invalid values are ignored.</p>
+<h4 id="patch-api-claims-id"><code>PATCH /api/claims/[id]</code></h4>
+<p>JSON body <code>{ &quot;status&quot;: &quot;UNDER_REVIEW&quot;, &quot;reason&quot;: &quot;...&quot; }</code>. <code>REJECTED</code> requires a non-empty reason. Terminal states set <code>resolvedById</code> and <code>resolvedAt</code>; non-terminal transitions clear them. All transitions are audited.</p>
+<h3 id="7-6-custody">7.6 Custody</h3>
+<h4 id="get-api-custody"><code>GET /api/custody</code></h4>
+<p>Lists tenant-scoped custody records with report and holder details, newest first, limited to 100.</p>
+<h4 id="post-api-custody"><code>POST /api/custody</code></h4>
+<p>JSON body <code>{ &quot;reportId&quot;: &quot;uuid&quot;, &quot;state&quot;: &quot;STORED&quot;, &quot;location&quot;: &quot;Vault A&quot; }</code>. State must follow the custody chain. Returning an item requires an <code>APPROVED</code> claim and also sets the report to <code>CLAIMED</code>. Each record stores <code>heldById</code> as the acting user.</p>
+<h4 id="post-api-custody-handover"><code>POST /api/custody/handover</code></h4>
+<p>Accepts JSON or form data. Fields: <code>formKind</code> (<code>inline</code> or <code>modal</code>), <code>transferringOfficer</code>, <code>receivingOfficer</code>, <code>reason</code>, optional <code>targetLocation</code>, <code>assetTag</code>, <code>sealBarcode</code>, and <code>reportId</code>. This endpoint writes a <code>CUSTODY_HANDOVER_COMMITTED</code> audit entry; it does not mutate custody state. Form success redirects to <code>/vault-inventory-and-custody?handover=1</code>; unauthenticated form posts redirect to <code>/login?next=/vault-inventory-and-custody</code>.</p>
+<h3 id="7-7-matching">7.7 Matching</h3>
+<h4 id="post-api-matches"><code>POST /api/matches</code></h4>
+<p>No body. Evaluates all approved lost/found pairs in the caller&#39;s tenant scope using <code>scoreMatch()</code>. Pairs scoring at least 50 become <code>CANDIDATE</code> matches; existing candidates are rescored; decided matches are preserved.</p>
+<pre><code class="language-json">{ &quot;evaluated&quot;: 12, &quot;created&quot;: 3, &quot;updated&quot;: 2, &quot;preserved&quot;: 1 }</code></pre>
+<h4 id="patch-api-matches-id"><code>PATCH /api/matches/[id]</code></h4>
+<p>JSON body <code>{ &quot;action&quot;: &quot;APPROVE&quot; | &quot;DISMISS&quot; }</code>. Only <code>CANDIDATE</code> matches can be decided; later attempts return <code>409 Match has already been decided.</code></p>
+<h3 id="7-8-guest-tracking">7.8 Guest tracking</h3>
+<p><code>POST /api/guest/track</code> accepts JSON or form fields:</p>
+<table><thead><tr><th>Field</th><th>Rule</th></tr></thead><tbody><tr><td><code>reference</code></td><td><code>CF-YYYY-NNNN</code> with optional <code>-A</code> suffix, case-insensitive</td></tr>
+<tr><td><code>secretToken</code></td><td>8–64 characters</td></tr></tbody></table>
+<p>Missing values may be filled from the short-lived tracking cookie. The newest unexpired credential is used. Failures increment an attempt counter with a 15-minute window and a maximum of 5 attempts before lockout; a bcrypt comparison always runs against a real or dummy hash to reduce timing leakage.</p>
+<p>Form results:</p>
+<ul><li>Success → <code>303 /secure-guest-tracking?tracked=1</code></li><li>Failure → <code>303 /secure-guest-tracking?error=invalid</code></li></ul>
+<p>JSON results:</p>
+<ul><li>Success → <code>200 { &quot;ok&quot;: true, &quot;reference&quot;: &quot;...&quot;, &quot;status&quot;: &quot;...&quot;, &quot;report&quot;: {} }</code></li><li>Failure → <code>401 Invalid reference or tracking credential.</code></li></ul>
+<p>Success clears the tracking cookie and writes a <code>TRACK_SUCCESS</code> audit entry; failures write <code>TRACK_FAILURE</code>.</p>
+<h3 id="7-9-admin-overview">7.9 Admin overview</h3>
+<p><code>GET /api/admin/overview</code> returns <code>{ reports, pendingClaims, matches, colleges }</code>. Users with <code>collegeId</code> see only their college plus unassigned records; users without <code>collegeId</code> see all tenants. <code>pendingClaims</code> counts <code>SUBMITTED</code> claims.</p>
+<hr>
+<h2 id="8-local-setup-and-configuration">8. Local setup and configuration</h2>
+<h3 id="8-1-requirements">8.1 Requirements</h3>
+<table><thead><tr><th>Requirement</th><th>Version</th></tr></thead><tbody><tr><td>Node.js</td><td><code>&gt;=20.9.0 &lt;27</code>; Node 22 recommended</td></tr>
+<tr><td>npm</td><td>Bundled with Node</td></tr>
+<tr><td>PostgreSQL</td><td>15+ recommended</td></tr>
+<tr><td>Chrome or Edge</td><td>Only needed to regenerate the PDF from Markdown</td></tr></tbody></table>
+<h3 id="8-2-first-time-setup">8.2 First-time setup</h3>
+<pre><code class="language-powershell">npm ci
+Copy-Item .env.example .env
+npm run check:env
+npm run prisma:migrate
+npm run db:seed
+npm run dev</code></pre>
+<p>Open http://localhost:3001. The development and production scripts both use port 3001.</p>
+<p>Generate a strong session secret with:</p>
+<pre><code class="language-powershell">node -e &quot;console.log(require(&#39;crypto&#39;).randomBytes(48).toString(&#39;hex&#39;))&quot;</code></pre>
+<p>Never commit <code>.env</code>; it is git-ignored. <code>npm run check:env</code> prints variable names and problems only, never values.</p>
+<h3 id="8-3-environment-variables">8.3 Environment variables</h3>
+<table><thead><tr><th>Variable</th><th>Required</th><th>Default / example</th><th>Notes</th></tr></thead><tbody><tr><td><code>DATABASE_URL</code></td><td>Yes</td><td><code>postgresql://postgres:postgres@localhost:5432/campusfind?schema=public</code></td><td>Prisma PostgreSQL connection string. Must be reachable, not merely well-formed.</td></tr>
+<tr><td><code>SESSION_SECRET</code></td><td>Yes</td><td>Replace with 48 random hex characters</td><td>Minimum 32 characters; placeholder values rejected.</td></tr>
+<tr><td><code>NEXT_PUBLIC_APP_URL</code></td><td>Yes</td><td><code>http://localhost:3001</code></td><td>Public origin for links, cookies, and sitemap. Use the deployed origin in production.</td></tr>
+<tr><td><code>SEED_ADMIN_EMAIL</code></td><td>Yes in production</td><td><code>admin@campusfind.local</code></td><td>Bootstrap administrator email.</td></tr>
+<tr><td><code>SEED_ADMIN_PASSWORD</code></td><td>Yes in production</td><td>Strong unique value</td><td>Production validation requires at least 16 characters and rejects known weak defaults.</td></tr>
+<tr><td><code>UPLOAD_DIR</code></td><td>No</td><td><code>.data/uploads</code></td><td>Writable, persistent evidence directory.</td></tr>
+<tr><td><code>SEED_DEMO_DATA</code></td><td>No</td><td><code>false</code></td><td>When true, seed creates the demo colleges.</td></tr>
+<tr><td><code>SEED_ADMIN_ROTATE</code></td><td>No</td><td><code>false</code></td><td>When true, reseeding rotates the bootstrap admin password.</td></tr></tbody></table>
+<p><code>scripts/check-env.mjs</code> gives real process environment variables precedence over <code>.env</code>, rejects known placeholder markers, and validates the secret length. It does not test database connectivity.</p>
+<h3 id="8-4-npm-scripts">8.4 npm scripts</h3>
+<table><thead><tr><th>Script</th><th>Command</th><th>Purpose</th></tr></thead><tbody><tr><td><code>dev</code></td><td><code>next dev -p 3001</code></td><td>Development server</td></tr>
+<tr><td><code>build</code></td><td><code>check:env</code> → <code>content:build</code> → <code>prisma generate</code> → <code>next build</code></td><td>Production build</td></tr>
+<tr><td><code>start</code></td><td><code>next start -p 3001</code></td><td>Production server</td></tr>
+<tr><td><code>typecheck</code></td><td><code>tsc --noEmit</code></td><td>TypeScript strict check</td></tr>
+<tr><td><code>lint</code></td><td><code>eslint .</code></td><td>ESLint</td></tr>
+<tr><td><code>test</code></td><td><code>vitest run</code></td><td>Unit and structural tests</td></tr>
+<tr><td><code>audit</code></td><td><code>npm audit --audit-level=high</code></td><td>Dependency vulnerability check</td></tr>
+<tr><td><code>check:env</code></td><td><code>node scripts/check-env.mjs</code></td><td>Environment validation</td></tr>
+<tr><td><code>content:build</code></td><td><code>node scripts/build-content.mjs</code></td><td>Regenerate pages and tokens</td></tr>
+<tr><td><code>assets:download</code></td><td><code>node scripts/download-canonical-assets.mjs</code></td><td>Refresh self-hosted canonical images</td></tr>
+<tr><td><code>prisma:generate</code></td><td><code>prisma generate</code></td><td>Regenerate Prisma Client</td></tr>
+<tr><td><code>prisma:migrate</code></td><td><code>prisma migrate deploy</code></td><td>Apply committed migrations</td></tr>
+<tr><td><code>prisma:migrate:dev</code></td><td><code>prisma migrate dev</code></td><td>Create/apply a development migration</td></tr>
+<tr><td><code>prisma:validate</code></td><td><code>prisma validate</code></td><td>Validate schema</td></tr>
+<tr><td><code>db:seed</code></td><td><code>node --env-file=.env prisma/seed.mjs</code></td><td>Seed categories, colleges, admin</td></tr>
+<tr><td><code>smoke</code></td><td><code>node scripts/smoke.mjs</code></td><td>Check health, readiness, and key pages</td></tr>
+<tr><td><code>docs:pdf</code></td><td><code>node scripts/build-docs-pdf.mjs</code></td><td>Render this manual to HTML and PDF</td></tr></tbody></table>
+<h3 id="8-5-seed-data">8.5 Seed data</h3>
+<p>Always seeded by category name:</p>
+<pre><code class="language-text">Electronics, Documents, Stationery, Accessories, Sports Equipment, Other</code></pre>
+<p>With <code>SEED_DEMO_DATA=true</code>:</p>
+<table><thead><tr><th>College</th><th>Code</th><th>Status</th></tr></thead><tbody><tr><td>Westfield University</td><td><code>WR-2024-8841</code></td><td><code>ACTIVE</code></td></tr>
+<tr><td>Eastwood College</td><td><code>ER-2024-8702</code></td><td><code>PENDING</code></td></tr>
+<tr><td>Northside College</td><td><code>NR-2024-8690</code></td><td><code>ACTIVE</code></td></tr></tbody></table>
+<p>The bootstrap administrator is created with <code>role: SUPER_ADMIN</code>, name <code>CampusFind Administrator</code>, and a bcrypt cost-12 hash of <code>SEED_ADMIN_PASSWORD</code>. The password is changed by reseeding only when <code>SEED_ADMIN_ROTATE=true</code>.</p>
+<h3 id="8-6-migrations">8.6 Migrations</h3>
+<table><thead><tr><th>Migration</th><th>Purpose</th></tr></thead><tbody><tr><td><code>20261125000000_init</code></td><td>Creates schema, enums, tables, constraints, indexes, and foreign keys.</td></tr>
+<tr><td><code>20261126000000_security_hardening</code></td><td>Adds <code>User.collegeId</code>, case references, private verification fields, credential attempt tracking, audit hash columns, tenant-scoped indexes and FKs; backfills legacy rows.</td></tr></tbody></table>
+<p>Apply committed migrations with:</p>
+<pre><code class="language-powershell">npm run prisma:migrate</code></pre>
+<hr>
+<h2 id="9-testing-and-quality-gates">9. Testing and quality gates</h2>
+<h3 id="9-1-test-suites">9.1 Test suites</h3>
+<table><thead><tr><th>File</th><th>Coverage</th></tr></thead><tbody><tr><td><code>tests/search.test.ts</code></td><td>Query parsing, keyword/brand/model/colour/location matching, type/zone filters, sorting, HTML escaping, marker replacement, empty states</td></tr>
+<tr><td><code>tests/matching.test.ts</code></td><td>High/low match scores and explanation reasons</td></tr>
+<tr><td><code>tests/security.test.ts</code></td><td>Env validation, dummy hash, readiness secret check, public-report allowlist, rate limits, CSRF, case references, transitions, JWT claims and role strings</td></tr>
+<tr><td><code>tests/report-assistant.test.ts</code></td><td>Spoken intent extraction, identifier step, photo prompt/skip, field construction, unclear-type retry</td></tr>
+<tr><td><code>tests/hero-wordmark.test.ts</code></td><td>Wordmark source, WebGL availability, fallback heading, homepage mounts, static frame</td></tr>
+<tr><td><code>tests/frontend-a11y.test.ts</code></td><td>15 screens/titles, local image attributes, no prototype values, admin guards, cookie banner, global actions, assistant dialog, motion opt-out, layering</td></tr>
+<tr><td><code>tests/content.test.ts</code></td><td>Generated pages, forms, uploads, search parameters, background layering, tracking cleanup, labels and headings</td></tr>
+<tr><td><code>tests/assistant-ui.test.ts</code></td><td>Live speech, spoken replies, microphone controls, typed input, photo upload, modal accessibility, token display</td></tr></tbody></table>
+<p>Most tests are pure-function or source/structural assertions. There is no Playwright browser E2E suite or live database integration suite yet.</p>
+<h3 id="9-2-full-verification-command">9.2 Full verification command</h3>
+<pre><code class="language-powershell">npm run check:env
+npm run prisma:validate
+npm run content:build
+npm run typecheck
+npm run lint
+npm test
+npm run audit
+npm run build</code></pre>
+<p>Current baseline: typecheck pass, lint pass, <strong>72/72 tests pass</strong>, dependency audit clean, production build pass.</p>
+<h3 id="9-3-runtime-smoke-test">9.3 Runtime smoke test</h3>
+<pre><code class="language-powershell">npm run smoke
+$env:BASE_URL = &quot;https://campusfind-taupe.vercel.app&quot;
+npm run smoke</code></pre>
+<p>The smoke script expects HTTP 200 for:</p>
+<pre><code class="language-text">/api/health
+/api/ready
+/
+/campus-lost-found
+/advanced-search
+/login</code></pre>
+<p>It prints a pass/fail table and exits non-zero on failure. It never reads or prints secrets.</p>
+<hr>
+<h2 id="10-deployment-and-operations">10. Deployment and operations</h2>
+<h3 id="10-1-vercel-production">10.1 Vercel production</h3>
+<p>Primary deployment: https://campusfind-taupe.vercel.app</p>
+<p>Environment variables are configured in the Vercel dashboard and are not stored in the repository. Set <code>DATABASE_URL</code>, <code>SESSION_SECRET</code>, <code>NEXT_PUBLIC_APP_URL</code>, <code>SEED_ADMIN_EMAIL</code>, <code>SEED_ADMIN_PASSWORD</code>, <code>UPLOAD_DIR</code>, <code>SEED_DEMO_DATA</code>, and <code>SEED_ADMIN_ROTATE</code>.</p>
+<p>Deploy from the repository root:</p>
+<pre><code class="language-powershell">vercel --prod</code></pre>
+<p>Post-deploy checks:</p>
+<pre><code class="language-powershell">curl.exe -sS -o NUL -w &quot;%{http_code}&quot; https://campusfind-taupe.vercel.app/api/health
+curl.exe -sS https://campusfind-taupe.vercel.app/api/ready
+$env:BASE_URL = &quot;https://campusfind-taupe.vercel.app&quot;
+npm run smoke</code></pre>
+<p>Because uploads use a local filesystem directory, configure durable storage on platforms where ephemeral filesystems are used. The current Vercel deployment relies on its runtime filesystem for uploads.</p>
+<h3 id="10-2-docker">10.2 Docker</h3>
+<p><code>Dockerfile</code> is a multi-stage Node 22 Alpine build:</p>
+<ol><li><code>deps</code> runs <code>npm ci</code>.</li><li><code>builder</code> copies dependencies and source, uses non-secret build-time placeholders, runs <code>npx prisma generate</code> and <code>npm run build</code>.</li><li><code>runner</code> copies <code>package.json</code>, <code>node_modules</code>, <code>.next</code>, <code>public</code>, and <code>prisma</code>, creates <code>/app/.data/uploads</code>, chowns it, switches to the <code>node</code> user, exposes port 3001, and runs <code>npm start</code>.</li></ol>
+<p><code>.dockerignore</code> excludes VCS metadata, <code>.next</code>, <code>node_modules</code>, <code>.env*</code>, cookies, <code>.data</code>, coverage, uploads, PEM files, and logs. No real secrets are baked into the image.</p>
+<h3 id="10-3-render">10.3 Render</h3>
+<p><code>render.yaml</code> defines a Docker web service:</p>
+<table><thead><tr><th>Setting</th><th>Value</th></tr></thead><tbody><tr><td>Health check</td><td><code>/api/ready</code></td></tr>
+<tr><td>Pre-deploy command</td><td><code>npm run prisma:migrate</code></td></tr>
+<tr><td>Upload disk</td><td><code>campusfind-uploads</code> mounted at <code>/app/.data</code>, size 1GB</td></tr>
+<tr><td>Dashboard secrets</td><td><code>DATABASE_URL</code>, <code>SESSION_SECRET</code>, <code>NEXT_PUBLIC_APP_URL</code>, <code>SEED_ADMIN_EMAIL</code>, <code>SEED_ADMIN_PASSWORD</code></td></tr>
+<tr><td>Static values</td><td><code>UPLOAD_DIR=/app/.data/uploads</code>, <code>SEED_DEMO_DATA=false</code>, <code>SEED_ADMIN_ROTATE=false</code>, <code>NODE_ENV=production</code></td></tr></tbody></table>
+<h3 id="10-4-continuous-integration">10.4 Continuous integration</h3>
+<p><code>.github/workflows/ci.yml</code> runs on pushes and pull requests to <code>main</code> and <code>master</code>. On Node 22 it executes <code>npm ci</code>, generates temporary non-committed secrets, then runs <code>check:env</code>, <code>content:build</code>, <code>typecheck</code>, <code>lint</code>, <code>test</code>, <code>audit</code>, and <code>build</code>.</p>
+<h3 id="10-5-operational-caveats">10.5 Operational caveats</h3>
+<ul><li>Rate limiting is in-memory per process; use a shared store before scaling horizontally.</li><li>Uploads are local files under <code>UPLOAD_DIR</code>; object storage is a future enhancement.</li><li>Notification rows exist, but no SMTP/in-app delivery worker is implemented.</li><li>The audit chain is append-only and tamper-evident, but no verification endpoint is exposed yet.</li><li>Some canonical admin buttons still render informational notices rather than full dialogs.</li><li>The public claims API exists, but a dedicated claim submission UI wired to <code>POST /api/claims</code> is still future work.</li><li><code>ThemeToggle</code> exists but is not rendered in the layout; dark mode is applied by the inline boot script and CSS.</li></ul>
+<hr>
+<h2 id="11-troubleshooting">11. Troubleshooting</h2>
+<table><thead><tr><th>Symptom</th><th>Likely cause</th><th>Resolution</th></tr></thead><tbody><tr><td><code>Something went wrong</code> on an older deployed build</td><td>Search query threw because the database was unreachable</td><td>Current build catches the error and shows a temporary-unavailable banner. Redeploy if still seeing the generic error.</td></tr>
+<tr><td><code>Search is temporarily unavailable because the database could not be reached.</code></td><td><code>DATABASE_URL</code> is wrong, stale, or unreachable</td><td>Verify the connection string, network access, and that migrations were applied. Check <code>/api/ready</code>.</td></tr>
+<tr><td><code>/api/ready</code> returns 503 with <code>reason: database</code></td><td>Prisma cannot execute <code>SELECT 1</code></td><td>Test the connection string directly; confirm provider status and credentials.</td></tr>
+<tr><td><code>/api/ready</code> returns 503 with <code>reason: uploads</code></td><td><code>UPLOAD_DIR</code> is not writable</td><td>Create the directory and grant write access to the app process.</td></tr>
+<tr><td><code>/api/ready</code> returns 503 with <code>reason: secrets</code></td><td><code>SESSION_SECRET</code> missing, short, or placeholder-like</td><td>Generate a fresh 48-byte hex secret and redeploy.</td></tr>
+<tr><td>Images do not appear</td><td>Canonical asset map missing or build not regenerated</td><td>Run <code>npm run assets:download</code> then <code>npm run content:build</code>.</td></tr>
+<tr><td>Constellation not visible</td><td>Opaque page background reintroduced or motion explicitly disabled</td><td>Confirm generated <code>&lt;main&gt;</code> has no <code>bg-canvas</code>/<code>bg-surface</code>; switch the Motion control back on.</td></tr>
+<tr><td>Guest tracking shows simulation controls</td><td>Stale cached build</td><td>Hard-refresh, then confirm the build includes <code>bb9e886</code> or newer.</td></tr>
+<tr><td>Upload rejected</td><td>File type, magic bytes, dimensions, or 10MB limit failed</td><td>Use JPG/PNG/WebP/GIF/HEIC/HEIF under 10MB with dimensions 200–4000 px.</td></tr>
+<tr><td><code>401</code> on an admin API</td><td>No session or expired <code>AdminSession</code></td><td>Sign in again.</td></tr>
+<tr><td><code>403</code> on an admin API</td><td>Wrong role or CSRF origin failure</td><td>Use an allowed role and submit from the configured origin.</td></tr>
+<tr><td><code>429</code></td><td>Rate limit reached</td><td>Wait for <code>Retry-After</code> seconds.</td></tr>
+<tr><td>Media URL returns 404</td><td>Invalid key, traversal attempt, or missing file</td><td>Confirm the key and that <code>UPLOAD_DIR</code> persisted.</td></tr>
+<tr><td>CI does not run on a push</td><td>Branch not covered by workflow</td><td>Workflow currently covers <code>main</code> and <code>master</code>.</td></tr></tbody></table>
+<hr>
+<h2 id="12-current-verification-record">12. Current verification record</h2>
+<h3 id="12-1-local-environment">12.1 Local environment</h3>
+<p>Local server: http://localhost:3001</p>
+<table><thead><tr><th>Check</th><th>Result</th></tr></thead><tbody><tr><td><code>npm run typecheck</code></td><td>Pass</td></tr>
+<tr><td><code>npm run lint</code></td><td>Pass</td></tr>
+<tr><td><code>npm test</code></td><td>72/72 pass</td></tr>
+<tr><td><code>npm run build</code></td><td>Pass</td></tr>
+<tr><td><code>npm run smoke</code></td><td>6/6 pass</td></tr>
+<tr><td><code>/api/ready</code></td><td>200</td></tr>
+<tr><td><code>/advanced-search</code></td><td>200</td></tr></tbody></table>
+<h3 id="12-2-live-environment-2026-11-25">12.2 Live environment, 2026-11-25</h3>
+<table><thead><tr><th>Route</th><th>Result</th></tr></thead><tbody><tr><td><code>/</code></td><td>200</td></tr>
+<tr><td><code>/advanced-search</code></td><td>200 with graceful database-outage banner</td></tr>
+<tr><td><code>/report-lost</code></td><td>200</td></tr>
+<tr><td><code>/report-found</code></td><td>200</td></tr>
+<tr><td><code>/mobile-lost-property</code></td><td>200</td></tr>
+<tr><td><code>/submission-confirmation</code></td><td>200</td></tr>
+<tr><td><code>/secure-guest-tracking</code></td><td>200, no simulated states</td></tr>
+<tr><td><code>/intelligent-match</code></td><td>200</td></tr>
+<tr><td><code>/login</code></td><td>200</td></tr>
+<tr><td><code>/api/health</code></td><td>200</td></tr>
+<tr><td><code>/api/ready</code></td><td>503 — database unavailable</td></tr>
+<tr><td>Admin canonical routes</td><td>307 redirect to <code>/login?next=/&lt;slug&gt;</code> when signed out</td></tr></tbody></table>
+<p>The live database remains the open deployment blocker. The Supabase host is reachable, but the stored <code>DATABASE_URL</code> credentials are not accepted. A correct Supabase <strong>Session pooler</strong> connection string (port 6543, including the password) is needed. After setting it on Vercel, run migrations and verify <code>/api/ready</code> returns 200.</p>
+<h3 id="12-3-change-history-highlights">12.3 Change history highlights</h3>
+<table><thead><tr><th>Change</th><th>Commit / deployment</th></tr></thead><tbody><tr><td>Restore WebGL animations by default</td><td><code>805e22c</code></td></tr>
+<tr><td>Remove simulated auth states from guest tracking</td><td><code>bb9e886</code>; deployment <code>dpl_Cd5YUqJDiycUvtG6WzM5HpAujqrW</code></td></tr>
+<tr><td>Degrade search gracefully when database is unreachable</td><td><code>66429e7</code>; deployment <code>dpl_6fwphU6xAPaH5S5TxQFxqRiSZ1fX</code></td></tr>
+<tr><td>Expose constellation through canonical page mains</td><td><code>cfef030</code>; deployment <code>dpl_RT4sRegXZsa9iDfwG9JkA4rW5rKe</code></td></tr></tbody></table>
+<hr>
+<h2 id="13-documentation-artifacts">13. Documentation artifacts</h2>
+<table><thead><tr><th>File</th><th>Format</th><th>Purpose</th></tr></thead><tbody><tr><td><code>docs/CAMPUSFIND_DOCUMENTATION.md</code></td><td>Markdown</td><td>Editable canonical manual</td></tr>
+<tr><td><code>docs/CAMPUSFIND_DOCUMENTATION.html</code></td><td>HTML</td><td>Print-ready intermediate generated from Markdown</td></tr>
+<tr><td><code>docs/CAMPUSFIND_DOCUMENTATION.pdf</code></td><td>PDF</td><td>Portable manual for sharing and printing</td></tr>
+<tr><td><code>scripts/build-docs-pdf.mjs</code></td><td>Node script</td><td>Renders Markdown to HTML/PDF using headless Chrome or Edge</td></tr></tbody></table>
+<p>Regenerate the HTML and PDF after editing the Markdown:</p>
+<pre><code class="language-powershell">npm run docs:pdf</code></pre>
+<p>The script accepts optional overrides:</p>
+<pre><code class="language-powershell">node scripts/build-docs-pdf.mjs input.md output.html output.pdf</code></pre>
+<hr>
+<h2 id="appendix-a-glossary">Appendix A: Glossary</h2>
+<table><thead><tr><th>Term</th><th>Meaning</th></tr></thead><tbody><tr><td>Canonical screen</td><td>One of the 15 original Stitch designs preserved as a real app route.</td></tr>
+<tr><td>Case reference</td><td>Public identifier in the form <code>CF-YYYY-NNNN[-A]</code>.</td></tr>
+<tr><td>Tracking token</td><td>One-time secret issued with a report; hashed at rest and shown once in clear text.</td></tr>
+<tr><td>Tenant</td><td>A college account identified by <code>collegeId</code>; staff may be scoped to one tenant.</td></tr>
+<tr><td>Candidate match</td><td>A deterministic lost/found pair awaiting staff approval or dismissal.</td></tr>
+<tr><td>Custody chain</td><td>Ordered movement of a found item from finder to vault to return.</td></tr>
+<tr><td>Audit hash chain</td><td>Sequence of audit entries where each hash includes the previous hash.</td></tr>
+<tr><td>Query banner</td><td>Success/error message injected from URL parameters such as <code>?submitted=1</code>.</td></tr></tbody></table>
+<h2 id="appendix-b-quick-command-reference">Appendix B: Quick command reference</h2>
+<pre><code class="language-powershell"># Development
+npm ci
+npm run dev
+
+# Content and database
+npm run content:build
+npm run assets:download
+npm run prisma:validate
+npm run prisma:migrate
+npm run db:seed
+
+# Quality gates
+npm run typecheck
+npm run lint
+npm test
+npm run audit
+npm run build
+npm run smoke
+
+# Documentation
+npm run docs:pdf
+
+# Production
+npm start
+vercel --prod</code></pre>
+<h2 id="appendix-c-links">Appendix C: Links</h2>
+<table><thead><tr><th>Resource</th><th>URL</th></tr></thead><tbody><tr><td>Public repository</td><td>https://github.com/Souravpreetsingh/campusfind</td></tr>
+<tr><td>Production application</td><td>https://campusfind-taupe.vercel.app</td></tr>
+<tr><td>Local application</td><td>http://localhost:3001</td></tr></tbody></table>
+<div class="doc-footer">CampusFind complete documentation — generated from the repository Markdown source.</div>
+</body>
+</html>

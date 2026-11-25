@@ -1397,7 +1397,7 @@ function wireLostUploads(html) {
 Drag and drop product photos here, or <span class="text-secondary font-bold underline underline-offset-2">browse files</span>
 </p>
 <p class="font-body-sm text-body-sm text-outline max-w-md">
-Upload actual photos showing serial labels, distinctive scratches, stickers, custom cases, or exact color gradients. JPG, PNG, WebP, GIF, HEIC, or HEIF up to 15MB each.
+Upload actual photos showing serial labels, distinctive scratches, stickers, custom cases, or exact color gradients. JPG, PNG, WebP, GIF, HEIC, or HEIF up to 10MB each.
 </p>
 ${fileInput('Upload lost item photos')}
 </div>
@@ -1428,7 +1428,7 @@ function wireFoundUploads(html) {
 </div>
 <div class="space-y-1">
 <div class="font-title-md text-title-md text-primary">Drag custody photographs here, or <span class="text-secondary underline">browse files</span></div>
-<div class="font-body-sm text-label-sm text-on-surface-variant">JPG, PNG, WebP, GIF, HEIC, or HEIF up to 15MB each</div>
+<div class="font-body-sm text-label-sm text-on-surface-variant">JPG, PNG, WebP, GIF, HEIC, or HEIF up to 10MB each</div>
 </div>
 ${fileInput('Upload found item photos')}
 </div>
@@ -1595,7 +1595,7 @@ ${hidden}${reportDetailsCard(
 </label>
 ${fileInput('Upload lost item photos')}
 </div>
-<p class="font-body-sm text-body-sm text-on-surface-variant">JPG, PNG, WebP, GIF, HEIC, or HEIF up to 15MB each. No photos are selected yet.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">JPG, PNG, WebP, GIF, HEIC, or HEIF up to 10MB each. No photos are selected yet.</p>
 </section>
 `,
     'mobile photo section',
