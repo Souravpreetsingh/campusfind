@@ -61,6 +61,12 @@ describe('generated canonical frontend content', () => {
     expect(pageContent['mobile-lost-property']).toContain('form="lost-report-form" id="next-step-btn" type="submit"');
   });
 
+  it('degrades search gracefully when the database cannot be reached', () => {
+    const source = readFileSync(`${rootDir}src/app/[slug]/page.tsx`, 'utf8');
+    expect(source).toContain('search.database_failed');
+    expect(source).toContain('Search is temporarily unavailable');
+  });
+
   it('wires search filters and suggestions to real query parameters', () => {
     const home = pageContent['campus-lost-found'];
     expect(home).toContain('action="/advanced-search" method="get" id="campus-search-form"');

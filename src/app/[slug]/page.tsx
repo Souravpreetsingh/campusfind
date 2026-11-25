@@ -6,6 +6,7 @@ import HeroWordmarkMount from '@/components/hero-wordmark';
 import { pageCatalog, pageContent, pageTitles } from '@/content/pages';
 import { getCurrentUser } from '@/lib/auth';
 import { db } from '@/lib/db';
+import { logError } from '@/lib/logger';
 import { matchesSearchFilters, parseSearchFilters, sortSearchReports } from '@/lib/search';
 import { renderSearchPageContent } from '@/lib/search-page';
 import { getTrackingCookie } from '@/lib/tracking-cookie';
@@ -67,12 +68,22 @@ async function renderSearchPage(
   await connection();
 
   const filters = parseSearchFilters(query);
-  const reports = await db.report.findMany({
-    where: { status: { in: [ReportStatus.APPROVED, ReportStatus.CLAIMED] } },
-    include: { category: true, images: { orderBy: { uploadedAt: 'asc' } } },
-    orderBy: { createdAt: 'desc' },
-    take: 200,
-  });
+  let reports;
+  try {
+    reports = await db.report.findMany({
+      where: { status: { in: [ReportStatus.APPROVED, ReportStatus.CLAIMED] } },
+      include: { category: true, images: { orderBy: { uploadedAt: 'asc' } } },
+      orderBy: { createdAt: 'desc' },
+      take: 200,
+    });
+  } catch (error) {
+    logError('search.database_failed', error);
+    return banner(
+      'Search is temporarily unavailable because the database could not be reached. Please try again later.',
+      'error',
+      true,
+    ) + renderSearchPageContent(html, filters, []);
+  }
   const matches = sortSearchReports(
     reports.filter((report) => matchesSearchFilters(report, filters)),
     filters,
