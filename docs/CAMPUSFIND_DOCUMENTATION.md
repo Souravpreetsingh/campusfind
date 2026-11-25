@@ -47,7 +47,7 @@ CampusFind is a full-stack lost-and-found platform for a multi-college campus en
 | Tests | Vitest 5 |
 | Local port | 3001 |
 | Canonical images | 34 self-hosted files under `public/canonical` |
-| Current test baseline | 72 tests passing |
+| Current test baseline | 73 tests passing |
 
 ---
 
@@ -833,7 +833,7 @@ npm run audit
 npm run build
 ```
 
-Current baseline: typecheck pass, lint pass, **72/72 tests pass**, dependency audit clean, production build pass.
+Current baseline: typecheck pass, lint pass, **73/73 tests pass**, dependency audit clean, production build pass.
 
 ### 9.3 Runtime smoke test
 
@@ -952,7 +952,7 @@ Local server: http://localhost:3001
 |---|---|
 | `npm run typecheck` | Pass |
 | `npm run lint` | Pass |
-| `npm test` | 72/72 pass |
+| `npm test` | 73/73 pass |
 | `npm run build` | Pass |
 | `npm run smoke` | 6/6 pass |
 | `/api/ready` | 200 |
@@ -963,7 +963,7 @@ Local server: http://localhost:3001
 | Route | Result |
 |---|---:|
 | `/` | 200 |
-| `/advanced-search` | 200 with graceful database-outage banner |
+| `/advanced-search` | 200 with live database-backed search |
 | `/report-lost` | 200 |
 | `/report-found` | 200 |
 | `/mobile-lost-property` | 200 |
@@ -972,10 +972,12 @@ Local server: http://localhost:3001
 | `/intelligent-match` | 200 |
 | `/login` | 200 |
 | `/api/health` | 200 |
-| `/api/ready` | 503 — database unavailable |
+| `/api/ready` | 200 — database and uploads ready |
 | Admin canonical routes | 307 redirect to `/login?next=/<slug>` when signed out |
 
-The live database remains the open deployment blocker. The Supabase host is reachable, but the stored `DATABASE_URL` credentials are not accepted. A correct Supabase **Session pooler** connection string (port 6543, including the password) is needed. After setting it on Vercel, run migrations and verify `/api/ready` returns 200.
+The Supabase **Session pooler** connection string is now configured on Vercel as `DATABASE_URL`. Both committed migrations were applied to the production database, the six categories were seeded, and the bootstrap `SUPER_ADMIN` account was created. `/api/ready` now reports `database: true`, `uploads: true`, and `secrets: true`.
+
+> Treat the database password as a secret. It was shared in a chat message during setup and should be rotated in Supabase, then updated in Vercel after handover if this deployment is used beyond the demonstration environment.
 
 ### 12.3 Change history highlights
 
