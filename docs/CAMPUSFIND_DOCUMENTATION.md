@@ -989,6 +989,7 @@ The Supabase **Session pooler** connection string is now configured on Vercel as
 | Expose constellation through canonical page mains | `cfef030`; deployment `dpl_RT4sRegXZsa9iDfwG9JkA4rW5rKe` |
 | Add complete documentation and upload-limit consistency | `d95f8c6`; deployment `dpl_6NpowGSTN6nS7MZVidXfQL4jgwxM` |
 | Add live upload feedback, drag-and-drop, real clear action, and honest submit labels | `16b8cb3`; deployment `dpl_93PRkHZNnd6W3a8ShMgf24p7iPEB` |
+| Configure Supabase Session pooler, migrate and seed production database | `0185714`; deployment `dpl_HPARrNaixoyKXhoDbmp5RmEbMDqu` |
 
 ---
 

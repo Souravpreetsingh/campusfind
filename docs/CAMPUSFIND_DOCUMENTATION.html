@@ -58,7 +58,7 @@ h1, h2, h3, h4 { break-after: avoid; }
 <tr><td>Tests</td><td>Vitest 5</td></tr>
 <tr><td>Local port</td><td>3001</td></tr>
 <tr><td>Canonical images</td><td>34 self-hosted files under <code>public/canonical</code></td></tr>
-<tr><td>Current test baseline</td><td>72 tests passing</td></tr></tbody></table>
+<tr><td>Current test baseline</td><td>73 tests passing</td></tr></tbody></table>
 <hr>
 <h2 id="2-architecture">2. Architecture</h2>
 <h3 id="2-1-runtime-request-flow">2.1 Runtime request flow</h3>
@@ -504,7 +504,7 @@ npm run lint
 npm test
 npm run audit
 npm run build</code></pre>
-<p>Current baseline: typecheck pass, lint pass, <strong>72/72 tests pass</strong>, dependency audit clean, production build pass.</p>
+<p>Current baseline: typecheck pass, lint pass, <strong>73/73 tests pass</strong>, dependency audit clean, production build pass.</p>
 <h3 id="9-3-runtime-smoke-test">9.3 Runtime smoke test</h3>
 <pre><code class="language-powershell">npm run smoke
 $env:BASE_URL = &quot;https://campusfind-taupe.vercel.app&quot;
@@ -567,14 +567,14 @@ npm run smoke</code></pre>
 <p>Local server: http://localhost:3001</p>
 <table><thead><tr><th>Check</th><th>Result</th></tr></thead><tbody><tr><td><code>npm run typecheck</code></td><td>Pass</td></tr>
 <tr><td><code>npm run lint</code></td><td>Pass</td></tr>
-<tr><td><code>npm test</code></td><td>72/72 pass</td></tr>
+<tr><td><code>npm test</code></td><td>73/73 pass</td></tr>
 <tr><td><code>npm run build</code></td><td>Pass</td></tr>
 <tr><td><code>npm run smoke</code></td><td>6/6 pass</td></tr>
 <tr><td><code>/api/ready</code></td><td>200</td></tr>
 <tr><td><code>/advanced-search</code></td><td>200</td></tr></tbody></table>
 <h3 id="12-2-live-environment-2026-11-25">12.2 Live environment, 2026-11-25</h3>
 <table><thead><tr><th>Route</th><th>Result</th></tr></thead><tbody><tr><td><code>/</code></td><td>200</td></tr>
-<tr><td><code>/advanced-search</code></td><td>200 with graceful database-outage banner</td></tr>
+<tr><td><code>/advanced-search</code></td><td>200 with live database-backed search</td></tr>
 <tr><td><code>/report-lost</code></td><td>200</td></tr>
 <tr><td><code>/report-found</code></td><td>200</td></tr>
 <tr><td><code>/mobile-lost-property</code></td><td>200</td></tr>
@@ -583,16 +583,18 @@ npm run smoke</code></pre>
 <tr><td><code>/intelligent-match</code></td><td>200</td></tr>
 <tr><td><code>/login</code></td><td>200</td></tr>
 <tr><td><code>/api/health</code></td><td>200</td></tr>
-<tr><td><code>/api/ready</code></td><td>503 — database unavailable</td></tr>
+<tr><td><code>/api/ready</code></td><td>200 — database and uploads ready</td></tr>
 <tr><td>Admin canonical routes</td><td>307 redirect to <code>/login?next=/&lt;slug&gt;</code> when signed out</td></tr></tbody></table>
-<p>The live database remains the open deployment blocker. The Supabase host is reachable, but the stored <code>DATABASE_URL</code> credentials are not accepted. A correct Supabase <strong>Session pooler</strong> connection string (port 6543, including the password) is needed. After setting it on Vercel, run migrations and verify <code>/api/ready</code> returns 200.</p>
+<p>The Supabase <strong>Session pooler</strong> connection string is now configured on Vercel as <code>DATABASE_URL</code>. Both committed migrations were applied to the production database, the six categories were seeded, and the bootstrap <code>SUPER_ADMIN</code> account was created. <code>/api/ready</code> now reports <code>database: true</code>, <code>uploads: true</code>, and <code>secrets: true</code>.</p>
+<blockquote><p>Treat the database password as a secret. It was shared in a chat message during setup and should be rotated in Supabase, then updated in Vercel after handover if this deployment is used beyond the demonstration environment.</p></blockquote>
 <h3 id="12-3-change-history-highlights">12.3 Change history highlights</h3>
 <table><thead><tr><th>Change</th><th>Commit / deployment</th></tr></thead><tbody><tr><td>Restore WebGL animations by default</td><td><code>805e22c</code></td></tr>
 <tr><td>Remove simulated auth states from guest tracking</td><td><code>bb9e886</code>; deployment <code>dpl_Cd5YUqJDiycUvtG6WzM5HpAujqrW</code></td></tr>
 <tr><td>Degrade search gracefully when database is unreachable</td><td><code>66429e7</code>; deployment <code>dpl_6fwphU6xAPaH5S5TxQFxqRiSZ1fX</code></td></tr>
 <tr><td>Expose constellation through canonical page mains</td><td><code>cfef030</code>; deployment <code>dpl_RT4sRegXZsa9iDfwG9JkA4rW5rKe</code></td></tr>
 <tr><td>Add complete documentation and upload-limit consistency</td><td><code>d95f8c6</code>; deployment <code>dpl_6NpowGSTN6nS7MZVidXfQL4jgwxM</code></td></tr>
-<tr><td>Add live upload feedback, drag-and-drop, real clear action, and honest submit labels</td><td><code>16b8cb3</code>; deployment <code>dpl_93PRkHZNnd6W3a8ShMgf24p7iPEB</code></td></tr></tbody></table>
+<tr><td>Add live upload feedback, drag-and-drop, real clear action, and honest submit labels</td><td><code>16b8cb3</code>; deployment <code>dpl_93PRkHZNnd6W3a8ShMgf24p7iPEB</code></td></tr>
+<tr><td>Configure Supabase Session pooler, migrate and seed production database</td><td><code>0185714</code>; deployment <code>dpl_HPARrNaixoyKXhoDbmp5RmEbMDqu</code></td></tr></tbody></table>
 <hr>
 <h2 id="13-documentation-artifacts">13. Documentation artifacts</h2>
 <table><thead><tr><th>File</th><th>Format</th><th>Purpose</th></tr></thead><tbody><tr><td><code>docs/CAMPUSFIND_DOCUMENTATION.md</code></td><td>Markdown</td><td>Editable canonical manual</td></tr>
