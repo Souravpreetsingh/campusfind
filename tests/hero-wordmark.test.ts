@@ -62,8 +62,9 @@ describe('homepage Originkit vector wordmark', () => {
     expect(wordmarkSource).toContain('onErrorRef.current?.(');
   });
 
-  it('renders one static vector frame for reduced-motion users', () => {
-    expect(wordmarkSource).toContain('prefers-reduced-motion: reduce');
+  it('renders one static vector frame only when motion is explicitly off', () => {
+    expect(wordmarkSource).toContain('shouldReduceMotion');
+    expect(wordmarkSource).toContain('@/lib/motion');
     expect(wordmarkSource).toContain('const renderStatic = () =>');
     expect(wordmarkSource).toContain('if (reduceMotion) renderStatic()');
   });

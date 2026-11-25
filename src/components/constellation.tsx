@@ -6,6 +6,7 @@
 import * as React from "react";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
+import { shouldReduceMotion } from "@/lib/motion";
 
 /**
  * Constellation — a drifting cloud of nodes that draws a line between any two
@@ -659,10 +660,7 @@ function __OriginkitBase_Constellation(props: ConstellationProps) {
     sceneRef.current = scene;
     scene.setSize(container.clientWidth, container.clientHeight);
 
-    const reduceMotion =
-      typeof window !== "undefined" &&
-      typeof window.matchMedia === "function" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduceMotion = shouldReduceMotion();
     if (reduceMotion) scene.renderStatic();
     else scene.start();
 

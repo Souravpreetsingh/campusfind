@@ -15,6 +15,7 @@ const heroSource = readSource('src/components/hero-wordmark.tsx');
 const vectorSource = readSource('src/components/vector-wordmark.tsx');
 const constellationSource = readSource('src/components/constellation.tsx');
 const globalCss = readSource('src/app/globals.css');
+const motionSource = readSource('src/lib/motion.ts');
 const buildSource = readSource('scripts/build-content.mjs');
 
 describe('canonical frontend accessibility and interaction audit', () => {
@@ -125,11 +126,16 @@ describe('canonical frontend accessibility and interaction audit', () => {
     expect(loginSource).toContain('aria-live="assertive"');
   });
 
-  it('respects reduced-motion preferences in both WebGL components', () => {
+  it('keeps WebGL motion on by default with an explicit opt-out', () => {
     for (const source of [vectorSource, constellationSource]) {
-      expect(source).toContain('prefers-reduced-motion: reduce');
+      expect(source).toContain('shouldReduceMotion');
+      expect(source).toContain('@/lib/motion');
       expect(source).toContain('renderStatic()');
     }
+    expect(motionSource).toContain("return 'on'");
+    expect(motionSource).toContain("MOTION_STORAGE_KEY = 'campusfind:motion'");
+    expect(layoutSource).toContain("import MotionToggle from '@/components/motion-toggle'");
+    expect(layoutSource).toContain('<MotionToggle />');
     expect(vectorSource).toContain('gl.getShaderParameter');
     expect(vectorSource).toContain('gl.getProgramParameter');
     expect(heroSource).toContain('getExtension(\'WEBGL_lose_context\')');

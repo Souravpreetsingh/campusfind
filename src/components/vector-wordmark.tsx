@@ -5,6 +5,7 @@
 
 import * as React from "react"
 import { useEffect, useRef } from "react"
+import { shouldReduceMotion } from "@/lib/motion"
 
 const MAX_DPR = 2 // quality tier, not a design control (rule 10)
 const REF_WIDTH = 1200 // the width the font size is quoted at
@@ -674,10 +675,7 @@ function __OriginkitBase_VectorWordmark(props: VectorWordmarkProps) {
         let last = 0
         let running = true
         let announcedReady = false
-        const reduceMotion =
-            typeof window !== "undefined" &&
-            typeof window.matchMedia === "function" &&
-            window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        const reduceMotion = shouldReduceMotion()
 
         function markReady() {
             if (announcedReady) return

@@ -83,22 +83,12 @@ export default function HeroWordmarkMount() {
 
   useEffect(() => {
     const host = document.getElementById(HERO_WORDMARK_MOUNT_ID);
+    if (!host || !supportsWebGL()) return;
 
-    if (!host || !supportsWebGL()) {
-      if (rootRef.current) {
-        rootRef.current.unmount();
-        rootRef.current = null;
-        hostRef.current = null;
-      }
-      return;
-    }
-
+    // Keep one root for the lifetime of the page. Unmounting here caused React
+    // to tear down the Webmark while it was still rendering, which stopped the
+    // hero animation after a fast refresh or route remount.
     if (rootRef.current && hostRef.current === host) return;
-
-    if (rootRef.current) {
-      rootRef.current.unmount();
-      rootRef.current = null;
-    }
 
     try {
       const root = createRoot(host);
@@ -109,16 +99,6 @@ export default function HeroWordmarkMount() {
       rootRef.current = null;
       hostRef.current = null;
     }
-  });
-
-  useEffect(() => {
-    return () => {
-      if (rootRef.current) {
-        rootRef.current.unmount();
-        rootRef.current = null;
-      }
-      hostRef.current = null;
-    };
   }, []);
 
   return null;
