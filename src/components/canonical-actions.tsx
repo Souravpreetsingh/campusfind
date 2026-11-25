@@ -24,7 +24,7 @@ function findTargets(root: ParentNode, selector: string | undefined) {
   }
 }
 
-function showNotice(message: string) {
+export function showNotice(message: string) {
   if (!message || typeof document === 'undefined') return;
 
   let notice = document.querySelector<HTMLElement>('[data-canonical-action-notice]');
@@ -71,6 +71,19 @@ function runAction(button: ActionButton) {
     const form = button.closest('form');
     if (form?.requestSubmit) form.requestSubmit();
     else showNotice('This action is available in the full CampusFind form.');
+    return;
+  }
+
+  if (action === 'clear-uploads') {
+    const form = button.closest('form');
+    const input = form?.querySelector<HTMLInputElement>('input[type="file"][name="images"]');
+    if (!input) {
+      showNotice('There are no selected images to clear.');
+      return;
+    }
+    input.value = '';
+    input.dispatchEvent(new Event('change', { bubbles: true }));
+    showNotice('Selected images cleared.');
     return;
   }
 

@@ -61,6 +61,31 @@ describe('generated canonical frontend content', () => {
     expect(pageContent['mobile-lost-property']).toContain('form="lost-report-form" id="next-step-btn" type="submit"');
   });
 
+  it('shows live upload feedback and honest submit labels', () => {
+    const reportSlugs = ['report-lost', 'report-found', 'mobile-lost-property'];
+    for (const slug of reportSlugs) {
+      const html = pageContent[slug];
+      expect(html).toContain('data-upload-input');
+      expect(html).toContain('data-upload-status');
+      expect(html).toContain('data-upload-dropzone');
+      expect(html).not.toContain('Next: Photo Evidence');
+      expect(html).not.toContain('Next: Details &amp; Contact');
+    }
+    expect(pageContent['report-lost']).toContain('Submit Lost Item Report');
+    expect(pageContent['report-found']).toContain('Submit Found Item Report');
+    expect(pageContent['mobile-lost-property']).toContain('Submit Lost Item Report');
+    expect(pageContent['report-lost']).not.toContain('Proceed to Step 5: Privacy');
+    expect(pageContent['report-lost']).toContain('data-action="clear-uploads"');
+
+    const feedbackSource = readFileSync(`${rootDir}src/components/report-form-feedback.tsx`, 'utf8');
+    expect(feedbackSource).toContain("document.addEventListener('change', handleChange)");
+    expect(feedbackSource).toContain("document.addEventListener('drop', handleDrop)");
+    expect(feedbackSource).toContain("document.addEventListener('invalid', handleInvalid, true)");
+    expect(feedbackSource).toContain('MAX_UPLOAD_IMAGES = 5');
+    expect(feedbackSource).toContain('MAX_UPLOAD_BYTES = 10 * 1024 * 1024');
+    expect(feedbackSource).toContain("import { showNotice } from '@/components/canonical-actions'");
+  });
+
   it('degrades search gracefully when the database cannot be reached', () => {
     const source = readFileSync(`${rootDir}src/app/[slug]/page.tsx`, 'utf8');
     expect(source).toContain('search.database_failed');

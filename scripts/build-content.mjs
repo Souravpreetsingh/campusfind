@@ -541,6 +541,7 @@ function actionForButton(label, attributes, slug) {
     if (compact.includes(needle)) return `data-action="navigate" data-target="${target}"`;
   }
 
+  if (compact.includes('clear all uploads')) return 'data-action="clear-uploads"';
   if (compact.includes('secret') || compact.includes('token')) {
     return toggleAction('#secretKeyDisplay', 'true');
   }
@@ -997,7 +998,7 @@ function asQueryLinks(html, entries) {
 const fileInputAccept = 'image/jpeg,image/png,image/webp,image/gif,image/heic,image/heif';
 
 function fileInput(label) {
-  return `<input accept="${fileInputAccept}" aria-label="${label}" class="absolute inset-0 h-full w-full cursor-pointer opacity-0" multiple name="images" type="file" />`;
+  return `<input accept="${fileInputAccept}" aria-label="${label}" class="absolute inset-0 h-full w-full cursor-pointer opacity-0" data-upload-input="" multiple name="images" type="file" />`;
 }
 
 function fieldClass() {
@@ -1389,7 +1390,7 @@ function wireLostUploads(html) {
     '<!-- Drop Area -->',
     '<!-- Image Thumbnails Grid & File Management -->',
     `<!-- Drop Area -->
-<div class="bg-canvas hover:bg-surface-container transition-colors rounded-xl p-space-xl flex flex-col items-center justify-center text-center cursor-pointer group shadow-inner relative">
+<div class="bg-canvas hover:bg-surface-container transition-colors rounded-xl p-space-xl flex flex-col items-center justify-center text-center cursor-pointer group shadow-inner relative" data-upload-dropzone="">
 <div class="w-14 h-14 rounded-full bg-surface-container-highest group-hover:bg-primary group-hover:text-on-primary text-primary transition-all flex items-center justify-center mb-space-sm shadow-sm">
 <span class="material-symbols-outlined text-[28px]">cloud_upload</span>
 </div>
@@ -1409,7 +1410,7 @@ ${fileInput('Upload lost item photos')}
     next,
     '<!-- Image Thumbnails Grid & File Management -->',
     '<!-- Integrated Summary of Captured Steps 1, 2, 3 (Collapsible & Editable Accordions) -->',
-    `<div class="font-body-sm text-body-sm text-on-surface-variant">No images selected. Choose photos when you submit this report.</div>\n`,
+    `<div class="font-body-sm text-body-sm text-on-surface-variant" data-upload-status="" data-upload-empty="No images selected. Choose photos when you submit this report." aria-live="polite">No images selected. Choose photos when you submit this report.</div>\n`,
     'lost upload mockups',
   );
 
@@ -1422,7 +1423,7 @@ function wireFoundUploads(html) {
     '<!-- Drag and Drop Box -->',
     '<!-- Uploaded Image List Mockup with Visibility Controls -->',
     `<!-- Drag and Drop Box -->
-<div class="p-space-lg rounded-2xl bg-surface-container-low text-center space-y-space-sm hover:bg-canvas transition-colors cursor-pointer relative">
+<div class="p-space-lg rounded-2xl bg-surface-container-low text-center space-y-space-sm hover:bg-canvas transition-colors cursor-pointer relative" data-upload-dropzone="">
 <div class="w-14 h-14 rounded-full bg-white shadow-sm flex items-center justify-center mx-auto text-secondary">
 <span class="material-symbols-outlined text-[32px]">add_a_photo</span>
 </div>
@@ -1440,7 +1441,7 @@ ${fileInput('Upload found item photos')}
     next,
     '<!-- Uploaded Image List Mockup with Visibility Controls -->',
     '<!-- Step 6 Preview: Finder Information & Discretion -->',
-    `<div class="font-body-sm text-label-sm text-on-surface-variant">No images selected. Choose custody photographs when you submit this report.</div>\n`,
+    `<div class="font-body-sm text-label-sm text-on-surface-variant" data-upload-status="" data-upload-empty="No images selected. Choose custody photographs when you submit this report." aria-live="polite">No images selected. Choose custody photographs when you submit this report.</div>\n`,
     'found upload mockups',
   );
 
@@ -1449,6 +1450,12 @@ ${fileInput('Upload found item photos')}
 
 function configureLostForm(html, slug) {
   let next = wrapMainInReportForm(html, 'LOST', 'Proceed to Step 5', slug);
+  next = replaceRequired(
+    next,
+    'Proceed to Step 5: Privacy',
+    'Submit Lost Item Report',
+    'lost submit label',
+  );
   next = wireLostUploads(next);
 
   const replacements = [
@@ -1485,6 +1492,12 @@ function configureLostForm(html, slug) {
 
 function configureFoundForm(html, slug) {
   let next = wrapMainInReportForm(html, 'FOUND', 'Next: Photo Evidence', slug);
+  next = replaceRequired(
+    next,
+    'Next: Photo Evidence &amp; Verification',
+    'Submit Found Item Report',
+    'found submit label',
+  );
   next = wireFoundUploads(next);
 
   next = replaceRequired(
@@ -1584,7 +1597,7 @@ ${hidden}${reportDetailsCard(
 </div>
 <span class="px-space-xs py-0.5 rounded-full bg-mint text-primary font-label-sm text-label-sm font-bold">Photos optional</span>
 </div>
-<div class="grid grid-cols-2 gap-space-sm mt-1 relative">
+<div class="grid grid-cols-2 gap-space-sm mt-1 relative" data-upload-dropzone="">
 <label class="flex items-center justify-center gap-2 min-h-[52px] rounded-xl bg-primary text-on-primary font-label-md text-label-md font-bold active:scale-[0.98] transition-transform shadow-sm">
 <span class="material-symbols-outlined text-[20px]">photo_camera</span>
 <span>Choose Photos</span>
@@ -1595,7 +1608,7 @@ ${hidden}${reportDetailsCard(
 </label>
 ${fileInput('Upload lost item photos')}
 </div>
-<p class="font-body-sm text-body-sm text-on-surface-variant">JPG, PNG, WebP, GIF, HEIC, or HEIF up to 10MB each. No photos are selected yet.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant" data-upload-status="" data-upload-empty="JPG, PNG, WebP, GIF, HEIC, or HEIF up to 10MB each. No photos are selected yet." aria-live="polite">JPG, PNG, WebP, GIF, HEIC, or HEIF up to 10MB each. No photos are selected yet.</p>
 </section>
 `,
     'mobile photo section',
@@ -1620,6 +1633,12 @@ ${fileInput('Upload lost item photos')}
     '<button class="flex-1 min-h-[50px] px-space-lg rounded-full bg-primary text-on-primary font-label-lg text-label-lg font-bold flex items-center justify-center gap-space-xs shadow-md active:scale-[0.98] transition-all hover:bg-graphite" id="next-step-btn" type="button">',
     '<button class="flex-1 min-h-[50px] px-space-lg rounded-full bg-primary text-on-primary font-label-lg text-label-lg font-bold flex items-center justify-center gap-space-xs shadow-md active:scale-[0.98] transition-all hover:bg-graphite" form="lost-report-form" id="next-step-btn" type="submit">',
     'mobile submit button',
+  );
+  next = replaceRequired(
+    next,
+    '<span>Next: Details &amp; Contact</span>',
+    '<span>Submit Lost Item Report</span>',
+    'mobile submit label',
   );
 
   return next;

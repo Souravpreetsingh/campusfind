@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import CanonicalActions from '@/components/canonical-actions';
 import MotionToggle from '@/components/motion-toggle';
 import ReportAssistant from '@/components/report-assistant';
+import ReportFormFeedback from '@/components/report-form-feedback';
 import SiteBackground from '@/components/site-background';
 import './globals.css';
 
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <div className="site-content">
           {children}
           <CanonicalActions />
+          <ReportFormFeedback />
         </div>
         <ReportAssistant />
         <MotionToggle />

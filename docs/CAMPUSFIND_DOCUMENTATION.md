@@ -247,6 +247,10 @@ The advanced-search page queries approved and claimed reports, then renders resu
 
 All three reporting screens submit multipart forms to `POST /api/reports`. Required fields are `reportType`, `category`, `description`, `location`, and `reporterNetId`. Optional fields capture model, colour, distinguishing marks, hidden verification marks, campus complex/floor, incident date/window, contact details, and custody notes.
 
+The prototype step labels have been replaced with honest submit labels: **Submit Lost Item Report** or **Submit Found Item Report**. Clicking one submits the whole form; there is no separate privacy step. If a required field is empty or invalid, the browser highlights it and an accessible toast explains that all required fields must be completed.
+
+`src/components/report-form-feedback.tsx` is mounted globally and makes uploads visible. Selecting or dropping images updates the status area under the upload box with the file count, names, and sizes; the dropzone gains a focus ring. Unsupported file types, files over 10MB, and selections beyond five images are skipped with a toast. **Clear All Uploads** now clears the real file input. Drag and drop is supported in browsers that expose `DataTransfer`; the browse-files control works everywhere. The server still performs authoritative magic-byte, dimension, and size validation on submission.
+
 On success:
 
 1. A `Report` is created with status `PENDING`.
@@ -320,6 +324,7 @@ A global click delegate in `src/components/canonical-actions.tsx` interprets gen
 | `navigate` | Navigates to `data-target`. |
 | `call` | Opens `tel:` link from `data-phone`. |
 | `submit` | Calls `form.requestSubmit()` for the associated form. |
+| `clear-uploads` | Clears the report's file input and dispatches a `change` event so the upload status resets. |
 | `copy` | Copies text from `data-copy-source` or button text and shows a live status toast. |
 | `toggle` | Toggles `hidden`/`aria-hidden` on `data-target` and updates `aria-expanded`. |
 | `tab` | Selects a peer group, toggles targets, and manages `aria-selected`. |

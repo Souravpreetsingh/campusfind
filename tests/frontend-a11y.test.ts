@@ -106,8 +106,9 @@ describe('canonical frontend accessibility and interaction audit', () => {
 
   it('wires canonical controls through one global action handler', () => {
     expect(layoutSource).toContain("import CanonicalActions from '@/components/canonical-actions'");
-    expect(layoutSource).toMatch(/<div className="site-content">[\s\S]*<CanonicalActions \/>/);
-    for (const action of ['tab', 'toggle', 'radio', 'pill', 'copy', 'submit', 'navigate', 'call', 'notice']) {
+    expect(layoutSource).toContain("import ReportFormFeedback from '@/components/report-form-feedback'");
+    expect(layoutSource).toMatch(/<div className="site-content">[\s\S]*<CanonicalActions \/>[\s\S]*<ReportFormFeedback \/>/);
+    for (const action of ['tab', 'toggle', 'radio', 'pill', 'copy', 'submit', 'clear-uploads', 'navigate', 'call', 'notice']) {
       expect(actionsSource).toContain(`'${action}'`);
     }
     expect(actionsSource).toContain("closest<ActionButton>('[data-action]')");
