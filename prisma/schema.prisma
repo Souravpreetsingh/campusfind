@@ -1,0 +1,273 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  SUPER_ADMIN
+  COLLEGE_ADMIN
+  MODERATOR
+  READ_ONLY_AUDITOR
+}
+
+enum ReportType {
+  LOST
+  FOUND
+}
+
+enum ReportStatus {
+  PENDING
+  APPROVED
+  CLAIMED
+  ARCHIVED
+}
+
+enum ClaimStatus {
+  SUBMITTED
+  UNDER_REVIEW
+  ADDITIONAL_INFO
+  APPROVED
+  REJECTED
+  DISPUTED
+}
+
+enum CustodyState {
+  WITH_FINDER
+  SUBMITTED
+  STORED
+  READY
+  RETURNED
+}
+
+enum MatchStatus {
+  CANDIDATE
+  APPROVED
+  DISMISSED
+  CLAIMED
+}
+
+enum CollegeStatus {
+  ACTIVE
+  PENDING
+  SUSPENDED
+}
+
+enum NotificationStatus {
+  PENDING
+  SENT
+  FAILED
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String
+  name         String?
+  role         Role     @default(READ_ONLY_AUDITOR)
+  collegeId    String?
+  college      College? @relation(fields: [collegeId], references: [id], onDelete: SetNull)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  sessions        AdminSession[]
+  reports         Report[]        @relation("ReportCreatedBy")
+  uploadedImages  ReportImage[]   @relation("ImageUploadedBy")
+  resolvedClaims  Claim[]         @relation("ClaimResolvedBy")
+  custodyRecords  CustodyRecord[] @relation("CustodyHeldBy")
+  auditLogs       AuditLog[]      @relation("AuditPerformedBy")
+
+  @@index([collegeId])
+}
+
+model AdminSession {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  ipAddress String?
+  userAgent String?
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+model College {
+  id        String        @id @default(uuid())
+  name      String        @unique
+  code      String        @unique
+  status    CollegeStatus @default(PENDING)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  users   User[]
+  reports Report[]
+}
+
+model Category {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
+
+  reports Report[]
+}
+
+model Report {
+  id                  String       @id @default(uuid())
+  caseReference       String       @unique
+  type                ReportType
+  status              ReportStatus @default(PENDING)
+  categoryId          String
+  category            Category     @relation(fields: [categoryId], references: [id])
+  brand               String?
+  model               String?
+  colour              String?
+  description         String
+  verificationDetails String?
+  incidentWindow      String?
+  custodyNotes        String?
+  lostDate            DateTime?
+  foundDate           DateTime?
+  campusBuilding      String?
+  campusFloor         String?
+  campusLandmark      String?
+  finderName          String?
+  finderEmail         String?
+  reporterNetId       String?
+  collegeId           String?
+  college             College?     @relation(fields: [collegeId], references: [id], onDelete: SetNull)
+  createdById         String?
+  createdBy           User?        @relation("ReportCreatedBy", fields: [createdById], references: [id])
+  createdAt           DateTime     @default(now())
+  updatedAt           DateTime     @updatedAt
+  archivedAt          DateTime?
+
+  images           ReportImage[]
+  trackCredentials TrackCredential[]
+  lostMatches      Match[]           @relation("LostMatches")
+  foundMatches     Match[]           @relation("FoundMatches")
+  claims           Claim[]
+  custodyRecords   CustodyRecord[]
+
+  @@index([type, status, createdAt])
+  @@index([categoryId])
+  @@index([collegeId])
+}
+
+model ReportImage {
+  id           String   @id @default(uuid())
+  reportId     String
+  report       Report   @relation(fields: [reportId], references: [id], onDelete: Cascade)
+  objectKey    String
+  contentType  String
+  sizeBytes    Int
+  uploadedById String?
+  uploadedBy   User?    @relation("ImageUploadedBy", fields: [uploadedById], references: [id])
+  uploadedAt   DateTime @default(now())
+
+  @@index([reportId])
+}
+
+model TrackCredential {
+  id            String    @id @default(uuid())
+  reportId      String
+  report        Report    @relation(fields: [reportId], references: [id], onDelete: Cascade)
+  secretHash    String
+  attempts      Int       @default(0)
+  lastAttemptAt DateTime?
+  createdAt     DateTime  @default(now())
+  expiresAt     DateTime?
+
+  @@index([reportId])
+  @@index([expiresAt])
+}
+
+model Match {
+  id           String      @id @default(uuid())
+  lostReportId String
+  foundReportId String
+  lostReport   Report      @relation("LostMatches", fields: [lostReportId], references: [id], onDelete: Cascade)
+  foundReport  Report      @relation("FoundMatches", fields: [foundReportId], references: [id], onDelete: Cascade)
+  score        Int
+  status       MatchStatus @default(CANDIDATE)
+  reasons      String[]
+  createdAt    DateTime    @default(now())
+
+  @@unique([lostReportId, foundReportId])
+  @@index([lostReportId])
+  @@index([foundReportId])
+  @@index([status])
+}
+
+model Claim {
+  id                  String      @id @default(uuid())
+  reportId            String
+  report              Report      @relation(fields: [reportId], references: [id], onDelete: Cascade)
+  claimantName        String
+  claimantEmail       String
+  ownershipExplanation String
+  verificationAnswers Json?
+  status              ClaimStatus @default(SUBMITTED)
+  submittedAt         DateTime    @default(now())
+  resolvedAt          DateTime?
+  resolvedById        String?
+  resolvedBy          User?       @relation("ClaimResolvedBy", fields: [resolvedById], references: [id])
+  reason              String?
+
+  auditLogs AuditLog[] @relation("ClaimAudit")
+
+  @@index([reportId])
+  @@index([status])
+  @@index([claimantEmail])
+}
+
+model CustodyRecord {
+  id         String       @id @default(uuid())
+  reportId   String
+  report     Report       @relation(fields: [reportId], references: [id], onDelete: Cascade)
+  heldById   String?
+  heldBy     User?        @relation("CustodyHeldBy", fields: [heldById], references: [id])
+  location   String?
+  state      CustodyState
+  receivedAt DateTime     @default(now())
+  releasedAt DateTime?
+
+  @@index([reportId])
+  @@index([state])
+}
+
+model AuditLog {
+  id           String   @id @default(uuid())
+  actorId      String?
+  actor        User?    @relation("AuditPerformedBy", fields: [actorId], references: [id])
+  claimId      String?
+  claim        Claim?   @relation("ClaimAudit", fields: [claimId], references: [id], onDelete: Cascade)
+  action       String
+  entityType   String
+  entityId     String
+  metadata     Json?
+  hash         String?
+  previousHash String?
+  createdAt    DateTime @default(now())
+
+  @@index([actorId])
+  @@index([claimId])
+  @@index([entityType, entityId])
+}
+
+model Notification {
+  id        String             @id @default(uuid())
+  recipient String
+  subject   String
+  body      String
+  status    NotificationStatus @default(PENDING)
+  sentAt    DateTime?
+  createdAt DateTime           @default(now())
+
+  @@index([status])
+}

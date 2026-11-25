@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify:
+    name: Verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Prepare CI environment
+        run: |
+          cp .env.example .env
+          node <<'NODE'
+          const fs = require('node:fs');
+          const crypto = require('node:crypto');
+          const path = '.env';
+          let content = fs.readFileSync(path, 'utf8');
+          content = content.replace(
+            /^SESSION_SECRET=.*$/m,
+            `SESSION_SECRET="${crypto.randomBytes(48).toString('hex')}"`,
+          );
+          content = content.replace(
+            /^SEED_ADMIN_PASSWORD=.*$/m,
+            `SEED_ADMIN_PASSWORD="${crypto.randomBytes(24).toString('base64url')}Aa1!"`,
+          );
+          fs.writeFileSync(path, content);
+          NODE
+
+      - name: Validate environment
+        run: npm run check:env
+
+      - name: Build canonical content
+        run: npm run content:build
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Dependency audit
+        run: npm run audit
+
+      - name: Production build
+        run: npm run build

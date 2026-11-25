@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Merriweather:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-secondary-fixed-variant": "#00468a", "primary-fixed-dim": "#c9c6c1", "canvas": "#fff3e7", "surface-dim": "#ddd9d8", "error": "#ba1a1a", "surface-container-highest": "#e5e2e0", "surface-container": "#f1edec", "primary": "#000000", "on-background": "#1c1b1b", "on-secondary": "#ffffff", "error-container": "#ffdad6", "cloud": "#efefef", "on-tertiary-fixed-variant": "#872000", "background": "#fcf8f7", "on-surface-variant": "#484740", "mint": "#9bd8a9", "tertiary": "#000000", "tertiary-fixed-dim": "#ffb5a0", "on-primary-container": "#86847f", "inverse-on-surface": "#f4f0ef", "marigold": "#fde99b", "sky": "#9ed4ef", "tertiary-container": "#3b0900", "surface-variant": "#e5e2e0", "primary-fixed": "#e5e2dd", "on-secondary-container": "#fefcff", "primary-container": "#1c1c19", "periwinkle": "#b8caf5", "ash": "#e1e1e1", "on-tertiary-fixed": "#3b0900", "linen": "#f7f7f7", "surface-container-high": "#ebe7e6", "on-primary": "#ffffff", "inverse-primary": "#c9c6c1", "surface-tint": "#605e5b", "secondary-fixed": "#d5e3ff", "secondary-fixed-dim": "#a8c8ff", "secondary": "#005bb0", "on-tertiary-container": "#f34100", "surface-container-low": "#f7f3f2", "tertiary-fixed": "#ffdbd1", "on-surface": "#1c1b1b", "secondary-container": "#0074dc", "white": "#ffffff", "on-primary-fixed": "#1c1c19", "on-error": "#ffffff", "outline-variant": "#c9c6be", "on-error-container": "#93000a", "on-secondary-fixed": "#001b3c", "surface-container-lowest": "#ffffff", "surface-bright": "#fcf8f7", "on-primary-fixed-variant": "#484743", "on-tertiary": "#ffffff", "surface": "#fcf8f7", "inverse-surface": "#313030", "graphite": "#41413f", "outline": "#797770" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter": "1.5rem", "space-lg": "1.5rem", "gutter-sm": "1rem", "space-sm": "0.5rem", "margin": "2rem", "margin-mobile": "1rem", "space-xs": "0.25rem", "space-xl": "2.5rem", "space-md": "1rem" }, "fontFamily": { "body-lg": ["Inter"], "label-sm": ["Inter"], "body-md": ["Inter"], "display-mobile": ["Merriweather"], "headline-md": ["Merriweather"], "headline-lg": ["Merriweather"], "title-md": ["Inter"], "body-sm": ["Inter"], "label-md": ["Inter"], "display": ["Merriweather"], "title-lg": ["Inter"], "label-lg": ["Inter"], "headline-lg-mobile": ["Merriweather"], "headline-sm": ["Merriweather"] }, "fontSize": { "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "display-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }], "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "600" }], "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }], "headline-lg-mobile": ["26px", { "lineHeight": "34px", "fontWeight": "700" }], "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "700" }] } } } };</script></head><body class="bg-canvas font-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(3,3,2,0.06)]"><div class="h-16 max-w-7xl mx-auto px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs"><span class="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-on-primary font-headline-sm text-headline-sm">W</span><div class="flex flex-col"><span class="font-headline-sm text-title-md leading-none text-primary">CampusFind</span><span class="font-label-sm text-label-sm text-outline tracking-wider uppercase">Westfield System</span></div></div></div><nav class="hidden xl:flex items-center gap-space-xs" data-active-classes="bg-surface-container text-on-surface font-title-md rounded-lg"><a class="px-space-sm py-space-xs rounded font-title-md text-title-md text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="browse-listings" href="#">Browse Listings</a><a aria-current="page" class="px-space-sm py-space-xs transition-colors bg-surface-container text-on-surface font-title-md rounded-lg" data-path="report-lost" href="#">Report Lost</a><a class="px-space-sm py-space-xs rounded font-title-md text-title-md text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="report-found" href="#">Report Found</a><a class="px-space-sm py-space-xs rounded font-title-md text-title-md text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="track-status" href="#">Track Status</a><a class="px-space-sm py-space-xs rounded font-title-md text-title-md text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="intelligent-match" href="#">Intelligent Match</a><a class="px-space-sm py-space-xs rounded font-title-md text-title-md text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="campus-zones" href="#">Campus Zones</a></nav><div class="flex items-center gap-space-sm"><a class="hidden sm:inline-flex items-center px-space-md py-space-xs rounded-full bg-secondary text-on-secondary font-label-lg text-label-lg shadow-[0_2px_6px_-1px_rgba(3,3,2,0.04)] hover:bg-secondary-container hover:text-on-secondary-container transition-colors" data-path="report-lost" href="#">Quick File</a><a class="hidden md:inline-flex items-center px-space-sm py-space-xs rounded font-label-md text-label-md text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="college-admin-portal" href="#">College Admin Portal</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-canvas min-h-screen"><div class="flex flex-col w-full">
+<!-- Top Workflow Stepper Strip -->
+<section class="w-full bg-surface-container-low shadow-[0_1px_8px_rgba(3,3,2,0.04)] px-gutter py-space-md">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-sm">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center px-space-xs py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm tracking-wide uppercase">Intake Dossier #WF-2024-9982</span>
+<span class="font-body-sm text-body-sm text-outline">|</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-mint" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            Draft auto-saved 42s ago
+          </span>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="inline-flex items-center gap-1 px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container font-label-md text-label-md transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">bookmark</span>
+            Save &amp; Exit Later
+          </button>
+<a class="inline-flex items-center gap-1 px-space-sm py-space-xs rounded-lg text-secondary hover:bg-secondary-fixed/30 font-label-md text-label-md transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]">help</span>
+            Intake Guide
+          </a>
+</div>
+</div>
+<!-- 6-Step Visual Bar -->
+<nav aria-label="Progress Stepper" class="w-full pt-space-xs">
+<ol class="grid grid-cols-2 md:grid-cols-6 gap-space-xs items-center">
+<!-- Step 1: Completed -->
+<li class="flex items-center gap-space-xs p-space-xs rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors cursor-pointer">
+<span class="w-6 h-6 rounded-full bg-mint text-on-surface font-label-sm text-label-sm flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-[14px]">done</span>
+</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline leading-tight">Step 01</span>
+<span class="font-title-md text-body-sm text-on-surface truncate">Item Details</span>
+</div>
+</li>
+<!-- Step 2: Completed -->
+<li class="flex items-center gap-space-xs p-space-xs rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors cursor-pointer">
+<span class="w-6 h-6 rounded-full bg-mint text-on-surface font-label-sm text-label-sm flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-[14px]">done</span>
+</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline leading-tight">Step 02</span>
+<span class="font-title-md text-body-sm text-on-surface truncate">Characteristics</span>
+</div>
+</li>
+<!-- Step 3: Completed -->
+<li class="flex items-center gap-space-xs p-space-xs rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors cursor-pointer">
+<span class="w-6 h-6 rounded-full bg-mint text-on-surface font-label-sm text-label-sm flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-[14px]">done</span>
+</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline leading-tight">Step 03</span>
+<span class="font-title-md text-body-sm text-on-surface truncate">Location &amp; Date</span>
+</div>
+</li>
+<!-- Step 4: Active -->
+<li aria-current="step" class="flex items-center gap-space-xs p-space-xs rounded-lg bg-primary text-on-primary shadow-sm">
+<span class="w-6 h-6 rounded-full bg-on-primary text-primary font-label-sm text-label-sm flex items-center justify-center font-bold">
+              4
+            </span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary-fixed-dim leading-tight">Current</span>
+<span class="font-title-md text-body-sm text-on-primary font-bold truncate">Photo Uploads</span>
+</div>
+</li>
+<!-- Step 5: Upcoming -->
+<li class="flex items-center gap-space-xs p-space-xs rounded-lg bg-surface-container-lowest opacity-85">
+<span class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm flex items-center justify-center">
+              5
+            </span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline leading-tight">Step 05</span>
+<span class="font-title-md text-body-sm text-on-surface-variant truncate">Privacy &amp; Contact</span>
+</div>
+</li>
+<!-- Step 6: Upcoming -->
+<li class="flex items-center gap-space-xs p-space-xs rounded-lg bg-surface-container-lowest opacity-85">
+<span class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm flex items-center justify-center">
+              6
+            </span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline leading-tight">Step 06</span>
+<span class="font-title-md text-body-sm text-on-surface-variant truncate">Review &amp; File</span>
+</div>
+</li>
+</ol>
+</nav>
+</div>
+</section>
+<!-- Main Workflow Body: Asymmetric Grid -->
+<div class="max-w-7xl mx-auto w-full px-gutter py-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Left Column: Primary Intake Form (8 cols) -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- Active Section Banner -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-sm">
+<span class="w-12 h-12 rounded-xl bg-periwinkle flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[26px]">photo_library</span>
+</span>
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-outline block">Stage 04 of 06</span>
+<h1 class="font-headline-sm text-headline-sm text-primary">Evidence &amp; Photo Artifacts</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">High-resolution imagery improves automated match confidence by up to 78% against custodial cataloging scans.</p>
+</div>
+</div>
+<div class="inline-flex items-center self-start sm:self-center px-space-sm py-space-xs rounded-full bg-marigold text-on-surface font-label-sm text-label-sm font-semibold shrink-0">
+<span class="material-symbols-outlined text-[16px] mr-1">auto_awesome</span>
+            Vision AI Armed
+          </div>
+</div>
+<!-- Drag and Drop Active Upload Dropzone -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<label class="font-title-md text-title-md text-on-surface">Supporting Image Uploads</label>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Accepted: JPG, PNG, WEBP (Max 15MB each)</span>
+</div>
+<!-- Drop Area -->
+<div class="bg-canvas hover:bg-surface-container transition-colors rounded-xl p-space-xl flex flex-col items-center justify-center text-center cursor-pointer group shadow-inner">
+<div class="w-14 h-14 rounded-full bg-surface-container-highest group-hover:bg-primary group-hover:text-on-primary text-primary transition-all flex items-center justify-center mb-space-sm shadow-sm">
+<span class="material-symbols-outlined text-[28px]">cloud_upload</span>
+</div>
+<p class="font-title-md text-title-md text-on-surface mb-0.5">
+              Drag and drop product photos here, or <span class="text-secondary font-bold underline underline-offset-2">browse files</span>
+</p>
+<p class="font-body-sm text-body-sm text-outline max-w-md">
+              Upload past photos showing serial labels, distinctive scratches, stickers, custom cases, or exact color gradients.
+            </p>
+</div>
+<!-- Image Thumbnails Grid & File Management -->
+<div class="flex flex-col gap-space-sm mt-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface uppercase tracking-wider">Queue / Uploaded Items (3 of 5 Max)</span>
+<span class="font-body-sm text-body-sm text-outline">Drag items to rearrange priority</span>
+</div>
+<!-- Card 1: Completed Photo -->
+<div class="bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between gap-space-sm shadow-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-14 h-14 rounded-lg bg-surface-container-high overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close up photograph of a white Apple AirPods Pro MagSafe charging case resting on a clean wooden study desk with subtle light reflection" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHwgVgtanyETCjDDjG80C6Vufy5ChcOTIKXH3XQglAEhcvp2T5f2VkVGW-0qHSYK3GeQ8EO4nwujYqvacc9TwNNJ4d-hwncAgCfCnQxwFZPV6ljZ9uKiVaF7QC7RuQM5mH9Rb9sTJjByHpkYVWu68KBcSJXG7LwEakZ3zYfx4DEZcTNx1NindFo4vIENGN6xEP-IpoOP1vFKxObn_1nGs_eFjGAN5J7G4cmEG3p7K_"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs">
+<span class="font-title-md text-body-md text-on-surface truncate">airpods_case_back.jpg</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded-full bg-mint text-on-surface font-label-sm text-label-sm text-[10px]">VERIFIED</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">2.4 MB • 2400 x 1800 px • EXIF timestamp stripped</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<button aria-label="Move item up" class="p-space-xs rounded text-outline hover:text-on-surface hover:bg-surface-container" type="button">
+<span class="material-symbols-outlined text-[18px]">drag_indicator</span>
+</button>
+<button aria-label="Remove item" class="p-space-xs rounded text-error hover:bg-error-container" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+<!-- Card 2: Upload in Progress with SVG Circular/Linear Bar -->
+<div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col gap-space-xs shadow-sm">
+<div class="flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-14 h-14 rounded-lg bg-sky/30 text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px] animate-spin">sync</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs">
+<span class="font-title-md text-body-md text-on-surface truncate">custom_blue_lanyard_strap.png</span>
+<span class="font-label-sm text-label-sm text-secondary">Uploading 64%</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">4.1 MB • Processing perceptual hash vector...</span>
+</div>
+</div>
+<button class="p-space-xs rounded text-outline hover:text-on-surface hover:bg-surface-container" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Progress indicator bar -->
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-secondary h-1.5 rounded-full transition-all duration-300" style="width: 64%;"></div>
+</div>
+</div>
+<!-- Card 3: Explicit Error Handling State -->
+<div class="bg-error-container rounded-lg p-space-sm flex items-start justify-between gap-space-sm shadow-sm">
+<div class="flex items-start gap-space-sm min-w-0">
+<div class="w-10 h-10 rounded-lg bg-error text-on-error flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-body-md text-on-error-container font-bold truncate">serial_tag_blurry.heic</span>
+<p class="font-body-sm text-body-sm text-on-error-container">
+                    Upload validation error: File format (<code class="font-bold">.HEIC</code>) unsupported or exceeding 15MB limit. Please convert to JPG, PNG, or WebP.
+                  </p>
+<div class="flex items-center gap-space-sm mt-1">
+<button class="font-label-sm text-label-sm text-on-error-container underline font-bold hover:opacity-80" type="button">Retry as JPG</button>
+<span class="text-on-error-container/40">•</span>
+<button class="font-label-sm text-label-sm text-on-error-container underline hover:opacity-80" type="button">Discard File</button>
+</div>
+</div>
+</div>
+<button aria-label="Dismiss error" class="p-space-xs rounded text-on-error-container hover:bg-surface-container-highest/30 shrink-0" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Integrated Summary of Captured Steps 1, 2, 3 (Collapsible & Editable Accordions) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-primary">Item Identity &amp; Geography Dossier</h2>
+<span class="font-label-sm text-label-sm text-secondary cursor-pointer hover:underline">Edit All Sections</span>
+</div>
+<!-- Step 1 & 2 Snapshot: Item & Characteristics -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-7 h-7 rounded-lg bg-surface-container-high text-primary flex items-center justify-center font-bold text-label-sm">1-2</span>
+<span class="font-title-md text-title-md text-on-surface">Physical Specifics &amp; Electronic Serial Blinding</span>
+</div>
+<button class="font-label-sm text-label-sm text-secondary hover:underline" type="button">Modify</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm">
+<div class="bg-surface-container-lowest p-space-sm rounded-lg">
+<span class="font-label-sm text-label-sm text-outline uppercase block">Category &amp; Make</span>
+<span class="font-title-md text-body-md text-on-surface mt-0.5 block">Electronics • Apple</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">AirPods Pro (2nd Gen)</span>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded-lg">
+<span class="font-label-sm text-label-sm text-outline uppercase block">Model &amp; Palette</span>
+<span class="font-title-md text-body-md text-on-surface mt-0.5 block">A2931 / USB-C Case</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Gloss White / No Accent</span>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded-lg">
+<span class="font-label-sm text-label-sm text-outline uppercase block">Unique Markings</span>
+<span class="font-title-md text-body-md text-on-surface mt-0.5 block">Engraving: "AR-24"</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Minor scuff on lid seam</span>
+</div>
+</div>
+<!-- Conditional Electronics Blinding Box -->
+<div class="bg-linen p-space-md rounded-lg flex items-start gap-space-sm shadow-inner">
+<span class="material-symbols-outlined text-[22px] text-secondary shrink-0 mt-0.5">lock</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-title-md text-body-md text-on-surface">Blinded Hardware Identifier:</span>
+<code class="font-label-md text-label-md bg-ash px-2 py-0.5 rounded text-on-surface">H83K••••••••90L2</code>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-[10px]">SHA-256 SALT</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                  Serial numbers and lock-screen descriptors are shielded by Westfield Privacy Shield. Campus custody clerks can perform blind verification match checks without viewing unhashed device numbers.
+                </p>
+</div>
+</div>
+</div>
+<!-- Step 3 Snapshot: Campus Location & Date Picker -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-7 h-7 rounded-lg bg-surface-container-high text-primary flex items-center justify-center font-bold text-label-sm">3</span>
+<span class="font-title-md text-title-md text-on-surface">Incident Location &amp; Chronology</span>
+</div>
+<button class="font-label-sm text-label-sm text-secondary hover:underline" type="button">Modify</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<div class="flex items-start gap-space-xs bg-surface-container-lowest p-space-sm rounded-lg">
+<span class="material-symbols-outlined text-[20px] text-primary shrink-0">calendar_month</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase">Date &amp; Estimated Window</span>
+<span class="font-title-md text-body-md text-on-surface">Thursday, Oct 24, 2024</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">2:15 PM – 3:30 PM (EDT)</span>
+</div>
+</div>
+<div class="flex items-start gap-space-xs bg-surface-container-lowest p-space-sm rounded-lg">
+<span class="material-symbols-outlined text-[20px] text-primary shrink-0">pin_drop</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase">Zone &amp; Placement</span>
+<span class="font-title-md text-body-md text-on-surface">Du Bois Central Library</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">4th Floor Quiet Stacks, Carrel #412</span>
+</div>
+</div>
+</div>
+<!-- Static Map Context Placeholder with data-location -->
+<div class="w-full h-40 bg-cover bg-center rounded-lg relative overflow-hidden shadow-inner" data-location="W.E.B. Du Bois Library, Westfield University" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCLIghR7Uyv_PPOMIBgsIHeDPUnczrmgfAURN00EbxMrr2BS3BD9rW5vJYjWaP_8tL7FbXv3xhK8O_JLD8vM0NJXWKrsYPVZJESNP3rlx2PUb-Q3CNZTUupAlEy4nT3UVCeRAM4W80Jrch8BTt6ALU9IAqdcFjRxpFNJlQxnc9GG-JVlDbkzWTcq2mvAojniDcgwLhivD9RJ5nOayzXKjojfJq5PLRSveXx7iuMX3mH')">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent flex items-end p-space-sm">
+<div class="flex items-center justify-between w-full text-on-primary">
+<span class="font-body-sm text-body-sm flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[16px] text-marigold" style="font-variation-settings: 'FILL' 1;">location_on</span>
+                    Custody Zone 04: Du Bois Central Campus Sector
+                  </span>
+<span class="font-label-sm text-label-sm bg-surface/20 backdrop-blur-md px-2 py-0.5 rounded text-on-primary">Desk: Circ 1st Floor</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 5 Preview: Contact, Shield & Claimant Identity -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Upcoming Step 05 Preview</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Claimant Identity &amp; Notification Shield</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">Define who may contact you once an automated or manual match is identified.</p>
+</div>
+<span class="inline-flex items-center px-space-xs py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold">
+              Pre-filled via SSO
+            </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md pt-space-xs">
+<!-- Full Name -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface font-semibold">Full Legal / Preferred Name</label>
+<input class="w-full bg-cloud px-space-md py-space-xs rounded-lg font-body-md text-body-md text-on-surface cursor-not-allowed" readonly="" type="text" value="Alex M. Rivers"/>
+<span class="font-body-sm text-body-sm text-outline">Locked by University Single Sign-On profile</span>
+</div>
+<!-- NetID -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface font-semibold">Westfield NetID</label>
+<input class="w-full bg-cloud px-space-md py-space-xs rounded-lg font-body-md text-body-md text-on-surface cursor-not-allowed" readonly="" type="text" value="arivers9281"/>
+<span class="font-body-sm text-body-sm text-outline">Associated with Faculty/Student Roll</span>
+</div>
+<!-- Institutional Email -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface font-semibold">Primary Custody Alert Email</label>
+<input class="w-full bg-canvas px-space-md py-space-xs rounded-lg font-body-md text-body-md text-on-surface shadow-inner focus:outline-none focus:bg-surface-container-lowest" type="email" value="alex.rivers@westfield.edu"/>
+<span class="font-body-sm text-body-sm text-outline">Matches will send instant notification digests here</span>
+</div>
+<!-- Phone Number -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface font-semibold">SMS Alert Line (Optional)</label>
+<input class="w-full bg-canvas px-space-md py-space-xs rounded-lg font-body-md text-body-md text-on-surface shadow-inner focus:outline-none focus:bg-surface-container-lowest" placeholder="+1 (413) 555-0198" type="tel"/>
+<span class="font-body-sm text-body-sm text-outline">Used solely for immediate item claim pickup codes</span>
+</div>
+</div>
+<!-- Privacy Shield Switch -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex items-start justify-between gap-space-md mt-space-xs">
+<div class="flex items-start gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-mint/40 text-on-surface flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">shield</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-body-md text-on-surface font-bold">Public Directory Privacy Cloak</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                  When enabled, your name and institutional NetID are strictly hidden from student-facing lost-and-found dashboards. Only bonded Westfield Campus Police Custodians can view contact information upon physical custody match.
+                </p>
+</div>
+</div>
+<!-- Interactive visual toggle -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0 mt-1">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<!-- Sticky Action Bar / Intake Progression Footer -->
+<div class="sticky bottom-4 z-20 bg-surface-container-lowest/95 backdrop-blur-md rounded-2xl p-space-md shadow-xl flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<button class="inline-flex items-center gap-1.5 px-space-md py-space-sm rounded-full text-on-surface hover:bg-surface-container font-label-lg text-label-lg transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+              Step 3: Location
+            </button>
+<span class="font-body-sm text-body-sm text-outline hidden sm:inline">•</span>
+<button class="hidden sm:inline-flex text-outline hover:text-on-surface font-label-md text-label-md px-space-xs" type="button">
+              Clear All Uploads
+            </button>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-space-sm rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg transition-colors" type="button">
+              Save Draft
+            </button>
+<button class="inline-flex items-center gap-2 px-space-lg py-space-sm rounded-full bg-primary hover:bg-graphite text-on-primary font-label-lg text-label-lg shadow-md transition-all hover:translate-y-[-1px]" type="button">
+              Proceed to Step 5: Privacy
+              <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Right Column: Sidebar & Regulatory Guidance Panels (4 cols) -->
+<aside class="lg:col-span-4 flex flex-col gap-space-md">
+<!-- AI Matching Engine Card with SVG Metric Donut -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Intelligent Match</span>
+<span class="w-2.5 h-2.5 rounded-full bg-mint animate-pulse" title="Engine Active"></span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Algorithmic Intake Vector Scanning</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Our multi-modal CLIP pipeline continuously embeds your submitted photos, serial hash, and carrel coordinates to calculate cosine similarities against freshly turned-in articles at 14 campus hubs.
+          </p>
+<!-- SVG Visual Donut / Match Rate Meter -->
+<div class="bg-canvas rounded-lg p-space-md flex items-center gap-space-md shadow-inner">
+<div class="relative w-16 h-16 shrink-0 flex items-center justify-center">
+<svg class="w-16 h-16 transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container-highest" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-secondary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="84, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<span class="absolute font-headline-sm text-body-sm text-primary font-bold">84%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-body-md text-on-surface font-semibold">High Match Potential</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">3 similar items logged at Campus Center &amp; Library desk today</span>
+</div>
+</div>
+<!-- Live Activity Feed of Recent Intake Matches -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Real-Time Custody Feeds</span>
+<div class="p-space-xs rounded bg-surface-container-low flex items-center justify-between text-body-sm">
+<span class="text-on-surface font-medium truncate">AirPods Pro Case (White)</span>
+<span class="font-label-sm text-label-sm text-mint bg-surface-container px-1.5 py-0.5 rounded">Circ Desk #2</span>
+</div>
+<div class="p-space-xs rounded bg-surface-container-low flex items-center justify-between text-body-sm">
+<span class="text-on-surface font-medium truncate">MagSafe USB-C Pod</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-1.5 py-0.5 rounded">Holden Center</span>
+</div>
+</div>
+</div>
+<!-- Privacy Shield Regulatory Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="w-8 h-8 rounded-lg bg-surface-container-high text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</span>
+<h4 class="font-title-lg text-title-md text-primary">Institutional Shield</h4>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Westfield University operates under FERPA compliance protocols and Mass. General Laws Ch. 134. Personal identifiers, serial hashes, and claiming receipts are stored with AES-256 zero-knowledge encryption.
+          </p>
+<ul class="flex flex-col gap-space-xs pt-space-xs text-body-sm text-on-surface-variant">
+<li class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-mint">check</span>
+              Never monetized or shared off-campus
+            </li>
+<li class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-mint">check</span>
+              Automated 90-day data purging
+            </li>
+<li class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-mint">check</span>
+              Cryptographic chain of custody
+            </li>
+</ul>
+</div>
+<!-- Emergency Hotline & Physical Depository Dispatch -->
+<div class="bg-linen rounded-xl p-space-lg shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs text-on-surface">
+<span class="material-symbols-outlined text-[20px] text-error">emergency</span>
+<h4 class="font-title-md text-title-md font-bold">Time-Sensitive Belongings?</h4>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            If your item contains government credentials, master building keys, passport, or medical equipment, contact Campus Dispatch immediately:
+          </p>
+<div class="flex flex-col gap-1 pt-1">
+<a class="font-headline-sm text-headline-sm text-secondary hover:underline" href="tel:4135552222">
+              (413) 555-2222
+            </a>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Westfield Police Desk • 24/7 Available</span>
+</div>
+</div>
+<!-- Custody Retrieval Process Mini-Timeline -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">What happens next?</span>
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<div class="flex items-start gap-space-xs">
+<span class="w-5 h-5 rounded-full bg-cloud text-on-surface font-label-sm text-[11px] flex items-center justify-center shrink-0 mt-0.5">1</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Dossier queued in live campus matching index.</p>
+</div>
+<div class="flex items-start gap-space-xs">
+<span class="w-5 h-5 rounded-full bg-cloud text-on-surface font-label-sm text-[11px] flex items-center justify-center shrink-0 mt-0.5">2</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Clerk scans item barcode at repository.</p>
+</div>
+<div class="flex items-start gap-space-xs">
+<span class="w-5 h-5 rounded-full bg-cloud text-on-surface font-label-sm text-[11px] flex items-center justify-center shrink-0 mt-0.5">3</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Secure QR claim code issued to institutional email.</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</div></main><footer class="w-full bg-surface-container-low shadow-[0_1px_8px_rgba(3,3,2,0.04)] pt-space-xl pb-space-lg"><div class="max-w-7xl mx-auto px-gutter"><div class="grid grid-cols-1 md:grid-cols-4 gap-space-lg pb-space-lg"><div class="space-y-space-xs md:col-span-1"><div class="flex items-center gap-space-xs mb-space-xs"><span class="w-7 h-7 rounded-lg bg-primary flex items-center justify-center text-on-primary font-headline-sm text-body-sm">W</span><span class="font-headline-sm text-title-md text-primary">CampusFind</span></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">The centralized lost property custodian registry for Westfield University System students, faculty, and campus visitors.</p></div><div class="space-y-space-xs"><span class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider block mb-space-xs">Services</span><ul class="space-y-space-xs"><li class="font-body-sm text-body-sm text-on-surface-variant">Intake Repository</li><li class="font-body-sm text-body-sm text-on-surface-variant">Intelligent Match AI</li><li class="font-body-sm text-body-sm text-on-surface-variant">Campus Custody Desks</li><li class="font-body-sm text-body-sm text-on-surface-variant">Courier Collection</li></ul></div><div class="space-y-space-xs"><span class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider block mb-space-xs">Governance &amp; Desk</span><ul class="space-y-space-xs"><li class="font-body-sm text-body-sm text-on-surface-variant">Westfield Police Dispatch</li><li class="font-body-sm text-body-sm text-on-surface-variant">Student Life &amp; Residence</li><li class="font-body-sm text-body-sm text-on-surface-variant">Facilities &amp; Operations</li><li class="font-body-sm text-body-sm text-on-surface-variant">Dean of Students</li></ul></div><div class="space-y-space-xs"><span class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider block mb-space-xs">Institutional Notices</span><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Unclaimed property retained strictly for 90 calendar days under Westfield System Board Policy § 402.1B and Massachusetts General Laws Ch. 134 regarding disposition of abandoned property.</p></div></div><div class="pt-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm"><p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 Trustees of Westfield University System. All rights reserved. Equal Opportunity Affirmative Action Institution.</p><div class="flex gap-space-md text-on-surface-variant font-label-sm text-label-sm"><span class="hover:text-on-surface">FERPA &amp; Privacy Statement</span><span class="hover:text-on-surface">Accessibility Policy</span><span class="hover:text-on-surface">Public Safety Log</span></div></div></div></footer></body></html>

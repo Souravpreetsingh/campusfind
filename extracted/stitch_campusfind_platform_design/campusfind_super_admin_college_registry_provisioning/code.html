@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Merriweather:ital,wght@0,700;1,700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "graphite": "#41413f", "primary": "#000000", "on-secondary-container": "#fefcff", "on-tertiary-fixed-variant": "#872000", "tertiary": "#000000", "surface-variant": "#e5e2e0", "inverse-surface": "#313030", "on-secondary-fixed": "#001b3c", "on-surface": "#1c1b1b", "on-tertiary-container": "#f34100", "error": "#ba1a1a", "outline-variant": "#c9c6be", "primary-container": "#1c1c19", "cloud": "#efefef", "tertiary-fixed-dim": "#ffb5a0", "surface-container-lowest": "#ffffff", "on-error-container": "#93000a", "canvas": "#fff3e7", "marigold": "#fde99b", "inverse-primary": "#c9c6c1", "on-secondary": "#ffffff", "on-secondary-fixed-variant": "#00468a", "linen": "#f7f7f7", "surface-bright": "#fcf8f7", "outline": "#797770", "on-tertiary": "#ffffff", "on-primary-fixed": "#1c1c19", "periwinkle": "#b8caf5", "on-background": "#1c1b1b", "tertiary-fixed": "#ffdbd1", "surface-dim": "#ddd9d8", "on-primary": "#ffffff", "mint": "#9bd8a9", "on-primary-fixed-variant": "#484743", "secondary-container": "#0074dc", "surface": "#fcf8f7", "inverse-on-surface": "#f4f0ef", "secondary": "#005bb0", "primary-fixed-dim": "#c9c6c1", "white": "#ffffff", "on-surface-variant": "#484740", "surface-container-low": "#f7f3f2", "sky": "#9ed4ef", "background": "#fcf8f7", "tertiary-container": "#3b0900", "on-error": "#ffffff", "error-container": "#ffdad6", "surface-tint": "#605e5b", "surface-container-high": "#ebe7e6", "surface-container-highest": "#e5e2e0", "secondary-fixed": "#d5e3ff", "on-tertiary-fixed": "#3b0900", "on-primary-container": "#86847f", "secondary-fixed-dim": "#a8c8ff", "surface-container": "#f1edec", "primary-fixed": "#e5e2dd", "ash": "#e1e1e1" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-mobile": "1rem", "gutter-sm": "1rem", "margin": "2rem", "space-lg": "1.5rem", "space-md": "1rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "gutter": "1.5rem", "space-xl": "2.5rem" }, "fontFamily": { "display-mobile": [ "Merriweather" ], "headline-sm": [ "Merriweather" ], "body-lg": [ "Inter" ], "body-sm": [ "Inter" ], "label-md": [ "Inter" ], "headline-md": [ "Merriweather" ], "title-md": [ "Inter" ], "label-lg": [ "Inter" ], "body-md": [ "Inter" ], "headline-lg-mobile": [ "Merriweather" ], "title-lg": [ "Inter" ], "headline-lg": [ "Merriweather" ], "display": [ "Merriweather" ], "label-sm": [ "Inter" ] }, "fontSize": { "display-mobile": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "fontWeight": "700" } ], "body-lg": [ "16px", { "lineHeight": "24px", "fontWeight": "400" } ], "body-sm": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "label-md": [ "12px", { "lineHeight": "16px", "fontWeight": "600" } ], "headline-md": [ "24px", { "lineHeight": "32px", "fontWeight": "700" } ], "title-md": [ "16px", { "lineHeight": "24px", "fontWeight": "600" } ], "label-lg": [ "14px", { "lineHeight": "20px", "fontWeight": "600" } ], "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "headline-lg-mobile": [ "26px", { "lineHeight": "34px", "fontWeight": "700" } ], "title-lg": [ "18px", { "lineHeight": "26px", "fontWeight": "600" } ], "headline-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "display": [ "48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-sm": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="p-space-lg bg-surface-container"><div class="flex items-center gap-space-sm mb-space-xs"><span class="material-symbols-outlined text-secondary text-2xl">hub</span><span class="font-headline-sm text-headline-sm text-primary tracking-tight">CampusFind</span></div><div class="flex items-center justify-between mt-space-xs"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Platform Super-Admin</span><span class="bg-primary text-on-primary font-label-sm text-label-sm px-2 py-0.5 rounded-full">Master</span></div><div class="mt-space-md p-space-sm bg-surface-container-lowest rounded-lg shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center justify-between"><span class="flex items-center gap-1.5 font-label-sm text-label-sm text-on-surface"><span class="w-2 h-2 rounded-full bg-mint"></span>99.98% Network Health</span><span class="font-label-sm text-label-sm text-on-surface-variant">42 Tenancies</span></div><div class="mt-1 font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-[13px] text-mint">verified_user</span>Zero Data Leakage Lock</div></div></div><nav class="p-space-md flex flex-col gap-1" data-active-classes="bg-primary text-on-primary shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="platform-overview" href="#"><span class="material-symbols-outlined text-[20px]">monitoring</span>Platform Overview</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="college-registry-provisioning" href="#"><span class="material-symbols-outlined text-[20px]">domain_add</span>College Registry &amp; Provisioning</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="tenant-governance-access" href="#"><span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>Tenant Governance &amp; Access</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="cross-college-analytics" href="#"><span class="material-symbols-outlined text-[20px]">query_stats</span>Cross-College Analytics</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="platform-wide-reports-compliance" href="#"><span class="material-symbols-outlined text-[20px]">policy</span>Platform Reports &amp; Compliance</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="global-system-configuration" href="#"><span class="material-symbols-outlined text-[20px]">settings_system_daydream</span>Global System Configuration</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="immutable-platform-audit-ledger" href="#"><span class="material-symbols-outlined text-[20px]">lock_clock</span>Immutable Audit Ledger</a></nav></div><div class="p-space-md m-space-md bg-canvas rounded-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center justify-between mb-1"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Master Key Session</span><span class="bg-mint text-on-surface font-label-sm text-label-sm px-1.5 py-0.5 rounded-full">Active</span></div><div class="font-body-sm text-body-sm text-graphite">Root Cryptographic Enclave: US-East-1 Vault-Alpha (Ephemeral 14m remaining)</div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 px-space-xl flex items-center justify-between"><div class="flex items-center gap-space-md flex-1 max-w-xl"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span><input class="w-full bg-surface-container-lowest pl-9 pr-12 py-1.5 rounded-lg text-on-surface placeholder:text-on-surface-variant font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary shadow-[0_1px_8px_rgba(0,0,0,0.04)]" placeholder="Global Search across 42 Tenants, Logs, &amp; System Infrastructure..." type="text"/><span class="absolute right-2.5 top-1/2 -translate-y-1/2 font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-1.5 py-0.5 rounded">⌘K</span></div></div><div class="flex items-center gap-space-lg"><div class="hidden xl:flex items-center gap-space-md"><div class="flex items-center gap-1.5 px-space-sm py-1 bg-surface-container-lowest rounded-full font-label-sm text-label-sm text-on-surface shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><span class="w-2 h-2 rounded-full bg-secondary-container"></span><span>Vaults: 3/3 Replicated</span></div><button class="flex items-center gap-1 px-space-md py-1 bg-error-container text-on-error-container rounded-full font-label-sm text-label-sm hover:opacity-90 transition-opacity"><span class="material-symbols-outlined text-[16px]">warning</span>Emergency Broadcast</button></div><div class="h-6 w-px bg-surface-container-highest"></div><div class="flex items-center gap-space-md"><div class="text-right hidden md:block"><div class="font-title-md text-title-md text-on-surface leading-tight">Dr. Angela Vance</div><div class="font-label-sm text-label-sm text-on-surface-variant">SecOps &amp; Infrastructure Director</div></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface"><div class="flex flex-col w-full">
+<!-- Top Command & Action Bar -->
+<div class="px-space-xl pt-space-xl pb-space-lg bg-surface flex flex-col gap-space-lg">
+<!-- Header Titles & Super-Admin Badges -->
+<div class="flex flex-col xl:flex-row xl:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-1 max-w-3xl">
+<div class="flex items-center gap-space-sm mb-1">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-canvas text-graphite font-label-sm text-label-sm shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-mint"></span>Zero-Trust Multi-Tenancy Engine v4.2
+          </span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">•</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant tracking-wider uppercase">Master Cryptographic Registry</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Institutional Tenant Registry &amp; Autonomous Enclave Provisioning</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Deploy, govern, and lifecycle-manage isolated collegiate environments with verified hardware HSM key separation and zero cross-tenant visibility.
+        </p>
+</div>
+<!-- Action Cluster -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<button class="inline-flex items-center gap-2 px-space-md py-2.5 bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-md text-label-md rounded-lg shadow-sm transition-all" id="btn-export-csv">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Batch Tenant Export (CSV)</span>
+</button>
+<button class="inline-flex items-center gap-2 px-space-md py-2.5 bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-md text-label-md rounded-lg shadow-sm transition-all" id="btn-audit-proofs">
+<span class="material-symbols-outlined text-[18px] text-secondary">verified_user</span>
+<span>Audit Isolation Proofs</span>
+</button>
+<button class="inline-flex items-center gap-2 px-space-lg py-2.5 bg-primary hover:bg-graphite text-on-primary font-label-md text-label-md rounded-lg shadow-md transition-all" id="btn-open-wizard">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>+ Provision New College Tenant</span>
+</button>
+</div>
+</div>
+<!-- Quick Metric Ribbons (Warm Tactile Surfaces) -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-md">
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm tracking-wider uppercase">Total Active Tenancies</span>
+<span class="material-symbols-outlined text-[20px] text-graphite">domain</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md text-primary">42</span>
+<span class="font-label-sm text-label-sm text-mint font-semibold">+3 this month</span>
+</div>
+<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm">All schemas cryptographically salted</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm tracking-wider uppercase">Protected Belongings</span>
+<span class="material-symbols-outlined text-[20px] text-secondary">inventory_2</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md text-primary">164,812</span>
+<span class="font-label-sm text-label-sm text-graphite font-semibold">Across campuses</span>
+</div>
+<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm">Avg recovery rate: 76.4%</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm tracking-wider uppercase">Smart Locker Nodes</span>
+<span class="material-symbols-outlined text-[20px] text-secondary-container">lock</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md text-primary">318 Units</span>
+<span class="font-label-sm text-label-sm text-mint">99.4% Online</span>
+</div>
+<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm">2 pending calibration</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm tracking-wider uppercase">Boundary Proof Status</span>
+<span class="material-symbols-outlined text-[20px] text-mint">security</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md text-primary">0 Leakages</span>
+<span class="font-label-sm text-label-sm text-mint font-semibold">100% Pass</span>
+</div>
+<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm">Automated fuzzing every 10 min</div>
+</div>
+</div>
+</div>
+<!-- Collapsible Interactive Provisioning Wizard -->
+<div class="px-space-xl py-space-md bg-canvas" id="wizard-container">
+<div class="max-w-7xl mx-auto bg-surface-container-lowest rounded-xl shadow-md p-space-lg">
+<div class="flex items-center justify-between pb-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">rocket_launch</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-headline-sm text-headline-sm text-primary">Collegiate Enclave Provisioning Wizard</h2>
+<span class="px-2 py-0.5 rounded-full bg-canvas text-on-surface font-label-sm text-label-sm">Automated Pipeline</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Initialize an autonomous university tenant with sovereign database, key management, and dispatch lockers.</p>
+</div>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-on-surface rounded-lg hover:bg-surface-container transition-colors" id="btn-minimize-wizard" title="Collapse Wizard">
+<span class="material-symbols-outlined text-[20px]">expand_less</span>
+</button>
+</div>
+<!-- Step Progress Header -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-space-sm py-space-sm mb-space-md">
+<div class="flex items-center gap-2 p-2 rounded-lg bg-surface-container-low text-primary">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm font-bold">1</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-bold">Institutional Identity</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Subdomain &amp; Legal Entity</span>
+</div>
+</div>
+<div class="flex items-center gap-2 p-2 rounded-lg bg-surface-container-low text-primary">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm font-bold">2</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-bold">Security &amp; Isolation</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">AES-256 Key &amp; SAML IdP</span>
+</div>
+</div>
+<div class="flex items-center gap-2 p-2 rounded-lg bg-surface-container-low text-primary">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm font-bold">3</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-bold">Physical Custody Nodes</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Depots &amp; Smart Lockers</span>
+</div>
+</div>
+<div class="flex items-center gap-2 p-2 rounded-lg bg-canvas text-primary">
+<span class="w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-label-sm text-label-sm font-bold">4</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-bold text-secondary">Final Review &amp; Launch</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Admin Liaison &amp; Sign-off</span>
+</div>
+</div>
+</div>
+<!-- Two-Column Interactive Wizard Stage -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Configuration Form Elements (Left 7 Cols) -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<div class="p-space-md bg-surface-container-low rounded-xl flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Enclave Staging Data</span>
+<span class="font-label-sm text-label-sm text-mint flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Pre-Flight Validation Passed
+              </span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<div>
+<label class="font-label-sm text-label-sm text-on-surface font-semibold mb-1 block">Full Legal Entity Name</label>
+<input class="w-full bg-surface-container-lowest px-3 py-2 rounded-lg font-body-sm text-body-sm text-on-surface shadow-sm focus:outline-none focus:ring-1 focus:ring-primary" type="text" value="Hudson River College of Art &amp; Design"/>
+</div>
+<div>
+<label class="font-label-sm text-label-sm text-on-surface font-semibold mb-1 block">Assigned Subdomain Slug</label>
+<div class="flex items-center bg-surface-container-lowest rounded-lg px-3 py-2 shadow-sm">
+<input class="w-full bg-transparent font-body-sm text-body-sm text-on-surface focus:outline-none" type="text" value="hudsonart"/>
+<span class="text-on-surface-variant font-label-sm text-label-sm">.campusfind.edu</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm mt-1">
+<div>
+<label class="font-label-sm text-label-sm text-on-surface font-semibold mb-1 block">SAML 2.0 / Shibboleth IdP Metadata URL</label>
+<input class="w-full bg-surface-container-lowest px-3 py-2 rounded-lg font-body-sm text-body-sm text-on-surface shadow-sm focus:outline-none focus:ring-1 focus:ring-primary" type="text" value="https://idp.hudsonart.edu/idp/shibboleth"/>
+</div>
+<div>
+<label class="font-label-sm text-label-sm text-on-surface font-semibold mb-1 block">Designated Tenant License Tier</label>
+<select class="w-full bg-surface-container-lowest px-3 py-2 rounded-lg font-body-sm text-body-sm text-on-surface shadow-sm focus:outline-none focus:ring-1 focus:ring-primary">
+<option selected="">Flagship Enterprise (Unlimited Lockers &amp; Items)</option>
+<option>Standard Collegiate (Up to 10 Depots)</option>
+<option>Autonomous Regional Campus</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm mt-1">
+<div>
+<label class="font-label-sm text-label-sm text-on-surface font-semibold mb-1 block">Lead Custodial Liaison NetID / Email</label>
+<input class="w-full bg-surface-container-lowest px-3 py-2 rounded-lg font-body-sm text-body-sm text-on-surface shadow-sm focus:outline-none focus:ring-1 focus:ring-primary" type="email" value="dispatch-lead@hudsonart.edu"/>
+</div>
+<div>
+<label class="font-label-sm text-label-sm text-on-surface font-semibold mb-1 block">Campus Police Dispatch Interlock Phone</label>
+<input class="w-full bg-surface-container-lowest px-3 py-2 rounded-lg font-body-sm text-body-sm text-on-surface shadow-sm focus:outline-none focus:ring-1 focus:ring-primary" type="text" value="+1 (212) 555-0199 [Ext 4]"/>
+</div>
+</div>
+<!-- Hardware Custody Node Configuration -->
+<div class="mt-2 pt-2 flex flex-col gap-2">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Initial Depot &amp; Hardware Lockers Assigned</span>
+<div class="flex flex-wrap gap-2">
+<span class="px-2.5 py-1 rounded-md bg-surface-container text-on-surface font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">storefront</span> Fine Arts Atrium Locker (16 Cells)
+                </span>
+<span class="px-2.5 py-1 rounded-md bg-surface-container text-on-surface font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">local_police</span> Campus Security Central Desk
+                </span>
+<button class="px-2.5 py-1 rounded-md bg-surface-container-lowest hover:bg-surface-container font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[14px]">add</span> Add Hardware Node
+                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Live Deployment Preview Manifest (Right 5 Cols) -->
+<div class="lg:col-span-5 bg-surface-container-high p-space-md rounded-xl flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-bold tracking-wider text-on-surface uppercase">Ready-to-Provision Card</span>
+<span class="px-2 py-0.5 rounded-full bg-marigold text-graphite font-label-sm text-label-sm">Stage: Enclave Compiled</span>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-space-md shadow-sm flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center font-headline-sm text-headline-sm text-primary">
+                  HR
+                </div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary leading-tight">Hudson River Art &amp; Design</h3>
+<p class="font-label-sm text-label-sm text-secondary font-mono">hudsonart.campusfind.edu</p>
+</div>
+</div>
+<div class="space-y-1.5 pt-2 font-body-sm text-body-sm">
+<div class="flex justify-between text-on-surface-variant">
+<span>Cryptographic Enclave ID:</span>
+<span class="font-mono text-on-surface font-semibold">T-9844-HRC</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Master Salt Seed (AES-256):</span>
+<span class="font-mono text-on-surface text-xs">8f92-c410-aa91-🔒</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Database Segregation:</span>
+<span class="text-mint font-semibold">Autonomous Schema (Row-Level RBAC)</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Geographic Redundancy:</span>
+<span class="text-on-surface">US-East (Virginia) + DR Hot Standby</span>
+</div>
+</div>
+</div>
+<div class="p-3 bg-canvas rounded-lg flex items-start gap-2">
+<span class="material-symbols-outlined text-[18px] text-tertiary-container mt-0.5">verified</span>
+<p class="font-body-sm text-body-sm text-graphite leading-snug">
+                Super-Admin guarantee: Zero cross-tenant lookup paths will exist in this database node. All student claims are locked within this perimeter.
+              </p>
+</div>
+</div>
+<div class="flex flex-col gap-2 pt-2">
+<button class="w-full py-3 bg-secondary hover:bg-secondary-container text-on-secondary font-label-lg text-label-lg rounded-lg shadow-md flex items-center justify-center gap-2 transition-all" id="btn-deploy-enclave">
+<span class="material-symbols-outlined text-[20px]">memory</span>
+<span>Deploy Tenant Enclave (Autonomous Rollout)</span>
+</button>
+<div class="hidden text-center font-label-sm text-label-sm text-mint py-1 font-semibold animate-pulse" id="provision-toast">
+              ✓ Initializing hardware HSM seed &amp; provisioning secure schema...
+            </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Registry Table & Filtering Section -->
+<div class="px-space-xl py-space-lg flex flex-col gap-space-md">
+<!-- Filter, Search & Status Strip -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
+<!-- Search Input -->
+<div class="relative flex-1 max-w-lg">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">filter_alt</span>
+<input class="w-full bg-surface-container-low pl-9 pr-4 py-2 rounded-lg text-on-surface placeholder:text-on-surface-variant font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary" id="tenant-search" placeholder="Filter by Institution, Subdomain, Enclave #, or Dispatcher NetID..." type="text"/>
+</div>
+<!-- Quick Filter Pills -->
+<div class="flex flex-wrap items-center gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant mr-1">Status:</span>
+<button class="status-filter-btn px-3 py-1 rounded-full bg-primary text-on-primary font-label-sm text-label-sm transition-colors" data-filter="all">All (42)</button>
+<button class="status-filter-btn px-3 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-colors" data-filter="active">Active (38)</button>
+<button class="status-filter-btn px-3 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-colors" data-filter="provisioning">Provisioning (2)</button>
+<button class="status-filter-btn px-3 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-colors" data-filter="suspended">Suspended (2)</button>
+<div class="h-4 w-px bg-surface-container-highest mx-1"></div>
+<select class="bg-surface-container-low px-3 py-1.5 rounded-lg text-on-surface font-label-sm text-label-sm focus:outline-none">
+<option>All Tiers &amp; Plans</option>
+<option>Flagship Enterprise</option>
+<option>Enterprise Plus</option>
+<option>Standard Campus</option>
+</select>
+</div>
+</div>
+<!-- The Registry Table -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead class="bg-surface-container-low font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
+<tr>
+<th class="py-3.5 px-space-md font-semibold">Institution &amp; Subdomain</th>
+<th class="py-3.5 px-space-md font-semibold">Tenant Enclave Hash</th>
+<th class="py-3.5 px-space-md font-semibold">Status</th>
+<th class="py-3.5 px-space-md font-semibold">Plan / Scale</th>
+<th class="py-3.5 px-space-md font-semibold">Belongings Tracked</th>
+<th class="py-3.5 px-space-md font-semibold">Custody Fleet</th>
+<th class="py-3.5 px-space-md font-semibold">Lead Admin NetID</th>
+<th class="py-3.5 px-space-md font-semibold">Last Boundary Audit</th>
+<th class="py-3.5 px-space-md font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface" id="tenant-tbody">
+<!-- Row 1: Westfield State -->
+<tr class="tenant-row bg-surface-container-lowest hover:bg-surface-container-low transition-colors cursor-pointer" data-status="active" data-tenant-id="T-4029">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center font-bold text-primary text-xs">
+                    WS
+                  </div>
+<div>
+<div class="font-title-md text-title-md text-primary leading-snug">Westfield State University</div>
+<div class="font-body-sm text-body-sm text-secondary font-mono">westfield.campusfind.edu</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md font-mono text-xs text-graphite">
+<span class="px-2 py-0.5 rounded bg-surface-container font-semibold">#T-4029</span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-mint text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Active
+                </span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm">Flagship</span>
+</td>
+<td class="py-3.5 px-space-md font-semibold text-primary">
+                1,842 items
+              </td>
+<td class="py-3.5 px-space-md text-on-surface-variant font-label-sm text-label-sm">
+                5 Depots / 32 Lockers
+              </td>
+<td class="py-3.5 px-space-md">
+<div class="text-on-surface font-medium">Officer M. Vance</div>
+<div class="text-on-surface-variant text-xs">mvance@westfield.edu</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1 text-mint text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> 100% Isolated
+                </div>
+<div class="text-on-surface-variant text-xs">Today 04:12 UTC</div>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<button class="open-inspector-btn p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-primary transition-colors" data-tenant-id="T-4029" title="Inspect Enclave">
+<span class="material-symbols-outlined text-[20px]">manage_accounts</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: Amherst Science & Engineering -->
+<tr class="tenant-row bg-surface-container-lowest hover:bg-surface-container-low transition-colors cursor-pointer" data-status="active" data-tenant-id="T-3811">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center font-bold text-primary text-xs">
+                    AS
+                  </div>
+<div>
+<div class="font-title-md text-title-md text-primary leading-snug">Amherst Science &amp; Engineering</div>
+<div class="font-body-sm text-body-sm text-secondary font-mono">amherst-se.campusfind.edu</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md font-mono text-xs text-graphite">
+<span class="px-2 py-0.5 rounded bg-surface-container font-semibold">#T-3811</span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-mint text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Active
+                </span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm">Enterprise</span>
+</td>
+<td class="py-3.5 px-space-md font-semibold text-primary">
+                3,210 items
+              </td>
+<td class="py-3.5 px-space-md text-on-surface-variant font-label-sm text-label-sm">
+                8 Depots / 48 Lockers
+              </td>
+<td class="py-3.5 px-space-md">
+<div class="text-on-surface font-medium">Chief R. Thorne</div>
+<div class="text-on-surface-variant text-xs">rthorne@amherst-se.edu</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1 text-mint text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> 100% Isolated
+                </div>
+<div class="text-on-surface-variant text-xs">Today 02:00 UTC</div>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<button class="open-inspector-btn p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-primary transition-colors" data-tenant-id="T-3811" title="Inspect Enclave">
+<span class="material-symbols-outlined text-[20px]">manage_accounts</span>
+</button>
+</td>
+</tr>
+<!-- Row 3: Pioneer Valley Community College (Suspended) -->
+<tr class="tenant-row bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer" data-status="suspended" data-tenant-id="T-1902">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-tertiary-fixed text-tertiary-container flex items-center justify-center font-bold text-xs">
+                    PV
+                  </div>
+<div>
+<div class="font-title-md text-title-md text-primary leading-snug">Pioneer Valley Community College</div>
+<div class="font-body-sm text-body-sm text-secondary font-mono">pioneer.campusfind.edu</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md font-mono text-xs text-graphite">
+<span class="px-2 py-0.5 rounded bg-surface-container font-semibold">#T-1902</span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-error text-on-error font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[12px]">lock</span>Suspended
+                </span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm">Standard</span>
+</td>
+<td class="py-3.5 px-space-md font-semibold text-primary">
+                890 items
+              </td>
+<td class="py-3.5 px-space-md text-on-surface-variant font-label-sm text-label-sm">
+                2 Depots / 12 Lockers
+              </td>
+<td class="py-3.5 px-space-md">
+<div class="text-on-surface font-medium">Dean Sarah Lin</div>
+<div class="text-on-surface-variant text-xs">slin@pioneer.edu</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1 text-on-tertiary-container text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">warning</span> Annual Audit Overdue
+                </div>
+<div class="text-on-surface-variant text-xs">Oct 20: Tenant Frozen</div>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<button class="open-inspector-btn p-1.5 rounded-lg bg-canvas hover:bg-surface-container text-on-tertiary-container hover:text-primary transition-colors" data-tenant-id="T-1902" title="Inspect Suspended Enclave">
+<span class="material-symbols-outlined text-[20px]">policy</span>
+</button>
+</td>
+</tr>
+<!-- Row 4: Boston Harbor Metropolitan (Provisioning) -->
+<tr class="tenant-row bg-surface-container-lowest hover:bg-surface-container-low transition-colors cursor-pointer" data-status="provisioning" data-tenant-id="T-5104">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold text-xs">
+                    BH
+                  </div>
+<div>
+<div class="font-title-md text-title-md text-primary leading-snug">Boston Harbor Metropolitan</div>
+<div class="font-body-sm text-body-sm text-secondary font-mono">bostonharbor.campusfind.edu</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md font-mono text-xs text-graphite">
+<span class="px-2 py-0.5 rounded bg-surface-container font-semibold">#T-5104</span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-periwinkle text-graphite font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-ping"></span>Provisioning
+                </span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm">Enterprise</span>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant italic">
+                0 items (Staged)
+              </td>
+<td class="py-3.5 px-space-md text-on-surface-variant font-label-sm text-label-sm">
+                6 Depots / 40 Lockers
+              </td>
+<td class="py-3.5 px-space-md">
+<div class="text-on-surface font-medium">Dir. Carlos Mendez</div>
+<div class="text-on-surface-variant text-xs">cmendez@bostonharbor.edu</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1 text-secondary text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">sync</span> SAML Linking
+                </div>
+<div class="text-on-surface-variant text-xs">Rollout In-Flight</div>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<button class="open-inspector-btn p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-primary transition-colors" data-tenant-id="T-5104" title="Inspect Enclave">
+<span class="material-symbols-outlined text-[20px]">manage_accounts</span>
+</button>
+</td>
+</tr>
+<!-- Row 5: Cambridge Polytechnic -->
+<tr class="tenant-row bg-surface-container-lowest hover:bg-surface-container-low transition-colors cursor-pointer" data-status="active" data-tenant-id="T-2980">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center font-bold text-primary text-xs">
+                    CP
+                  </div>
+<div>
+<div class="font-title-md text-title-md text-primary leading-snug">Cambridge Polytechnic</div>
+<div class="font-body-sm text-body-sm text-secondary font-mono">cambridgepoly.campusfind.edu</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md font-mono text-xs text-graphite">
+<span class="px-2 py-0.5 rounded bg-surface-container font-semibold">#T-2980</span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-mint text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Active
+                </span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold">Enterprise Plus</span>
+</td>
+<td class="py-3.5 px-space-md font-semibold text-primary">
+                4,120 items
+              </td>
+<td class="py-3.5 px-space-md text-on-surface-variant font-label-sm text-label-sm">
+                11 Depots / 64 Lockers
+              </td>
+<td class="py-3.5 px-space-md">
+<div class="text-on-surface font-medium">Capt. James Wu</div>
+<div class="text-on-surface-variant text-xs">jwu@cambridgepoly.edu</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1 text-mint text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> 100% Isolated
+                </div>
+<div class="text-on-surface-variant text-xs">Today 05:30 UTC</div>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<button class="open-inspector-btn p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-primary transition-colors" data-tenant-id="T-2980" title="Inspect Enclave">
+<span class="material-symbols-outlined text-[20px]">manage_accounts</span>
+</button>
+</td>
+</tr>
+<!-- Row 6: Berkshire Valley College -->
+<tr class="tenant-row bg-surface-container-lowest hover:bg-surface-container-low transition-colors cursor-pointer" data-status="active" data-tenant-id="T-4412">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center font-bold text-primary text-xs">
+                    BV
+                  </div>
+<div>
+<div class="font-title-md text-title-md text-primary leading-snug">Berkshire Valley College</div>
+<div class="font-body-sm text-body-sm text-secondary font-mono">berkshire.campusfind.edu</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md font-mono text-xs text-graphite">
+<span class="px-2 py-0.5 rounded bg-surface-container font-semibold">#T-4412</span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-mint text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Active
+                </span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm">Standard</span>
+</td>
+<td class="py-3.5 px-space-md font-semibold text-primary">
+                540 items
+              </td>
+<td class="py-3.5 px-space-md text-on-surface-variant font-label-sm text-label-sm">
+                2 Depots / 8 Lockers
+              </td>
+<td class="py-3.5 px-space-md">
+<div class="text-on-surface font-medium">Lt. E. Robinson</div>
+<div class="text-on-surface-variant text-xs">erobinson@berkshire.edu</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1 text-mint text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> 100% Isolated
+                </div>
+<div class="text-on-surface-variant text-xs">Today 01:15 UTC</div>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<button class="open-inspector-btn p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-primary transition-colors" data-tenant-id="T-4412" title="Inspect Enclave">
+<span class="material-symbols-outlined text-[20px]">manage_accounts</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer & Pagination -->
+<div class="p-space-md bg-surface-container-low flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">
+          Showing <span class="font-semibold text-on-surface">1 - 6</span> of <span class="font-semibold text-on-surface">42</span> Registered Collegiate Institutions
+        </span>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1 bg-surface-container-lowest text-on-surface-variant rounded font-label-sm text-label-sm hover:text-on-surface transition-colors shadow-sm disabled:opacity-50" disabled="">Previous</button>
+<button class="px-3 py-1 bg-primary text-on-primary rounded font-label-sm text-label-sm shadow-sm">1</button>
+<button class="px-3 py-1 bg-surface-container-lowest text-on-surface rounded font-label-sm text-label-sm hover:bg-surface-container transition-colors shadow-sm">2</button>
+<button class="px-3 py-1 bg-surface-container-lowest text-on-surface rounded font-label-sm text-label-sm hover:bg-surface-container transition-colors shadow-sm">3</button>
+<button class="px-3 py-1 bg-surface-container-lowest text-on-surface-variant rounded font-label-sm text-label-sm hover:text-on-surface transition-colors shadow-sm">Next</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Detailed Institutional Tenant Lifecycle Inspector (Slide-in / Interactive Section) -->
+<div class="px-space-xl pb-space-xl" id="inspector-section">
+<div class="bg-surface-container-lowest rounded-xl shadow-md p-space-lg flex flex-col gap-space-lg">
+<!-- Inspector Header & Campus Quick Switch -->
+<div class="flex flex-col lg:flex-row items-start lg:items-center justify-between pb-space-md gap-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-canvas text-tertiary-container flex items-center justify-center font-headline-md text-headline-md" id="inspector-badge">
+            PV
+          </div>
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md text-primary" id="inspector-title">Pioneer Valley Community College</h2>
+<span class="px-2.5 py-0.5 rounded-full bg-error text-on-error font-label-sm text-label-sm font-semibold" id="inspector-status-badge">
+                SUSPENDED
+              </span>
+</div>
+<div class="flex items-center gap-3 mt-0.5 font-body-sm text-body-sm text-on-surface-variant">
+<span>Tenant Enclave: <strong class="font-mono text-on-surface" id="inspector-enclave">#T-1902</strong></span>
+<span>•</span>
+<span class="text-secondary font-mono" id="inspector-domain">pioneer.campusfind.edu</span>
+<span>•</span>
+<span>Lead Dispatcher: <strong class="text-on-surface" id="inspector-lead">Dean Sarah Lin</strong></span>
+</div>
+</div>
+</div>
+<!-- Quick Switcher Tabs -->
+<div class="flex items-center gap-2 bg-surface-container p-1 rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant px-2">Sample View:</span>
+<button class="px-3 py-1 rounded bg-primary text-on-primary font-label-sm text-label-sm font-medium shadow-sm transition-all" id="switch-pvcc">
+            Pioneer Valley (Suspended)
+          </button>
+<button class="px-3 py-1 rounded text-on-surface font-label-sm text-label-sm font-medium hover:bg-surface-container-high transition-all" id="switch-westfield">
+            Westfield State (Active)
+          </button>
+</div>
+</div>
+<!-- Main Inspector Split Layout: Lifecycle Controls & Cryptographic Certificate -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Left: Lifecycle Controls & Sovereign Enclave Operations (7 Cols) -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<div class="p-space-md bg-surface-container-low rounded-xl flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<h3 class="font-title-md text-title-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-secondary">shield_with_house</span>
+                Autonomous Enclave Lifecycle State
+              </h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sovereign State Machine</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Super-Administrator actions directly alter hardware HSM partition status and network ingress routes. All alterations write directly to the immutable audit ledger.
+            </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm pt-2">
+<!-- Action: Reactivate / Suspend -->
+<div class="p-3 bg-surface-container-lowest rounded-lg shadow-sm flex flex-col justify-between gap-3" id="lifecycle-action-box">
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-bold text-on-surface" id="lifecycle-status-action-title">Reactivate Tenant Enclave</span>
+<span class="material-symbols-outlined text-mint text-[18px]">power_settings_new</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1" id="lifecycle-status-action-desc">
+                    Restores student submission portal, locker solenoid API callbacks, and automated SMS notifications.
+                  </p>
+</div>
+<button class="w-full py-2 bg-primary hover:bg-graphite text-on-primary font-label-sm text-label-sm rounded-lg transition-colors flex items-center justify-center gap-1.5" id="btn-toggle-lifecycle">
+<span class="material-symbols-outlined text-[16px]">lock_open</span>
+<span id="btn-toggle-lifecycle-text">Lift Suspension &amp; Re-arm</span>
+</button>
+</div>
+<!-- Action: Key Rotation -->
+<div class="p-3 bg-surface-container-lowest rounded-lg shadow-sm flex flex-col justify-between gap-3">
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-bold text-on-surface">Rotate AES-256 Master Key</span>
+<span class="material-symbols-outlined text-secondary text-[18px]">vpn_key</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                    Re-encrypts all items, claim photos, and sensitive police logs in hardware vault with zero downtime.
+                  </p>
+</div>
+<button class="w-full py-2 bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm rounded-lg transition-colors flex items-center justify-center gap-1.5" id="btn-rotate-key">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+<span>Rotate Partition Key</span>
+</button>
+</div>
+</div>
+<!-- Danger Zone Controls -->
+<div class="p-3 bg-canvas rounded-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mt-1">
+<div>
+<div class="font-label-sm text-label-sm font-bold text-tertiary-container flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">delete_forever</span>
+                  Purge Test Records / Retain Legal Chain-of-Custody
+                </div>
+<div class="font-body-sm text-body-sm text-graphite">
+                  Cleans staging data while permanently locking evidentiary custody logs required by Clery Act compliance.
+                </div>
+</div>
+<button class="px-3 py-1.5 bg-surface-container-lowest hover:bg-surface-container text-tertiary-container font-label-sm text-label-sm rounded-lg shadow-sm whitespace-nowrap transition-colors" id="btn-purge-test">
+                Initiate Purge Filter
+              </button>
+</div>
+</div>
+<!-- Custody Depots & Connected Hardware Lockers -->
+<div class="p-space-md bg-surface-container-low rounded-xl flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<h3 class="font-title-md text-title-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-graphite">pin_drop</span>
+                Institutional Custody Nodes &amp; Hardware Lockers
+              </h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Real-time Telemetry</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="inspector-depots">
+<div class="p-3 bg-surface-container-lowest rounded-lg shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">meeting_room</span>
+<div>
+<div class="font-label-sm text-label-sm font-semibold text-on-surface">Campus Center Police Substation</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Depot #PV-01 • 8 Solenoid Cells</div>
+</div>
+</div>
+<span class="w-2 h-2 rounded-full bg-error" title="Offline (Tenant Suspended)"></span>
+</div>
+<div class="p-3 bg-surface-container-lowest rounded-lg shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">local_library</span>
+<div>
+<div class="font-label-sm text-label-sm font-semibold text-on-surface">East Library Circulation Desk</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Depot #PV-02 • 4 Solenoid Cells</div>
+</div>
+</div>
+<span class="w-2 h-2 rounded-full bg-error" title="Offline (Tenant Suspended)"></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Cryptographic Data Isolation Proof Certificate (5 Cols) -->
+<div class="lg:col-span-5 bg-surface-container-high p-space-md rounded-xl flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-mint text-[20px]">verified</span>
+<span class="font-label-sm text-label-sm font-bold uppercase tracking-wider">Isolation Proof Certificate</span>
+</div>
+<span class="font-mono text-xs text-on-surface-variant">RFC-7519 / SHA-256</span>
+</div>
+<!-- Tactile Certificate Card -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-3 font-mono text-xs">
+<div class="flex items-center justify-between pb-2 border-b-0">
+<span class="text-on-surface-variant">VERIFICATION PERIMETER</span>
+<span class="text-mint font-semibold">100% UNBREACHED</span>
+</div>
+<div class="space-y-2 text-on-surface">
+<div>
+<div class="text-on-surface-variant text-[11px]">Database Schema Partition:</div>
+<div class="font-semibold" id="cert-schema">schema_pvcc_1902_prod (ISOLATED)</div>
+</div>
+<div>
+<div class="text-on-surface-variant text-[11px]">Row-Level Security (RLS) Filter:</div>
+<div class="text-graphite font-semibold">WHERE tenant_id = 'T-1902' STRICT</div>
+</div>
+<div>
+<div class="text-on-surface-variant text-[11px]">Hardware Vault Key ARN:</div>
+<div class="truncate text-graphite" id="cert-arn">arn:aws:kms:us-east-1:771029:key/d029f-382a-4401</div>
+</div>
+<div>
+<div class="text-on-surface-variant text-[11px]">Cryptographic Isolation Hash:</div>
+<div class="break-all text-[11px] bg-surface-container p-2 rounded text-primary font-mono" id="cert-hash">
+                    e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+                  </div>
+</div>
+</div>
+<div class="mt-2 pt-2 bg-canvas p-2.5 rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-graphite">gavel</span>
+<span class="font-body-sm text-body-sm text-graphite text-[12px] leading-tight">
+                  Cryptographically guarantees that inquiries made from any other collegiate tenancy will throw SQL parse fault 403-E.
+                </span>
+</div>
+</div>
+</div>
+<!-- Bottom Proof Stamp & Re-verify Trigger -->
+<div class="flex items-center justify-between pt-2">
+<div class="flex flex-col font-body-sm text-body-sm">
+<span class="text-on-surface-variant text-xs">Automated Boundary Proof Engine</span>
+<span class="text-primary font-semibold text-xs">Next Scheduled Verification: in 4m 12s</span>
+</div>
+<button class="px-3 py-1.5 bg-primary text-on-primary hover:bg-graphite rounded-lg font-label-sm text-label-sm shadow-sm transition-colors flex items-center gap-1" id="btn-reverify-now">
+<span class="material-symbols-outlined text-[14px]">history</span>
+<span>Re-verify Now</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    // 1. Wizard Collapsible Toggle
+    const btnOpenWizard = document.getElementById('btn-open-wizard');
+    const btnMinimizeWizard = document.getElementById('btn-minimize-wizard');
+    const wizardContainer = document.getElementById('wizard-container');
+
+    if (btnMinimizeWizard && wizardContainer) {
+      btnMinimizeWizard.addEventListener('click', () => {
+        wizardContainer.classList.toggle('hidden');
+      });
+    }
+
+    if (btnOpenWizard && wizardContainer) {
+      btnOpenWizard.addEventListener('click', () => {
+        wizardContainer.classList.remove('hidden');
+        wizardContainer.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+
+    // 2. Deploy Tenant Enclave Action Simulation
+    const btnDeployEnclave = document.getElementById('btn-deploy-enclave');
+    const provisionToast = document.getElementById('provision-toast');
+
+    if (btnDeployEnclave && provisionToast) {
+      btnDeployEnclave.addEventListener('click', () => {
+        btnDeployEnclave.disabled = true;
+        btnDeployEnclave.classList.add('opacity-75');
+        provisionToast.classList.remove('hidden');
+
+        setTimeout(() => {
+          provisionToast.textContent = '✓ Enclave T-9844-HRC deployed. Autonomous schema verified.';
+          setTimeout(() => {
+            btnDeployEnclave.disabled = false;
+            btnDeployEnclave.classList.remove('opacity-75');
+            provisionToast.classList.add('hidden');
+          }, 3000);
+        }, 1800);
+      });
+    }
+
+    // 3. Status Filtering in Table
+    const filterBtns = document.querySelectorAll('.status-filter-btn');
+    const rows = document.querySelectorAll('.tenant-row');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-primary', 'text-on-primary');
+          b.classList.add('bg-surface-container', 'text-on-surface');
+        });
+        btn.classList.add('bg-primary', 'text-on-primary');
+        btn.classList.remove('bg-surface-container', 'text-on-surface');
+
+        const filter = btn.getAttribute('data-filter');
+        rows.forEach(row => {
+          const status = row.getAttribute('data-status');
+          if (filter === 'all' || status === filter) {
+            row.style.display = '';
+          } else {
+            row.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // 4. Live Search in Table
+    const searchInput = document.getElementById('tenant-search');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        rows.forEach(row => {
+          const text = row.innerText.toLowerCase();
+          row.style.display = text.includes(query) ? '' : 'none';
+        });
+      });
+    }
+
+    // 5. Inspector Switching between Pioneer Valley (Suspended) & Westfield State (Active)
+    const switchPVCC = document.getElementById('switch-pvcc');
+    const switchWestfield = document.getElementById('switch-westfield');
+
+    const inspectorBadge = document.getElementById('inspector-badge');
+    const inspectorTitle = document.getElementById('inspector-title');
+    const inspectorStatusBadge = document.getElementById('inspector-status-badge');
+    const inspectorEnclave = document.getElementById('inspector-enclave');
+    const inspectorDomain = document.getElementById('inspector-domain');
+    const inspectorLead = document.getElementById('inspector-lead');
+    const inspectorActionTitle = document.getElementById('lifecycle-status-action-title');
+    const inspectorActionDesc = document.getElementById('lifecycle-status-action-desc');
+    const btnToggleLifecycleText = document.getElementById('btn-toggle-lifecycle-text');
+    const certSchema = document.getElementById('cert-schema');
+    const certArn = document.getElementById('cert-arn');
+    const certHash = document.getElementById('cert-hash');
+    const inspectorDepots = document.getElementById('inspector-depots');
+
+    function loadPioneerValley() {
+      switchPVCC.className = 'px-3 py-1 rounded bg-primary text-on-primary font-label-sm text-label-sm font-medium shadow-sm transition-all';
+      switchWestfield.className = 'px-3 py-1 rounded text-on-surface font-label-sm text-label-sm font-medium hover:bg-surface-container-high transition-all';
+
+      inspectorBadge.textContent = 'PV';
+      inspectorBadge.className = 'w-12 h-12 rounded-xl bg-canvas text-tertiary-container flex items-center justify-center font-headline-md text-headline-md';
+      inspectorTitle.textContent = 'Pioneer Valley Community College';
+      inspectorStatusBadge.textContent = 'SUSPENDED';
+      inspectorStatusBadge.className = 'px-2.5 py-0.5 rounded-full bg-error text-on-error font-label-sm text-label-sm font-semibold';
+
+      inspectorEnclave.textContent = '#T-1902';
+      inspectorDomain.textContent = 'pioneer.campusfind.edu';
+      inspectorLead.textContent = 'Dean Sarah Lin';
+
+      inspectorActionTitle.textContent = 'Reactivate Tenant Enclave';
+      inspectorActionDesc.textContent = 'Restores student submission portal, locker solenoid API callbacks, and automated SMS notifications.';
+      btnToggleLifecycleText.textContent = 'Lift Suspension & Re-arm';
+
+      certSchema.textContent = 'schema_pvcc_1902_prod (ISOLATED)';
+      certArn.textContent = 'arn:aws:kms:us-east-1:771029:key/d029f-382a-4401';
+      certHash.textContent = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855';
+
+      inspectorDepots.innerHTML = `
+        <div class="p-3 bg-surface-container-lowest rounded-lg shadow-sm flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-secondary text-[20px]">meeting_room</span>
+            <div>
+              <div class="font-label-sm text-label-sm font-semibold text-on-surface">Campus Center Police Substation</div>
+              <div class="font-body-sm text-body-sm text-on-surface-variant">Depot #PV-01 • 8 Solenoid Cells</div>
+            </div>
+          </div>
+          <span class="w-2 h-2 rounded-full bg-error" title="Offline (Tenant Suspended)"></span>
+        </div>
+        <div class="p-3 bg-surface-container-lowest rounded-lg shadow-sm flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-secondary text-[20px]">local_library</span>
+            <div>
+              <div class="font-label-sm text-label-sm font-semibold text-on-surface">East Library Circulation Desk</div>
+              <div class="font-body-sm text-body-sm text-on-surface-variant">Depot #PV-02 • 4 Solenoid Cells</div>
+            </div>
+          </div>
+          <span class="w-2 h-2 rounded-full bg-error" title="Offline (Tenant Suspended)"></span>
+        </div>
+      `;
+    }
+
+    function loadWestfield() {
+      switchWestfield.className = 'px-3 py-1 rounded bg-primary text-on-primary font-label-sm text-label-sm font-medium shadow-sm transition-all';
+      switchPVCC.className = 'px-3 py-1 rounded text-on-surface font-label-sm text-label-sm font-medium hover:bg-surface-container-high transition-all';
+
+      inspectorBadge.textContent = 'WS';
+      inspectorBadge.className = 'w-12 h-12 rounded-xl bg-surface-container text-primary flex items-center justify-center font-headline-md text-headline-md';
+      inspectorTitle.textContent = 'Westfield State University';
+      inspectorStatusBadge.textContent = 'ACTIVE';
+      inspectorStatusBadge.className = 'px-2.5 py-0.5 rounded-full bg-mint text-on-surface font-label-sm text-label-sm font-semibold';
+
+      inspectorEnclave.textContent = '#T-4029';
+      inspectorDomain.textContent = 'westfield.campusfind.edu';
+      inspectorLead.textContent = 'Officer M. Vance';
+
+      inspectorActionTitle.textContent = 'Suspend Tenant Enclave';
+      inspectorActionDesc.textContent = 'Executes immediate cryptographic freeze of student intake and disables smart locker hardware relays.';
+      btnToggleLifecycleText.textContent = 'Freeze & Quarantine Tenant';
+
+      certSchema.textContent = 'schema_wsu_4029_prod (ACTIVE & ISOLATED)';
+      certArn.textContent = 'arn:aws:kms:us-east-1:771029:key/a114b-990c-8822';
+      certHash.textContent = '9a21fe82c75a40822bd002e18d6a782bcfb177264a0283e716d004652c79f902';
+
+      inspectorDepots.innerHTML = `
+        <div class="p-3 bg-surface-container-lowest rounded-lg shadow-sm flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-secondary text-[20px]">local_police</span>
+            <div>
+              <div class="font-label-sm text-label-sm font-semibold text-on-surface">Main Gate Police Headquarters</div>
+              <div class="font-body-sm text-body-sm text-on-surface-variant">Depot #WS-01 • 16 Smart Lockers</div>
+            </div>
+          </div>
+          <span class="w-2 h-2 rounded-full bg-mint" title="Online & Polling"></span>
+        </div>
+        <div class="p-3 bg-surface-container-lowest rounded-lg shadow-sm flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-secondary text-[20px]">apartment</span>
+            <div>
+              <div class="font-label-sm text-label-sm font-semibold text-on-surface">Ely Campus Hub Desk</div>
+              <div class="font-body-sm text-body-sm text-on-surface-variant">Depot #WS-02 • 16 Smart Lockers</div>
+            </div>
+          </div>
+          <span class="w-2 h-2 rounded-full bg-mint" title="Online & Polling"></span>
+        </div>
+      `;
+    }
+
+    if (switchPVCC && switchWestfield) {
+      switchPVCC.addEventListener('click', loadPioneerValley);
+      switchWestfield.addEventListener('click', loadWestfield);
+    }
+
+    // Row click opens inspector
+    document.querySelectorAll('.open-inspector-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = btn.getAttribute('data-tenant-id');
+        if (id === 'T-4029') {
+          loadWestfield();
+        } else {
+          loadPioneerValley();
+        }
+        document.getElementById('inspector-section').scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // 6. Micro-actions (Rotate Key, Re-verify)
+    const btnRotateKey = document.getElementById('btn-rotate-key');
+    if (btnRotateKey) {
+      btnRotateKey.addEventListener('click', () => {
+        const originalText = btnRotateKey.innerHTML;
+        btnRotateKey.innerHTML = '<span class="material-symbols-outlined text-[16px] animate-spin">refresh</span> Rotating HSM Seed...';
+        btnRotateKey.disabled = true;
+        setTimeout(() => {
+          btnRotateKey.innerHTML = '<span class="material-symbols-outlined text-[16px] text-mint">done</span> Key Rotated (AES-256)';
+          setTimeout(() => {
+            btnRotateKey.innerHTML = originalText;
+            btnRotateKey.disabled = false;
+          }, 2000);
+        }, 1200);
+      });
+    }
+
+    const btnReverify = document.getElementById('btn-reverify-now');
+    if (btnReverify) {
+      btnReverify.addEventListener('click', () => {
+        btnReverify.innerHTML = '<span class="material-symbols-outlined text-[14px] animate-spin">refresh</span> Verifying...';
+        setTimeout(() => {
+          btnReverify.innerHTML = '<span class="material-symbols-outlined text-[14px] text-mint">verified</span> Verified (0 Leaks)';
+          setTimeout(() => {
+            btnReverify.innerHTML = '<span class="material-symbols-outlined text-[14px]">history</span><span>Re-verify Now</span>';
+          }, 2000);
+        }, 1000);
+      });
+    }
+  })();
+</script></main></div></body></html>

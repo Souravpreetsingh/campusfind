@@ -1,0 +1,59 @@
+{
+  "name": "campusfind",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CampusFind college lost & found management platform",
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "npm run check:env && npm run content:build && prisma generate && next build",
+    "start": "next start -p 3001",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "audit": "npm audit --audit-level=high",
+    "check:env": "node scripts/check-env.mjs",
+    "content:build": "node scripts/build-content.mjs",
+    "assets:download": "node scripts/download-canonical-assets.mjs",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate deploy",
+    "prisma:migrate:dev": "prisma migrate dev",
+    "prisma:validate": "prisma validate",
+    "db:seed": "node --env-file=.env prisma/seed.mjs",
+    "smoke": "node scripts/smoke.mjs"
+  },
+  "dependencies": {
+    "@fontsource/be-vietnam-pro": "^5.2.8",
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/material-symbols-outlined": "^5.3.9",
+    "@fontsource/merriweather": "^5.2.8",
+    "@prisma/client": "6.19.3",
+    "bcryptjs": "^3.0.2",
+    "jose": "^6.1.0",
+    "next": "16.4.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "sharp": "^0.35.5",
+    "three": "^0.187.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.5",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/three": "^0.187.0",
+    "eslint": "^9.39.1",
+    "eslint-config-next": "16.4.6",
+    "prisma": "6.19.3",
+    "tailwindcss": "4.3.5",
+    "typescript": "^5.9.3",
+    "vitest": "^5.1.1"
+  },
+  "engines": {
+    "node": ">=20.9.0 <27"
+  },
+  "overrides": {
+    "deepmerge-ts": "^8.0.2",
+    "effect": "^3.22.5"
+  }
+}

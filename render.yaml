@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: campusfind
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/ready
+    plan: starter
+    disk:
+      name: campusfind-uploads
+      mountPath: /app/.data
+      sizeGB: 1
+    preDeployCommand: npm run prisma:migrate
+    envVars:
+      # Set these in the Render dashboard. No values are stored in this file.
+      - key: DATABASE_URL
+        sync: false
+      - key: SESSION_SECRET
+        sync: false
+      - key: NEXT_PUBLIC_APP_URL
+        sync: false
+      - key: SEED_ADMIN_EMAIL
+        sync: false
+      - key: SEED_ADMIN_PASSWORD
+        sync: false
+      - key: UPLOAD_DIR
+        value: /app/.data/uploads
+      - key: SEED_DEMO_DATA
+        value: "false"
+      - key: SEED_ADMIN_ROTATE
+        value: "false"
+      - key: NODE_ENV
+        value: production

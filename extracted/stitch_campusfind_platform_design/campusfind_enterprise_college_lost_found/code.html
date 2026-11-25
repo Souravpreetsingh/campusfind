@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CampusFind — Westfield University Lost &amp; Found</title>
+<!-- Google Fonts: Merriweather for editorial serif headlines, Inter for functional UI -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Merriweather:ital,wght@0,400;0,700;0,900;1,400;1,700&amp;family=Be+Vietnam+Pro:wght@400;500;700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined (Exact link specification) -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms & Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind System Config -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "error-container": "#ffdad6",
+            "on-secondary": "#ffffff",
+            "marigold": "#fde99b",
+            "on-tertiary-container": "#f34100",
+            "graphite": "#41413f",
+            "tertiary-fixed-dim": "#ffb5a0",
+            "primary-fixed-dim": "#c9c6c1",
+            "tertiary-fixed": "#ffdbd1",
+            "on-error": "#ffffff",
+            "on-tertiary-fixed-variant": "#872000",
+            "on-tertiary": "#ffffff",
+            "secondary": "#005bb0",
+            "periwinkle": "#b8caf5",
+            "on-error-container": "#93000a",
+            "secondary-container": "#0074dc",
+            "outline": "#797770",
+            "on-surface": "#1c1b1b",
+            "background": "#fff3e7",
+            "on-primary-fixed": "#1c1c19",
+            "inverse-surface": "#313030",
+            "error": "#ba1a1a",
+            "surface-container-low": "#f7f3f2",
+            "secondary-fixed": "#d5e3ff",
+            "mint": "#9bd8a9",
+            "surface-container-high": "#ebe7e6",
+            "primary-container": "#1c1c19",
+            "surface-variant": "#e5e2e0",
+            "outline-variant": "#c9c6be",
+            "ash": "#e1e1e1",
+            "tertiary-container": "#3b0900",
+            "primary": "#030302",
+            "tertiary": "#000000",
+            "secondary-fixed-dim": "#a8c8ff",
+            "surface-dim": "#ddd9d8",
+            "on-secondary-fixed-variant": "#00468a",
+            "surface-bright": "#fcf8f7",
+            "surface-container": "#f1edec",
+            "sky": "#9ed4ef",
+            "surface-container-highest": "#e5e2e0",
+            "white": "#ffffff",
+            "on-surface-variant": "#484740",
+            "on-background": "#1c1b1b",
+            "on-primary": "#ffffff",
+            "surface-tint": "#605e5b",
+            "on-primary-container": "#86847f",
+            "canvas": "#fff3e7",
+            "on-secondary-container": "#fefcff",
+            "surface-container-lowest": "#ffffff",
+            "inverse-primary": "#c9c6c1",
+            "on-secondary-fixed": "#001b3c",
+            "on-primary-fixed-variant": "#484743",
+            "cloud": "#efefef",
+            "primary-fixed": "#e5e2dd",
+            "inverse-on-surface": "#f4f0ef",
+            "on-tertiary-fixed": "#3b0900",
+            "surface": "#ffffff",
+            "linen": "#f7f7f7",
+            "papaya": "#ff4500"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1.25rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "serif": ["Merriweather", "Georgia", "serif"],
+            "sans": ["Inter", "system-ui", "-apple-system", "sans-serif"]
+          },
+          "boxShadow": {
+            "craft": "0 20px 40px 0 rgba(0, 0, 0, 0.05)",
+            "craft-hover": "0 28px 50px 0 rgba(0, 0, 0, 0.08)",
+            "craft-sm": "0 4px 16px 0 rgba(0, 0, 0, 0.04)"
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    body {
+      background-color: #fff3e7;
+      color: #030302;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-canvas text-primary selection:bg-marigold selection:text-primary">
+<!-- TOP APP BAR / BRAND HEADER -->
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-ash transition-all">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-6">
+<!-- Brand Logo -->
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-3 group" href="#">
+<div class="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center shadow-craft-sm transition-transform group-hover:scale-105">
+<svg class="w-5 h-5" fill="none" viewbox="0 0 48 48">
+<path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z" fill="currentColor"></path>
+</svg>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-serif font-bold text-xl tracking-tight text-primary">CampusFind</span>
+<span class="text-[10px] font-semibold tracking-wider uppercase bg-marigold px-2 py-0.5 rounded-full border border-ash/60">Westfield</span>
+</div>
+<p class="text-[11px] text-graphite -mt-0.5 tracking-tight font-medium">Institutional Lost &amp; Found Network</p>
+</div>
+</a>
+<!-- Desktop Navigation Links -->
+<nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-graphite">
+<a class="hover:text-primary transition-colors" href="#discovery-feed">Browse Catalog</a>
+<a class="hover:text-primary transition-colors" href="#campus-zones">Campus Zones</a>
+<a class="hover:text-primary transition-colors flex items-center gap-1.5" href="#match-engine">
+<span>Match Engine</span>
+<span class="w-1.5 h-1.5 rounded-full bg-papaya animate-ping"></span>
+</a>
+<a class="hover:text-primary transition-colors" href="#workflow">How It Works</a>
+<a class="hover:text-primary transition-colors" href="#guest-tracker">Track Claim</a>
+</nav>
+</div>
+<!-- Quick Action CTAs & Officer Access -->
+<div class="flex items-center gap-3">
+<a class="hidden sm:inline-flex text-xs font-semibold text-graphite hover:text-primary px-3 py-2 rounded-full border border-ash hover:border-graphite transition" href="#guest-tracker">
+          Officer Portal
+        </a>
+<a class="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2.5 rounded-full bg-primary text-white hover:bg-graphite transition-all shadow-sm" href="#report-pods">
+<span class="material-symbols-outlined text-[16px]">add_circle</span>
+<span>Submit Report</span>
+</a>
+<div class="size-9 rounded-full ring-2 ring-ash overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Westfield University Campus Security Verified Seal icon against a minimalist cream background in refined institutional light graphic style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR4lZrOGq-OPh53MjiuMDJoTOcTdXDYdJRioNW5PHcbjZcx9Tj-BDN-CyC8GuhQzgxONFyiPRfek8hNFJNwwQfPOK9OWMgbg63kFy_UcZ3Ij0xldUQD2mUQEwOsAY4rIh5RXrmuzWTuQ_aif_95njaov-JXtzc_7cLgU9D9VMqZzO7D-KmNTlJ7XrA1XxA3OIgSKHpwxcGQGTxLhjUxx0eyw_Nj0vkRPVR09pyRx8c"/>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN WRAPPER -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-24 space-y-20">
+<!-- 1. HERO SECTION -->
+<section class="relative pt-6 pb-12 overflow-hidden">
+<!-- Decorative Paper-Collage Accents -->
+<div class="absolute -top-12 -left-12 w-64 h-64 bg-periwinkle/30 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+<div class="absolute top-1/3 -right-20 w-80 h-80 bg-marigold/35 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+<div class="absolute bottom-0 left-1/3 w-96 h-96 bg-mint/25 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+<div class="text-center max-w-4xl mx-auto space-y-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-ash shadow-craft-sm text-xs font-medium text-graphite mb-2">
+<span class="size-2 rounded-full bg-mint"></span>
+<span>Official Westfield University Property Custody Services</span>
+</div>
+<h1 class="font-serif text-4xl sm:text-5xl md:text-6xl text-primary font-bold tracking-tight leading-[1.12]">
+          Belongings reunited across campus with institutional care.
+        </h1>
+<p class="text-base sm:text-lg text-graphite max-w-2xl mx-auto leading-relaxed font-normal">
+          The centralized Lost &amp; Found management platform for Westfield University. Report missing property, log discovered items, preview intelligent algorithmic matches, or securely verify ownership claims.
+        </p>
+</div>
+<!-- Dual Primary Action Pods -->
+<div class="grid md:grid-cols-2 gap-6 mt-12 max-w-4xl mx-auto" id="report-pods">
+<!-- Pod 1: Report a Lost Item (Papaya accent) -->
+<div class="relative bg-white p-7 rounded-3xl border border-ash shadow-craft hover:shadow-craft-hover transition-all group flex flex-col justify-between">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fff0eb] text-papaya text-xs font-semibold border border-[#ffd5c7]">
+<span class="material-symbols-outlined text-[15px]">search_off</span>
+<span>Missing Belongings</span>
+</span>
+<span class="text-xs font-mono text-graphite/70">Form CF-L01</span>
+</div>
+<div>
+<h2 class="font-serif text-2xl font-bold text-primary group-hover:text-papaya transition-colors">Report a Lost Item</h2>
+<p class="text-xs sm:text-sm text-graphite mt-1 leading-relaxed">
+                Step into our 6-step guided report. Add last known campus coordinates, distinctive tags, and receive instant alert notifications when matching property arrives in custody.
+              </p>
+</div>
+<!-- Highlights breakdown teaser -->
+<ul class="space-y-2 text-xs text-graphite/90 pt-2 border-t border-ash/70">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-papaya text-[16px]">check_circle</span>
+<span>6-step guided report with building &amp; room tagging</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-papaya text-[16px]">check_circle</span>
+<span>Optional anonymous student filing mode</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-papaya text-[16px]">check_circle</span>
+<span>Real-time background algorithmic similarity scanning</span>
+</li>
+</ul>
+</div>
+<div class="pt-6 mt-4">
+<a class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-primary text-white font-medium text-sm hover:bg-papaya transition-colors shadow-sm" href="#discovery-feed">
+<span>Begin Lost Property Report</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Pod 2: Report a Discovered Item (Mint accent) -->
+<div class="relative bg-white p-7 rounded-3xl border border-ash shadow-craft hover:shadow-craft-hover transition-all group flex flex-col justify-between">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f0faf3] text-[#1c6933] text-xs font-semibold border border-mint">
+<span class="material-symbols-outlined text-[15px]">inventory_2</span>
+<span>Turned-In Belongings</span>
+</span>
+<span class="text-xs font-mono text-graphite/70">Form CF-F02</span>
+</div>
+<div>
+<h2 class="font-serif text-2xl font-bold text-primary group-hover:text-[#1c6933] transition-colors">Report a Discovered Item</h2>
+<p class="text-xs sm:text-sm text-graphite mt-1 leading-relaxed">
+                Found keys, tech, or personal documents on campus? Hand them over responsibly. Generate a digital custody receipt and deposit in an automated locker.
+              </p>
+</div>
+<!-- Highlights breakdown teaser -->
+<ul class="space-y-2 text-xs text-graphite/90 pt-2 border-t border-ash/70">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#1c6933] text-[16px]">verified_user</span>
+<span>Institutional chain-of-custody guarantee</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#1c6933] text-[16px]">lock</span>
+<span>Hidden serial verification protects true owner identity</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#1c6933] text-[16px]">qr_code_2</span>
+<span>Instant drop-off voucher for any of 32 campus lockers</span>
+</li>
+</ul>
+</div>
+<div class="pt-6 mt-4">
+<a class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white text-primary border-2 border-primary font-medium text-sm hover:bg-mint hover:border-mint transition-colors" href="#campus-zones">
+<span>Log Discovered Item &amp; Get Locker Code</span>
+<span class="material-symbols-outlined text-[18px]">key</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Prominent Global Discovery Search Bar Card -->
+<div class="mt-10 bg-white rounded-3xl p-4 sm:p-6 border border-ash shadow-craft max-w-4xl mx-auto space-y-4">
+<form class="grid grid-cols-1 md:grid-cols-12 gap-3" onsubmit="event.preventDefault();">
+<!-- Keyword input -->
+<div class="md:col-span-6 relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-graphite text-[20px]">search</span>
+<input class="w-full pl-11 pr-4 py-3 bg-[#f7f3f2] rounded-xl text-sm border-none focus:ring-2 focus:ring-primary text-primary placeholder:text-graphite/60 font-sans" placeholder="Search by keyword, item brand (e.g. Sony, Hydro Flask), model..." type="text"/>
+</div>
+<!-- Zone Selector -->
+<div class="md:col-span-3">
+<select class="w-full py-3 px-3.5 bg-[#f7f3f2] rounded-xl text-xs sm:text-sm border-none focus:ring-2 focus:ring-primary text-primary font-medium">
+<option value="all">All Campus Zones</option>
+<option value="quad">Central Quad &amp; Walkways</option>
+<option value="library">W.E.B. Du Bois Library</option>
+<option value="science">William James Science</option>
+<option value="athletic">North Athletic Pavilion</option>
+<option value="union">Student Union &amp; Dining</option>
+<option value="engineering">Engineering Labs</option>
+</select>
+</div>
+<!-- Lost / Found pill toggle -->
+<div class="md:col-span-3 flex items-center gap-1.5 bg-[#f7f3f2] p-1.5 rounded-xl">
+<button class="flex-1 py-1.5 text-xs font-semibold rounded-lg bg-white shadow-sm text-primary" type="button">All</button>
+<button class="flex-1 py-1.5 text-xs font-semibold rounded-lg text-graphite hover:text-primary" type="button">Lost</button>
+<button class="flex-1 py-1.5 text-xs font-semibold rounded-lg text-graphite hover:text-primary" type="button">Found</button>
+</div>
+</form>
+<!-- Quick search tag pills -->
+<div class="pt-2 flex flex-wrap items-center gap-2 text-xs">
+<span class="text-graphite font-medium mr-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> Frequent searches:
+          </span>
+<button class="px-3 py-1 rounded-full bg-[#f1edec] hover:bg-marigold text-primary font-medium transition border border-ash/70">AirPods Pro</button>
+<button class="px-3 py-1 rounded-full bg-[#f1edec] hover:bg-marigold text-primary font-medium transition border border-ash/70">Hydro Flask</button>
+<button class="px-3 py-1 rounded-full bg-[#f1edec] hover:bg-marigold text-primary font-medium transition border border-ash/70">Student ID Card</button>
+<button class="px-3 py-1 rounded-full bg-[#f1edec] hover:bg-marigold text-primary font-medium transition border border-ash/70">TI-84 Plus</button>
+<button class="px-3 py-1 rounded-full bg-[#f1edec] hover:bg-marigold text-primary font-medium transition border border-ash/70">MacBook Air M2</button>
+<button class="px-3 py-1 rounded-full bg-[#f1edec] hover:bg-marigold text-primary font-medium transition border border-ash/70">Car Keys with lanyard</button>
+</div>
+</div>
+</section>
+<!-- 2. LIVE RECOVERY METRICS TICKER -->
+<section class="bg-white rounded-3xl p-6 sm:p-8 border border-ash shadow-craft">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-ash gap-4">
+<div class="flex items-center gap-2">
+<span class="inline-flex size-2.5 rounded-full bg-mint animate-pulse"></span>
+<h3 class="font-serif font-bold text-lg text-primary">Live Property Recovery Ticker</h3>
+</div>
+<div class="inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-wider uppercase text-graphite bg-canvas px-3 py-1 rounded-full border border-ash">
+<span class="material-symbols-outlined text-[14px]">science</span>
+<span>Fictional Institutional Demonstration Data • Fall Semester 2024</span>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 text-center md:text-left">
+<!-- Metric 1 -->
+<div class="p-4 rounded-2xl bg-canvas/60 border border-ash/60">
+<p class="text-xs font-semibold text-graphite uppercase tracking-wider">Items Logged</p>
+<p class="font-serif text-3xl sm:text-4xl font-bold text-primary mt-1">1,842</p>
+<p class="text-[12px] text-graphite mt-1">Current Academic Term</p>
+</div>
+<!-- Metric 2 -->
+<div class="p-4 rounded-2xl bg-canvas/60 border border-ash/60">
+<p class="text-xs font-semibold text-graphite uppercase tracking-wider">Return Rate</p>
+<p class="font-serif text-3xl sm:text-4xl font-bold text-secondary mt-1">78.4%</p>
+<p class="text-[12px] text-graphite mt-1">Verified Returns to Owner</p>
+</div>
+<!-- Metric 3 -->
+<div class="p-4 rounded-2xl bg-canvas/60 border border-ash/60">
+<p class="text-xs font-semibold text-graphite uppercase tracking-wider">Median Match Time</p>
+<p class="font-serif text-3xl sm:text-4xl font-bold text-primary mt-1">14.2 hrs</p>
+<p class="text-[12px] text-graphite mt-1">Algorithmic Correlation</p>
+</div>
+<!-- Metric 4 -->
+<div class="p-4 rounded-2xl bg-canvas/60 border border-ash/60">
+<p class="text-xs font-semibold text-graphite uppercase tracking-wider">Active Lockers</p>
+<p class="font-serif text-3xl sm:text-4xl font-bold text-primary mt-1">32 Lockers</p>
+<p class="text-[12px] text-graphite mt-1">Across 6 Designated Zones</p>
+</div>
+</div>
+</section>
+<!-- 3. INTELLIGENT MATCHING ENGINE PREVIEW -->
+<section class="bg-white rounded-3xl p-6 sm:p-10 border border-ash shadow-craft relative overflow-hidden" id="match-engine">
+<!-- Background subtle styling -->
+<div class="absolute top-0 right-0 w-72 h-72 bg-periwinkle/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+<div class="max-w-3xl space-y-2 mb-8">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-periwinkle/40 text-primary text-xs font-bold border border-ash">
+<span class="material-symbols-outlined text-[15px]">auto_fix_high</span>
+<span>Core Technology</span>
+</div>
+<h2 class="font-serif text-2xl sm:text-3xl font-bold text-primary">Multi-Attribute Algorithmic Matching Engine</h2>
+<p class="text-sm text-graphite">
+          Our system continuously calculates natural-language similarity embeddings, geo-spatial proximity tags, and timestamp deltas to surface high-probability pairs before manual intervention.
+        </p>
+</div>
+<!-- Split comparison preview card -->
+<div class="bg-[#f7f3f2] rounded-2xl p-6 border border-ash relative">
+<!-- Probability pill floating on top center -->
+<div class="sm:absolute sm:-top-4 sm:left-1/2 sm:-translate-x-1/2 mb-4 sm:mb-0 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary text-white shadow-lg text-xs font-bold">
+<span class="w-2.5 h-2.5 rounded-full bg-mint"></span>
+<span>94% Match Probability Score</span>
+</div>
+<div class="grid md:grid-cols-2 gap-6 pt-2">
+<!-- Left: Lost Report -->
+<div class="bg-white p-5 rounded-xl border border-ash space-y-3">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded-full bg-[#fff0eb] text-papaya text-[11px] font-bold uppercase tracking-wide">
+                Lost Report • #LR-2024-8841
+              </span>
+<span class="text-xs text-graphite font-mono">10:15 AM Oct 24</span>
+</div>
+<div>
+<h4 class="font-serif font-bold text-base text-primary">Sony WH-1000XM5 Silver Headphones</h4>
+<p class="text-xs text-graphite mt-1">Grey travel zip case with Westfield sticker on corner. Left on carrel desk.</p>
+</div>
+<div class="text-xs space-y-1 text-graphite/80 pt-2 border-t border-ash/60">
+<p><span class="font-semibold text-primary">Logged Zone:</span> William James Science • Wing B 2nd Floor</p>
+<p><span class="font-semibold text-primary">Category:</span> Electronics / Audio Devices</p>
+</div>
+</div>
+<!-- Right: Discovered Report -->
+<div class="bg-white p-5 rounded-xl border border-ash space-y-3">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded-full bg-[#f0faf3] text-[#1c6933] text-[11px] font-bold uppercase tracking-wide">
+                Custody Intake • #FR-2024-9102
+              </span>
+<span class="text-xs text-graphite font-mono">11:00 AM Oct 24</span>
+</div>
+<div>
+<h4 class="font-serif font-bold text-base text-primary">Sony Over-Ear Noise Canceling Headset, Silver Case</h4>
+<p class="text-xs text-graphite mt-1">Discovered near Science Lecture Hall 104 recycling station by custodial team.</p>
+</div>
+<div class="text-xs space-y-1 text-graphite/80 pt-2 border-t border-ash/60">
+<p><span class="font-semibold text-primary">Current Custody:</span> Locker #08 (Science Custody Depot)</p>
+<p><span class="font-semibold text-primary">Category:</span> Electronics / Over-Ear Headsets</p>
+</div>
+</div>
+</div>
+<!-- Breakdown Factors Matrix -->
+<div class="mt-6 pt-5 border-t border-ash grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+<div class="bg-white p-3 rounded-lg border border-ash/80">
+<p class="text-[11px] text-graphite uppercase font-semibold">Category Match</p>
+<p class="font-serif text-lg font-bold text-primary mt-0.5">100%</p>
+<p class="text-[10px] text-graphite">Exact taxonomy hit</p>
+</div>
+<div class="bg-white p-3 rounded-lg border border-ash/80">
+<p class="text-[11px] text-graphite uppercase font-semibold">Brand / Model</p>
+<p class="font-serif text-lg font-bold text-primary mt-0.5">98%</p>
+<p class="text-[10px] text-graphite">Semantic tokenizer</p>
+</div>
+<div class="bg-white p-3 rounded-lg border border-ash/80">
+<p class="text-[11px] text-graphite uppercase font-semibold">Location Proximity</p>
+<p class="font-serif text-lg font-bold text-secondary mt-0.5">120m</p>
+<p class="text-[10px] text-graphite">Adjacent hall corridors</p>
+</div>
+<div class="bg-white p-3 rounded-lg border border-ash/80">
+<p class="text-[11px] text-graphite uppercase font-semibold">Time Delta</p>
+<p class="font-serif text-lg font-bold text-primary mt-0.5">45 min</p>
+<p class="text-[10px] text-graphite">Immediate reporting</p>
+</div>
+</div>
+</div>
+<div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+<p class="text-xs text-graphite max-w-xl">
+<span class="font-semibold text-primary">Institutional Guardrail:</span> Algorithmic match preview for demonstration. Ownership verification questions and serial proof required before physical locker release.
+        </p>
+<button class="whitespace-nowrap px-6 py-3 rounded-full bg-primary text-white text-xs font-bold hover:bg-graphite transition">
+          Explore Matching Engine Architecture
+        </button>
+</div>
+</section>
+<!-- 4. DUAL ACTIVITY FEEDS (Recently Reported Lost vs Discovered & Cataloged) -->
+<section class="space-y-6" id="discovery-feed">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+<div>
+<span class="text-xs font-bold uppercase tracking-wider text-graphite">Real-Time Registry</span>
+<h2 class="font-serif text-2xl sm:text-3xl font-bold text-primary mt-1">Dual Activity Feed</h2>
+</div>
+<p class="text-xs text-graphite font-mono">
+<span class="material-symbols-outlined text-[14px] align-middle">lock</span> Private contact details and custody serials protected
+        </p>
+</div>
+<div class="grid lg:grid-cols-2 gap-8">
+<!-- Column 1: Recently Reported Lost -->
+<div class="space-y-4">
+<div class="flex items-center justify-between px-2">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-papaya"></span>
+<h3 class="font-serif font-bold text-lg text-primary">Recently Reported Lost</h3>
+</div>
+<span class="text-xs text-graphite font-medium">8 new in last 4 hours</span>
+</div>
+<!-- Item Card 1 -->
+<div class="bg-white rounded-2xl p-5 border border-ash shadow-craft hover:shadow-craft-hover transition space-y-4">
+<div class="flex gap-4">
+<div class="w-20 h-20 rounded-xl overflow-hidden bg-canvas shrink-0">
+<img class="w-full h-full object-cover" data-alt="Apple AirPods Pro wireless earbuds in a white case resting on a polished wooden library study desk in natural morning ambient light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEvUPHJ_Fzds5hlHtfXfKz6U13rih2LHLrkr7xZWLS5etzFJOAY3NSkvo_3wrc6yuZDEBhHg8xPOX_z--KEvw0ggx1j4rX6w5h81dJkcYMPQfdnY1ZgUxU8qvmPlW9FfcRwu9pfeGIKZuB-YtZuMiHCbDz9akLzUCHGLsWSRUcEUM11QRocu6sVNVBlP9cJqyT_QXEDvy9ccC8AhcfU2-9N83UcgoTGzUCyXLrnEM4"/>
+</div>
+<div class="flex-1 space-y-1">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-full bg-[#fff0eb] text-papaya text-[11px] font-bold">Lost Property</span>
+<span class="text-[11px] text-graphite font-mono">#CF-8821</span>
+</div>
+<h4 class="font-serif font-bold text-base text-primary">AirPods Pro (2nd Gen) with MagSafe Case</h4>
+<p class="text-xs text-graphite flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+<span>W.E.B. Du Bois Library • 3rd Floor Quiet Carrel</span>
+</p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-ash/70 text-xs">
+<span class="text-graphite">Reported 24 mins ago by student</span>
+<button class="px-4 py-1.5 rounded-full bg-canvas text-primary font-semibold hover:bg-ash transition border border-ash/80">View Record</button>
+</div>
+</div>
+<!-- Item Card 2 -->
+<div class="bg-white rounded-2xl p-5 border border-ash shadow-craft hover:shadow-craft-hover transition space-y-4">
+<div class="flex gap-4">
+<div class="w-20 h-20 rounded-xl overflow-hidden bg-canvas shrink-0">
+<img class="w-full h-full object-cover" data-alt="Black matte Hydro Flask 32oz insulated water bottle placed near an indoor basketball court wooden bleacher in clean studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnCAGXdrnslYiH8s9l_XRbXgowwOmjDZ_PYfKxTlmWpaPNfIndXtfZPMcVdksxd1E8by5aWnRrw107jjjjmavQIhf72mImUp9PScL4rMbdSjghyMZ9fbf_-COQ9hMjPOYIHM2bDLEeZAq0PP--iP3oyEJ5SdSLTheL8ecvdPKSyerhMOFlFe75C9zlK4tsaPMpoL2GTcymyIFZS1rMflIBuRspWHUshub59DdSUmrw"/>
+</div>
+<div class="flex-1 space-y-1">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-full bg-[#fff0eb] text-papaya text-[11px] font-bold">Lost Property</span>
+<span class="text-[11px] text-graphite font-mono">#CF-8829</span>
+</div>
+<h4 class="font-serif font-bold text-base text-primary">Hydro Flask Wide Mouth 32 oz (Black)</h4>
+<p class="text-xs text-graphite flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+<span>North Athletic Pavilion • Court 2 Bleachers</span>
+</p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-ash/70 text-xs">
+<span class="text-graphite">Reported 1 hr ago</span>
+<button class="px-4 py-1.5 rounded-full bg-canvas text-primary font-semibold hover:bg-ash transition border border-ash/80">View Record</button>
+</div>
+</div>
+<!-- Item Card 3 -->
+<div class="bg-white rounded-2xl p-5 border border-ash shadow-craft hover:shadow-craft-hover transition space-y-4">
+<div class="flex gap-4">
+<div class="w-20 h-20 rounded-xl overflow-hidden bg-canvas shrink-0">
+<img class="w-full h-full object-cover" data-alt="Texas Instruments TI-84 Plus CE graphing calculator in blue finish on a student seminar lecture desk with notebook papers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATIh4sNYTZrMe4oK8aTstphFVo-wHQGY530_xe0UvwhDeastkVvugT1JK_C3i4iDy7hpQvfUHoNZPIuMayFpNBSzxedpPqsqopd0kUUTiuTJatqkY5KnluciSqL5SCW71nm8TU7rdyQ9ipr6zcQ90pKceq8oNIiIJv9WMUvfowKWK1AwVCR8UfH7-LOS1a8o1-ym8hfz3VHLokMwBa4w8DYgvv-BbBHx4V0LGTvtwn"/>
+</div>
+<div class="flex-1 space-y-1">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-full bg-[#fff0eb] text-papaya text-[11px] font-bold">Lost Property</span>
+<span class="text-[11px] text-graphite font-mono">#CF-8833</span>
+</div>
+<h4 class="font-serif font-bold text-base text-primary">TI-84 Plus CE Color Graphing Calculator</h4>
+<p class="text-xs text-graphite flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+<span>William James Science • Math Wing 302</span>
+</p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-ash/70 text-xs">
+<span class="text-graphite">Reported 2.5 hrs ago</span>
+<button class="px-4 py-1.5 rounded-full bg-canvas text-primary font-semibold hover:bg-ash transition border border-ash/80">View Record</button>
+</div>
+</div>
+</div>
+<!-- Column 2: Recently Discovered & Cataloged -->
+<div class="space-y-4">
+<div class="flex items-center justify-between px-2">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-mint"></span>
+<h3 class="font-serif font-bold text-lg text-primary">Recently Discovered &amp; Cataloged</h3>
+</div>
+<span class="text-xs text-graphite font-medium">12 secured in custody</span>
+</div>
+<!-- Item Card A -->
+<div class="bg-white rounded-2xl p-5 border border-ash shadow-craft hover:shadow-craft-hover transition space-y-4">
+<div class="flex gap-4">
+<div class="w-20 h-20 rounded-xl overflow-hidden bg-canvas shrink-0">
+<img class="w-full h-full object-cover" data-alt="Westfield University student ID identification badge card with campus lanyard lying neatly on a security front desk in sharp clean focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB43UbM3sq5QAAMwIoB1TmvbtRYLPbNcYFbWNiS4ulZLrJfKOVBQjk9y705sgDBhUhknmGhmKqiO4CT_T9EZoYpZs1bUPPzWqTe1-ZfeV9QXnFVctzG7xVwSDIR3YfSeC2jPzF6oBct6n03vnC9RrnP2z5Uj93uqITC3YKEmIX8jFF8I4kVXBngV3dIqrAfEIIJ8IrjX8BWLrkuy-HX6J-V8eSc15Qg-fWCfW3sRD-G"/>
+</div>
+<div class="flex-1 space-y-1">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-full bg-[#f0faf3] text-[#1c6933] text-[11px] font-bold">In Custody</span>
+<span class="text-[11px] text-graphite font-mono">#CF-8835</span>
+</div>
+<h4 class="font-serif font-bold text-base text-primary">Westfield Student ID &amp; Dorm Passcard</h4>
+<p class="text-xs text-graphite flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">inventory</span>
+<span>Student Union Dining • Check-in Desk 1</span>
+</p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-ash/70 text-xs">
+<span class="text-graphite">Cataloged 12 mins ago • Locker #14</span>
+<button class="px-4 py-1.5 rounded-full bg-primary text-white font-semibold hover:bg-graphite transition">Initiate Claim</button>
+</div>
+</div>
+<!-- Item Card B -->
+<div class="bg-white rounded-2xl p-5 border border-ash shadow-craft hover:shadow-craft-hover transition space-y-4">
+<div class="flex gap-4">
+<div class="w-20 h-20 rounded-xl overflow-hidden bg-canvas shrink-0">
+<img class="w-full h-full object-cover" data-alt="Key fob with college dormitory access key and distinctive woven blue lanyard on an institutional check-in tray." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqYb1wgUHehminqe4YNBf7C6gKJdf162NEXUZqhTad61J1oJvKCXq5NOrw1PzuST5lq6vKt4ANalJz1jab6l930ZFBFiFFnDEKIRs3c79-abzrD2iZj3Zvk4-hg-cb0sG0mQVv6myEvXTPt2kMvUMXWYneYviMfiV8ZMQ0qGVc7jDz7ePWVC3wOCGztnM2gImZTwwk-SPpA5aY2SM83-zI0duXpqcmF4Pdb0oOakuS"/>
+</div>
+<div class="flex-1 space-y-1">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-full bg-[#f0faf3] text-[#1c6933] text-[11px] font-bold">In Custody</span>
+<span class="text-[11px] text-graphite font-mono">#CF-8840</span>
+</div>
+<h4 class="font-serif font-bold text-base text-primary">Toyota Car Key Fob &amp; Campus Dorm Key</h4>
+<p class="text-xs text-graphite flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">inventory</span>
+<span>Central Quadrangle • East Bench Path</span>
+</p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-ash/70 text-xs">
+<span class="text-graphite">Cataloged 45 mins ago • Locker #02</span>
+<button class="px-4 py-1.5 rounded-full bg-primary text-white font-semibold hover:bg-graphite transition">Initiate Claim</button>
+</div>
+</div>
+<!-- Item Card C -->
+<div class="bg-white rounded-2xl p-5 border border-ash shadow-craft hover:shadow-craft-hover transition space-y-4">
+<div class="flex gap-4">
+<div class="w-20 h-20 rounded-xl overflow-hidden bg-canvas shrink-0">
+<img class="w-full h-full object-cover" data-alt="Modern lightweight metallic laptop in a minimalist felt protective sleeve sitting on an institutional library checkout desk." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC9imusXt7VHa8pQHqALQLhMBQqwb0Ez5KSNkZuPvlEz3DS6ueZYVw3jkQELZaE-lL2kuz9YI3YW7jMcl4BnoXo51LZoZhB_t3oEXiZp4ENNzwbNBTPfN36cmKWUlKEKWp5eRTf6vacBkwgmlmFs2IMC52ilAXanAFZtw0OkqSTa1U-225CO_I-pUg1kuiaqz1wnQYK_ArPg7Gxz-sewzdm9AbHnyTBgyNwUnkMmkJ"/>
+</div>
+<div class="flex-1 space-y-1">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-full bg-[#f0faf3] text-[#1c6933] text-[11px] font-bold">In Custody</span>
+<span class="text-[11px] text-graphite font-mono">#CF-8848</span>
+</div>
+<h4 class="font-serif font-bold text-base text-primary">MacBook Air M2 13" (Midnight Black)</h4>
+<p class="text-xs text-graphite flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">inventory</span>
+<span>W.E.B. Du Bois Library • Ground Floor Circulation</span>
+</p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-ash/70 text-xs">
+<span class="text-graphite">Cataloged 1.8 hrs ago • Vault #01</span>
+<button class="px-4 py-1.5 rounded-full bg-primary text-white font-semibold hover:bg-graphite transition">Initiate Claim</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. CAMPUS LOCATION-BASED DISCOVERY GRID -->
+<section class="space-y-6" id="campus-zones">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+<div>
+<span class="text-xs font-bold uppercase tracking-wider text-graphite">Geo-Spatial Inventory</span>
+<h2 class="font-serif text-2xl sm:text-3xl font-bold text-primary mt-1">Institutional Zone Discovery</h2>
+</div>
+<p class="text-xs text-graphite">Explore verified inventory density by building perimeter</p>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Zone 1 -->
+<div class="bg-white rounded-3xl p-6 border border-ash shadow-craft hover:shadow-craft-hover transition flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="w-9 h-9 rounded-xl bg-canvas flex items-center justify-center text-primary border border-ash">
+<span class="material-symbols-outlined text-[20px]">park</span>
+</span>
+<span class="px-2.5 py-1 rounded-full bg-marigold/60 text-primary text-xs font-bold">14 Active Items</span>
+</div>
+<h4 class="font-serif font-bold text-lg text-primary mt-4">Central Campus &amp; Quadrangle</h4>
+<p class="text-xs text-graphite mt-1">Open plazas, fountain walkways, and perimeter benches.</p>
+</div>
+<div class="mt-6 pt-4 border-t border-ash text-xs text-graphite flex items-center justify-between">
+<span>Primary Custody: Admin Hall 102</span>
+<span class="font-semibold text-primary">Zone A →</span>
+</div>
+</div>
+<!-- Zone 2 -->
+<div class="bg-white rounded-3xl p-6 border border-ash shadow-craft hover:shadow-craft-hover transition flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="w-9 h-9 rounded-xl bg-canvas flex items-center justify-center text-primary border border-ash">
+<span class="material-symbols-outlined text-[20px]">menu_book</span>
+</span>
+<span class="px-2.5 py-1 rounded-full bg-marigold/60 text-primary text-xs font-bold">22 Active Items</span>
+</div>
+<h4 class="font-serif font-bold text-lg text-primary mt-4">W.E.B. Du Bois Central Library</h4>
+<p class="text-xs text-graphite mt-1">Floors 1-6 carrels, media commons, and quiet study suites.</p>
+</div>
+<div class="mt-6 pt-4 border-t border-ash text-xs text-graphite flex items-center justify-between">
+<span>Primary Custody: Circ Desk Room 114</span>
+<span class="font-semibold text-primary">Zone B →</span>
+</div>
+</div>
+<!-- Zone 3 -->
+<div class="bg-white rounded-3xl p-6 border border-ash shadow-craft hover:shadow-craft-hover transition flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="w-9 h-9 rounded-xl bg-canvas flex items-center justify-center text-primary border border-ash">
+<span class="material-symbols-outlined text-[20px]">science</span>
+</span>
+<span class="px-2.5 py-1 rounded-full bg-marigold/60 text-primary text-xs font-bold">8 Active Items</span>
+</div>
+<h4 class="font-serif font-bold text-lg text-primary mt-4">William James Science Complex</h4>
+<p class="text-xs text-graphite mt-1">Lecture Auditoriums, chemistry wet-labs, and atrium.</p>
+</div>
+<div class="mt-6 pt-4 border-t border-ash text-xs text-graphite flex items-center justify-between">
+<span>Primary Custody: Science Depot Wing B</span>
+<span class="font-semibold text-primary">Zone C →</span>
+</div>
+</div>
+<!-- Zone 4 -->
+<div class="bg-white rounded-3xl p-6 border border-ash shadow-craft hover:shadow-craft-hover transition flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="w-9 h-9 rounded-xl bg-canvas flex items-center justify-center text-primary border border-ash">
+<span class="material-symbols-outlined text-[20px]">fitness_center</span>
+</span>
+<span class="px-2.5 py-1 rounded-full bg-marigold/60 text-primary text-xs font-bold">11 Active Items</span>
+</div>
+<h4 class="font-serif font-bold text-lg text-primary mt-4">North Athletic Pavilion &amp; Fields</h4>
+<p class="text-xs text-graphite mt-1">Indoor arenas, bleachers, fitness suites, and turf track.</p>
+</div>
+<div class="mt-6 pt-4 border-t border-ash text-xs text-graphite flex items-center justify-between">
+<span>Primary Custody: Fieldhouse Office 04</span>
+<span class="font-semibold text-primary">Zone D →</span>
+</div>
+</div>
+<!-- Zone 5 -->
+<div class="bg-white rounded-3xl p-6 border border-ash shadow-craft hover:shadow-craft-hover transition flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="w-9 h-9 rounded-xl bg-canvas flex items-center justify-center text-primary border border-ash">
+<span class="material-symbols-outlined text-[20px]">restaurant</span>
+</span>
+<span class="px-2.5 py-1 rounded-full bg-marigold/60 text-primary text-xs font-bold">19 Active Items</span>
+</div>
+<h4 class="font-serif font-bold text-lg text-primary mt-4">Student Center &amp; Dining Commons</h4>
+<p class="text-xs text-graphite mt-1">Food court halls, club conference suites, student lounge.</p>
+</div>
+<div class="mt-6 pt-4 border-t border-ash text-xs text-graphite flex items-center justify-between">
+<span>Primary Custody: Union Hub Desk</span>
+<span class="font-semibold text-primary">Zone E →</span>
+</div>
+</div>
+<!-- Zone 6 -->
+<div class="bg-white rounded-3xl p-6 border border-ash shadow-craft hover:shadow-craft-hover transition flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="w-9 h-9 rounded-xl bg-canvas flex items-center justify-center text-primary border border-ash">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+</span>
+<span class="px-2.5 py-1 rounded-full bg-marigold/60 text-primary text-xs font-bold">7 Active Items</span>
+</div>
+<h4 class="font-serif font-bold text-lg text-primary mt-4">Engineering &amp; Innovation Labs</h4>
+<p class="text-xs text-graphite mt-1">Robotics workshops, maker spaces, computational halls.</p>
+</div>
+<div class="mt-6 pt-4 border-t border-ash text-xs text-graphite flex items-center justify-between">
+<span>Primary Custody: Dean Office Suite 210</span>
+<span class="font-semibold text-primary">Zone F →</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. HOW CAMPUSFIND WORKS (End-to-End Workflow Architecture) -->
+<section class="bg-white rounded-3xl p-8 sm:p-12 border border-ash shadow-craft space-y-10" id="workflow">
+<div class="text-center max-w-2xl mx-auto space-y-2">
+<span class="text-xs font-bold uppercase tracking-wider text-graphite">System Architecture</span>
+<h2 class="font-serif text-3xl font-bold text-primary">How CampusFind Works</h2>
+<p class="text-sm text-graphite">
+          An institutional-grade 4-step pipeline ensuring fast return rates while strictly mitigating unauthorized or fraudulent claims.
+        </p>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+<!-- Step 1 -->
+<div class="p-6 rounded-2xl bg-[#fff3e7] border border-ash/70 flex flex-col justify-between">
+<div class="space-y-3">
+<span class="w-10 h-10 rounded-full bg-primary text-white font-serif font-bold flex items-center justify-center text-sm">1</span>
+<h4 class="font-serif font-bold text-base text-primary">Report with Precision</h4>
+<p class="text-xs text-graphite leading-relaxed">
+              Log missing or turned-in belongings with approximate timestamps, item color, brand, and building floor coordinates.
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-ash/60 text-[11px] font-mono text-graphite">
+            Step 1: Input ingestion
+          </div>
+</div>
+<!-- Step 2 -->
+<div class="p-6 rounded-2xl bg-[#fff3e7] border border-ash/70 flex flex-col justify-between">
+<div class="space-y-3">
+<span class="w-10 h-10 rounded-full bg-primary text-white font-serif font-bold flex items-center justify-center text-sm">2</span>
+<h4 class="font-serif font-bold text-base text-primary">Similarity Matching</h4>
+<p class="text-xs text-graphite leading-relaxed">
+              High-dimensional cosine similarity scans cross-examine incoming records against custody vaults 24/7.
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-ash/60 text-[11px] font-mono text-graphite">
+            Step 2: Semantic pairing
+          </div>
+</div>
+<!-- Step 3 -->
+<div class="p-6 rounded-2xl bg-[#fff3e7] border border-ash/70 flex flex-col justify-between">
+<div class="space-y-3">
+<span class="w-10 h-10 rounded-full bg-primary text-white font-serif font-bold flex items-center justify-center text-sm">3</span>
+<h4 class="font-serif font-bold text-base text-primary">Verification &amp; Claims</h4>
+<p class="text-xs text-graphite leading-relaxed">
+              True claimants answer blinded questions (lock screen wallpaper, sticker layout, or internal serials) before release.
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-ash/60 text-[11px] font-mono text-graphite">
+            Step 3: Identity challenge
+          </div>
+</div>
+<!-- Step 4 -->
+<div class="p-6 rounded-2xl bg-[#fff3e7] border border-ash/70 flex flex-col justify-between">
+<div class="space-y-3">
+<span class="w-10 h-10 rounded-full bg-primary text-white font-serif font-bold flex items-center justify-center text-sm">4</span>
+<h4 class="font-serif font-bold text-base text-primary">Custody Handover</h4>
+<p class="text-xs text-graphite leading-relaxed">
+              Claimants receive a cryptographically signed QR code to unlock smart lockers or collect from security officers.
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-ash/60 text-[11px] font-mono text-graphite">
+            Step 4: Secure custody close
+          </div>
+</div>
+</div>
+</section>
+<!-- 7. TRUST, PRIVACY & INSTITUTIONAL SAFETY -->
+<section class="grid md:grid-cols-3 gap-6">
+<div class="bg-white p-7 rounded-3xl border border-ash shadow-craft space-y-3">
+<div class="w-12 h-12 rounded-2xl bg-canvas flex items-center justify-center text-primary border border-ash">
+<span class="material-symbols-outlined text-[24px]">shield_person</span>
+</div>
+<h3 class="font-serif font-bold text-lg text-primary">Zero Contact Exposure</h3>
+<p class="text-xs sm:text-sm text-graphite leading-relaxed">
+          Personal phone numbers and student emails are never visible publicly. All messages and inquiries flow through university authenticated internal relays.
+        </p>
+</div>
+<div class="bg-white p-7 rounded-3xl border border-ash shadow-craft space-y-3">
+<div class="w-12 h-12 rounded-2xl bg-canvas flex items-center justify-center text-primary border border-ash">
+<span class="material-symbols-outlined text-[24px]">visibility_off</span>
+</div>
+<h3 class="font-serif font-bold text-lg text-primary">Blinded Verification Keys</h3>
+<p class="text-xs sm:text-sm text-graphite leading-relaxed">
+          Critical identifying markers—such as engraving text, serial digits, and private screen savers—are automatically redacted from general browsing.
+        </p>
+</div>
+<div class="bg-white p-7 rounded-3xl border border-ash shadow-craft space-y-3">
+<div class="w-12 h-12 rounded-2xl bg-canvas flex items-center justify-center text-primary border border-ash">
+<span class="material-symbols-outlined text-[24px]">fact_check</span>
+</div>
+<h3 class="font-serif font-bold text-lg text-primary">Chain-of-Custody Logging</h3>
+<p class="text-xs sm:text-sm text-graphite leading-relaxed">
+          Every campus safety officer interaction, locker placement, and item handover is logged on an auditable legal ledger for university compliance.
+        </p>
+</div>
+</section>
+<!-- 8. PERSISTENT GUEST TRACKING CALLOUT -->
+<section class="bg-primary text-white rounded-3xl p-8 sm:p-12 shadow-xl relative overflow-hidden" id="guest-tracker">
+<!-- Decorative background accent -->
+<div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-graphite/40 blur-3xl pointer-events-none"></div>
+<div class="max-w-3xl space-y-6">
+<div>
+<span class="px-3 py-1 rounded-full bg-white/10 text-white text-xs font-semibold uppercase tracking-wider border border-white/20">
+            Self-Service Guest Portal
+          </span>
+<h2 class="font-serif text-2xl sm:text-3xl font-bold mt-3">Already filed a report? Track claim status without an account</h2>
+<p class="text-xs sm:text-sm text-white/70 max-w-xl mt-1">
+            Enter your system Reference Number along with the secret token generated during report submission to view custody location or locker codes.
+          </p>
+</div>
+<form class="grid sm:grid-cols-12 gap-3 max-w-2xl" onsubmit="event.preventDefault(); alert('Status: Report #CF-2024-8841 is currently under Review. Potential matches identified.');">
+<div class="sm:col-span-5">
+<label class="block text-[11px] font-semibold text-white/60 mb-1">Report Reference</label>
+<input class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 text-sm focus:outline-none focus:ring-2 focus:ring-marigold" placeholder="e.g. CF-2024-8841" required="" type="text"/>
+</div>
+<div class="sm:col-span-4">
+<label class="block text-[11px] font-semibold text-white/60 mb-1">Guest Token / PIN</label>
+<input class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 text-sm focus:outline-none focus:ring-2 focus:ring-marigold" placeholder="••••••••" required="" type="password"/>
+</div>
+<div class="sm:col-span-3 flex items-end">
+<button class="w-full py-3 px-4 rounded-xl bg-white text-primary font-bold text-xs hover:bg-marigold transition shadow-md" type="submit">
+              Track Property
+            </button>
+</div>
+</form>
+<p class="text-[11px] text-white/50 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">lock_clock</span>
+<span>Tokens expire 90 days after case resolution in accordance with Westfield Data Policies.</span>
+</p>
+</div>
+</section>
+</main>
+<!-- FOOTER -->
+<footer class="bg-white border-t border-ash py-12 px-6">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-graphite">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-lg bg-primary text-white flex items-center justify-center font-serif font-bold text-xs">
+          W
+        </div>
+<p class="font-serif font-bold text-primary text-sm">CampusFind • Westfield University</p>
+</div>
+<div class="flex flex-wrap items-center justify-center gap-6 font-medium">
+<a class="hover:text-primary transition" href="#">Institutional Policy</a>
+<a class="hover:text-primary transition" href="#">Unclaimed Property Legal Mandate</a>
+<a class="hover:text-primary transition" href="#">Custody Security Desk Directory</a>
+<a class="hover:text-primary transition" href="#">Staff Login</a>
+</div>
+<p class="text-[11px] text-graphite/70 text-center md:text-right">
+        Fictional demonstration deployment • Westfield University Operations © 2024
+      </p>
+</div>
+</footer>
+</body></html>

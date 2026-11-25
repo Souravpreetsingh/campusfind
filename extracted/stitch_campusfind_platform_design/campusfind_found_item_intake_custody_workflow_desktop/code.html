@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Merriweather:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-secondary-fixed-variant": "#00468a", "primary-fixed-dim": "#c9c6c1", "canvas": "#fff3e7", "surface-dim": "#ddd9d8", "error": "#ba1a1a", "surface-container-highest": "#e5e2e0", "surface-container": "#f1edec", "primary": "#000000", "on-background": "#1c1b1b", "on-secondary": "#ffffff", "error-container": "#ffdad6", "cloud": "#efefef", "on-tertiary-fixed-variant": "#872000", "background": "#fcf8f7", "on-surface-variant": "#484740", "mint": "#9bd8a9", "tertiary": "#000000", "tertiary-fixed-dim": "#ffb5a0", "on-primary-container": "#86847f", "inverse-on-surface": "#f4f0ef", "marigold": "#fde99b", "sky": "#9ed4ef", "tertiary-container": "#3b0900", "surface-variant": "#e5e2e0", "primary-fixed": "#e5e2dd", "on-secondary-container": "#fefcff", "primary-container": "#1c1c19", "periwinkle": "#b8caf5", "ash": "#e1e1e1", "on-tertiary-fixed": "#3b0900", "linen": "#f7f7f7", "surface-container-high": "#ebe7e6", "on-primary": "#ffffff", "inverse-primary": "#c9c6c1", "surface-tint": "#605e5b", "secondary-fixed": "#d5e3ff", "secondary-fixed-dim": "#a8c8ff", "secondary": "#005bb0", "on-tertiary-container": "#f34100", "surface-container-low": "#f7f3f2", "tertiary-fixed": "#ffdbd1", "on-surface": "#1c1b1b", "secondary-container": "#0074dc", "white": "#ffffff", "on-primary-fixed": "#1c1c19", "on-error": "#ffffff", "outline-variant": "#c9c6be", "on-error-container": "#93000a", "on-secondary-fixed": "#001b3c", "surface-container-lowest": "#ffffff", "surface-bright": "#fcf8f7", "on-primary-fixed-variant": "#484743", "on-tertiary": "#ffffff", "surface": "#fcf8f7", "inverse-surface": "#313030", "graphite": "#41413f", "outline": "#797770" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter": "1.5rem", "space-lg": "1.5rem", "gutter-sm": "1rem", "space-sm": "0.5rem", "margin": "2rem", "margin-mobile": "1rem", "space-xs": "0.25rem", "space-xl": "2.5rem", "space-md": "1rem" }, "fontFamily": { "body-lg": ["Inter"], "label-sm": ["Inter"], "body-md": ["Inter"], "display-mobile": ["Merriweather"], "headline-md": ["Merriweather"], "headline-lg": ["Merriweather"], "title-md": ["Inter"], "body-sm": ["Inter"], "label-md": ["Inter"], "display": ["Merriweather"], "title-lg": ["Inter"], "label-lg": ["Inter"], "headline-lg-mobile": ["Merriweather"], "headline-sm": ["Merriweather"] }, "fontSize": { "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "display-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }], "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "600" }], "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }], "headline-lg-mobile": ["26px", { "lineHeight": "34px", "fontWeight": "700" }], "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "700" }] } } } };</script></head><body class="bg-canvas font-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(3,3,2,0.06)]"><div class="h-16 max-w-7xl mx-auto px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs"><span class="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-on-primary font-headline-sm text-headline-sm">W</span><div class="flex flex-col"><span class="font-headline-sm text-title-md leading-none text-primary">CampusFind</span><span class="font-label-sm text-label-sm text-outline tracking-wider uppercase">Westfield System</span></div></div></div><nav class="hidden xl:flex items-center gap-space-xs" data-active-classes="bg-surface-container text-on-surface font-title-md rounded-lg"><a class="px-space-sm py-space-xs rounded font-title-md text-title-md text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="browse-listings" href="#">Browse Listings</a><a class="px-space-sm py-space-xs rounded font-title-md text-title-md text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="report-lost" href="#">Report Lost</a><a aria-current="page" class="px-space-sm py-space-xs transition-colors bg-surface-container text-on-surface font-title-md rounded-lg" data-path="report-found" href="#">Report Found</a><a class="px-space-sm py-space-xs rounded font-title-md text-title-md text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="track-status" href="#">Track Status</a><a class="px-space-sm py-space-xs rounded font-title-md text-title-md text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="intelligent-match" href="#">Intelligent Match</a><a class="px-space-sm py-space-xs rounded font-title-md text-title-md text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="campus-zones" href="#">Campus Zones</a></nav><div class="flex items-center gap-space-sm"><a class="hidden sm:inline-flex items-center px-space-md py-space-xs rounded-full bg-secondary text-on-secondary font-label-lg text-label-lg shadow-[0_2px_6px_-1px_rgba(3,3,2,0.04)] hover:bg-secondary-container hover:text-on-secondary-container transition-colors" data-path="report-lost" href="#">Quick File</a><a class="hidden md:inline-flex items-center px-space-sm py-space-xs rounded font-label-md text-label-md text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="college-admin-portal" href="#">College Admin Portal</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-canvas min-h-screen"><div class="flex flex-col w-full">
+<!-- Subtle Ambient Glow and Noise Backdrop Accent -->
+<div class="relative w-full max-w-7xl mx-auto px-gutter py-space-lg">
+<!-- Top Editorial Header & Intake Identification Bar -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md mb-space-lg">
+<div class="space-y-space-xs">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm tracking-widest uppercase">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>Westfield Institutional Repository • Secure Intake Protocol</span>
+<span class="px-space-xs py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm">Form SEC-INTAKE-440</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Report a Discovered Belonging</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+          Register found property into the Westfield University custody registry. Strict evidence preservation and chain-of-custody protocols automatically protect specific identifying markers from public disclosure.
+        </p>
+</div>
+<!-- Quick Session / Draft Badge -->
+<div class="flex items-center gap-space-sm bg-white p-space-sm rounded-xl shadow-sm self-start lg:self-auto">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">inventory_2</span>
+</div>
+<div class="text-left pr-space-sm">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Custody Intake Batch</div>
+<div class="font-title-md text-title-md text-primary">CASE #WF-2024-8842</div>
+</div>
+<span class="inline-flex items-center px-space-xs py-1 rounded-full bg-marigold text-primary font-label-sm text-label-sm">
+          In-Progress Step 4/7
+        </span>
+</div>
+</div>
+<!-- Stepper Navigation (7 Stages) -->
+<div class="w-full bg-white rounded-2xl shadow-sm p-space-md mb-space-lg">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-space-xs">
+<!-- Step 1: Completed -->
+<div class="flex flex-col gap-1 p-space-xs rounded-lg transition-colors group">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">01</span>
+</div>
+<span class="font-title-md text-body-sm text-primary line-clamp-1">Item Classification</span>
+<span class="font-body-sm text-label-sm text-outline truncate">Electronics • Computing</span>
+</div>
+<!-- Step 2: Completed -->
+<div class="flex flex-col gap-1 p-space-xs rounded-lg transition-colors group">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">02</span>
+</div>
+<span class="font-title-md text-body-sm text-primary line-clamp-1">Item Details</span>
+<span class="font-body-sm text-label-sm text-outline truncate">Silver MacBook Pro 14"</span>
+</div>
+<!-- Step 3: Completed -->
+<div class="flex flex-col gap-1 p-space-xs rounded-lg transition-colors group">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">03</span>
+</div>
+<span class="font-title-md text-body-sm text-primary line-clamp-1">Location Discovered</span>
+<span class="font-body-sm text-label-sm text-outline truncate">Science Atrium Bench</span>
+</div>
+<!-- Step 4: Active Stage -->
+<div class="flex flex-col gap-1 p-space-xs rounded-lg bg-canvas transition-colors">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-label-sm text-label-sm shadow-[0_2px_4px_rgba(0,91,176,0.3)]">
+              4
+            </span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-title-md">ACTIVE</span>
+</div>
+<span class="font-title-md text-body-sm text-primary line-clamp-1 font-title-lg">Storage &amp; Custody</span>
+<span class="font-body-sm text-label-sm text-secondary truncate">Physical Locker Assigned</span>
+</div>
+<!-- Step 5: Upcoming -->
+<div class="flex flex-col gap-1 p-space-xs rounded-lg opacity-70 group hover:opacity-100 transition-opacity">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-sm text-label-sm">
+              5
+            </span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">05</span>
+</div>
+<span class="font-title-md text-body-sm text-on-surface line-clamp-1">Photo Evidence</span>
+<span class="font-body-sm text-label-sm text-outline truncate">Redaction &amp; Visuals</span>
+</div>
+<!-- Step 6: Upcoming -->
+<div class="flex flex-col gap-1 p-space-xs rounded-lg opacity-70 group hover:opacity-100 transition-opacity">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-sm text-label-sm">
+              6
+            </span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">06</span>
+</div>
+<span class="font-title-md text-body-sm text-on-surface line-clamp-1">Finder Contact</span>
+<span class="font-body-sm text-label-sm text-outline truncate">Good Samaritan Discretion</span>
+</div>
+<!-- Step 7: Final -->
+<div class="flex flex-col gap-1 p-space-xs rounded-lg opacity-70 group hover:opacity-100 transition-opacity">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-sm text-label-sm">
+              7
+            </span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">07</span>
+</div>
+<span class="font-title-md text-body-sm text-on-surface line-clamp-1">Legal Review</span>
+<span class="font-body-sm text-label-sm text-outline truncate">Declaration &amp; Dispatch</span>
+</div>
+</div>
+</div>
+<!-- Main Workspace Layout: Form Area (8 cols) + Custody Governance Sidebar (4 cols) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Primary Form Flow -->
+<div class="lg:col-span-8 space-y-space-lg">
+<!-- Critical Mandatory Legal Shield Banner -->
+<div class="bg-primary text-on-primary rounded-2xl p-space-md shadow-md relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-white/5 pointer-events-none"></div>
+<div class="flex items-start gap-space-md relative z-10">
+<div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-white mt-1">
+<span class="material-symbols-outlined text-[24px]">shield</span>
+</div>
+<div class="space-y-space-xs">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="px-space-xs py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-title-md tracking-wider">
+                  MANDATORY SECURITY PROTOCOL
+                </span>
+<span class="text-outline-variant font-label-sm text-label-sm tracking-wide">
+                  Westfield Police Reg. §88-C
+                </span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-white">Strict Custody Confidentiality Guarantee</h2>
+<p class="font-body-md text-body-md text-surface-container-highest leading-relaxed">
+                Custody locker identifiers, safe numbers, attendant desk logs, and exact indoor vault coordinates will <strong>NEVER be displayed on public search directories</strong> or accessible to unverified claimants. Public directories will strictly indicate generalized custody status: <span class="text-white font-title-md bg-white/15 px-1.5 py-0.5 rounded">Central Science Complex — Secured in Campus Custody</span>.
+              </p>
+</div>
+</div>
+</div>
+<!-- Storage & Physical Custody Options (Step 4 Detailed Form) -->
+<div class="bg-white rounded-2xl p-space-lg shadow-sm space-y-space-lg">
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-primary">Current Physical Custody Method</h3>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-fixed px-space-sm py-0.5 rounded-full">
+                Step 4 of 7
+              </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Specify where the item is physically resting at this precise moment to establish chain of evidence.
+            </p>
+</div>
+<!-- Radio Card 1: Automated Smart Locker (Selected) -->
+<label class="block relative p-space-md rounded-xl bg-surface-container-low hover:bg-canvas transition-all cursor-pointer">
+<div class="flex items-start gap-space-md">
+<input checked="" class="mt-1 w-5 h-5 text-primary accent-primary" id="radio-smart-locker" name="custody_method" type="radio"/>
+<div class="flex-1 space-y-space-sm">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-space-xs">
+<span class="font-title-lg text-title-lg text-primary">Secured in Automated Campus Smart Locker</span>
+<span class="px-space-xs py-0.5 rounded bg-mint text-primary font-label-sm text-label-sm">Recommended</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">24/7 Monitored Telemetry</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                  Item is physically stored inside an electronic Westfield Campus Smart Locker bank with encrypted sensory access and video-monitored drop hatches.
+                </p>
+<!-- Nested Form Fields for Locker Specifications -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm pt-space-xs">
+<div class="bg-white p-space-sm rounded-lg shadow-sm">
+<label class="block font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">Locker Bank Complex</label>
+<div class="flex items-center gap-1.5 text-primary font-title-md text-body-md">
+<span class="material-symbols-outlined text-[18px] text-secondary">domain</span>
+<span>Science Atrium Hub #04</span>
+</div>
+</div>
+<div class="bg-white p-space-sm rounded-lg shadow-sm">
+<label class="block font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">Assigned Slot ID</label>
+<div class="flex items-center gap-1.5 text-primary font-title-md text-body-md">
+<span class="material-symbols-outlined text-[18px] text-secondary">grid_view</span>
+<span>Slot #18 (Medium Vault)</span>
+</div>
+</div>
+<div class="bg-white p-space-sm rounded-lg shadow-sm">
+<label class="block font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">Auto-Generated Drop PIN</label>
+<div class="flex items-center justify-between text-primary font-title-md text-body-md">
+<span class="font-mono tracking-widest bg-cloud px-2 py-0.5 rounded text-primary">893-412</span>
+<span class="material-symbols-outlined text-[16px] text-outline cursor-pointer hover:text-primary">content_copy</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-xs text-secondary font-label-sm text-label-sm pt-1">
+<span class="material-symbols-outlined text-[16px]">lock_clock</span>
+<span>PIN remains valid for 45 minutes to execute physical door latching.</span>
+</div>
+</div>
+</div>
+</label>
+<!-- Radio Card 2: Department Desk / Staff Attendant -->
+<label class="block relative p-space-md rounded-xl bg-surface-container-low hover:bg-canvas transition-all cursor-pointer">
+<div class="flex items-start gap-space-md">
+<input class="mt-1 w-5 h-5 text-primary accent-primary" id="radio-dept-desk" name="custody_method" type="radio"/>
+<div class="flex-1 space-y-space-sm">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-space-xs">
+<span class="font-title-lg text-title-lg text-primary">Handed to Department Front Desk or Staff Proctor</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">In-Person Verification</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                  Transferred to a certified Westfield University faculty proctor, hall director, library circulation staff, or campus police intake clerk.
+                </p>
+<!-- Hidden / Expandable Fields on Desk selection preview -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm pt-space-xs">
+<div class="bg-white p-space-sm rounded-lg shadow-sm">
+<label class="block font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">Custody Desk Location</label>
+<select class="w-full bg-transparent font-body-md text-body-md text-primary focus:outline-none">
+<option selected="">Du Bois Library - Main Circulation (1st Fl)</option>
+<option>Campus Center Information Desk</option>
+<option>Integrative Sciences Complex Central Reception</option>
+<option>Westfield Public Safety Dispatch (Bldg C)</option>
+<option>Recreation Center Attendant Kiosk</option>
+</select>
+</div>
+<div class="bg-white p-space-sm rounded-lg shadow-sm">
+<label class="block font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">Receiving Officer / Attendant ID</label>
+<input class="w-full bg-transparent font-body-md text-body-md text-primary placeholder:text-outline focus:outline-none" placeholder="e.g. Officer M. Vance #1094" type="text" value="Officer M. Vance (#1094)"/>
+</div>
+</div>
+</div>
+</div>
+</label>
+<!-- Radio Card 3: Temporary Finder Custody -->
+<label class="block relative p-space-md rounded-xl bg-surface-container-low hover:bg-canvas transition-all cursor-pointer">
+<div class="flex items-start gap-space-md">
+<input class="mt-1 w-5 h-5 text-primary accent-primary" id="radio-temp-custody" name="custody_method" type="radio"/>
+<div class="flex-1 space-y-space-xs">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<span class="font-title-lg text-title-lg text-primary">Temporary Finder Custody (Hold for max 24 hours)</span>
+<span class="px-space-xs py-0.5 rounded bg-marigold text-primary font-label-sm text-label-sm">Requires Dispatch Notification</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                  You retain possession safely overnight and schedule an intake handoff at any campus police station or automated drop locker within 24 standard hours.
+                </p>
+</div>
+</div>
+</label>
+<!-- Blinded Identifying Attributes (Verification Safeguards) -->
+<div class="pt-space-md space-y-space-md">
+<div class="space-y-1">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">visibility_off</span>
+<h4 class="font-headline-sm text-headline-sm text-primary">Blinded Identifying Attributes</h4>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Select or specify unique traits of this item that should remain <strong class="text-on-surface">HIDDEN from the public database</strong>. Claimants must precisely describe these hidden items to prove ownership before property release.
+              </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm">
+<label class="flex items-start gap-space-sm p-space-sm rounded-xl bg-surface-container-lowest shadow-sm cursor-pointer hover:bg-canvas transition-colors">
+<input checked="" class="mt-1 w-4 h-4 accent-primary text-primary" type="checkbox"/>
+<div>
+<span class="font-title-md text-body-md text-primary block">Stickers, Decals &amp; Exterior Wear</span>
+<span class="font-body-sm text-label-sm text-on-surface-variant">e.g. 'NASA Meatball logo on upper lid' • Kept blinded</span>
+</div>
+</label>
+<label class="flex items-start gap-space-sm p-space-sm rounded-xl bg-surface-container-lowest shadow-sm cursor-pointer hover:bg-canvas transition-colors">
+<input checked="" class="mt-1 w-4 h-4 accent-primary text-primary" type="checkbox"/>
+<div>
+<span class="font-title-md text-body-md text-primary block">Engraved Initials / Redacted Serials</span>
+<span class="font-body-sm text-label-sm text-on-surface-variant">Partial hardware hashes redacted for custody audit only</span>
+</div>
+</label>
+<label class="flex items-start gap-space-sm p-space-sm rounded-xl bg-surface-container-lowest shadow-sm cursor-pointer hover:bg-canvas transition-colors">
+<input checked="" class="mt-1 w-4 h-4 accent-primary text-primary" type="checkbox"/>
+<div>
+<span class="font-title-md text-body-md text-primary block">Lock Screen Wallpaper / User Account</span>
+<span class="font-body-sm text-label-sm text-on-surface-variant">Display image details stored strictly in custody notes</span>
+</div>
+</label>
+<label class="flex items-start gap-space-sm p-space-sm rounded-xl bg-surface-container-lowest shadow-sm cursor-pointer hover:bg-canvas transition-colors">
+<input class="mt-1 w-4 h-4 accent-primary text-primary" type="checkbox"/>
+<div>
+<span class="font-title-md text-body-md text-primary block">Specific Keychain Charms or Cuts</span>
+<span class="font-body-sm text-label-sm text-on-surface-variant">Key quantity and distinctive lanyard markings hidden</span>
+</div>
+</label>
+</div>
+<!-- Custodian Confidential Notes Box -->
+<div class="space-y-space-xs">
+<label class="block font-label-md text-label-md text-primary">
+                Confidential Staff &amp; Custodian Field Notes (Never Published)
+              </label>
+<textarea class="w-full bg-surface-container-low rounded-xl p-space-sm font-body-md text-body-md text-primary placeholder:text-outline focus:outline-none focus:bg-white transition-colors" placeholder="e.g. Laptop left on low table next to lecture hall 102. Found inside gray neoprene case with charging brick and black wireless mouse." rows="3"></textarea>
+<div class="flex items-center justify-between text-outline font-label-sm text-label-sm">
+<span>Stored strictly in encrypted audit storage.</span>
+<span>Max 500 characters</span>
+</div>
+</div>
+</div>
+<!-- Chain of Custody Declaration Checkbox -->
+<div class="p-space-md rounded-xl bg-canvas flex items-start gap-space-sm">
+<input checked="" class="mt-1 w-5 h-5 accent-primary text-primary" id="chain-custody-consent" type="checkbox"/>
+<div class="space-y-0.5">
+<label class="font-title-md text-body-md text-primary cursor-pointer" for="chain-custody-consent">
+                I certify physical transfer to the designated campus repository or secure smart locker.
+              </label>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                By ticking this, you generate an official Westfield University System Intake Hash. You acknowledge false reporting or failure to surrender property violates Westfield Code of Conduct Art. IV.
+              </p>
+</div>
+</div>
+</div>
+<!-- Step 5 Preview: Photographic Evidence Upload Zone -->
+<div class="bg-white rounded-2xl p-space-lg shadow-sm space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="space-y-1">
+<div class="flex items-center gap-space-xs">
+<span class="w-5 h-5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm flex items-center justify-center">5</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Photographic Evidence Preview</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Upload images of the discovered property with appropriate privacy visibility tags.
+              </p>
+</div>
+<span class="font-label-sm text-label-sm uppercase px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant">Next Step Preview</span>
+</div>
+<!-- Drag and Drop Box -->
+<div class="p-space-lg rounded-2xl bg-surface-container-low text-center space-y-space-sm hover:bg-canvas transition-colors cursor-pointer">
+<div class="w-14 h-14 rounded-full bg-white shadow-sm flex items-center justify-center mx-auto text-secondary">
+<span class="material-symbols-outlined text-[32px]">add_a_photo</span>
+</div>
+<div class="space-y-1">
+<div class="font-title-md text-title-md text-primary">Drag custody photographs here, or <span class="text-secondary underline">browse files</span></div>
+<div class="font-body-sm text-label-sm text-on-surface-variant">Supports HEIC, PNG, JPG up to 15MB each (Max 4 photos)</div>
+</div>
+</div>
+<!-- Uploaded Image List Mockup with Visibility Controls -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md pt-space-xs">
+<!-- Photo 1: Public Safe -->
+<div class="bg-surface-container-low p-space-sm rounded-xl flex items-center gap-space-sm shadow-sm">
+<div class="w-16 h-16 rounded-lg bg-surface-dim overflow-hidden flex-shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="Close up photograph of a silver modern laptop on a wooden campus desk with natural ambient window lighting, showing the keyboard and front chassis with no sensitive identifiers in view." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoQdbLlVx-xk11WnrRDsXydxvXYPTkkV7XgttBJsM-vq1eCUiT37iQzljSAXJV1BDt9pBVbCXNhqfg9NfFV2qTb52ifeo-eZkt4rdSY4TV-3m8wNAowD-Oxt4PAyFwY-Eira74pD86N25-p4GXYwq95BgsRMaAfK_gsgZfl3cIQygQcNhMUS_vgrQ0F24PVKfuXUBx6dpRA74rnRKL6Evhd0treHBxK3HBplHDD3-0"/>
+<span class="absolute bottom-1 right-1 px-1 rounded bg-black/60 text-white font-label-sm text-[10px]">IMG_01</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="font-title-md text-body-md text-primary truncate">front_keyboard_overview.jpg</div>
+<div class="font-body-sm text-label-sm text-on-surface-variant">2.4 MB • Uploaded 2 mins ago</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="inline-flex items-center gap-1 font-label-sm text-[11px] text-primary bg-mint px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[12px]">visibility</span> Public Safe
+                  </span>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-error p-1">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+<!-- Photo 2: Custody Only (Redacted) -->
+<div class="bg-surface-container-low p-space-sm rounded-xl flex items-center gap-space-sm shadow-sm">
+<div class="w-16 h-16 rounded-lg bg-surface-dim overflow-hidden flex-shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="Macro detail shot of laptop serial number barcode on metallic underside casing with institutional barcode sticker in sharp focus under clinical office lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5tToXevm0RyOdiRBlQCLPkII5xSO9FC_kVn5vz1PG5YdSEzrxM-AkTRtCDeGW_gDTKBAvRfpQaROU-zxkuoqwsHWRUZr7oV5sCvCWeUPs__7p_rU7APKyKIhAmEpHFSdCTfXzz5SoIRuABsXJlPxw4vTEdhhuXs_lAB2AslD2c6BT6DnhsHS2hLbhEYzwpE98_d6sf_mFUfz6934WHvXYb_k-vFAoljHG2e4bSDR2"/>
+<div class="absolute inset-0 bg-primary/40 backdrop-blur-[2px] flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[18px]">visibility_off</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="font-title-md text-body-md text-primary truncate">chassis_serial_macro.jpg</div>
+<div class="font-body-sm text-label-sm text-on-surface-variant">3.1 MB • Uploaded 2 mins ago</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="inline-flex items-center gap-1 font-label-sm text-[11px] text-white bg-primary px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[12px]">lock</span> Custody-Only Redacted
+                  </span>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-error p-1">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Step 6 Preview: Finder Information & Discretion -->
+<div class="bg-white rounded-2xl p-space-lg shadow-sm space-y-space-md">
+<div class="space-y-1">
+<div class="flex items-center gap-space-xs">
+<span class="w-5 h-5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm flex items-center justify-center">6</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Finder Contact &amp; Good Samaritan Options</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Choose your disclosure level and notification preferences. Your identity is always shielded from the general public.
+            </p>
+</div>
+<div class="space-y-space-sm">
+<label class="flex items-start gap-space-sm p-space-sm rounded-xl bg-surface-container-low hover:bg-canvas cursor-pointer transition-colors">
+<input checked="" class="mt-1 w-4 h-4 accent-primary text-primary" name="finder_pref" type="radio"/>
+<div class="space-y-0.5">
+<span class="font-title-md text-body-md text-primary block">Notify me via university email when the rightful owner reclaims it</span>
+<span class="font-body-sm text-label-sm text-on-surface-variant">You will receive an automated notification confirmation from Westfield Campus Custody.</span>
+</div>
+</label>
+<label class="flex items-start gap-space-sm p-space-sm rounded-xl bg-surface-container-low hover:bg-canvas cursor-pointer transition-colors">
+<input class="mt-1 w-4 h-4 accent-primary text-primary" name="finder_pref" type="radio"/>
+<div class="space-y-0.5">
+<span class="font-title-md text-body-md text-primary block">Strict Anonymous Good Samaritan</span>
+<span class="font-body-sm text-label-sm text-on-surface-variant">No email notifications, no attribution. Your intake is processed anonymously under Public Safety Log.</span>
+</div>
+</label>
+<label class="flex items-start gap-space-sm p-space-sm rounded-xl bg-surface-container-low hover:bg-canvas cursor-pointer transition-colors">
+<input class="mt-1 w-4 h-4 accent-primary text-primary" name="finder_pref" type="radio"/>
+<div class="space-y-0.5">
+<span class="font-title-md text-body-md text-primary block">Statutory Unclaimed Property Interest (M.G.L. Ch. 135)</span>
+<span class="font-body-sm text-label-sm text-on-surface-variant">If unclaimed after 90 legal statutory days, elect to request formal transfer of ownership according to state regulations.</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Sticky Bottom Action & Navigation Controls -->
+<div class="bg-white rounded-2xl p-space-md shadow-sm flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-space-xs px-space-md py-space-sm rounded-full bg-surface-container text-on-surface font-title-md text-title-md hover:bg-surface-container-highest transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span>Back: Date &amp; Location</span>
+</button>
+<div class="w-full sm:w-auto flex items-center justify-end gap-space-sm">
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-space-xs px-space-md py-space-sm rounded-full bg-surface-container text-on-surface font-title-md text-title-md hover:bg-surface-container-highest transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">bookmark</span>
+<span>Save Draft</span>
+</button>
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-space-xs px-space-lg py-space-sm rounded-full bg-primary text-on-primary font-title-md text-title-md hover:bg-graphite shadow-sm transition-all" type="button">
+<span>Next: Photo Evidence &amp; Verification</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Institutional Sidebar (Governance & Live Locker Guidance) -->
+<div class="lg:col-span-4 space-y-space-lg">
+<!-- Live Smart Locker Terminal Interactive Card -->
+<div class="bg-white rounded-2xl p-space-lg shadow-sm space-y-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Assigned Locker Terminal</span>
+<span class="inline-flex items-center gap-1 font-label-sm text-[11px] text-primary bg-mint px-2 py-0.5 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span> Terminal Online
+            </span>
+</div>
+<div class="space-y-space-xs">
+<div class="font-headline-sm text-headline-sm text-primary">Science Atrium • Locker 04</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Located on the Ground Floor, West Wing corridor opposite the Chemistry lecture amphitheater.
+            </p>
+</div>
+<!-- SVG Visual Diagram of Locker Matrix -->
+<div class="p-space-sm rounded-xl bg-surface-container-low space-y-space-xs">
+<div class="flex justify-between text-on-surface-variant font-label-sm text-label-sm mb-1">
+<span>Smart Locker Matrix</span>
+<span class="text-secondary font-title-md">Slot #18 Highlighted</span>
+</div>
+<div class="grid grid-cols-4 gap-1.5 py-1">
+<div class="h-8 rounded bg-surface-container-highest flex items-center justify-center font-label-sm text-[10px] text-outline">01</div>
+<div class="h-8 rounded bg-surface-container-highest flex items-center justify-center font-label-sm text-[10px] text-outline">02</div>
+<div class="h-8 rounded bg-primary/20 flex items-center justify-center font-label-sm text-[10px] text-primary">03</div>
+<div class="h-8 rounded bg-surface-container-highest flex items-center justify-center font-label-sm text-[10px] text-outline">04</div>
+<div class="h-8 rounded bg-surface-container-highest flex items-center justify-center font-label-sm text-[10px] text-outline">05</div>
+<div class="h-8 rounded bg-primary/20 flex items-center justify-center font-label-sm text-[10px] text-primary">06</div>
+<div class="h-8 rounded bg-surface-container-highest flex items-center justify-center font-label-sm text-[10px] text-outline">07</div>
+<div class="h-8 rounded bg-surface-container-highest flex items-center justify-center font-label-sm text-[10px] text-outline">08</div>
+<div class="h-8 rounded bg-surface-container-highest flex items-center justify-center font-label-sm text-[10px] text-outline">09</div>
+<div class="h-8 rounded bg-surface-container-highest flex items-center justify-center font-label-sm text-[10px] text-outline">10</div>
+<div class="h-8 rounded bg-surface-container-highest flex items-center justify-center font-label-sm text-[10px] text-outline">11</div>
+<div class="h-8 rounded bg-surface-container-highest flex items-center justify-center font-label-sm text-[10px] text-outline">12</div>
+<div class="h-8 rounded bg-surface-container-highest flex items-center justify-center font-label-sm text-[10px] text-outline">13</div>
+<div class="h-8 rounded bg-surface-container-highest flex items-center justify-center font-label-sm text-[10px] text-outline">14</div>
+<div class="h-8 rounded bg-surface-container-highest flex items-center justify-center font-label-sm text-[10px] text-outline">17</div>
+<!-- Slot 18 Active -->
+<div class="h-8 rounded bg-secondary text-on-secondary flex items-center justify-center font-title-md text-[11px] shadow-sm animate-pulse">
+                18
+              </div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-[11px] pt-1">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded bg-secondary"></span> Your Allocation</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded bg-primary/20"></span> In-Use</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded bg-surface-container-highest"></span> Available</span>
+</div>
+</div>
+<!-- 3-Step Smart Locker Instructions -->
+<div class="space-y-space-sm pt-space-xs">
+<div class="font-title-md text-title-md text-primary">How to Deposit into Smart Locker:</div>
+<div class="flex items-start gap-space-xs">
+<span class="w-5 h-5 rounded-full bg-surface-container text-primary font-label-sm text-label-sm flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Approach Atrium Station #04 and tap the touchscreen to select <strong>'Intake Deposit'</strong>.</p>
+</div>
+<div class="flex items-start gap-space-xs">
+<span class="w-5 h-5 rounded-full bg-surface-container text-primary font-label-sm text-label-sm flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Punch in your 6-digit drop code <code class="font-mono bg-cloud px-1 py-0.5 rounded text-primary">893-412</code>. Door #18 will release automatically.</p>
+</div>
+<div class="flex items-start gap-space-xs">
+<span class="w-5 h-5 rounded-full bg-surface-container text-primary font-label-sm text-label-sm flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Place property inside, firmly close the latch, and collect your printed chain-of-custody slip.</p>
+</div>
+</div>
+</div>
+<!-- Chain of Custody Standard Operating Procedure (SOP-88) -->
+<div class="bg-surface-container-low rounded-2xl p-space-lg space-y-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-primary">policy</span>
+<div class="font-headline-sm text-headline-sm text-primary">Westfield SOP-88</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            In compliance with Massachusetts General Laws Ch. 135 § 1-12, campus property custodians maintain a tamper-evident audit ledger. All intakes generate a cryptographic custody token logging exact time of arrival, staff ID, and sensory environmental checks.
+          </p>
+<div class="p-space-sm rounded-xl bg-white shadow-sm space-y-2">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>Custody Verification Score</span>
+<span class="font-title-md text-primary">99.4% Validated</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[99.4%]"></div>
+</div>
+<div class="text-[11px] font-label-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">verified_user</span>
+<span>Encrypted with SHA-256 Westfield Institutional Key</span>
+</div>
+</div>
+<!-- FERPA & Public Safety Compliance Badges -->
+<div class="pt-space-xs border-t border-surface-container-highest space-y-space-xs">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Regulatory Compliance</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white text-primary font-label-sm text-label-sm shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-secondary">verified</span> FERPA Blinded Records
+              </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white text-primary font-label-sm text-label-sm shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-secondary">lock</span> MGL Ch. 135 Audited
+              </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white text-primary font-label-sm text-label-sm shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-secondary">security</span> Clery Act Compliant
+              </span>
+</div>
+</div>
+</div>
+<!-- Campus Custody Assistance Hotlines -->
+<div class="bg-white rounded-2xl p-space-md shadow-sm space-y-space-sm">
+<div class="font-title-md text-title-md text-primary">Need Urgent Attendant Assistance?</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            If the property contains hazardous materials, high cash sums (&gt;$500), or government identification, dispatch Westfield Police directly.
+          </p>
+<div class="pt-space-xs space-y-space-xs">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Campus Safety Dispatch:</span>
+<span class="font-title-md text-primary font-mono">(413) 572-5262</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Du Bois Custody Desk:</span>
+<span class="font-title-md text-primary font-mono">Ext. #4891</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+    // Micro-interactions for form selection states and pin copy
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyIcon = document.querySelector('.material-symbols-outlined[class*="content_copy"]');
+      if (copyIcon) {
+        copyIcon.addEventListener('click', () => {
+          navigator.clipboard.writeText('893-412').then(() => {
+            const originalText = copyIcon.textContent;
+            copyIcon.textContent = 'done';
+            copyIcon.classList.add('text-secondary');
+            setTimeout(() => {
+              copyIcon.textContent = originalText;
+              copyIcon.classList.remove('text-secondary');
+            }, 1800);
+          });
+        });
+      }
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-container-low shadow-[0_1px_8px_rgba(3,3,2,0.04)] pt-space-xl pb-space-lg"><div class="max-w-7xl mx-auto px-gutter"><div class="grid grid-cols-1 md:grid-cols-4 gap-space-lg pb-space-lg"><div class="space-y-space-xs md:col-span-1"><div class="flex items-center gap-space-xs mb-space-xs"><span class="w-7 h-7 rounded-lg bg-primary flex items-center justify-center text-on-primary font-headline-sm text-body-sm">W</span><span class="font-headline-sm text-title-md text-primary">CampusFind</span></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">The centralized lost property custodian registry for Westfield University System students, faculty, and campus visitors.</p></div><div class="space-y-space-xs"><span class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider block mb-space-xs">Services</span><ul class="space-y-space-xs"><li class="font-body-sm text-body-sm text-on-surface-variant">Intake Repository</li><li class="font-body-sm text-body-sm text-on-surface-variant">Intelligent Match AI</li><li class="font-body-sm text-body-sm text-on-surface-variant">Campus Custody Desks</li><li class="font-body-sm text-body-sm text-on-surface-variant">Courier Collection</li></ul></div><div class="space-y-space-xs"><span class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider block mb-space-xs">Governance &amp; Desk</span><ul class="space-y-space-xs"><li class="font-body-sm text-body-sm text-on-surface-variant">Westfield Police Dispatch</li><li class="font-body-sm text-body-sm text-on-surface-variant">Student Life &amp; Residence</li><li class="font-body-sm text-body-sm text-on-surface-variant">Facilities &amp; Operations</li><li class="font-body-sm text-body-sm text-on-surface-variant">Dean of Students</li></ul></div><div class="space-y-space-xs"><span class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider block mb-space-xs">Institutional Notices</span><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Unclaimed property retained strictly for 90 calendar days under Westfield System Board Policy § 402.1B and Massachusetts General Laws Ch. 134 regarding disposition of abandoned property.</p></div></div><div class="pt-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm"><p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 Trustees of Westfield University System. All rights reserved. Equal Opportunity Affirmative Action Institution.</p><div class="flex gap-space-md text-on-surface-variant font-label-sm text-label-sm"><span class="hover:text-on-surface">FERPA &amp; Privacy Statement</span><span class="hover:text-on-surface">Accessibility Policy</span><span class="hover:text-on-surface">Public Safety Log</span></div></div></div></footer></body></html>

@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Merriweather:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"on-tertiary-fixed":"#3b0900","graphite":"#41413f","white":"#ffffff","on-secondary-fixed":"#001b3c","surface-container":"#f1edec","outline-variant":"#c9c6be","on-primary-fixed":"#1c1c19","surface":"#fcf8f7","inverse-on-surface":"#f4f0ef","background":"#fcf8f7","canvas":"#fff3e7","secondary-fixed-dim":"#a8c8ff","tertiary-container":"#3b0900","surface-container-lowest":"#ffffff","on-primary-fixed-variant":"#484743","surface-container-highest":"#e5e2e0","on-secondary-container":"#fefcff","on-secondary-fixed-variant":"#00468a","surface-container-low":"#f7f3f2","on-background":"#1c1b1b","on-tertiary-container":"#f34100","primary-container":"#1c1c19","surface-bright":"#fcf8f7","tertiary":"#000000","surface-container-high":"#ebe7e6","primary-fixed":"#e5e2dd","secondary":"#005bb0","primary":"#000000","ash":"#e1e1e1","surface-tint":"#605e5b","sky":"#9ed4ef","secondary-fixed":"#d5e3ff","on-primary-container":"#86847f","on-tertiary":"#ffffff","on-secondary":"#ffffff","cloud":"#efefef","on-tertiary-fixed-variant":"#872000","inverse-primary":"#c9c6c1","error-container":"#ffdad6","on-primary":"#ffffff","on-error":"#ffffff","mint":"#9bd8a9","inverse-surface":"#313030","tertiary-fixed-dim":"#ffb5a0","primary-fixed-dim":"#c9c6c1","on-surface":"#1c1b1b","error":"#ba1a1a","secondary-container":"#0074dc","on-error-container":"#93000a","periwinkle":"#b8caf5","marigold":"#fde99b","on-surface-variant":"#484740","linen":"#f7f7f7","outline":"#797770","tertiary-fixed":"#ffdbd1","surface-dim":"#ddd9d8","surface-variant":"#e5e2e0"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"gutter-sm":"1rem","space-sm":"0.5rem","margin":"2rem","margin-mobile":"1rem","space-md":"1rem","gutter":"1.5rem","space-xl":"2.5rem","space-xs":"0.25rem","space-lg":"1.5rem"},"fontFamily":{"headline-lg-mobile":["Merriweather"],"display":["Merriweather"],"body-md":["Inter"],"body-sm":["Inter"],"headline-sm":["Merriweather"],"title-md":["Inter"],"headline-lg":["Merriweather"],"body-lg":["Inter"],"label-md":["Inter"],"display-mobile":["Merriweather"],"headline-md":["Merriweather"],"label-lg":["Inter"],"label-sm":["Inter"],"title-lg":["Inter"]},"fontSize":{"headline-lg-mobile":["26px",{"lineHeight":"34px","fontWeight":"700"}],"display":["48px",{"lineHeight":"56px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"headline-sm":["20px",{"lineHeight":"28px","fontWeight":"700"}],"title-md":["16px",{"lineHeight":"24px","fontWeight":"600"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.01em","fontWeight":"700"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-md":["12px",{"lineHeight":"16px","fontWeight":"600"}],"display-mobile":["36px",{"lineHeight":"44px","letterSpacing":"-0.01em","fontWeight":"700"}],"headline-md":["24px",{"lineHeight":"32px","fontWeight":"700"}],"label-lg":["14px",{"lineHeight":"20px","fontWeight":"600"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.02em","fontWeight":"600"}],"title-lg":["18px",{"lineHeight":"26px","fontWeight":"600"}]}}}}</script></head><body class="bg-canvas text-on-surface font-body-md min-h-screen selection:bg-periwinkle"><header class="fixed top-0 left-0 w-full z-50 bg-canvas/90 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-28 max-w-7xl mx-auto px-margin flex flex-col justify-between py-space-xs"><div class="flex items-center justify-between w-full h-14"><div class="flex items-center gap-space-lg"><a class="flex items-center gap-space-sm group" data-path="browse-listings" href="#"><div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors"><span class="material-symbols-outlined text-[20px]">account_balance</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface leading-tight tracking-tight">CampusFind</span><span class="font-label-sm text-label-sm text-on-surface-variant font-medium tracking-wide uppercase">Westfield System</span></div></a><div class="hidden lg:flex items-center gap-space-xs text-on-surface-variant font-label-sm"><span class="material-symbols-outlined text-[16px]">chevron_right</span><span class="text-graphite font-medium">Collegiate District Network</span></div></div><div class="flex items-center gap-space-md"><div class="hidden sm:flex items-center gap-space-xs bg-surface-container-low px-space-md py-space-xs rounded-full border border-ash"><span class="w-2 h-2 rounded-full bg-mint animate-pulse"></span><span class="font-label-sm text-label-sm text-on-surface-variant">Hub Custody: Operational</span></div><button class="w-9 h-9 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div><div class="flex items-center justify-between overflow-x-auto pb-space-xs"><nav class="flex items-center gap-space-xs" data-active-classes="bg-surface-container-highest text-on-surface font-label-md"><a class="px-space-md py-space-xs rounded-lg text-on-surface-variant font-label-md hover:bg-surface-container-high hover:text-on-surface transition-all whitespace-nowrap" data-path="browse-listings" href="#">Browse Listings</a><a class="px-space-md py-space-xs rounded-lg text-on-surface-variant font-label-md hover:bg-surface-container-high hover:text-on-surface transition-all whitespace-nowrap" data-path="report-lost" href="#">Report Lost</a><a class="px-space-md py-space-xs rounded-lg text-on-surface-variant font-label-md hover:bg-surface-container-high hover:text-on-surface transition-all whitespace-nowrap" data-path="report-found" href="#">Report Found</a><a class="px-space-md py-space-xs rounded-lg text-on-surface-variant font-label-md hover:bg-surface-container-high hover:text-on-surface transition-all whitespace-nowrap" data-path="track-status" href="#">Track Status</a><a aria-current="page" class="px-space-md py-space-xs rounded-lg transition-all whitespace-nowrap flex items-center gap-space-xs bg-surface-container-highest text-on-surface font-label-md" data-path="intelligent-match" href="#"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Intelligent Match</a><a class="px-space-md py-space-xs rounded-lg text-on-surface-variant font-label-md hover:bg-surface-container-high hover:text-on-surface transition-all whitespace-nowrap" data-path="campus-zones" href="#">Campus Zones</a><a class="px-space-md py-space-xs rounded-lg text-on-surface-variant font-label-md hover:bg-surface-container-high hover:text-on-surface transition-all whitespace-nowrap" data-path="admin-portal" href="#">Admin Portal</a></nav><div class="hidden md:flex items-center gap-space-xs"><span class="font-label-sm text-label-sm text-outline">System Status:</span><span class="font-label-sm text-label-sm bg-mint px-space-xs py-0.5 rounded text-on-surface font-semibold">Secure Archive</span></div></div></div></header><main class="w-full pt-28 bg-canvas min-h-[calc(100vh-140px)]"><div class="max-w-7xl mx-auto px-margin py-space-sm"><div class="bg-surface rounded-xl p-space-md shadow-[0_1px_8px_rgba(0,0,0,0.04)] mb-space-lg flex flex-col md:flex-row md:items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><div class="w-10 h-10 rounded-lg bg-sky/30 flex items-center justify-center text-secondary"><span class="material-symbols-outlined text-[22px]">verified_user</span></div><div class="flex flex-col"><span class="font-title-md text-title-md text-on-surface font-semibold">Administrative Custody Protocol 4.2</span><span class="font-body-sm text-body-sm text-on-surface-variant">All verified returns, secure chain-of-custody handoffs, and AI-assisted cross-matching are operational for Westfield North &amp; South hubs.</span></div></div><div class="flex items-center gap-space-sm"><span class="font-label-sm text-label-sm bg-surface-container-high text-on-surface px-space-md py-space-xs rounded-full font-medium">Custody Intake: Level 2 Safe</span><a class="font-label-sm text-label-sm text-secondary hover:underline font-semibold" data-path="intake-verification" href="#">Intake Log →</a></div></div></div><div class="max-w-7xl mx-auto px-margin pb-space-xl"><div class="flex flex-col w-full gap-space-lg">
+<!-- Top Match Review Banner & Legal Disclaimer -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex flex-wrap items-center gap-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider px-space-sm py-0.5 rounded-full bg-surface-container-highest text-graphite font-semibold">
+            Automated Correlation Vector
+          </span>
+<span class="font-label-md text-label-md text-secondary font-semibold">
+            Docket #MATCH-VEC-8841-9102
+          </span>
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Queue: Science District Fast-Track</span>
+</div>
+<div class="flex items-baseline gap-space-md mt-space-xs">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
+            94% Probabilistic Correlation
+          </h1>
+<span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded-full bg-mint text-primary font-bold">
+            High Confidence Match
+          </span>
+</div>
+</div>
+<!-- Quick Docket Status Pill -->
+<div class="flex items-center gap-space-md bg-canvas p-space-sm rounded-lg">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">hub</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Assigned Custody Hub</span>
+<span class="font-title-md text-title-md text-on-surface font-semibold">Science Depot (Level 2 Vault)</span>
+</div>
+</div>
+</div>
+<!-- Mandatory Custody / Legal Disclaimer Banner -->
+<div class="bg-surface-container-low rounded-lg p-space-md flex items-start gap-space-md">
+<span class="material-symbols-outlined text-on-surface text-[20px] shrink-0 mt-0.5">policy</span>
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-md text-label-md uppercase tracking-wide text-on-surface font-bold">
+          Administrative &amp; Legal Custody Mandate
+        </span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+<strong class="text-on-surface">IMPORTANT:</strong> Algorithmic similarity is an investigative index aid, NOT legal or physical proof of ownership. Claimants must independently satisfy blinded verification protocol prior to property release. Officer sign-off triggers blinded SMS challenge credentials only.
+        </p>
+</div>
+</div>
+</section>
+<!-- Side-by-Side Item Report Comparison -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+<!-- LEFT: Lost Belonging Report -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div class="flex flex-col gap-space-md">
+<!-- Header -->
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-on-tertiary-container"></span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Lost Belonging Intake</span>
+</div>
+<span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded-full bg-error-container text-on-error-container font-semibold">
+            #LR-2024-8841
+          </span>
+</div>
+<!-- Masked Claimant Banner -->
+<div class="bg-linen p-space-sm rounded-lg flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span class="font-label-sm text-label-sm font-semibold">Claimant: Westfield Student (NetID Blinded)</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline">Logged Oct 24, 2024 • 14:15 EDT</span>
+</div>
+<!-- Image & Description Card -->
+<div class="flex flex-col gap-space-sm">
+<div class="relative w-full h-52 rounded-lg overflow-hidden bg-cloud flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Editorial close-up product studio photograph of premium matte silver-grey over-ear Sony WH-1000XM5 wireless headphones placed inside an open hard zip case on a clean textured cream parchment surface. Soft natural window side light, warm shadows, minimalist collegiate aesthetic, ultra-clean product styling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtAeG3Ge6y8sYxebW26o9-m5X7aQonS2p7PRzUbyLzrtuNWhNVtmxHRG66JAaRqC_9tAZns0wifyMNxaWOxuXLIg9-XH8hDIHSxehivlpgknwvcHyxyT_ZZDMq5bNH_n_zioJgrZ6p1-XK8aXycuwKfUocO5wOqwg5rkTfnIn9ihR0jXYR6jAAhTui3o0SAIP_7TGA4Svusk8Y8Yx90EpJ4UR6Lb7R8b0RDh73docB"/>
+<div class="absolute bottom-2 left-2 bg-primary/80 backdrop-blur-sm text-on-primary font-label-sm text-label-sm px-space-sm py-0.5 rounded">
+              User Submitted Reference Image
+            </div>
+</div>
+<!-- Fact Table Grid -->
+<div class="grid grid-cols-2 gap-space-sm mt-space-xs">
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Claimed Category</span>
+<span class="font-title-md text-title-md text-on-surface">Electronics &amp; Audio</span>
+</div>
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Reported Brand &amp; Model</span>
+<span class="font-title-md text-title-md text-on-surface">Sony WH-1000XM5</span>
+</div>
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Reported Colour</span>
+<span class="font-title-md text-title-md text-on-surface">Silver / Off-White</span>
+</div>
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Loss Timestamp</span>
+<span class="font-title-md text-title-md text-on-surface">Oct 24, 2024 ∼14:15 EDT</span>
+</div>
+</div>
+<!-- Stated Location -->
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Stated Last Known Location
+            </span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">
+              William James Science Complex, Wing B, 2nd Floor Study Nook #12
+            </span>
+</div>
+<!-- Student Narrative Notes -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-bold tracking-wider">
+              Claimant Narrative &amp; Clues
+            </span>
+<p class="font-body-sm text-body-sm text-on-surface leading-relaxed">
+              “Left on the small oak carrel by the south glass windows. Headset is kept in a <mark class="bg-marigold px-1 rounded">light gray traveling case</mark>. Contains a <mark class="bg-marigold px-1 rounded">3.5mm coiled cord in interior pouch</mark> and has a faint <mark class="bg-marigold px-1 rounded">small campus sticker on corner</mark> of the case.”
+            </p>
+</div>
+</div>
+</div>
+<div class="pt-space-md flex items-center justify-between text-outline text-label-sm font-label-sm">
+<span>Verification Hash: 8841-SHA256-BLIND</span>
+<span>Origin: Mobile Web Portal</span>
+</div>
+</div>
+<!-- RIGHT: Discovered Belonging Report -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div class="flex flex-col gap-space-md">
+<!-- Header -->
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-mint"></span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Discovered Belonging Log</span>
+</div>
+<span class="font-label-sm text-label-sm px-space-sm py-0.5 rounded-full bg-mint text-primary font-semibold">
+            #FR-2024-9102
+          </span>
+</div>
+<!-- Masked Proctor Intake Banner -->
+<div class="bg-linen p-space-sm rounded-lg flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+<span class="font-label-sm text-label-sm font-semibold">Custody Officer: Proctor J. Alvarez (#449)</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline">Logged Oct 24, 2024 • 15:00 EDT</span>
+</div>
+<!-- Image & Description Card -->
+<div class="flex flex-col gap-space-sm">
+<div class="relative w-full h-52 rounded-lg overflow-hidden bg-cloud flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Institutional inventory documentation photo of light gray over-ear noise-cancelling headphones resting on an administrative stainless steel intake tray under diffused depot lighting. An official yellow barcode custody tag is resting beside the matching travel case zipper, crisp documentary evidence aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD75V0W5Ekp_mkCChY1fK-FZv81Jew2raY70g0pFfHKyErYpnWsR_3MQsRBAgUdDK9Lu0Yp4sqN0uqO94kf43j-2LYuDpR24e6tNPPZ-hiz3V31xwc76hE5W3wubGX8e5ww87IbryozSOEM8pTKiJW2BC4pjMFkcXHxePI5bt4BgZA7b4K8NvfbcBX77pLLlnTMx_RELXzIBeegmHvWfa4JNdTvafgX4Hx6GQPrImDS"/>
+<div class="absolute bottom-2 left-2 bg-secondary text-white font-label-sm text-label-sm px-space-sm py-0.5 rounded">
+              Depot Intake Verification Photo
+            </div>
+<div class="absolute top-2 right-2 bg-surface-container-lowest/90 backdrop-blur text-on-surface font-label-sm text-label-sm px-space-sm py-0.5 rounded flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">lock</span> Custody Locker #08
+            </div>
+</div>
+<!-- Fact Table Grid -->
+<div class="grid grid-cols-2 gap-space-sm mt-space-xs">
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Depot Taxonomy</span>
+<span class="font-title-md text-title-md text-on-surface">Consumer Audio &amp; Tech</span>
+</div>
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Catalogued Hardware</span>
+<span class="font-title-md text-title-md text-on-surface">Sony WH1000-XM5 ANC</span>
+</div>
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Logged Shade / Finish</span>
+<span class="font-title-md text-title-md text-on-surface">Light Gray / Silver</span>
+</div>
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Discovery Timestamp</span>
+<span class="font-title-md text-title-md text-on-surface">Oct 24, 2024 ∼14:50 EDT</span>
+</div>
+</div>
+<!-- Discovered Location -->
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px]">pin_drop</span> Recovery Coordinates / Depot Unit
+            </span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">
+              Science Atrium Bench 3 (Ground Floor West) • Science Hub Locker #08
+            </span>
+</div>
+<!-- Depot Officer Notes & Blinded Attributes Vault -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-bold tracking-wider">
+                Custody Proctor Inspection Log
+              </span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">lock</span> 3 Attributes Blinded
+              </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface leading-relaxed">
+              Found on wooden bench next to water bottle filler. Stowed in <mark class="bg-marigold px-1 rounded">protective zipper shell</mark>. In-line cable observed inside mesh.
+            </p>
+<div class="mt-space-xs p-space-xs bg-canvas rounded flex items-center justify-between text-graphite text-label-sm font-label-sm">
+<span>[3 Blinded Identification Attributes Held in Vault Log #882]</span>
+<button class="text-secondary hover:underline font-semibold text-label-sm">Request Vault Peek</button>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-space-md flex items-center justify-between text-outline text-label-sm font-label-sm">
+<span>Hardware Serial: S/N Masked (Vault Secured)</span>
+<span>Storage Chain: Level 2 Safe</span>
+</div>
+</div>
+</section>
+<!-- Multi-Vector Match Factor Decomposition -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm pb-space-sm">
+<div class="flex flex-col">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Multi-Vector Factor Decomposition</h2>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Weighted regression metrics comparing lost report attributes with verified intake records.</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Vector Weights Model:</span>
+<span class="font-label-sm text-label-sm px-space-sm py-0.5 bg-surface-container-high rounded text-on-surface font-semibold">Campus-Aura v4.11</span>
+</div>
+</div>
+<!-- Factor Rows Grid -->
+<div class="flex flex-col gap-space-sm">
+<!-- Vector 1: Category -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="w-full md:w-1/3 flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary">category</span>
+<span class="font-title-md text-title-md text-on-surface">Item Category</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Electronics / Audio Over-Ear</span>
+</div>
+<div class="w-full md:w-1/3 flex flex-col gap-1">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-graphite">Taxonomy Weight: 25%</span>
+<span class="font-bold text-on-surface">100% Match</span>
+</div>
+<div class="w-full bg-ash h-2 rounded-full overflow-hidden">
+<div class="bg-mint h-full rounded-full" style="width: 100%"></div>
+</div>
+</div>
+<div class="w-full md:w-1/3 text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-space-sm py-1 rounded inline-block text-left md:text-right">
+            Exact Taxonomy Match in Westfield Ontology
+          </span>
+</div>
+</div>
+<!-- Vector 2: Name & Lexical -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="w-full md:w-1/3 flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary">spellcheck</span>
+<span class="font-title-md text-title-md text-on-surface">Name &amp; Lexical Similarity</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">'Sony WH-1000XM5' vs 'WH1000-XM5 Noise Canceling'</span>
+</div>
+<div class="w-full md:w-1/3 flex flex-col gap-1">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-graphite">Lexical Weight: 15%</span>
+<span class="font-bold text-on-surface">96% Token Overlap</span>
+</div>
+<div class="w-full bg-ash h-2 rounded-full overflow-hidden">
+<div class="bg-mint h-full rounded-full" style="width: 96%"></div>
+</div>
+</div>
+<div class="w-full md:w-1/3 text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-space-sm py-1 rounded inline-block text-left md:text-right">
+            High Semantic Tokenizer Overlap (Levenshtein d=2)
+          </span>
+</div>
+</div>
+<!-- Vector 3: Hardware Model -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="w-full md:w-1/3 flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary">memory</span>
+<span class="font-title-md text-title-md text-on-surface">Brand &amp; Hardware Model</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Sony Consumer Electronics Group</span>
+</div>
+<div class="w-full md:w-1/3 flex flex-col gap-1">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-graphite">Hardware Weight: 20%</span>
+<span class="font-bold text-on-surface">98% Embedding</span>
+</div>
+<div class="w-full bg-ash h-2 rounded-full overflow-hidden">
+<div class="bg-mint h-full rounded-full" style="width: 98%"></div>
+</div>
+</div>
+<div class="w-full md:w-1/3 text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-space-sm py-1 rounded inline-block text-left md:text-right">
+            Normalized Sony Global SKU Match #SNY-XM5-SLV
+          </span>
+</div>
+</div>
+<!-- Vector 4: Colour / Palette -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="w-full md:w-1/3 flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary">palette</span>
+<span class="font-title-md text-title-md text-on-surface">Colour &amp; Finish Proximity</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Silver / Off-White vs Light Gray</span>
+</div>
+<div class="w-full md:w-1/3 flex flex-col gap-1">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-graphite">Vision CIELAB Weight: 10%</span>
+<span class="font-bold text-on-surface">92% Spectral</span>
+</div>
+<div class="w-full bg-ash h-2 rounded-full overflow-hidden">
+<div class="bg-mint h-full rounded-full" style="width: 92%"></div>
+</div>
+</div>
+<div class="w-full md:w-1/3 text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-space-sm py-1 rounded inline-block text-left md:text-right">
+            Spectral delta ΔE &lt; 3.4 (Standard matte variant)
+          </span>
+</div>
+</div>
+<!-- Vector 5: Description & NLP Keywords -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="w-full md:w-1/3 flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary">text_snippet</span>
+<span class="font-title-md text-title-md text-on-surface">Keywords &amp; Narrative Match</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Case, zipper shell, coiled accessory cord</span>
+</div>
+<div class="w-full md:w-1/3 flex flex-col gap-1">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-graphite">NLP Weight: 10%</span>
+<span class="font-bold text-on-surface">88% Context</span>
+</div>
+<div class="w-full bg-ash h-2 rounded-full overflow-hidden">
+<div class="bg-mint h-full rounded-full" style="width: 88%"></div>
+</div>
+</div>
+<div class="w-full md:w-1/3 text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-space-sm py-1 rounded inline-block text-left md:text-right">
+            Coincident token extraction on case and audio adapter
+          </span>
+</div>
+</div>
+<!-- Vector 6: Temporal Proximity -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="w-full md:w-1/3 flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary">schedule</span>
+<span class="font-title-md text-title-md text-on-surface">Temporal Proximity (Δt)</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Reported loss ∼14:15 → Discovered ∼14:50</span>
+</div>
+<div class="w-full md:w-1/3 flex flex-col gap-1">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-graphite">Time Decay Weight: 10%</span>
+<span class="font-bold text-on-surface">95% Proximity</span>
+</div>
+<div class="w-full bg-ash h-2 rounded-full overflow-hidden">
+<div class="bg-mint h-full rounded-full" style="width: 95%"></div>
+</div>
+</div>
+<div class="w-full md:w-1/3 text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-space-sm py-1 rounded inline-block text-left md:text-right">
+            Delta: +35 minutes between loss and recovery intake
+          </span>
+</div>
+</div>
+<!-- Vector 7: Geographic Proximity -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="w-full md:w-1/3 flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary">map</span>
+<span class="font-title-md text-title-md text-on-surface">Geographic &amp; Campus Zone Proximity</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Wing B 2nd Floor → Atrium Bench 3</span>
+</div>
+<div class="w-full md:w-1/3 flex flex-col gap-1">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-graphite">GIS Weight: 10%</span>
+<span class="font-bold text-on-surface">91% Spatial</span>
+</div>
+<div class="w-full bg-ash h-2 rounded-full overflow-hidden">
+<div class="bg-mint h-full rounded-full" style="width: 91%"></div>
+</div>
+</div>
+<div class="w-full md:w-1/3 text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-space-sm py-1 rounded inline-block text-left md:text-right">
+            Delta: ∼120 meters (Same physical facility building envelope)
+          </span>
+</div>
+</div>
+</div>
+</section>
+<!-- Administrative Decision & Review Actions Panel -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md pb-space-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-periwinkle flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">assignment_turned_in</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-bold">
+            Administrative Custody Action Desk
+          </span>
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface">Status: Under Custodial Review</span>
+<span class="font-body-sm text-body-sm text-outline">(Logged by Officer M. Vance)</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-xs text-graphite font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-mint">check_circle</span>
+        Chain-of-Custody Lock Active
+      </div>
+</div>
+<!-- Review Actions Button Bar -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Primary Approval Button -->
+<button class="flex flex-col items-start justify-between p-space-md rounded-xl bg-primary text-on-primary hover:bg-graphite transition-all shadow-sm group text-left" onclick="triggerDispatchAlert()">
+<div class="flex items-center justify-between w-full mb-space-sm">
+<span class="material-symbols-outlined text-[24px] text-mint">mark_email_read</span>
+<span class="font-label-sm text-label-sm bg-surface-container-high/20 px-space-xs py-0.5 rounded text-on-primary">
+            Primary Action
+          </span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md font-bold leading-tight">
+            Approve Potential Match
+          </span>
+<span class="font-body-sm text-body-sm text-on-primary-container mt-1">
+            Dispatch blinded SMS/Email claim verification challenge.
+          </span>
+</div>
+</button>
+<!-- Secondary Inquiry Button -->
+<button class="flex flex-col items-start justify-between p-space-md rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface transition-all text-left" onclick="requestClarificationAlert()">
+<div class="flex items-center justify-between w-full mb-space-sm">
+<span class="material-symbols-outlined text-[24px] text-secondary">add_a_photo</span>
+<span class="font-label-sm text-label-sm bg-cloud px-space-xs py-0.5 rounded text-graphite">
+            Intake Hub
+          </span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md font-semibold leading-tight">
+            Request Clarification
+          </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+            Request depot clerk upload additional macro photos of serial/jack.
+          </span>
+</div>
+</button>
+<!-- Manual Vault Inspection -->
+<button class="flex flex-col items-start justify-between p-space-md rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface transition-all text-left" onclick="manualInspectionAlert()">
+<div class="flex items-center justify-between w-full mb-space-sm">
+<span class="material-symbols-outlined text-[24px] text-graphite">shield_person</span>
+<span class="font-label-sm text-label-sm bg-cloud px-space-xs py-0.5 rounded text-graphite">
+            Physical Protocol
+          </span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md font-semibold leading-tight">
+            Manual Vault Inspection
+          </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+            Flag item #FR-9102 for physical inspection at Science Depot safe.
+          </span>
+</div>
+</button>
+<!-- Destructive Dismissal Panel -->
+<div class="flex flex-col justify-between p-space-md rounded-xl bg-surface-container-low text-on-surface">
+<div class="flex items-center justify-between w-full mb-space-xs">
+<span class="material-symbols-outlined text-[22px] text-error">cancel</span>
+<span class="font-label-sm text-label-sm text-error font-semibold">Dismiss Vector</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="dismiss-reason">Select Reason:</label>
+<select class="w-full bg-surface-container-lowest text-on-surface text-body-sm font-body-sm rounded-lg p-space-xs outline-none" id="dismiss-reason">
+<option value="serial">Serial number mismatch (Vault)</option>
+<option value="color">Physical finish discrepancy</option>
+<option value="false_positive">Duplicate match candidate</option>
+<option value="other">Claimant retracted report</option>
+</select>
+<button class="w-full mt-space-xs py-space-xs px-space-sm bg-error-container text-on-error-container hover:bg-error hover:text-on-error rounded-lg font-label-sm text-label-sm font-bold transition-colors" onclick="dismissMatchAlert()">
+            Dismiss Match
+          </button>
+</div>
+</div>
+</div>
+<!-- Interactive Feedback Banner (Hidden by default, triggered by JS) -->
+<div class="hidden rounded-lg p-space-md flex items-center justify-between transition-all" id="action-notification">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px]" id="notif-icon"></span>
+<span class="font-body-sm text-body-sm font-semibold" id="notif-message"></span>
+</div>
+<button class="font-label-sm text-label-sm underline" onclick="document.getElementById('action-notification').classList.add('hidden')">Dismiss</button>
+</div>
+</section>
+<!-- Match Audit History & Vector Log (Timeline) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px] text-primary">history</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Match Audit History &amp; Immutable Event Log</h2>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Session Hash: 0x9AF8...2C41</span>
+</div>
+<div class="relative pl-6 space-y-6 before:content-[''] before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-ash">
+<!-- Event 1 -->
+<div class="relative flex items-start gap-space-md">
+<span class="absolute -left-6 top-1 w-3.5 h-3.5 rounded-full bg-outline-variant ring-4 ring-surface-container-lowest"></span>
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-space-xs sm:gap-space-md w-full">
+<span class="font-label-sm text-label-sm font-semibold text-secondary w-20 shrink-0">14:15 EDT</span>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface">Lost Belonging Ingestion</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Report #LR-8841 ingested into vector database from mobile portal. Embeddings calculated via MiniLM-L6.</p>
+</div>
+</div>
+</div>
+<!-- Event 2 -->
+<div class="relative flex items-start gap-space-md">
+<span class="absolute -left-6 top-1 w-3.5 h-3.5 rounded-full bg-outline-variant ring-4 ring-surface-container-lowest"></span>
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-space-xs sm:gap-space-md w-full">
+<span class="font-label-sm text-label-sm font-semibold text-secondary w-20 shrink-0">15:00 EDT</span>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface">Discovered Belonging Tagged</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Report #FR-9102 logged at Science Atrium smart locker #08 by Custodial Proctor Alvarez. Physical intake photos attached.</p>
+</div>
+</div>
+</div>
+<!-- Event 3 -->
+<div class="relative flex items-start gap-space-md">
+<span class="absolute -left-6 top-1 w-3.5 h-3.5 rounded-full bg-mint ring-4 ring-surface-container-lowest"></span>
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-space-xs sm:gap-space-md w-full">
+<span class="font-label-sm text-label-sm font-semibold text-mint text-primary font-bold w-20 shrink-0">15:02 EDT</span>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface">Automated KNN Vector Match Flagged</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">KNN correlation engine computed 94% probabilistic affinity vector across 7 taxonomic variables. Threshold exceeded (90%).</p>
+</div>
+</div>
+</div>
+<!-- Event 4 -->
+<div class="relative flex items-start gap-space-md">
+<span class="absolute -left-6 top-1 w-3.5 h-3.5 rounded-full bg-outline-variant ring-4 ring-surface-container-lowest"></span>
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-space-xs sm:gap-space-md w-full">
+<span class="font-label-sm text-label-sm font-semibold text-secondary w-20 shrink-0">15:10 EDT</span>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface">Institutional Privacy Shield Applied</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Automated privacy shield masked student NetID and finder locker PIN from unprivileged custodial viewports.</p>
+</div>
+</div>
+</div>
+<!-- Event 5 -->
+<div class="relative flex items-start gap-space-md">
+<span class="absolute -left-6 top-1 w-3.5 h-3.5 rounded-full bg-primary ring-4 ring-surface-container-lowest"></span>
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-space-xs sm:gap-space-md w-full">
+<span class="font-label-sm text-label-sm font-semibold text-primary w-20 shrink-0">15:45 EDT</span>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface">Administrative Desk Review Opened</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Desk session initiated by Officer M. Vance (Badge #312). Pending formal dispatch approval or locker inspection dispatch.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Sub-State Simulator (Demonstration Deck for Empty, Loading, and Pipeline Error States) -->
+<section class="bg-surface-container rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-bold text-graphite">System Resilience Testing</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Alternative Pipeline States Simulator</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Toggle views to audit system performance under various server &amp; queue conditions.</p>
+</div>
+<!-- Substate Segmented Tabs -->
+<div class="flex items-center gap-1 bg-surface-container-lowest p-1 rounded-lg">
+<button class="font-label-sm text-label-sm px-space-sm py-1 rounded bg-primary text-on-primary transition-all font-semibold" id="btn-state-active" onclick="switchState('active')">
+          Active Match (Current)
+        </button>
+<button class="font-label-sm text-label-sm px-space-sm py-1 rounded text-on-surface-variant hover:text-on-surface transition-all font-semibold" id="btn-state-empty" onclick="switchState('empty')">
+          Queue Empty
+        </button>
+<button class="font-label-sm text-label-sm px-space-sm py-1 rounded text-on-surface-variant hover:text-on-surface transition-all font-semibold" id="btn-state-loading" onclick="switchState('loading')">
+          Indexing (Sync)
+        </button>
+<button class="font-label-sm text-label-sm px-space-sm py-1 rounded text-on-surface-variant hover:text-on-surface transition-all font-semibold" id="btn-state-error" onclick="switchState('error')">
+          Timeout Fallback
+        </button>
+</div>
+</div>
+<!-- Substate Display Container -->
+<div class="mt-space-xs" id="substate-container">
+<!-- Default active info snippet -->
+<div class="bg-surface-container-lowest rounded-lg p-space-md flex items-center justify-between text-on-surface-variant" id="substate-active">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">tune</span>
+<span class="font-body-sm text-body-sm">Currently reviewing 1 of 4 pending high-probability correlations in Westfield Science District.</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Realtime Stream Connected</span>
+</div>
+<!-- State: Empty Queue (Hidden by default) -->
+<div class="hidden bg-surface-container-lowest rounded-lg p-space-xl flex flex-col items-center justify-center text-center gap-space-sm" id="substate-empty">
+<div class="w-12 h-12 rounded-full bg-linen flex items-center justify-center text-graphite mb-space-xs">
+<span class="material-symbols-outlined text-[28px]">inventory_2</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">No Unreviewed Vector Matches Pending</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-md">
+          All automated correlation records above the 90% confidence threshold have been processed or released to verified claimants.
+        </p>
+<div class="flex items-center gap-space-sm mt-space-sm">
+<span class="font-label-sm text-label-sm px-space-md py-space-xs rounded bg-surface-container text-on-surface font-semibold">
+            Science Depot Queue: Clear
+          </span>
+<span class="font-label-sm text-label-sm px-space-md py-space-xs rounded bg-surface-container text-on-surface font-semibold">
+            South Campus Hub: Clear
+          </span>
+</div>
+</div>
+<!-- State: Loading / Syncing (Hidden by default) -->
+<div class="hidden bg-surface-container-lowest rounded-lg p-space-xl flex flex-col items-center justify-center text-center gap-space-md" id="substate-loading">
+<div class="relative w-12 h-12">
+<div class="w-12 h-12 rounded-full border-4 border-ash border-t-primary animate-spin"></div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Algorithmic Multi-Vector Cross-Referencing in Progress</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-lg">
+            Synchronizing high-dimensional embeddings across 14 campus physical custody depots and 3 student intake streams. 
+          </p>
+</div>
+<div class="w-full max-w-xs bg-ash h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full animate-pulse" style="width: 72%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Processing Vector Matrix: Batch #8841-B (72% complete)</span>
+</div>
+<!-- State: Error / Pipeline Timeout (Hidden by default) -->
+<div class="hidden bg-error-container rounded-lg p-space-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md text-on-error-container" id="substate-error">
+<div class="flex items-start gap-space-md">
+<span class="material-symbols-outlined text-[28px] shrink-0 text-error">cloud_off</span>
+<div class="flex flex-col gap-space-xs">
+<span class="font-title-md text-title-md font-bold">Vector Database Indexing Timeout</span>
+<p class="font-body-sm text-body-sm leading-relaxed max-w-xl">
+              Cluster node 'vector-node-03.westfield.internal' failed to acknowledge KNN query within 4500ms. Fallback initiated to manual deterministic query filtering. Custody integrity unaffected.
+            </p>
+</div>
+</div>
+<button class="px-space-md py-space-xs rounded bg-error text-on-error font-label-md text-label-md font-bold whitespace-nowrap hover:opacity-90">
+          Retry Pipeline Query
+        </button>
+</div>
+</div>
+</section>
+<!-- Interactive JavaScript Logic -->
+<script>
+    function showNotification(msg, isSuccess, isDestructive = false) {
+      const banner = document.getElementById('action-notification');
+      const icon = document.getElementById('notif-icon');
+      const text = document.getElementById('notif-message');
+
+      banner.classList.remove('hidden', 'bg-mint', 'text-primary', 'bg-error-container', 'text-on-error-container', 'bg-periwinkle');
+
+      if (isDestructive) {
+        banner.classList.add('bg-error-container', 'text-on-error-container');
+        icon.innerText = 'warning';
+      } else if (isSuccess) {
+        banner.classList.add('bg-mint', 'text-primary');
+        icon.innerText = 'verified';
+      } else {
+        banner.classList.add('bg-periwinkle', 'text-primary');
+        icon.innerText = 'info';
+      }
+
+      text.innerText = msg;
+    }
+
+    function triggerDispatchAlert() {
+      showNotification('Success: Blinded Claim Challenge token generated. Secure SMS invitation dispatched to claimant.', true);
+    }
+
+    function requestClarificationAlert() {
+      showNotification('Notice: Clarification request transmitted to Science Hub Custody Desk #08. Photo ticket appended.', false);
+    }
+
+    function manualInspectionAlert() {
+      showNotification('Physical Inspection Ticket generated. Security officer dispatched to Science Custody Safe #08.', false);
+    }
+
+    function dismissMatchAlert() {
+      const reason = document.getElementById('dismiss-reason').value;
+      showNotification('Match correlation MATCH-VEC-8841-9102 dismissed. Reason logged: ' + reason, false, true);
+    }
+
+    function switchState(stateName) {
+      const states = ['active', 'empty', 'loading', 'error'];
+      states.forEach(s => {
+        const el = document.getElementById('substate-' + s);
+        const btn = document.getElementById('btn-state-' + s);
+        if (s === stateName) {
+          el.classList.remove('hidden');
+          btn.classList.add('bg-primary', 'text-on-primary');
+          btn.classList.remove('text-on-surface-variant');
+        } else {
+          el.classList.add('hidden');
+          btn.classList.remove('bg-primary', 'text-on-primary');
+          btn.classList.add('text-on-surface-variant');
+        }
+      });
+    }
+  </script>
+</div></div></main><footer class="w-full bg-surface-container-low py-space-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="max-w-7xl mx-auto px-margin flex flex-col md:flex-row justify-between items-start md:items-center gap-space-lg"><div class="flex flex-col gap-space-xs"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface font-bold">CampusFind</span><span class="font-label-sm text-label-sm text-on-surface-variant">Westfield System</span></div><p class="font-body-sm text-body-sm text-on-surface-variant max-w-md">Official Institutional Property Custody &amp; Intelligent Recovery System. Managed by the Office of Campus Safety &amp; Dean of Students.</p></div><div class="flex flex-wrap items-center gap-space-lg text-on-surface-variant font-label-md"><a class="hover:text-on-surface transition-colors" data-path="campus-zones" href="#">Security Desks</a><a class="hover:text-on-surface transition-colors" data-path="track-status" href="#">Custody Verification</a><a class="hover:text-on-surface transition-colors" data-path="admin-portal" href="#">Auditor Access</a><a class="hover:text-on-surface transition-colors" data-path="privacy-policy" href="#">Custody Policy</a></div></div><div class="max-w-7xl mx-auto px-margin mt-space-lg pt-space-md flex flex-col sm:flex-row justify-between items-center text-on-surface-variant font-label-sm gap-space-xs"><span>© 2025 CampusFind Westfield Administrative System. All rights reserved.</span><span>Confidential Campus Property Records</span></div></footer></body></html>

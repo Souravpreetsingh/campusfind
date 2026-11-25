@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Merriweather:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "ash": "#e1e1e1", "on-background": "#1c1b1b", "primary-fixed": "#e5e2dd", "tertiary": "#000000", "surface": "#fcf8f7", "on-primary-fixed": "#1c1c19", "periwinkle": "#b8caf5", "sky": "#9ed4ef", "on-secondary-fixed": "#001b3c", "on-surface-variant": "#484740", "on-primary-container": "#86847f", "inverse-primary": "#c9c6c1", "linen": "#f7f7f7", "tertiary-fixed-dim": "#ffb5a0", "canvas": "#fff3e7", "on-tertiary-fixed": "#3b0900", "on-secondary-container": "#fefcff", "primary": "#000000", "error-container": "#ffdad6", "graphite": "#41413f", "surface-tint": "#605e5b", "tertiary-fixed": "#ffdbd1", "surface-container-highest": "#e5e2e0", "on-secondary": "#ffffff", "primary-container": "#1c1c19", "on-error": "#ffffff", "outline": "#797770", "on-tertiary-container": "#f34100", "cloud": "#efefef", "inverse-on-surface": "#f4f0ef", "on-tertiary-fixed-variant": "#872000", "inverse-surface": "#313030", "secondary-fixed": "#d5e3ff", "on-secondary-fixed-variant": "#00468a", "on-error-container": "#93000a", "surface-container": "#f1edec", "surface-container-high": "#ebe7e6", "surface-container-low": "#f7f3f2", "outline-variant": "#c9c6be", "marigold": "#fde99b", "surface-bright": "#fcf8f7", "white": "#ffffff", "surface-variant": "#e5e2e0", "surface-container-lowest": "#ffffff", "error": "#ba1a1a", "on-surface": "#1c1b1b", "secondary-fixed-dim": "#a8c8ff", "on-primary-fixed-variant": "#484743", "surface-dim": "#ddd9d8", "secondary-container": "#0074dc", "tertiary-container": "#3b0900", "mint": "#9bd8a9", "background": "#fcf8f7", "on-tertiary": "#ffffff", "primary-fixed-dim": "#c9c6c1", "on-primary": "#ffffff", "secondary": "#005bb0" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "gutter-sm": "1rem", "margin": "2rem", "gutter": "1.5rem", "space-lg": "1.5rem", "space-sm": "0.5rem", "space-xl": "2.5rem", "space-md": "1rem", "margin-mobile": "1rem" }, "fontFamily": { "label-lg": [ "Inter" ], "label-md": [ "Inter" ], "display-mobile": [ "Merriweather" ], "headline-lg-mobile": [ "Merriweather" ], "body-lg": [ "Inter" ], "body-sm": [ "Inter" ], "body-md": [ "Inter" ], "headline-sm": [ "Merriweather" ], "headline-md": [ "Merriweather" ], "title-lg": [ "Inter" ], "display": [ "Merriweather" ], "label-sm": [ "Inter" ], "title-md": [ "Inter" ], "headline-lg": [ "Merriweather" ] }, "fontSize": { "label-lg": [ "14px", { "lineHeight": "20px", "fontWeight": "600" } ], "label-md": [ "12px", { "lineHeight": "16px", "fontWeight": "600" } ], "display-mobile": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "headline-lg-mobile": [ "26px", { "lineHeight": "34px", "fontWeight": "700" } ], "body-lg": [ "16px", { "lineHeight": "24px", "fontWeight": "400" } ], "body-sm": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "fontWeight": "700" } ], "headline-md": [ "24px", { "lineHeight": "32px", "fontWeight": "700" } ], "title-lg": [ "18px", { "lineHeight": "26px", "fontWeight": "600" } ], "display": [ "48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-sm": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" } ], "title-md": [ "16px", { "lineHeight": "24px", "fontWeight": "600" } ], "headline-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" } ] } } } };</script></head><body class="bg-canvas text-on-surface font-body-md text-body-md"><aside class="fixed left-0 top-0 h-full w-72 bg-surface shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between py-space-md"><div class="flex flex-col gap-space-md px-space-md"><div class="flex items-center gap-space-sm px-space-xs"><div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[20px]">local_police</span></div><div class="flex flex-col"><span class="font-title-md text-title-md text-primary leading-tight font-bold tracking-tight">Westfield CampusFind</span><span class="font-label-sm text-label-sm text-on-surface-variant font-medium tracking-wide uppercase">Admin Custody Vault</span></div></div><div class="p-space-sm bg-linen rounded-xl shadow-[0_1px_4px_rgba(0,0,0,0.03)] flex flex-col gap-space-xs"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px] text-secondary">shield_person</span><span class="font-label-md text-label-md text-primary font-semibold truncate">Officer M. Vance</span></div><span class="font-label-sm text-label-sm text-on-surface-variant leading-snug">Lead Custodian &amp; Proctor #884</span></div><nav class="flex flex-col gap-1" data-active-classes="bg-primary text-on-primary font-semibold"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-cloud hover:text-on-surface transition-colors" data-path="overview-dashboard" href="#"><span class="material-symbols-outlined text-[20px]">space_dashboard</span><span class="font-label-lg text-label-lg">Overview Dashboard</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-cloud hover:text-on-surface transition-colors" data-path="report-moderation" href="#"><span class="material-symbols-outlined text-[20px]">verified_user</span><span class="font-label-lg text-label-lg">Report Moderation</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-cloud hover:text-on-surface transition-colors" data-path="intelligent-matches" href="#"><span class="material-symbols-outlined text-[20px]">hub</span><span class="font-label-lg text-label-lg">Intelligent Matches</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-cloud hover:text-on-surface transition-colors" data-path="claims-and-verification" href="#"><span class="material-symbols-outlined text-[20px]">assignment_turned_in</span><span class="font-label-lg text-label-lg">Claims &amp; Verification</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg transition-colors bg-primary text-on-primary font-semibold" data-path="vault-inventory-and-custody" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span class="font-label-lg text-label-lg">Vault Inventory &amp; Custody</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-cloud hover:text-on-surface transition-colors" data-path="operational-analytics" href="#"><span class="material-symbols-outlined text-[20px]">insights</span><span class="font-label-lg text-label-lg">Operational Analytics</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-cloud hover:text-on-surface transition-colors" data-path="immutable-audit-logs" href="#"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span class="font-label-lg text-label-lg">Immutable Audit Logs</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-cloud hover:text-on-surface transition-colors" data-path="campus-system-configuration" href="#"><span class="material-symbols-outlined text-[20px]">tune</span><span class="font-label-lg text-label-lg">Campus System Configuration</span></a></nav></div><div class="px-space-md flex flex-col gap-space-xs"><div class="p-space-sm bg-linen rounded-xl flex items-center justify-between"><div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold">Session Security</span><span class="font-label-md text-label-md text-primary font-bold">Encrypted TLS 1.3</span></div><span class="material-symbols-outlined text-secondary text-[20px]">lock</span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs bg-linen px-space-md py-space-xs rounded-full shadow-[0_1px_4px_rgba(0,0,0,0.02)]"><span class="material-symbols-outlined text-[16px] text-secondary">account_balance</span><span class="font-label-md text-label-md text-on-surface font-semibold">Science &amp; Central Quad Vault Hub</span></div><div class="flex items-center gap-space-xs bg-canvas px-space-sm py-space-xs rounded-full"><span class="w-2 h-2 rounded-full bg-mint animate-pulse"></span><span class="font-label-sm text-label-sm text-on-surface-variant font-medium tracking-wide uppercase">Redis Stream Live</span></div><span class="bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm px-space-sm py-0.5 rounded-full font-bold uppercase tracking-wider">Tier-4 Master Custody</span></div><div class="flex items-center gap-space-md"><div class="relative flex items-center"><div class="flex items-center gap-space-xs bg-linen px-space-md py-space-xs rounded-xl shadow-[0_1px_4px_rgba(0,0,0,0.02)] cursor-pointer text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[18px]">search</span><span class="font-label-sm text-label-sm">Quick Search items, case IDs, RFIDs...</span><kbd class="bg-cloud px-1.5 py-0.5 rounded text-[10px] font-mono text-on-surface-variant font-semibold">Cmd+K</kbd></div></div><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-linen flex items-center justify-center text-on-surface-variant cursor-pointer hover:bg-cloud hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[18px]">notifications</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center cursor-pointer shadow-sm"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-canvas min-h-screen"><div class="flex flex-col w-full">
+<div class="p-space-lg max-w-[1360px] mx-auto w-full flex flex-col gap-space-xl">
+<!-- TOP FACILITY HEADER & STATISTICAL STRIP -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="px-space-sm py-0.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm uppercase tracking-wider font-semibold">Tier-4 High Security Vault</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">• MGL Ch. 135 Compliant Storage</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">
+          Westfield Central Vault &amp; Distributed Smart Locker Grid
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+          Automated chain-of-custody tracking, tamper-evident locker telemetry, and collegiate property disposition registry.
+        </p>
+</div>
+<!-- Quick Actions Header -->
+<div class="flex items-center gap-space-sm flex-wrap">
+<button class="flex items-center gap-space-xs px-space-lg py-space-sm rounded-xl bg-primary text-on-primary font-label-lg text-label-lg shadow-sm hover:bg-graphite transition-all" onclick="document.getElementById('transfer-modal').classList.remove('hidden')">
+<span class="material-symbols-outlined text-[18px]">swap_horiz</span>
+          Log Chain Transfer
+        </button>
+<button class="flex items-center gap-space-xs px-space-lg py-space-sm rounded-xl bg-surface-container-lowest text-primary font-label-lg text-label-lg shadow-sm hover:bg-surface-container transition-all" onclick="document.getElementById('receipt-modal').classList.remove('hidden')">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+          Release Receipt Gen
+        </button>
+</div>
+</div>
+<!-- DEPOT HUB SELECTOR & METRIC RIBBON -->
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Facility Custody Depots</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-mint"></span> 5 Depots Interconnected (Zero Latency)
+        </span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-sm" id="depot-tabs">
+<button class="depot-tab active text-left p-space-md rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all flex flex-col justify-between gap-space-sm" data-depot="science">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold text-secondary">Hub #04</span>
+<span class="material-symbols-outlined text-[20px] text-on-surface">biotech</span>
+</div>
+<div>
+<div class="font-title-md text-title-md text-primary font-bold">Science Depot</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Central Science Atrium</div>
+</div>
+<div class="pt-space-xs flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>28/32 Lockers Full</span>
+<span class="text-error font-semibold">4 High-Value</span>
+</div>
+</button>
+<button class="depot-tab text-left p-space-md rounded-2xl bg-linen hover:bg-surface-container-lowest shadow-sm hover:shadow-md transition-all flex flex-col justify-between gap-space-sm" data-depot="dubois">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface-variant">Hub #01</span>
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">local_library</span>
+</div>
+<div>
+<div class="font-title-md text-title-md text-primary font-bold">Du Bois Central</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Library Ground Foyer</div>
+</div>
+<div class="pt-space-xs flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>19/32 Lockers Full</span>
+<span class="text-secondary font-semibold">12 Available</span>
+</div>
+</button>
+<button class="depot-tab text-left p-space-md rounded-2xl bg-linen hover:bg-surface-container-lowest shadow-sm hover:shadow-md transition-all flex flex-col justify-between gap-space-sm" data-depot="union">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface-variant">Hub #03</span>
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">cottage</span>
+</div>
+<div>
+<div class="font-title-md text-title-md text-primary font-bold">Student Union</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">West Wing Info Desk</div>
+</div>
+<div class="pt-space-xs flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>31/32 Lockers Full</span>
+<span class="text-error font-semibold">97% Capacity</span>
+</div>
+</button>
+<button class="depot-tab text-left p-space-md rounded-2xl bg-linen hover:bg-surface-container-lowest shadow-sm hover:shadow-md transition-all flex flex-col justify-between gap-space-sm" data-depot="pavilion">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface-variant">Hub #06</span>
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">sports_tennis</span>
+</div>
+<div>
+<div class="font-title-md text-title-md text-primary font-bold">Athletic Pavilion</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Concourse South Bay</div>
+</div>
+<div class="pt-space-xs flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>14/32 Lockers Full</span>
+<span class="text-mint text-primary font-semibold">Healthy Flow</span>
+</div>
+</button>
+<button class="depot-tab text-left p-space-md rounded-2xl bg-linen hover:bg-surface-container-lowest shadow-sm hover:shadow-md transition-all flex flex-col justify-between gap-space-sm" data-depot="master">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface-variant">HQ Safe</span>
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">shield</span>
+</div>
+<div>
+<div class="font-title-md text-title-md text-primary font-bold">Police HQ Master Safe</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Sub-level Armory Unit</div>
+</div>
+<div class="pt-space-xs flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>48 Class-A Assets</span>
+<span class="text-secondary font-semibold">Classified</span>
+</div>
+</button>
+</div>
+</div>
+<!-- LOCKER GRID INTERACTIVE MATRIX SECTION -->
+<div class="flex flex-col gap-space-md bg-surface-container-lowest p-space-lg rounded-3xl shadow-sm">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pb-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-primary">Smart Locker Grid Live Telemetry</h2>
+<span class="px-2 py-0.5 text-[11px] font-mono rounded bg-cloud text-on-surface-variant font-semibold">Hub #04 Science Matrix</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Touch locker cell to inspect door solenoid, environmental humidity, and claimant pickup timers.</p>
+</div>
+<!-- Legend -->
+<div class="flex items-center flex-wrap gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm text-on-surface">Occupied &amp; Countdown</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="w-3 h-3 rounded-full bg-marigold"></span>
+<span class="font-label-sm text-label-sm text-on-surface">Awaiting Pickup</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="w-3 h-3 rounded-full bg-mint"></span>
+<span class="font-label-sm text-label-sm text-on-surface">Empty &amp; Ready</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="w-3 h-3 rounded-full bg-error-container"></span>
+<span class="font-label-sm text-label-sm text-on-surface">Sensor / Maint</span>
+</div>
+</div>
+</div>
+<!-- 32 Physical Locker Cells in a 4x8 Grid -->
+<div class="grid grid-cols-4 sm:grid-cols-8 gap-space-sm" id="locker-matrix">
+<!-- Render 32 lockers with diverse realistic states -->
+<!-- 1 -->
+<div class="group cursor-pointer p-space-sm rounded-xl bg-linen hover:bg-canvas hover:scale-[1.02] transition-all flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('01', 'Occupied', 'MacBook Pro M2 Space Gray', '34h 12m', 'Officer J. Alvarez #449', '99.4% Battery')">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-bold text-primary">#01</span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary" title="Occupied"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold truncate text-primary">MacBook Pro M2</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">34h 12m left</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span class="text-[10px] font-mono">SEC</span>
+</div>
+</div>
+<!-- 2 -->
+<div class="group cursor-pointer p-space-sm rounded-xl bg-marigold/30 hover:bg-marigold/40 hover:scale-[1.02] transition-all flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('02', 'Awaiting Pickup', 'Gold Band Earring Set', '04h 28m (OTP Sent)', 'Officer M. Vance #884', 'Claimant: S. Taylor')">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-bold text-primary">#02</span>
+<span class="w-2.5 h-2.5 rounded-full bg-marigold animate-pulse" title="Awaiting Pickup"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold truncate text-primary">Gold Earring Set</span>
+<span class="font-label-sm text-label-sm text-on-secondary-fixed-variant font-mono font-bold">OTP Issued</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-on-secondary-fixed-variant">pin</span>
+<span class="text-[10px] font-mono font-bold">PICKUP</span>
+</div>
+</div>
+<!-- 3 -->
+<div class="group cursor-pointer p-space-sm rounded-xl bg-mint/20 hover:bg-mint/30 hover:scale-[1.02] transition-all flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('03', 'Empty', 'None', 'Available', 'System Vault', 'Ready')">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-bold text-on-surface-variant">#03</span>
+<span class="w-2.5 h-2.5 rounded-full bg-mint" title="Empty"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary font-medium">Empty Cell</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Available</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">lock_open</span>
+<span class="text-[10px] font-mono">READY</span>
+</div>
+</div>
+<!-- 4 -->
+<div class="group cursor-pointer p-space-sm rounded-xl bg-linen hover:bg-canvas transition-all flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('04', 'Occupied', 'TI-84 Plus CE Graphing Calc', '18h 40m', 'Officer P. Gomez #701', 'Locker secure')">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-bold text-primary">#04</span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold truncate text-primary">TI-84 Plus CE</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">18h 40m left</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span class="text-[10px] font-mono">SEC</span>
+</div>
+</div>
+<!-- 5 -->
+<div class="group cursor-pointer p-space-sm rounded-xl bg-linen hover:bg-canvas transition-all flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('05', 'Occupied', 'Leather Bifold &amp; Student ID', '71h 05m', 'Officer J. Alvarez #449', 'Cash audited')">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-bold text-primary">#05</span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold truncate text-primary">Leather Bifold</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">71h 05m left</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span class="text-[10px] font-mono">SEC</span>
+</div>
+</div>
+<!-- 6 -->
+<div class="group cursor-pointer p-space-sm rounded-xl bg-error-container/40 hover:bg-error-container/60 transition-all flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('06', 'Maintenance', 'None', 'Sensor Calibration', 'Facilities Dispatch #12', 'Error code E-401 Door Solenoid')">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-bold text-error">#06</span>
+<span class="w-2.5 h-2.5 rounded-full bg-error" title="Maintenance"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold text-error">Maint / Err</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono text-[10px]">Solenoid Err</span>
+</div>
+<div class="flex items-center justify-between text-error">
+<span class="material-symbols-outlined text-[14px]">engineering</span>
+<span class="text-[10px] font-mono">SERVICE</span>
+</div>
+</div>
+<!-- 7 -->
+<div class="group cursor-pointer p-space-sm rounded-xl bg-linen hover:bg-canvas transition-all flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('07', 'Occupied', 'Sony WH-1000XM5 Headphones', '48h 12m', 'Officer M. Vance #884', 'In case')">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-bold text-primary">#07</span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold truncate text-primary">Sony WH-1000</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">48h 12m left</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span class="text-[10px] font-mono">SEC</span>
+</div>
+</div>
+<!-- 8 -->
+<div class="group cursor-pointer p-space-sm rounded-xl bg-linen hover:bg-canvas transition-all flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('08', 'Occupied', 'AirPods Pro Gen 2 with engraving', '12h 00m', 'Officer J. Alvarez #449', 'Case ID #8892')">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-bold text-primary">#08</span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold truncate text-primary">AirPods Pro G2</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">12h 00m left</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span class="text-[10px] font-mono">SEC</span>
+</div>
+</div>
+<!-- 9 to 16 -->
+<div class="p-space-sm rounded-xl bg-mint/20 hover:bg-mint/30 cursor-pointer flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('09', 'Empty', 'None', 'Available', 'System', 'Ready')">
+<div class="flex items-center justify-between"><span class="font-label-sm text-label-sm font-bold text-on-surface-variant">#09</span><span class="w-2.5 h-2.5 rounded-full bg-mint"></span></div>
+<div class="font-label-sm text-label-sm text-primary">Empty Cell</div>
+<div class="flex items-center justify-between text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">lock_open</span><span class="text-[10px] font-mono">READY</span></div>
+</div>
+<div class="p-space-sm rounded-xl bg-linen hover:bg-canvas cursor-pointer flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('10', 'Occupied', 'North Face Summit Backpack', '60h 15m', 'Officer P. Gomez #701', 'Audited items inside')">
+<div class="flex items-center justify-between"><span class="font-label-sm text-label-sm font-bold text-primary">#10</span><span class="w-2.5 h-2.5 rounded-full bg-primary"></span></div>
+<div class="flex flex-col"><span class="font-label-sm text-label-sm font-semibold truncate text-primary">North Face Pack</span><span class="font-label-sm text-label-sm text-on-surface-variant font-mono">60h left</span></div>
+<div class="flex items-center justify-between text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">lock</span><span class="text-[10px] font-mono">SEC</span></div>
+</div>
+<div class="p-space-sm rounded-xl bg-marigold/30 hover:bg-marigold/40 cursor-pointer flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('11', 'Awaiting Pickup', 'Car Keys: Toyota Fob + Lanyard', '01h 55m left', 'Officer J. Alvarez #449', 'Claimant notified via SMS')">
+<div class="flex items-center justify-between"><span class="font-label-sm text-label-sm font-bold text-primary">#11</span><span class="w-2.5 h-2.5 rounded-full bg-marigold animate-pulse"></span></div>
+<div class="flex flex-col"><span class="font-label-sm text-label-sm font-semibold truncate text-primary">Toyota Key Fob</span><span class="font-label-sm text-label-sm text-on-secondary-fixed-variant font-mono font-bold">1h 55m Expire</span></div>
+<div class="flex items-center justify-between text-on-secondary-fixed-variant"><span class="material-symbols-outlined text-[14px]">timer</span><span class="text-[10px] font-mono font-bold">PICKUP</span></div>
+</div>
+<div class="p-space-sm rounded-xl bg-linen hover:bg-canvas cursor-pointer flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('12', 'Occupied', 'iPad Air 5th Gen (Starlight)', '52h 20m', 'Officer M. Vance #884', 'Tamper seal intact')">
+<div class="flex items-center justify-between"><span class="font-label-sm text-label-sm font-bold text-primary">#12</span><span class="w-2.5 h-2.5 rounded-full bg-primary"></span></div>
+<div class="flex flex-col"><span class="font-label-sm text-label-sm font-semibold truncate text-primary">iPad Air 5th</span><span class="font-label-sm text-label-sm text-on-surface-variant font-mono">52h left</span></div>
+<div class="flex items-center justify-between text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">lock</span><span class="text-[10px] font-mono">SEC</span></div>
+</div>
+<div class="p-space-sm rounded-xl bg-linen hover:bg-canvas cursor-pointer flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('13', 'Occupied', 'Ray-Ban Wayfarer Polarized', '42h 10m', 'Officer J. Alvarez #449', 'Black hard case')">
+<div class="flex items-center justify-between"><span class="font-label-sm text-label-sm font-bold text-primary">#13</span><span class="w-2.5 h-2.5 rounded-full bg-primary"></span></div>
+<div class="flex flex-col"><span class="font-label-sm text-label-sm font-semibold truncate text-primary">Ray-Ban Glasses</span><span class="font-label-sm text-label-sm text-on-surface-variant font-mono">42h left</span></div>
+<div class="flex items-center justify-between text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">lock</span><span class="text-[10px] font-mono">SEC</span></div>
+</div>
+<div class="p-space-sm rounded-xl bg-mint/20 hover:bg-mint/30 cursor-pointer flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('14', 'Empty', 'None', 'Available', 'System', 'Ready')">
+<div class="flex items-center justify-between"><span class="font-label-sm text-label-sm font-bold text-on-surface-variant">#14</span><span class="w-2.5 h-2.5 rounded-full bg-mint"></span></div>
+<div class="font-label-sm text-label-sm text-primary">Empty Cell</div>
+<div class="flex items-center justify-between text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">lock_open</span><span class="text-[10px] font-mono">READY</span></div>
+</div>
+<div class="p-space-sm rounded-xl bg-linen hover:bg-canvas cursor-pointer flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('15', 'Occupied', 'Hydro Flask 32oz Teal', '80h 00m', 'Officer P. Gomez #701', 'Decals affixed')">
+<div class="flex items-center justify-between"><span class="font-label-sm text-label-sm font-bold text-primary">#15</span><span class="w-2.5 h-2.5 rounded-full bg-primary"></span></div>
+<div class="flex flex-col"><span class="font-label-sm text-label-sm font-semibold truncate text-primary">Hydro Flask 32oz</span><span class="font-label-sm text-label-sm text-on-surface-variant font-mono">80h left</span></div>
+<div class="flex items-center justify-between text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">lock</span><span class="text-[10px] font-mono">SEC</span></div>
+</div>
+<div class="p-space-sm rounded-xl bg-linen hover:bg-canvas cursor-pointer flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('16', 'Occupied', 'Kindle Paperwhite 11th Gen', '16h 30m', 'Officer M. Vance #884', 'Lockscreen shows initials')">
+<div class="flex items-center justify-between"><span class="font-label-sm text-label-sm font-bold text-primary">#16</span><span class="w-2.5 h-2.5 rounded-full bg-primary"></span></div>
+<div class="flex flex-col"><span class="font-label-sm text-label-sm font-semibold truncate text-primary">Kindle Paperwhite</span><span class="font-label-sm text-label-sm text-on-surface-variant font-mono">16h left</span></div>
+<div class="flex items-center justify-between text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">lock</span><span class="text-[10px] font-mono">SEC</span></div>
+</div>
+<!-- Lockers 17 to 24 (Compact rendering pattern) -->
+<div class="p-space-sm rounded-xl bg-linen hover:bg-canvas cursor-pointer flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('17', 'Occupied', 'FujiFilm X100V Camera', '67h 12m', 'Officer J. Alvarez #449', 'High value vault class')">
+<div class="flex items-center justify-between"><span class="font-label-sm text-label-sm font-bold text-primary">#17</span><span class="w-2.5 h-2.5 rounded-full bg-primary"></span></div>
+<div class="flex flex-col"><span class="font-label-sm text-label-sm font-semibold truncate text-primary">FujiFilm X100V</span><span class="font-label-sm text-label-sm text-on-surface-variant font-mono">67h left</span></div>
+<div class="flex items-center justify-between text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">photo_camera</span><span class="text-[10px] font-mono">VAULT</span></div>
+</div>
+<div class="p-space-sm rounded-xl bg-linen hover:bg-canvas cursor-pointer flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('18', 'Occupied', 'Patagonia Down Jacket Navy', '55h 00m', 'Officer P. Gomez #701', 'Pocket contents bagged')">
+<div class="flex items-center justify-between"><span class="font-label-sm text-label-sm font-bold text-primary">#18</span><span class="w-2.5 h-2.5 rounded-full bg-primary"></span></div>
+<div class="flex flex-col"><span class="font-label-sm text-label-sm font-semibold truncate text-primary">Patagonia Jacket</span><span class="font-label-sm text-label-sm text-on-surface-variant font-mono">55h left</span></div>
+<div class="flex items-center justify-between text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">lock</span><span class="text-[10px] font-mono">SEC</span></div>
+</div>
+<div class="p-space-sm rounded-xl bg-marigold/30 hover:bg-marigold/40 cursor-pointer flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('19', 'Awaiting Pickup', 'Dorm Key Ring with Brass Tag', '08h 22m', 'Officer M. Vance #884', 'Housing director notified')">
+<div class="flex items-center justify-between"><span class="font-label-sm text-label-sm font-bold text-primary">#19</span><span class="w-2.5 h-2.5 rounded-full bg-marigold animate-pulse"></span></div>
+<div class="flex flex-col"><span class="font-label-sm text-label-sm font-semibold truncate text-primary">Dorm Key Set</span><span class="font-label-sm text-label-sm text-on-secondary-fixed-variant font-mono font-bold">8h 22m</span></div>
+<div class="flex items-center justify-between text-on-secondary-fixed-variant"><span class="material-symbols-outlined text-[14px]">vpn_key</span><span class="text-[10px] font-mono font-bold">PICKUP</span></div>
+</div>
+<div class="p-space-sm rounded-xl bg-linen hover:bg-canvas cursor-pointer flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('20', 'Occupied', 'Dell XPS 15 Silver', '29h 40m', 'Officer J. Alvarez #449', 'Asset label scanned')">
+<div class="flex items-center justify-between"><span class="font-label-sm text-label-sm font-bold text-primary">#20</span><span class="w-2.5 h-2.5 rounded-full bg-primary"></span></div>
+<div class="flex flex-col"><span class="font-label-sm text-label-sm font-semibold truncate text-primary">Dell XPS 15</span><span class="font-label-sm text-label-sm text-on-surface-variant font-mono">29h left</span></div>
+<div class="flex items-center justify-between text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">lock</span><span class="text-[10px] font-mono">SEC</span></div>
+</div>
+<div class="p-space-sm rounded-xl bg-linen hover:bg-canvas cursor-pointer flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('21', 'Occupied', 'Apple Watch Series 8 45mm', '11h 10m', 'Officer P. Gomez #701', 'Battery low 14%')">
+<div class="flex items-center justify-between"><span class="font-label-sm text-label-sm font-bold text-primary">#21</span><span class="w-2.5 h-2.5 rounded-full bg-primary"></span></div>
+<div class="flex flex-col"><span class="font-label-sm text-label-sm font-semibold truncate text-primary">Apple Watch S8</span><span class="font-label-sm text-label-sm text-on-surface-variant font-mono">11h left</span></div>
+<div class="flex items-center justify-between text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">lock</span><span class="text-[10px] font-mono">SEC</span></div>
+</div>
+<div class="p-space-sm rounded-xl bg-linen hover:bg-canvas cursor-pointer flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('22', 'Occupied', 'Bose QuietComfort Earbuds', '39h 50m', 'Officer M. Vance #884', 'Audited intact')">
+<div class="flex items-center justify-between"><span class="font-label-sm text-label-sm font-bold text-primary">#22</span><span class="w-2.5 h-2.5 rounded-full bg-primary"></span></div>
+<div class="flex flex-col"><span class="font-label-sm text-label-sm font-semibold truncate text-primary">Bose QC Buds</span><span class="font-label-sm text-label-sm text-on-surface-variant font-mono">39h left</span></div>
+<div class="flex items-center justify-between text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">lock</span><span class="text-[10px] font-mono">SEC</span></div>
+</div>
+<div class="p-space-sm rounded-xl bg-linen hover:bg-canvas cursor-pointer flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('23', 'Occupied', 'Sketchbook &amp; Charcoal Kit', '74h 15m', 'Officer J. Alvarez #449', 'Fine Arts dept')">
+<div class="flex items-center justify-between"><span class="font-label-sm text-label-sm font-bold text-primary">#23</span><span class="w-2.5 h-2.5 rounded-full bg-primary"></span></div>
+<div class="flex flex-col"><span class="font-label-sm text-label-sm font-semibold truncate text-primary">Fine Arts Kit</span><span class="font-label-sm text-label-sm text-on-surface-variant font-mono">74h left</span></div>
+<div class="flex items-center justify-between text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">lock</span><span class="text-[10px] font-mono">SEC</span></div>
+</div>
+<div class="p-space-sm rounded-xl bg-linen hover:bg-canvas cursor-pointer flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('24', 'Occupied', 'Casio G-Shock Matte Black', '49h 00m', 'Officer P. Gomez #701', 'Scratch on bezel')">
+<div class="flex items-center justify-between"><span class="font-label-sm text-label-sm font-bold text-primary">#24</span><span class="w-2.5 h-2.5 rounded-full bg-primary"></span></div>
+<div class="flex flex-col"><span class="font-label-sm text-label-sm font-semibold truncate text-primary">Casio G-Shock</span><span class="font-label-sm text-label-sm text-on-surface-variant font-mono">49h left</span></div>
+<div class="flex items-center justify-between text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">lock</span><span class="text-[10px] font-mono">SEC</span></div>
+</div>
+<!-- Lockers 25 to 32 -->
+<div class="p-space-sm rounded-xl bg-linen hover:bg-canvas cursor-pointer flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('25', 'Occupied', 'Scientific Instrument: Sensor Tube', '63h 10m', 'Officer J. Alvarez #449', 'Physics Lab property')">
+<div class="flex items-center justify-between"><span class="font-label-sm text-label-sm font-bold text-primary">#25</span><span class="w-2.5 h-2.5 rounded-full bg-primary"></span></div>
+<div class="flex flex-col"><span class="font-label-sm text-label-sm font-semibold truncate text-primary">Physics Sensor</span><span class="font-label-sm text-label-sm text-on-surface-variant font-mono">63h left</span></div>
+<div class="flex items-center justify-between text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">lock</span><span class="text-[10px] font-mono">SEC</span></div>
+</div>
+<div class="p-space-sm rounded-xl bg-mint/20 hover:bg-mint/30 cursor-pointer flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('26', 'Empty', 'None', 'Available', 'System', 'Ready')">
+<div class="flex items-center justify-between"><span class="font-label-sm text-label-sm font-bold text-on-surface-variant">#26</span><span class="w-2.5 h-2.5 rounded-full bg-mint"></span></div>
+<div class="font-label-sm text-label-sm text-primary">Empty Cell</div>
+<div class="flex items-center justify-between text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">lock_open</span><span class="text-[10px] font-mono">READY</span></div>
+</div>
+<div class="p-space-sm rounded-xl bg-linen hover:bg-canvas cursor-pointer flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('27', 'Occupied', 'Fitbit Charge 6 Obsidian', '45h 10m', 'Officer M. Vance #884', 'Sync ping received')">
+<div class="flex items-center justify-between"><span class="font-label-sm text-label-sm font-bold text-primary">#27</span><span class="w-2.5 h-2.5 rounded-full bg-primary"></span></div>
+<div class="flex flex-col"><span class="font-label-sm text-label-sm font-semibold truncate text-primary">Fitbit Charge 6</span><span class="font-label-sm text-label-sm text-on-surface-variant font-mono">45h left</span></div>
+<div class="flex items-center justify-between text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">lock</span><span class="text-[10px] font-mono">SEC</span></div>
+</div>
+<div class="p-space-sm rounded-xl bg-linen hover:bg-canvas cursor-pointer flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('28', 'Occupied', 'Prescription Sunglasses (Gucci)', '22h 45m', 'Officer J. Alvarez #449', 'Case velvet lining')">
+<div class="flex items-center justify-between"><span class="font-label-sm text-label-sm font-bold text-primary">#28</span><span class="w-2.5 h-2.5 rounded-full bg-primary"></span></div>
+<div class="flex flex-col"><span class="font-label-sm text-label-sm font-semibold truncate text-primary">Gucci Sunglasses</span><span class="font-label-sm text-label-sm text-on-surface-variant font-mono">22h left</span></div>
+<div class="flex items-center justify-between text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">lock</span><span class="text-[10px] font-mono">SEC</span></div>
+</div>
+<div class="p-space-sm rounded-xl bg-linen hover:bg-canvas cursor-pointer flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('29', 'Occupied', 'Anker MagSafe Power Bank', '31h 00m', 'Officer P. Gomez #701', 'Sealed bag')">
+<div class="flex items-center justify-between"><span class="font-label-sm text-label-sm font-bold text-primary">#29</span><span class="w-2.5 h-2.5 rounded-full bg-primary"></span></div>
+<div class="flex flex-col"><span class="font-label-sm text-label-sm font-semibold truncate text-primary">Anker Power Bank</span><span class="font-label-sm text-label-sm text-on-surface-variant font-mono">31h left</span></div>
+<div class="flex items-center justify-between text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">lock</span><span class="text-[10px] font-mono">SEC</span></div>
+</div>
+<div class="p-space-sm rounded-xl bg-marigold/30 hover:bg-marigold/40 cursor-pointer flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('30', 'Awaiting Pickup', 'Car Keys: Honda Accord + Tag', '03h 10m', 'Officer M. Vance #884', 'NetID student signed in')">
+<div class="flex items-center justify-between"><span class="font-label-sm text-label-sm font-bold text-primary">#30</span><span class="w-2.5 h-2.5 rounded-full bg-marigold animate-pulse"></span></div>
+<div class="flex flex-col"><span class="font-label-sm text-label-sm font-semibold truncate text-primary">Honda Key Fob</span><span class="font-label-sm text-label-sm text-on-secondary-fixed-variant font-mono font-bold">3h 10m Pickup</span></div>
+<div class="flex items-center justify-between text-on-secondary-fixed-variant"><span class="material-symbols-outlined text-[14px]">vpn_key</span><span class="text-[10px] font-mono font-bold">PICKUP</span></div>
+</div>
+<div class="p-space-sm rounded-xl bg-linen hover:bg-canvas cursor-pointer flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('31', 'Occupied', 'Kindle Scribe + Stylus Pen', '58h 45m', 'Officer J. Alvarez #449', 'Folio case attached')">
+<div class="flex items-center justify-between"><span class="font-label-sm text-label-sm font-bold text-primary">#31</span><span class="w-2.5 h-2.5 rounded-full bg-primary"></span></div>
+<div class="flex flex-col"><span class="font-label-sm text-label-sm font-semibold truncate text-primary">Kindle Scribe</span><span class="font-label-sm text-label-sm text-on-surface-variant font-mono">58h left</span></div>
+<div class="flex items-center justify-between text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">lock</span><span class="text-[10px] font-mono">SEC</span></div>
+</div>
+<div class="p-space-sm rounded-xl bg-mint/20 hover:bg-mint/30 cursor-pointer flex flex-col justify-between h-28 shadow-sm" onclick="selectLocker('32', 'Empty', 'None', 'Available', 'System', 'Ready')">
+<div class="flex items-center justify-between"><span class="font-label-sm text-label-sm font-bold text-on-surface-variant">#32</span><span class="w-2.5 h-2.5 rounded-full bg-mint"></span></div>
+<div class="font-label-sm text-label-sm text-primary">Empty Cell</div>
+<div class="flex items-center justify-between text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">lock_open</span><span class="text-[10px] font-mono">READY</span></div>
+</div>
+</div>
+<!-- Locker Inspector Card (Dynamic Details on Click) -->
+<div class="p-space-md rounded-2xl bg-canvas flex flex-col sm:flex-row items-center justify-between gap-space-md shadow-sm" id="locker-inspector">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm" id="inspect-number">
+            08
+          </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-title-md text-title-md text-primary font-bold" id="inspect-title">AirPods Pro Gen 2 with engraving</span>
+<span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-mint text-primary" id="inspect-status">Occupied</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">
+              Custodian: <strong class="text-primary font-medium" id="inspect-custodian">Officer J. Alvarez #449</strong> • Pickup Expiry: <span class="font-mono text-secondary" id="inspect-countdown">12h 00m</span> • Notes: <span id="inspect-notes">Case ID #8892</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-xs w-full sm:w-auto">
+<button class="flex-1 sm:flex-initial px-space-md py-space-xs rounded-xl bg-surface-container text-primary font-label-md text-label-md hover:bg-ash transition-colors flex items-center justify-center gap-1" onclick="triggerRemotePulse()">
+<span class="material-symbols-outlined text-[16px]">sensors</span> Ping Beacon
+          </button>
+<button class="flex-1 sm:flex-initial px-space-md py-space-xs rounded-xl bg-primary text-on-primary font-label-md text-label-md hover:bg-graphite transition-colors flex items-center justify-center gap-1" onclick="emergencyUnlock()">
+<span class="material-symbols-outlined text-[16px]">key</span> Admin Unlock
+          </button>
+</div>
+</div>
+</div>
+<!-- RETENTION CLOCK & 90-DAY DISPOSITION PIPELINE TRACKER -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
+<!-- Disposition Pipeline Chart & Status -->
+<div class="p-space-lg rounded-3xl bg-surface-container-lowest shadow-sm flex flex-col justify-between gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Statutory Lifecycle</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">MGL Ch. 135 Disposition Clock</h3>
+</div>
+<span class="w-8 h-8 rounded-full bg-cloud flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[18px]">gavel</span>
+</span>
+</div>
+<!-- SVG Circular Retention Metric Visual -->
+<div class="flex items-center justify-around py-space-xs">
+<div class="relative w-32 h-32 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-cloud" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-secondary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="72, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">72%</span>
+<span class="text-[10px] uppercase font-mono text-on-surface-variant">Max Window</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Standard Retention</span>
+<span class="font-title-md text-title-md text-primary font-bold">90 Calendar Days</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Pending Auction Notice</span>
+<span class="font-title-md text-title-md text-error font-bold">14 Unclaimed Items</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Next State Auction Batch</span>
+<span class="font-label-md text-label-md font-mono text-primary font-semibold">Nov 28, 2025</span>
+</div>
+</div>
+</div>
+<div class="p-space-sm bg-linen rounded-xl flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm">Mandatory University Legal Publication</span>
+<span class="font-label-sm text-label-sm font-semibold text-secondary flex items-center gap-1">
+            Gazette Ad Sent <span class="material-symbols-outlined text-[14px]">done_all</span>
+</span>
+</div>
+</div>
+<!-- Live Auction Eligible Carousel / High Priority Overdue -->
+<div class="lg:col-span-2 p-space-lg rounded-3xl bg-surface-container-lowest shadow-sm flex flex-col justify-between gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-error font-semibold">Items Nearing Statutory Limit</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">State Disposition Queue (&gt; 75 Days Vaulted)</h3>
+</div>
+<span class="px-space-sm py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-bold">
+            Action Required: 3 Pending Sale
+          </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm">
+<!-- Item Card 1 -->
+<div class="p-space-md rounded-2xl bg-canvas flex flex-col justify-between gap-space-sm shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-mono text-[11px] font-bold text-primary">#VAULT-7801</span>
+<span class="px-2 py-0.5 rounded-full bg-error text-on-error font-label-sm text-label-sm font-bold">88 Days</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md font-bold text-primary truncate">Nikon D3500 DSLR</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Shelf B-2 • Case #4029</span>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<span class="text-[11px] text-on-surface-variant">Est. Fair Market: $340</span>
+<button class="px-2 py-1 rounded-lg bg-surface-container-highest text-primary font-label-sm text-label-sm hover:bg-primary hover:text-on-primary transition-colors" onclick="triggerDispositionAlert('Nikon D3500 DSLR', '#VAULT-7801')">
+                Final Notice
+              </button>
+</div>
+</div>
+<!-- Item Card 2 -->
+<div class="p-space-md rounded-2xl bg-canvas flex flex-col justify-between gap-space-sm shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-mono text-[11px] font-bold text-primary">#VAULT-8012</span>
+<span class="px-2 py-0.5 rounded-full bg-error text-on-error font-label-sm text-label-sm font-bold">85 Days</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md font-bold text-primary truncate">Fender Stratocaster Neck</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Music Safe 1 • Case #4112</span>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<span class="text-[11px] text-on-surface-variant">Est. Fair Market: $190</span>
+<button class="px-2 py-1 rounded-lg bg-surface-container-highest text-primary font-label-sm text-label-sm hover:bg-primary hover:text-on-primary transition-colors" onclick="triggerDispositionAlert('Fender Stratocaster Neck', '#VAULT-8012')">
+                Final Notice
+              </button>
+</div>
+</div>
+<!-- Item Card 3 -->
+<div class="p-space-md rounded-2xl bg-canvas flex flex-col justify-between gap-space-sm shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-mono text-[11px] font-bold text-primary">#VAULT-8104</span>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold">79 Days</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md font-bold text-primary truncate">Specialized Road Bike Wheel</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Depot Cage 3 • Case #4288</span>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<span class="text-[11px] text-on-surface-variant">Est. Fair Market: $120</span>
+<button class="px-2 py-1 rounded-lg bg-surface-container-highest text-primary font-label-sm text-label-sm hover:bg-primary hover:text-on-primary transition-colors" onclick="triggerDispositionAlert('Specialized Road Bike Wheel', '#VAULT-8104')">
+                Final Notice
+              </button>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<span>State Auction proceeds automatically credited to Westfield Student Emergency Assistance Endowment.</span>
+<a class="text-secondary font-semibold hover:underline flex items-center gap-1" href="#">
+            Review Auction Roster <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- MASTER INVENTORY REGISTRY TABLE -->
+<div class="p-space-lg rounded-3xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+<!-- Table Filter Bar -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md pb-space-sm">
+<div class="flex flex-col">
+<h2 class="font-headline-sm text-headline-sm text-primary">Master Vault &amp; Chain-of-Custody Registry</h2>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Complete immutable forensic ledger. Click any item row to expand full custodial chain.</span>
+</div>
+<div class="flex items-center gap-space-xs flex-wrap">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-[18px] text-on-surface-variant">filter_list</span>
+<input class="pl-9 pr-space-md py-1.5 rounded-xl bg-linen font-body-sm text-body-sm text-primary focus:outline-none focus:ring-1 focus:ring-primary w-64" placeholder="Filter by Tag, Custodian or Shelf..." type="text"/>
+</div>
+<select class="px-space-md py-1.5 rounded-xl bg-linen font-label-md text-label-md text-primary focus:outline-none">
+<option>All Custody Statuses</option>
+<option>Secured in Vault</option>
+<option>Transfer in Progress</option>
+<option>Awaiting Claimant</option>
+<option>Released to Owner</option>
+</select>
+</div>
+</div>
+<!-- Master Table Container -->
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-linen font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider rounded-xl">
+<th class="py-space-sm px-space-md rounded-l-xl">Tag ID</th>
+<th class="py-space-sm px-space-md">Asset Description</th>
+<th class="py-space-sm px-space-md">Category</th>
+<th class="py-space-sm px-space-md">Intake Date</th>
+<th class="py-space-sm px-space-md">Physical Location</th>
+<th class="py-space-sm px-space-md">Assigned Custodian</th>
+<th class="py-space-sm px-space-md">Retention Clock</th>
+<th class="py-space-sm px-space-md">Custody Status</th>
+<th class="py-space-sm px-space-md rounded-r-xl text-right">Ledger</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm divide-y-0" id="registry-table-body">
+<!-- ROW 1 -->
+<tr class="cursor-pointer hover:bg-canvas transition-colors group" onclick="toggleChainRow('chain-1')">
+<td class="py-space-md px-space-md font-mono font-bold text-primary">#WF-2025-901</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md font-bold text-primary">MacBook Pro 14" M3 Space Gray</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">SN: C02TL991MD6T</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-2 py-0.5 rounded-full bg-periwinkle/40 text-on-secondary-fixed font-label-sm text-label-sm font-medium">Electronics</span>
+</td>
+<td class="py-space-md px-space-md font-mono text-on-surface-variant">Oct 14, 10:45 AM</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1 font-semibold text-primary">
+<span class="material-symbols-outlined text-[16px] text-secondary">inventory_2</span>
+                  Locker #01
+                </div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-semibold text-primary">Officer J. Alvarez</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Shield #449</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="font-mono text-primary font-bold">68 days left</span>
+<div class="w-20 bg-cloud h-1.5 rounded-full overflow-hidden mt-1">
+<div class="bg-secondary h-full rounded-full" style="width: 24%"></div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-space-sm py-0.5 rounded-full bg-mint text-primary font-label-sm text-label-sm font-bold">Secured</span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-[20px]" id="arrow-chain-1">expand_more</span>
+</td>
+</tr>
+<!-- EXPANDED CHAIN FOR ROW 1 -->
+<tr class="hidden bg-canvas" id="chain-1">
+<td class="p-space-lg" colspan="9">
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px] text-secondary">account_tree</span>
+<h4 class="font-title-lg text-title-lg text-primary font-bold">Chain-of-Custody Immutable Forensic Ledger</h4>
+</div>
+<span class="font-mono text-xs text-on-surface-variant">SHA-256 Block Hash: 9f8a3c20014b2d18...</span>
+</div>
+<!-- Chain Steps -->
+<div class="flex flex-col gap-space-sm border-l-2 border-primary/20 pl-space-md ml-space-sm">
+<!-- Entry 1 -->
+<div class="flex flex-col gap-1 relative">
+<div class="w-3 h-3 rounded-full bg-primary absolute -left-[27px] top-1"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary font-bold">Physical Intake &amp; Visual Inventory Handover</span>
+<span class="font-mono text-xs text-on-surface-variant">2025-10-14 10:45:12 EST</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                        Recovered from Science Hall rm 304 by Campus Proctor K. O'Connor. Condition: Excellent, slight scuff near MagSafe port. Battery charged. Device locked with FileVault screen.
+                      </p>
+<div class="flex items-center gap-space-md text-xs font-mono text-secondary pt-0.5">
+<span>Intake Custodian: Officer J. Alvarez #449</span>
+<span>Biometric Auth: TouchID Verified (0x8F04)</span>
+</div>
+</div>
+<!-- Entry 2 -->
+<div class="flex flex-col gap-1 relative pt-space-xs">
+<div class="w-3 h-3 rounded-full bg-primary absolute -left-[27px] top-4"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary font-bold">Tamper-Evident Bagging &amp; Safe Shelf B-2 Stash</span>
+<span class="font-mono text-xs text-on-surface-variant">2025-10-14 11:10:04 EST</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                        Placed in heavy gauge tamper-evident sleeve #BC-889104. Barcode cross-referenced with Central Quad Evidence Safe vault register.
+                      </p>
+<div class="flex items-center gap-space-md text-xs font-mono text-secondary pt-0.5">
+<span>Custodian: Officer J. Alvarez #449</span>
+<span>Seal Code: #SEAL-993-BC</span>
+</div>
+</div>
+<!-- Entry 3 -->
+<div class="flex flex-col gap-1 relative pt-space-xs">
+<div class="w-3 h-3 rounded-full bg-mint absolute -left-[27px] top-4"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary font-bold">Transfer to Distributed Smart Locker #01</span>
+<span class="font-mono text-xs text-on-surface-variant">2025-10-15 08:30:19 EST</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                        Moved into automated Science Depot Locker #01 to facilitate self-service identity-verified claimant retrieval pending matching resolution with claim ticket #CLM-9031.
+                      </p>
+<div class="flex items-center gap-space-md text-xs font-mono text-secondary pt-0.5">
+<span>Transferring Custodian: Officer M. Vance #884</span>
+<span>Solenoid Status: Locked &amp; Telemetry Nominal</span>
+</div>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<!-- ROW 2 -->
+<tr class="cursor-pointer hover:bg-canvas transition-colors group" onclick="toggleChainRow('chain-2')">
+<td class="py-space-md px-space-md font-mono font-bold text-primary">#WF-2025-884</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md font-bold text-primary">Bifold Wallet (Brown Horween) + $140 Cash</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">Contains Westfield Student ID: Marcus Brody</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-2 py-0.5 rounded-full bg-sky/40 text-on-secondary-fixed font-label-sm text-label-sm font-medium">Currency / ID</span>
+</td>
+<td class="py-space-md px-space-md font-mono text-on-surface-variant">Oct 16, 02:15 PM</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1 font-semibold text-primary">
+<span class="material-symbols-outlined text-[16px] text-secondary">inventory_2</span>
+                  Locker #05
+                </div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-semibold text-primary">Officer M. Vance</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Shield #884</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="font-mono text-primary font-bold">71 days left</span>
+<div class="w-20 bg-cloud h-1.5 rounded-full overflow-hidden mt-1">
+<div class="bg-secondary h-full rounded-full" style="width: 21%"></div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-space-sm py-0.5 rounded-full bg-mint text-primary font-label-sm text-label-sm font-bold">Secured</span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-[20px]" id="arrow-chain-2">expand_more</span>
+</td>
+</tr>
+<!-- EXPANDED CHAIN FOR ROW 2 -->
+<tr class="hidden bg-canvas" id="chain-2">
+<td class="p-space-lg" colspan="9">
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px] text-secondary">account_tree</span>
+<h4 class="font-title-lg text-title-lg text-primary font-bold">Chain-of-Custody Immutable Forensic Ledger</h4>
+</div>
+<span class="font-mono text-xs text-on-surface-variant">SHA-256: 4e7d9b231a4...</span>
+</div>
+<div class="flex flex-col gap-space-sm border-l-2 border-primary/20 pl-space-md ml-space-sm">
+<div class="flex flex-col gap-1 relative">
+<div class="w-3 h-3 rounded-full bg-primary absolute -left-[27px] top-1"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary font-bold">Dual-Officer Currency Audit &amp; Intake</span>
+<span class="font-mono text-xs text-on-surface-variant">2025-10-16 14:15:30 EST</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                        Cash count certified: 7x $20 bills ($140.00 total). Verified by Primary Custodian M. Vance and Secondary Witness P. Gomez. Sealed in Currency Envelope #CR-209.
+                      </p>
+<div class="flex items-center gap-space-md text-xs font-mono text-secondary pt-0.5">
+<span>Witness Biometric: Officer P. Gomez #701</span>
+<span>NetID Match Alert: Auto-sent to student email</span>
+</div>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<!-- ROW 3 -->
+<tr class="cursor-pointer hover:bg-canvas transition-colors group" onclick="toggleChainRow('chain-3')">
+<td class="py-space-md px-space-md font-mono font-bold text-primary">#WF-2025-782</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md font-bold text-primary">Toyota Smart Key Fob + Gym Carabiner</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">Found at Athletic Center Weight Room</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-2 py-0.5 rounded-full bg-cloud text-on-surface-variant font-label-sm text-label-sm font-medium">Keys</span>
+</td>
+<td class="py-space-md px-space-md font-mono text-on-surface-variant">Oct 17, 08:00 AM</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1 font-semibold text-primary">
+<span class="material-symbols-outlined text-[16px] text-secondary">inventory_2</span>
+                  Locker #11
+                </div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-semibold text-primary">Officer J. Alvarez</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Shield #449</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="font-mono text-primary font-bold">89 days left</span>
+<div class="w-20 bg-cloud h-1.5 rounded-full overflow-hidden mt-1">
+<div class="bg-secondary h-full rounded-full" style="width: 2%"></div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-space-sm py-0.5 rounded-full bg-marigold text-primary font-label-sm text-label-sm font-bold">Awaiting Pickup</span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-[20px]" id="arrow-chain-3">expand_more</span>
+</td>
+</tr>
+<!-- EXPANDED CHAIN FOR ROW 3 -->
+<tr class="hidden bg-canvas" id="chain-3">
+<td class="p-space-lg" colspan="9">
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<h4 class="font-title-lg text-title-lg text-primary font-bold">Chain-of-Custody Immutable Forensic Ledger</h4>
+<span class="font-mono text-xs text-on-surface-variant">SHA-256: 12ac78e49f...</span>
+</div>
+<div class="flex flex-col gap-space-sm border-l-2 border-primary/20 pl-space-md ml-space-sm">
+<div class="flex flex-col gap-1 relative">
+<div class="w-3 h-3 rounded-full bg-mint absolute -left-[27px] top-1"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary font-bold">Identity Claim Approved &amp; Smart Locker PIN Generated</span>
+<span class="font-mono text-xs text-on-surface-variant">2025-10-17 08:30:00 EST</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                        Claimant verified via Westfield Duo 2FA NetID. One-time 6-digit access token dispatched to student phone ending in 4109. 4-hour countdown initialized.
+                      </p>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<!-- ROW 4 (State Auction Overdue) -->
+<tr class="cursor-pointer hover:bg-canvas transition-colors group" onclick="toggleChainRow('chain-4')">
+<td class="py-space-md px-space-md font-mono font-bold text-error">#VAULT-7801</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md font-bold text-primary">Nikon D3500 DSLR Camera + 18-55mm Kit</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">Found July 20 at Athletic Quad</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-2 py-0.5 rounded-full bg-periwinkle/40 text-on-secondary-fixed font-label-sm text-label-sm font-medium">Optics &amp; Tech</span>
+</td>
+<td class="py-space-md px-space-md font-mono text-on-surface-variant">Jul 20, 09:12 AM</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1 font-semibold text-primary">
+<span class="material-symbols-outlined text-[16px] text-secondary">lock</span>
+                  Safe Shelf B-2
+                </div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-semibold text-primary">Officer P. Gomez</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Shield #701</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="font-mono text-error font-bold">2 days left (88/90)</span>
+<div class="w-20 bg-cloud h-1.5 rounded-full overflow-hidden mt-1">
+<div class="bg-error h-full rounded-full" style="width: 98%"></div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-space-sm py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-bold">Auction Queue</span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-[20px]" id="arrow-chain-4">expand_more</span>
+</td>
+</tr>
+<!-- EXPANDED CHAIN FOR ROW 4 -->
+<tr class="hidden bg-canvas" id="chain-4">
+<td class="p-space-lg" colspan="9">
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<h4 class="font-title-lg text-title-lg text-primary font-bold">Chain-of-Custody Immutable Forensic Ledger</h4>
+<span class="font-mono text-xs text-on-surface-variant">SHA-256: 77ba12001df...</span>
+</div>
+<div class="flex flex-col gap-space-sm border-l-2 border-primary/20 pl-space-md ml-space-sm">
+<div class="flex flex-col gap-1 relative">
+<div class="w-3 h-3 rounded-full bg-error absolute -left-[27px] top-1"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary font-bold">Statutory 60-Day &amp; 75-Day Unclaimed Notices Published</span>
+<span class="font-mono text-xs text-on-surface-variant">2025-09-18 10:00:00 EST</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                        Notice of custody retention published on Westfield Campus Board. SD Card forensically backed up with university privacy wipe pending state auction transfer per Ch. 135 Sec. 8.
+                      </p>
+</div>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- PHYSICAL HANDOVER & CUSTODY TRANSFER SECTION (Embedded Form & Modal Toggle) -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+<!-- Live Scan & Barcode Audit Portal -->
+<div class="p-space-lg rounded-3xl bg-surface-container-lowest shadow-sm flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Custody Check Station</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Fast Physical Handover Log</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Transfer item custody between proctors, desk officers, or move items to permanent vaults.
+          </p>
+</div>
+<!-- Inline Quick Transfer Form -->
+<form class="flex flex-col gap-space-sm" onsubmit="handleHandoverSubmit(event)">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Transferring Officer</label>
+<input class="px-space-md py-2 rounded-xl bg-linen font-body-sm text-body-sm text-primary font-medium focus:outline-none" readonly="" type="text" value="Officer M. Vance #884"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Receiving Custodian</label>
+<select class="px-space-md py-2 rounded-xl bg-linen font-body-sm text-body-sm text-primary focus:outline-none" required="">
+<option value="">Select Receiving Officer...</option>
+<option>Officer J. Alvarez #449</option>
+<option>Officer P. Gomez #701</option>
+<option>Captain R. Stone #102</option>
+<option>State Auction Trustee E. Clark</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Target Location</label>
+<select class="px-space-md py-2 rounded-xl bg-linen font-body-sm text-body-sm text-primary focus:outline-none" required="">
+<option>Science Depot - Smart Locker #03</option>
+<option>Science Depot - Smart Locker #09</option>
+<option>Central Safe Shelf A-1</option>
+<option>Police HQ Master Armory Safe</option>
+<option>Student Union Hub Desk</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Tamper Seal Barcode</label>
+<div class="relative">
+<input class="w-full px-space-md py-2 rounded-xl bg-linen font-mono text-body-sm text-primary focus:outline-none" placeholder="Scan seal e.g. #SEAL-9012" required="" type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-2 text-[18px] text-on-surface-variant">barcode_scanner</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Transfer Reason &amp; Condition Inspection</label>
+<input class="px-space-md py-2 rounded-xl bg-linen font-body-sm text-body-sm text-primary focus:outline-none" placeholder="e.g. Relocated from intake front desk to high-security safe after valuation audit." required="" type="text"/>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<span class="text-xs font-mono text-on-surface-variant">Requires biometrics or proctor token</span>
+<button class="px-space-lg py-space-sm rounded-xl bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-graphite transition-colors flex items-center gap-1" type="submit">
+<span class="material-symbols-outlined text-[16px]">verified</span> Commit Handover Record
+            </button>
+</div>
+</form>
+</div>
+<!-- Quick Receipt Generator Teaser / Compliance Badge -->
+<div class="p-space-lg rounded-3xl bg-surface-container-lowest shadow-sm flex flex-col justify-between gap-space-md relative overflow-hidden">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-0.5 rounded-full bg-mint text-primary font-label-sm text-label-sm font-bold uppercase">Legal Grade</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">MGL 135 Form 4-A</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Release &amp; Restitution Voucher</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Generate verifiable claimant release receipts complete with NetID digital signatures and timestamped locker unlock hashes.
+          </p>
+</div>
+<!-- Receipt Preview Graphic -->
+<div class="p-space-md rounded-2xl bg-canvas border border-dashed border-outline-variant/50 flex flex-col gap-space-xs font-mono text-xs">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span>WESTFIELD POLICE CUSTODY RECEIPT</span>
+<span class="text-secondary font-bold">#RCPT-2025-1049</span>
+</div>
+<div class="h-0.5 bg-cloud my-1"></div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Claimant:</span>
+<span class="font-bold text-primary">Elena Rostova (ID: #8099231)</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Item Released:</span>
+<span class="font-bold text-primary">AirPods Pro Gen 2 (#WF-2025-901)</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Dispensed Via:</span>
+<span class="text-primary font-bold">Smart Locker #08 (One-time PIN auth)</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Proctor Attestation:</span>
+<span class="text-mint text-primary font-semibold">Officer J. Alvarez #449</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="text-xs text-on-surface-variant">Legally binding custody release certificate</span>
+<button class="px-space-lg py-space-sm rounded-xl bg-linen hover:bg-cloud text-primary font-label-md text-label-md font-semibold transition-colors flex items-center gap-1" onclick="document.getElementById('receipt-modal').classList.remove('hidden')">
+<span class="material-symbols-outlined text-[16px]">print</span> Open Receipt Maker
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- MODAL: CUSTODY HANDOVER & DIGITAL SIGNATURE PAD -->
+<div class="hidden fixed inset-0 z-50 bg-primary/40 backdrop-blur-sm flex items-center justify-center p-space-md" id="transfer-modal">
+<div class="bg-surface-container-lowest max-w-xl w-full rounded-3xl p-space-lg shadow-xl flex flex-col gap-space-md animate-in fade-in zoom-in duration-150">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">swap_horiz</span>
+</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Log Physical Custody Transfer</h3>
+</div>
+<button class="w-8 h-8 rounded-full bg-linen flex items-center justify-center text-on-surface-variant hover:text-primary" onclick="document.getElementById('transfer-modal').classList.add('hidden')">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="p-space-sm bg-canvas rounded-xl text-on-surface-variant font-body-sm text-body-sm">
+        Under Massachusetts General Laws Ch. 135, every custody handover of found university property must register both transferring and accepting agents.
+      </div>
+<form class="flex flex-col gap-space-sm" onsubmit="handleModalSubmit(event)">
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Transferring Officer</label>
+<input class="px-space-md py-2 rounded-xl bg-linen font-body-sm text-body-sm text-primary font-medium focus:outline-none" readonly="" type="text" value="Officer M. Vance #884"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Receiving Officer</label>
+<select class="px-space-md py-2 rounded-xl bg-linen font-body-sm text-body-sm text-primary focus:outline-none">
+<option>Officer J. Alvarez #449</option>
+<option>Officer P. Gomez #701</option>
+<option>Sergeant K. Novak #210</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Select Asset(s) to Relocate</label>
+<select class="px-space-md py-2 rounded-xl bg-linen font-body-sm text-body-sm text-primary focus:outline-none">
+<option>#WF-2025-901 - MacBook Pro 14" M3</option>
+<option>#WF-2025-884 - Bifold Wallet + $140 Cash</option>
+<option>#VAULT-7801 - Nikon D3500 DSLR</option>
+<option>#VAULT-8012 - Fender Stratocaster Neck</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Transfer Justification</label>
+<input class="px-space-md py-2 rounded-xl bg-linen font-body-sm text-body-sm text-primary focus:outline-none" placeholder="e.g. Relocated to secure armory for scheduled claimant pickup" type="text"/>
+</div>
+<!-- Canvas Signature Pad Simulation -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Receiving Officer Signature</label>
+<button class="text-xs text-secondary font-semibold hover:underline" onclick="clearSignature()" type="button">Clear Pad</button>
+</div>
+<div class="w-full h-24 bg-linen rounded-xl flex items-center justify-center relative cursor-crosshair overflow-hidden border border-dashed border-ash" id="sig-pad">
+<canvas class="w-full h-full" id="signature-canvas"></canvas>
+<span class="absolute pointer-events-none text-xs font-mono text-on-surface-variant opacity-40">Sign here using stylus or mouse</span>
+</div>
+</div>
+<div class="pt-space-sm flex items-center justify-end gap-space-sm">
+<button class="px-space-lg py-space-sm rounded-xl bg-linen text-primary font-label-md text-label-md hover:bg-cloud transition-colors" onclick="document.getElementById('transfer-modal').classList.add('hidden')" type="button">
+            Cancel
+          </button>
+<button class="px-space-lg py-space-sm rounded-xl bg-primary text-on-primary font-label-md text-label-md hover:bg-graphite transition-colors flex items-center gap-1" type="submit">
+<span class="material-symbols-outlined text-[16px]">draw</span> Sign &amp; Commit
+          </button>
+</div>
+</form>
+</div>
+</div>
+<!-- MODAL: PROPERTY RELEASE RECEIPT GENERATOR -->
+<div class="hidden fixed inset-0 z-50 bg-primary/40 backdrop-blur-sm flex items-center justify-center p-space-md" id="receipt-modal">
+<div class="bg-surface-container-lowest max-w-2xl w-full rounded-3xl p-space-lg shadow-xl flex flex-col gap-space-md animate-in fade-in zoom-in duration-150 max-h-[921px] overflow-y-auto">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">MGL Ch. 135 Release Receipt Generator</h3>
+</div>
+<button class="w-8 h-8 rounded-full bg-linen flex items-center justify-center text-on-surface-variant hover:text-primary" onclick="document.getElementById('receipt-modal').classList.add('hidden')">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Live Printable Receipt Box -->
+<div class="p-space-lg rounded-2xl bg-canvas flex flex-col gap-space-md font-mono text-xs shadow-sm" id="printable-receipt">
+<div class="text-center flex flex-col gap-1 pb-space-xs">
+<h4 class="font-headline-sm text-headline-sm font-display text-primary tracking-tight">WESTFIELD COLLEGE CAMPUS POLICE</h4>
+<span class="text-xs uppercase tracking-widest text-on-surface-variant">Office of Vault Custody &amp; Property Restitution</span>
+<span class="text-[11px] text-on-surface-variant">Statutory Authority: Mass. Gen. Laws Ann. Ch. 135, §§ 1-12</span>
+</div>
+<div class="h-0.5 bg-ash"></div>
+<div class="grid grid-cols-2 gap-space-sm">
+<div>
+<span class="text-on-surface-variant block">RECEIPT NUMBER:</span>
+<span class="font-bold text-primary text-sm">#WCPD-REC-2025-9921</span>
+</div>
+<div>
+<span class="text-on-surface-variant block">DATE / TIMESTAMP:</span>
+<span class="font-bold text-primary text-sm" id="receipt-date">Oct 17, 2025 15:42:01 EST</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<div>
+<span class="text-on-surface-variant block">CLAIMANT FULL NAME:</span>
+<span class="font-bold text-primary text-sm">Maya Linwood</span>
+</div>
+<div>
+<span class="text-on-surface-variant block">VERIFIED NETID / SEMA ID:</span>
+<span class="font-bold text-primary text-sm">mlinwood27@westfield.edu</span>
+</div>
+</div>
+<div class="pt-space-xs">
+<span class="text-on-surface-variant block">PROPERTY RELEASED:</span>
+<span class="font-bold text-primary text-sm">MacBook Pro 14" M3 (SN: C02TL991MD6T)</span>
+<span class="text-on-surface-variant block pt-0.5">Asset Tag: #WF-2025-901 • Dispensed From: Science Smart Locker #01</span>
+</div>
+<div class="pt-space-xs">
+<span class="text-on-surface-variant block">CLAIMANT ATTESTATION:</span>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">
+            I hereby acknowledge receipt of the above described property in satisfactory condition. I attest under pains and penalties of perjury that I am the lawful owner or authorized custodian of this asset.
+          </p>
+</div>
+<div class="grid grid-cols-2 gap-space-md pt-space-sm">
+<div class="flex flex-col gap-1">
+<span class="text-on-surface-variant">CLAIMANT DIGITAL VERIFICATION:</span>
+<div class="p-2 rounded bg-linen font-bold text-primary text-[11px]">
+              WESTFIELD DUO 2FA #98842-OK
+            </div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-on-surface-variant">RELEASING OFFICER:</span>
+<div class="p-2 rounded bg-linen font-bold text-primary text-[11px]">
+              Officer M. Vance (Shield #884)
+            </div>
+</div>
+</div>
+<div class="h-0.5 bg-ash mt-space-xs"></div>
+<div class="flex items-center justify-between text-[10px] text-on-surface-variant">
+<span>Audit SHA-256: 48f9d02c...31</span>
+<span>Copy 1: Proctors Registry | Copy 2: Claimant</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="text-xs text-on-surface-variant">Receipt is auto-appended to immutable chain log</span>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-md py-space-sm rounded-xl bg-linen text-primary font-label-md text-label-md hover:bg-cloud transition-colors flex items-center gap-1" onclick="window.print()">
+<span class="material-symbols-outlined text-[16px]">print</span> Print Physical Voucher
+          </button>
+<button class="px-space-lg py-space-sm rounded-xl bg-primary text-on-primary font-label-md text-label-md hover:bg-graphite transition-colors" onclick="document.getElementById('receipt-modal').classList.add('hidden')">
+            Close
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- FLOATING FEEDBACK TOAST NOTIFICATION -->
+<div class="hidden fixed bottom-6 right-6 z-50 px-space-md py-space-sm rounded-2xl bg-primary text-on-primary font-label-md text-label-md shadow-xl flex items-center gap-space-xs" id="toast">
+<span class="material-symbols-outlined text-[18px] text-mint">check_circle</span>
+<span id="toast-message">Action processed successfully</span>
+</div>
+</div>
+<script>
+  // Tab Switching between Depots
+  document.querySelectorAll('.depot-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.depot-tab').forEach(t => {
+        t.classList.remove('active', 'bg-surface-container-lowest');
+        t.classList.add('bg-linen');
+      });
+      tab.classList.remove('bg-linen');
+      tab.classList.add('active', 'bg-surface-container-lowest');
+      
+      const depotName = tab.querySelector('.font-title-md').innerText;
+      showToast(`Switched active telemetry view to ${depotName}`);
+    });
+  });
+
+  // Locker Matrix Inspector Selector
+  function selectLocker(number, status, title, countdown, custodian, notes) {
+    document.getElementById('inspect-number').innerText = number;
+    document.getElementById('inspect-title').innerText = title;
+    document.getElementById('inspect-status').innerText = status;
+    document.getElementById('inspect-countdown').innerText = countdown;
+    document.getElementById('inspect-custodian').innerText = custodian;
+    document.getElementById('inspect-notes').innerText = notes;
+
+    const statusBadge = document.getElementById('inspect-status');
+    if (status === 'Occupied') {
+      statusBadge.className = 'px-2 py-0.5 rounded-full text-xs font-semibold bg-primary text-on-primary';
+    } else if (status === 'Awaiting Pickup') {
+      statusBadge.className = 'px-2 py-0.5 rounded-full text-xs font-semibold bg-marigold text-primary';
+    } else if (status === 'Empty') {
+      statusBadge.className = 'px-2 py-0.5 rounded-full text-xs font-semibold bg-mint text-primary';
+    } else {
+      statusBadge.className = 'px-2 py-0.5 rounded-full text-xs font-semibold bg-error text-on-error';
+    }
+
+    showToast(`Focused Smart Locker #${number} telemetry`);
+  }
+
+  // Row Expand/Collapse for Chain-of-Custody Table
+  function toggleChainRow(rowId) {
+    const row = document.getElementById(rowId);
+    const arrow = document.getElementById('arrow-' + rowId);
+    if (row.classList.contains('hidden')) {
+      row.classList.remove('hidden');
+      if (arrow) arrow.innerText = 'expand_less';
+    } else {
+      row.classList.add('hidden');
+      if (arrow) arrow.innerText = 'expand_more';
+    }
+  }
+
+  // Toast Helper
+  function showToast(message) {
+    const toast = document.getElementById('toast');
+    const msg = document.getElementById('toast-message');
+    msg.innerText = message;
+    toast.classList.remove('hidden');
+    setTimeout(() => {
+      toast.classList.add('hidden');
+    }, 3200);
+  }
+
+  function triggerRemotePulse() {
+    const num = document.getElementById('inspect-number').innerText;
+    showToast(`Transmitted RF Pulse to Locker #${num}. Beacon LED flashing.`);
+  }
+
+  function emergencyUnlock() {
+    const num = document.getElementById('inspect-number').innerText;
+    if (confirm(`Authorized Proctor Emergency Override: Unlock Locker #${num}? This entry will be permanently stamped in the state audit ledger.`)) {
+      showToast(`Locker #${num} solenoid tripped. Door released.`);
+    }
+  }
+
+  function triggerDispositionAlert(item, tag) {
+    showToast(`Statutory Final Notice dispatched for ${item} (${tag}). Registered on University Gazette.`);
+  }
+
+  function handleHandoverSubmit(e) {
+    e.preventDefault();
+    showToast('Custody handover certified and appended to cryptographic ledger.');
+    e.target.reset();
+  }
+
+  function handleModalSubmit(e) {
+    e.preventDefault();
+    document.getElementById('transfer-modal').classList.add('hidden');
+    showToast('Biometric transfer confirmed. Chain-of-custody block hashed.');
+  }
+
+  function clearSignature() {
+    const canvas = document.getElementById('signature-canvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      showToast('Signature pad cleared');
+    }
+  }
+
+  // Simple Canvas Signature Drawing Setup
+  window.addEventListener('load', () => {
+    const canvas = document.getElementById('signature-canvas');
+    if (canvas) {
+      canvas.width = canvas.parentElement.clientWidth;
+      canvas.height = canvas.parentElement.clientHeight;
+      const ctx = canvas.getContext('2d');
+      ctx.strokeStyle = '#1c1b1b';
+      ctx.lineWidth = 2;
+      let drawing = false;
+
+      function startDraw(e) {
+        drawing = true;
+        draw(e);
+      }
+      function stopDraw() {
+        drawing = false;
+        ctx.beginPath();
+      }
+      function draw(e) {
+        if (!drawing) return;
+        const rect = canvas.getBoundingClientRect();
+        const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
+        const y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+      }
+
+      canvas.addEventListener('mousedown', startDraw);
+      canvas.addEventListener('mouseup', stopDraw);
+      canvas.addEventListener('mousemove', draw);
+      canvas.addEventListener('touchstart', startDraw);
+      canvas.addEventListener('touchend', stopDraw);
+      canvas.addEventListener('touchmove', draw);
+    }
+  });
+</script></main></div></body></html>
